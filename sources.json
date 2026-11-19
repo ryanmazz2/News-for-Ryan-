@@ -1,0 +1,50 @@
+{
+  "_how_to_edit": "Add or remove sources here. 'rss' sections take RSS/Atom feed URLs. 'journals' take ISSNs looked up on Crossref. 'scholarship' takes search terms sent to OpenAlex. A source that fails is skipped and listed at the bottom of the site.",
+
+  "contact_email": "you@example.com",
+
+  "rss": {
+    "economy": [
+      {"name": "The Guardian", "url": "https://www.theguardian.com/business/economics/rss"},
+      {"name": "BBC News", "url": "https://feeds.bbci.co.uk/news/business/rss.xml"},
+      {"name": "NPR", "url": "https://feeds.npr.org/1017/rss.xml"},
+      {"name": "Phenomenal World", "url": "https://www.phenomenalworld.org/feed/"}
+    ],
+    "politics": [
+      {"name": "The Guardian", "url": "https://www.theguardian.com/politics/rss"},
+      {"name": "The Guardian (US)", "url": "https://www.theguardian.com/us-news/us-politics/rss"},
+      {"name": "BBC News", "url": "https://feeds.bbci.co.uk/news/politics/rss.xml"},
+      {"name": "NPR", "url": "https://feeds.npr.org/1014/rss.xml"},
+      {"name": "Al Jazeera", "url": "https://www.aljazeera.com/xml/rss/all.xml"}
+    ],
+    "left": [
+      {"name": "Jacobin", "url": "https://jacobin.com/feed/"},
+      {"name": "Monthly Review", "url": "https://monthlyreview.org/feed/"},
+      {"name": "MR Online", "url": "https://mronline.org/feed/"},
+      {"name": "Spectre", "url": "https://spectrejournal.com/feed/"},
+      {"name": "Tribune", "url": "https://tribunemag.co.uk/feed"},
+      {"name": "Dissent", "url": "https://www.dissentmagazine.org/feed"},
+      {"name": "Labor Notes", "url": "https://labornotes.org/rss.xml"}
+    ]
+  },
+
+  "journals": [
+    {"name": "Historical Materialism", "issn": "1569-206X"},
+    {"name": "New Left Review", "issn": "0028-6060"},
+    {"name": "Monthly Review", "issn": "0027-0520"},
+    {"name": "Rethinking Marxism", "issn": "0893-5696"},
+    {"name": "Capital & Class", "issn": "0309-8168"},
+    {"name": "Science & Society", "issn": "0036-8237"},
+    {"name": "Review of Radical Political Economics", "issn": "0486-6134"},
+    {"name": "Socialism and Democracy", "issn": "0885-4300"},
+    {"name": "Critique", "issn": "0301-7605"},
+    {"name": "Antipode", "issn": "0066-4812"},
+    {"name": "International Labor and Working-Class History", "issn": "0147-5479"},
+    {"name": "Labor History", "issn": "0023-656X"}
+  ],
+
+  "scholarship": {
+    "terms": ["Marxism", "Marxist", "Karl Marx", "socialism", "historical materialism", "labor movement history"],
+    "days_back": 120
+  }
+}
