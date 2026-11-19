@@ -3,10 +3,12 @@
 A personal news site that rebuilds itself every morning and evening with:
 
 - economics and politics headlines (Guardian, BBC, NPR, Al Jazeera, Phenomenal World)
-- the socialist and labor press (Jacobin, Monthly Review, MR Online, Spectre, Tribune, Dissent, Labor Notes)
+- the US and UK left press (Jacobin, The Nation, In These Times, Democracy Now!, Tribune, Novara and more)
+- the global left (Le Monde diplomatique, Peoples Dispatch, Tricontinental, Africa Is a Country, NACLA, The Wire and more)
 - the newest articles in Marxist and socialist journals (via Crossref)
 - recent scholarship on Marx, Marxism and socialism from any venue (via OpenAlex)
-- a rotating banner of labor and economic history, with anniversaries shown on the day
+- a rotating banner of dated events in working-class, socialist and anti-colonial history, with anniversaries shown on the day
+- a figure of the day, from Spartacus to the present, chosen by birthday or anniversary when there is one
 
 It runs entirely on free GitHub features. Nothing to install on your computer.
 
@@ -26,9 +28,10 @@ After that it updates itself at about 7 am and 7 pm Mountain time.
 
 ## Make it yours
 
-- **Sources:** edit `sources.json` on GitHub (click the file, then the pencil icon). Add any RSS feed, any journal by ISSN, or any search term. Saving the file rebuilds the site.
+- **Sources:** edit `sources.json` on GitHub (click the file, then the pencil icon). Add any site (a feed address or just its homepage), any journal by ISSN, or any search term. Saving the file rebuilds the site.
 - **Your email:** replace `you@example.com` in `sources.json`. Crossref and OpenAlex ask for a contact address and give better service to requests that include one.
-- **Banner facts:** edit `site/data/factoids.json`. Each fact has a `year`, the `text`, and optionally `md` (month-day like `"05-01"`) so it leads the banner on its anniversary.
+- **Banner facts:** edit `site/data/factoids.json`. Each fact has a `year`, the `text`, and optionally a `month` and `day` (numbers) so it shows the exact date and leads the banner on its anniversary.
+- **Daily figures:** edit `site/data/figures.json`. Give `born` and `died` as `"1879-10-07"` for an exact date (used for anniversaries) or as text like `"c. 1822"`.
 - **Update times:** change the `cron` line in `.github/workflows/update.yml`. Times are in UTC.
 
 ## Good to know
