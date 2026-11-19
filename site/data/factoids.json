@@ -1,82 +1,245 @@
 [
  {
+  "year": "73 BCE",
+  "text": "Around seventy gladiators broke out of a training school at Capua. Led by Spartacus, their revolt grew into an army of tens of thousands of escaped slaves that defeated Roman legions for two years."
+ },
+ {
+  "year": "1381",
+  "month": 6,
+  "day": 13,
+  "text": "Rebels of the English Peasants’ Revolt entered London, demanding an end to serfdom. The priest John Ball had asked them, “When Adam delved and Eve span, who was then the gentleman?”"
+ },
+ {
+  "year": "1516",
+  "text": "Thomas More published Utopia, imagining an island where property is held in common. The word entered every European language."
+ },
+ {
+  "year": "1525",
+  "month": 5,
+  "day": 15,
+  "text": "German peasants were routed at the Battle of Frankenhausen, the decisive defeat of the Peasants’ War. Their preacher Thomas Müntzer was captured and later executed."
+ },
+ {
+  "year": "1649",
+  "month": 4,
+  "day": 1,
+  "text": "Gerrard Winstanley and the Diggers began cultivating common land on St George’s Hill in Surrey, declaring the earth “a common treasury for all.”"
+ },
+ {
+  "year": "1789",
+  "month": 7,
+  "day": 14,
+  "text": "Crowds in Paris stormed the Bastille, the opening act of the French Revolution."
+ },
+ {
+  "year": "1789",
+  "month": 10,
+  "day": 5,
+  "text": "Thousands of Parisian market women, angry at the price of bread, marched twelve miles to Versailles and brought the royal family back to Paris."
+ },
+ {
+  "year": "1791",
+  "month": 8,
+  "day": 22,
+  "text": "Enslaved people in Saint-Domingue’s northern plain rose in revolt, beginning the Haitian Revolution, the only successful slave revolution in history."
+ },
+ {
+  "year": "1792",
+  "text": "Mary Wollstonecraft published A Vindication of the Rights of Woman, arguing that women’s apparent inferiority came from denial of education."
+ },
+ {
+  "year": "1804",
+  "month": 1,
+  "day": 1,
+  "text": "Haiti declared independence, becoming the first nation founded by formerly enslaved people and the first free Black republic."
+ },
+ {
   "year": "1811",
   "text": "Framework knitters in Nottinghamshire began breaking the machines that undercut their trade. The Luddite movement spread across northern England until 1816."
  },
  {
   "year": "1819",
-  "md": "08-16",
+  "month": 8,
+  "day": 16,
   "text": "Cavalry charged a peaceful crowd of around 60,000 demanding parliamentary reform at St Peter’s Field, Manchester. The Peterloo Massacre killed at least 15 people."
+ },
+ {
+  "year": "1831",
+  "month": 8,
+  "day": 21,
+  "text": "Nat Turner began a rebellion of enslaved people in Southampton County, Virginia. In the reprisals that followed, white mobs and militias killed scores of Black people."
+ },
+ {
+  "year": "1831",
+  "month": 11,
+  "day": 21,
+  "text": "Silk weavers in Lyon, the canuts, rose up over a broken agreement on piece rates and took control of the city for several days under the slogan “Live working or die fighting.”"
  },
  {
   "year": "1834",
   "text": "Six farm labourers from Tolpuddle, Dorset, were sentenced to transportation to Australia for swearing an oath to a union. Public outcry won their pardon in 1836."
  },
  {
+  "year": "1840",
+  "text": "Pierre-Joseph Proudhon published What Is Property? and answered his own question: property is theft."
+ },
+ {
   "year": "1842",
+  "month": 8,
   "text": "Strikes spread through Britain’s industrial north as workers pulled the plugs from factory boilers. The Plug Plot strikes are often called the first general strike."
  },
  {
+  "year": "1844",
+  "month": 6,
+  "day": 4,
+  "text": "Weavers in Silesia rose against the merchants who had driven their wages below subsistence. Prussian troops crushed the uprising, which became a symbol for the German labor movement."
+ },
+ {
+  "year": "1845",
+  "text": "Friedrich Engels, aged 24, published The Condition of the Working Class in England, based on two years observing the slums of Manchester."
+ },
+ {
   "year": "1848",
-  "md": "02-21",
+  "month": 2,
+  "day": 21,
   "text": "The Manifesto of the Communist Party was published in London, written by Marx and Engels for the Communist League."
  },
  {
+  "year": "1848",
+  "month": 6,
+  "day": 23,
+  "text": "The June Days uprising began in Paris after the new republic closed the National Workshops that employed the unemployed. Thousands of workers were killed in four days."
+ },
+ {
+  "year": "1857",
+  "month": 5,
+  "day": 10,
+  "text": "Indian soldiers at Meerut mutinied against the East India Company, sparking a rebellion that spread across northern India and ended Company rule."
+ },
+ {
+  "year": "1865",
+  "month": 12,
+  "day": 6,
+  "text": "The Thirteenth Amendment was ratified, abolishing slavery in the United States except as punishment for a crime."
+ },
+ {
   "year": "1867",
-  "md": "09-14",
+  "month": 9,
+  "day": 14,
   "text": "Volume one of Marx’s Capital was published in Hamburg in an edition of 1,000 copies. It took four years to sell out."
  },
  {
   "year": "1871",
-  "md": "03-18",
-  "text": "The Paris Commune took control of the city and governed for 72 days before its suppression in the Bloody Week of May."
+  "month": 3,
+  "day": 18,
+  "text": "The Paris Commune took control of the city and governed for 72 days, introducing measures such as the separation of church and state and handing abandoned workshops to workers."
+ },
+ {
+  "year": "1871",
+  "month": 5,
+  "day": 21,
+  "text": "French government troops entered Paris, beginning the Bloody Week that destroyed the Commune. Estimates of Communards killed run from around 10,000 to 20,000."
+ },
+ {
+  "year": "1884",
+  "text": "Engels published The Origin of the Family, Private Property and the State, drawing on Marx’s notes on anthropology."
  },
  {
   "year": "1886",
-  "md": "05-04",
+  "month": 5,
+  "day": 4,
   "text": "A bomb at a Chicago rally for the eight-hour day led to the Haymarket trial. The executions of four anarchists made May 1 an international workers’ day."
  },
  {
   "year": "1888",
-  "md": "07-05",
+  "month": 7,
+  "day": 5,
   "text": "Women and girls at the Bryant & May match factory in London walked out over fines, wages and phosphorus poisoning, and won."
  },
  {
   "year": "1889",
-  "md": "08-14",
+  "month": 8,
+  "day": 14,
   "text": "London dockers struck for sixpence an hour, the “dockers’ tanner.” Their five-week victory opened the era of mass unskilled unionism in Britain."
  },
  {
+  "year": "1891",
+  "month": 5,
+  "day": 1,
+  "text": "French troops fired on a May Day demonstration for the eight-hour day in Fourmies, killing nine people, among them children."
+ },
+ {
+  "year": "1892",
+  "text": "Peter Kropotkin published The Conquest of Bread, setting out an anarchist communist economy built on mutual aid."
+ },
+ {
   "year": "1894",
-  "text": "The Pullman strike shut down rail traffic across the western US until federal troops broke it. Eugene Debs went to jail and came out a socialist."
+  "month": 5,
+  "day": 11,
+  "text": "Workers at the Pullman Palace Car Company walked out over wage cuts. The national railway boycott that followed was broken by federal troops, and Eugene Debs went to jail."
  },
  {
   "year": "1897",
-  "md": "09-10",
+  "month": 9,
+  "day": 10,
   "text": "Sheriff’s deputies fired on unarmed striking miners near Lattimer, Pennsylvania, killing 19. Most of the dead were Polish, Slovak and Lithuanian immigrants."
  },
  {
+  "year": "1903",
+  "text": "W. E. B. Du Bois published The Souls of Black Folk, declaring that the problem of the twentieth century is the problem of the color line."
+ },
+ {
   "year": "1905",
-  "md": "06-27",
+  "month": 1,
+  "day": 22,
+  "text": "Tsarist troops fired on a peaceful procession of workers petitioning the tsar in St Petersburg. Bloody Sunday set off the 1905 Revolution."
+ },
+ {
+  "year": "1905",
+  "month": 6,
+  "day": 27,
+  "text": "Sailors on the battleship Potemkin mutinied over rotten meat, raised the red flag and sailed to Odessa during the 1905 Revolution."
+ },
+ {
+  "year": "1905",
+  "month": 6,
+  "day": 27,
   "text": "The Industrial Workers of the World was founded in Chicago, aiming to organize all workers regardless of skill, race or sex into “one big union.”"
  },
  {
   "year": "1909",
-  "md": "11-22",
+  "month": 11,
+  "day": 22,
   "text": "The Uprising of the 20,000 began when garment workers in New York, most of them young immigrant women, voted for a general strike of the shirtwaist trade."
  },
  {
   "year": "1910",
+  "month": 8,
   "text": "At a socialist women’s conference in Copenhagen, Clara Zetkin and others proposed an annual International Women’s Day."
  },
  {
+  "year": "1910",
+  "month": 11,
+  "day": 20,
+  "text": "Francisco Madero’s call for revolt against the dictator Porfirio Díaz set off the Mexican Revolution, in which Zapata’s peasant armies demanded “land and liberty.”"
+ },
+ {
   "year": "1911",
-  "md": "03-25",
+  "month": 3,
+  "day": 25,
   "text": "Fire at the Triangle Shirtwaist Factory in New York killed 146 garment workers, many trapped behind locked doors. It reshaped labor safety law."
  },
  {
+  "year": "1911",
+  "month": 10,
+  "day": 10,
+  "text": "The Wuchang Uprising began the Xinhai Revolution, which overthrew China’s Qing dynasty and ended two thousand years of imperial rule."
+ },
+ {
   "year": "1912",
-  "text": "Textile workers in Lawrence, Massachusetts, speaking dozens of languages, struck for two months over a pay cut and won. It is remembered as the Bread and Roses strike."
+  "month": 1,
+  "day": 12,
+  "text": "Textile workers in Lawrence, Massachusetts, speaking dozens of languages, walked out over a pay cut. Their two-month Bread and Roses strike won raises across New England."
  },
  {
   "year": "1913",
@@ -84,129 +247,547 @@
  },
  {
   "year": "1913",
-  "md": "08-26",
+  "month": 8,
+  "day": 26,
   "text": "The Dublin Lockout began when employers locked out members of Jim Larkin’s Irish Transport and General Workers’ Union. It lasted into 1914."
  },
  {
   "year": "1914",
-  "md": "04-20",
+  "month": 4,
+  "day": 20,
   "text": "Colorado National Guard troops attacked a tent colony of striking coal miners at Ludlow. Two women and eleven children died in a pit beneath a burning tent."
  },
  {
+  "year": "1915",
+  "month": 11,
+  "day": 19,
+  "text": "The IWW songwriter Joe Hill was executed by firing squad in Salt Lake City on a murder conviction widely seen as a frame-up. His message: “Don’t waste any time in mourning. Organize.”"
+ },
+ {
+  "year": "1916",
+  "month": 4,
+  "day": 24,
+  "text": "Irish republicans, including James Connolly’s socialist Irish Citizen Army, seized Dublin’s General Post Office and proclaimed an Irish Republic. The Easter Rising lasted six days."
+ },
+ {
   "year": "1917",
-  "md": "03-08",
+  "text": "Lenin’s Imperialism, the Highest Stage of Capitalism was published, arguing that monopoly finance drives the great powers to divide the world."
+ },
+ {
+  "year": "1917",
+  "month": 3,
+  "day": 8,
   "text": "Women textile workers in Petrograd struck on International Women’s Day. Within days the strike had become the February Revolution."
  },
  {
+  "year": "1917",
+  "month": 11,
+  "day": 7,
+  "text": "The Bolsheviks took power in Petrograd. The date is October 25 in the old Russian calendar, hence the October Revolution."
+ },
+ {
+  "year": "1918",
+  "month": 11,
+  "day": 9,
+  "text": "Following the sailors’ revolt at Kiel, revolution reached Berlin, the Kaiser abdicated, and Germany was declared a republic."
+ },
+ {
   "year": "1919",
-  "md": "02-06",
+  "month": 1,
+  "day": 15,
+  "text": "Rosa Luxemburg and Karl Liebknecht were murdered in Berlin by Freikorps soldiers after the defeat of the January uprising."
+ },
+ {
+  "year": "1919",
+  "month": 2,
+  "day": 6,
   "text": "About 65,000 workers in Seattle stopped work in a five-day general strike, and strike committees ran milk delivery and food kitchens across the city."
  },
  {
+  "year": "1919",
+  "month": 4,
+  "day": 13,
+  "text": "British troops under General Dyer fired on an unarmed crowd in the walled Jallianwala Bagh garden in Amritsar, killing hundreds. The massacre turned many Indians toward full independence."
+ },
+ {
+  "year": "1919",
+  "month": 5,
+  "day": 4,
+  "text": "Students in Beijing protested the Versailles treaty’s handover of Chinese territory to Japan. The May Fourth Movement shaped a generation of Chinese radicals."
+ },
+ {
+  "year": "1919",
+  "month": 5,
+  "day": 15,
+  "text": "About 30,000 workers walked out in the Winnipeg General Strike. It ended after the Royal North-West Mounted Police charged a crowd on Bloody Saturday, June 21."
+ },
+ {
+  "year": "1919",
+  "month": 9,
+  "day": 30,
+  "text": "After Black sharecroppers met to organize a union near Elaine, Arkansas, white mobs and federal troops killed scores, possibly hundreds, of Black people over several days."
+ },
+ {
   "year": "1921",
+  "month": 5,
+  "day": 31,
+  "text": "A white mob destroyed the prosperous Black district of Greenwood in Tulsa, Oklahoma, over two days, killing as many as 300 people."
+ },
+ {
+  "year": "1921",
+  "month": 8,
   "text": "Around 10,000 armed coal miners fought company guards and police at Blair Mountain, West Virginia, the largest armed uprising in the US since the Civil War."
  },
  {
+  "year": "1923",
+  "text": "György Lukács published History and Class Consciousness, a founding text of Western Marxism."
+ },
+ {
   "year": "1926",
-  "md": "05-04",
-  "text": "The British General Strike began in support of locked-out coal miners. The TUC called it off after nine days."
+  "month": 5,
+  "day": 4,
+  "text": "The British General Strike began in support of locked-out coal miners. The Trades Union Congress called it off after nine days."
  },
  {
   "year": "1927",
-  "md": "11-21",
+  "month": 11,
+  "day": 21,
   "text": "State police opened fire on striking coal miners at the Columbine Mine in Serene, Colorado, killing six. The strike was led by the IWW."
  },
  {
+  "year": "1928",
+  "text": "José Carlos Mariátegui published Seven Interpretive Essays on Peruvian Reality, arguing that Latin American socialism must start from Indigenous communal traditions."
+ },
+ {
+  "year": "1928",
+  "month": 12,
+  "day": 6,
+  "text": "Colombian troops fired on striking United Fruit Company banana workers in Ciénaga. The death toll is still disputed; García Márquez reimagined it in One Hundred Years of Solitude."
+ },
+ {
   "year": "1929",
-  "md": "10-29",
+  "month": 10,
+  "day": 29,
   "text": "Black Tuesday. Over the next three years US industrial production fell by nearly half, and by 1933 roughly a quarter of the workforce was unemployed."
+ },
+ {
+  "year": "1930",
+  "month": 3,
+  "day": 12,
+  "text": "Gandhi set out on the Salt March, walking 240 miles to the sea at Dandi to defy the British salt tax."
+ },
+ {
+  "year": "1932",
+  "month": 1,
+  "text": "After a peasant uprising in western El Salvador, the military killed thousands of mostly Indigenous people in La Matanza, “the massacre.” Communist leader Farabundo Martí was executed."
+ },
+ {
+  "year": "1932",
+  "month": 7,
+  "day": 28,
+  "text": "US Army troops under Douglas MacArthur drove the Bonus Army of unemployed World War I veterans out of Washington with tanks, tear gas and fire."
  },
  {
   "year": "1934",
   "text": "General strikes in San Francisco, Minneapolis and Toledo turned the tide of US labor. Each was led in part by radicals: communists, Trotskyists and Musteites."
  },
  {
+  "year": "1934",
+  "month": 10,
+  "day": 5,
+  "text": "Miners in Asturias, Spain, rose in an armed revolution and held the region for two weeks before troops under General Franco crushed them."
+ },
+ {
   "year": "1935",
-  "md": "07-05",
+  "text": "W. E. B. Du Bois published Black Reconstruction in America, recasting the end of slavery as a general strike by enslaved workers."
+ },
+ {
+  "year": "1935",
+  "month": 7,
+  "day": 5,
   "text": "The National Labor Relations Act (Wagner Act) guaranteed most US private-sector workers the right to organize and bargain collectively."
  },
  {
+  "year": "1936",
+  "month": 7,
+  "day": 19,
+  "text": "Workers in Barcelona defeated a military uprising in the streets, and a social revolution swept Catalonia as unions collectivized factories and farms."
+ },
+ {
   "year": "1937",
-  "md": "02-11",
+  "month": 2,
+  "day": 11,
   "text": "After 44 days of autoworkers occupying its Flint plants, General Motors recognized the United Auto Workers."
  },
  {
   "year": "1937",
-  "md": "05-30",
+  "month": 5,
+  "day": 30,
   "text": "Chicago police shot at strikers and supporters picnicking outside Republic Steel, killing ten. It became known as the Memorial Day Massacre."
  },
  {
   "year": "1938",
-  "md": "06-25",
+  "text": "C. L. R. James published The Black Jacobins, his history of the Haitian Revolution and Toussaint Louverture."
+ },
+ {
+  "year": "1938",
+  "month": 6,
+  "day": 25,
   "text": "The Fair Labor Standards Act set the first US federal minimum wage at 25 cents an hour and moved toward a 40-hour week."
+ },
+ {
+  "year": "1944",
+  "text": "Eric Williams published Capitalism and Slavery, arguing that profits from slavery helped finance British industrialization and that economics, not morality alone, drove abolition."
  },
  {
   "year": "1944",
   "text": "Karl Polanyi published The Great Transformation, arguing that a self-regulating market was a utopia that society would always resist."
  },
  {
+  "year": "1945",
+  "month": 5,
+  "day": 8,
+  "text": "As Europe celebrated victory, French forces and settler militias answered nationalist demonstrations in Sétif, Algeria, by killing thousands of Algerians over the following weeks."
+ },
+ {
+  "year": "1946",
+  "month": 2,
+  "day": 18,
+  "text": "Sailors of the Royal Indian Navy mutinied in Bombay, and the revolt spread to ships and shore bases across India, hastening British withdrawal."
+ },
+ {
   "year": "1947",
-  "md": "06-23",
+  "month": 6,
+  "day": 23,
   "text": "Congress passed the Taft–Hartley Act over Truman’s veto, banning secondary boycotts and allowing states to pass right-to-work laws."
+ },
+ {
+  "year": "1947",
+  "month": 8,
+  "day": 15,
+  "text": "India won independence from British rule."
+ },
+ {
+  "year": "1950",
+  "text": "Aimé Césaire published Discourse on Colonialism, arguing that colonization degrades the colonizer as well as the colonized."
+ },
+ {
+  "year": "1952",
+  "text": "Frantz Fanon published Black Skin, White Masks, a study of the psychology of racism and colonial domination."
+ },
+ {
+  "year": "1953",
+  "month": 6,
+  "day": 17,
+  "text": "A day after construction workers in East Berlin struck over raised work quotas, an uprising spread across East Germany before Soviet tanks put it down."
+ },
+ {
+  "year": "1953",
+  "month": 7,
+  "day": 26,
+  "text": "Fidel Castro led a failed attack on the Moncada Barracks in Santiago de Cuba. The date gave his movement its name."
+ },
+ {
+  "year": "1955",
+  "month": 4,
+  "day": 18,
+  "text": "Leaders of 29 newly independent Asian and African nations met at Bandung, Indonesia, a founding moment for the Non-Aligned Movement and the idea of the Third World."
+ },
+ {
+  "year": "1955",
+  "month": 6,
+  "day": 26,
+  "text": "The Congress of the People adopted the Freedom Charter at Kliptown, South Africa, declaring that the land shall be shared among those who work it."
+ },
+ {
+  "year": "1955",
+  "month": 12,
+  "day": 5,
+  "text": "The Montgomery bus boycott began, four days after Rosa Parks was arrested for refusing to give up her seat. It lasted 381 days."
  },
  {
   "year": "1956",
   "text": "Five former students of a local priest, José María Arizmendiarrieta, started a paraffin-stove workshop in Mondragón. It grew into one of the world’s largest federations of worker cooperatives."
  },
  {
+  "year": "1956",
+  "month": 10,
+  "day": 23,
+  "text": "Students and workers in Budapest rose against Soviet-backed rule, and workers’ councils formed across Hungary before Soviet tanks crushed the revolution."
+ },
+ {
+  "year": "1959",
+  "month": 1,
+  "day": 1,
+  "text": "Fulgencio Batista fled Cuba and the revolutionary movement took power."
+ },
+ {
+  "year": "1960",
+  "month": 2,
+  "day": 1,
+  "text": "Four Black students sat down at the whites-only Woolworth’s lunch counter in Greensboro, North Carolina, starting a sit-in movement that spread across the South."
+ },
+ {
+  "year": "1960",
+  "month": 3,
+  "day": 21,
+  "text": "South African police opened fire on a crowd protesting pass laws at Sharpeville, killing 69 people. The day is now Human Rights Day in South Africa."
+ },
+ {
+  "year": "1961",
+  "text": "Frantz Fanon’s The Wretched of the Earth was published shortly before his death, with a preface by Jean-Paul Sartre."
+ },
+ {
+  "year": "1961",
+  "month": 1,
+  "day": 17,
+  "text": "Patrice Lumumba, the Congo’s first elected prime minister, was executed by Katangan secessionists with Belgian involvement, after Western powers had pushed for his removal."
+ },
+ {
+  "year": "1961",
+  "month": 10,
+  "day": 17,
+  "text": "Paris police attacked a peaceful demonstration of Algerians against a curfew, killing dozens or more, some thrown into the Seine. France officially acknowledged the massacre only in 2012."
+ },
+ {
+  "year": "1962",
+  "month": 7,
+  "day": 5,
+  "text": "Algeria became independent after an eight-year war of liberation against France."
+ },
+ {
   "year": "1963",
   "text": "E. P. Thompson published The Making of the English Working Class, arguing that class is something that happens in human relationships rather than a fixed structure."
  },
  {
+  "year": "1963",
+  "month": 8,
+  "day": 28,
+  "text": "About 250,000 people joined the March on Washington for Jobs and Freedom, organized by A. Philip Randolph and Bayard Rustin."
+ },
+ {
   "year": "1965",
-  "md": "09-08",
+  "text": "Kwame Nkrumah published Neo-Colonialism: The Last Stage of Imperialism, arguing that formal independence can mask continued economic control."
+ },
+ {
+  "year": "1965",
+  "month": 9,
+  "day": 8,
   "text": "Filipino farmworkers in the Agricultural Workers Organizing Committee walked out of Delano grape fields. Chavez and Huerta’s farmworkers’ association joined them a week later."
  },
  {
+  "year": "1965",
+  "month": 10,
+  "text": "The Indonesian army and allied militias began a campaign against the Communist Party and those accused of sympathy with it, killing an estimated 500,000 to a million people."
+ },
+ {
+  "year": "1966",
+  "month": 1,
+  "day": 3,
+  "text": "The Tricontinental Conference opened in Havana, gathering liberation movements from Africa, Asia and Latin America."
+ },
+ {
+  "year": "1966",
+  "month": 10,
+  "day": 15,
+  "text": "Huey P. Newton and Bobby Seale founded the Black Panther Party for Self-Defense in Oakland, later known for free breakfast programs and community clinics."
+ },
+ {
   "year": "1968",
-  "md": "02-12",
+  "text": "Paulo Freire wrote Pedagogy of the Oppressed in exile in Chile, arguing for education as a practice of freedom."
+ },
+ {
+  "year": "1968",
+  "month": 2,
+  "day": 8,
+  "text": "Highway patrolmen fired on Black students protesting a segregated bowling alley at South Carolina State College in Orangeburg, killing three."
+ },
+ {
+  "year": "1968",
+  "month": 2,
+  "day": 12,
   "text": "Black sanitation workers in Memphis struck after two colleagues were crushed in a garbage truck. Their signs read “I AM A MAN.”"
  },
  {
+  "year": "1968",
+  "month": 5,
+  "day": 13,
+  "text": "French unions called a general strike in solidarity with students, and within days about ten million workers had stopped work, the largest general strike in French history."
+ },
+ {
+  "year": "1968",
+  "month": 10,
+  "day": 2,
+  "text": "Ten days before the Olympics opened, Mexican soldiers fired on a student rally in Tlatelolco Plaza, Mexico City, killing an unknown number, probably hundreds."
+ },
+ {
+  "year": "1969",
+  "month": 5,
+  "day": 29,
+  "text": "Autoworkers and students in Córdoba, Argentina, took over the city center in the Cordobazo, a revolt that weakened the military dictatorship."
+ },
+ {
+  "year": "1969",
+  "month": 6,
+  "day": 28,
+  "text": "Patrons fought back against a police raid at the Stonewall Inn in New York, an uprising led in part by trans women and street youth that launched the modern gay liberation movement."
+ },
+ {
   "year": "1970",
-  "md": "03-18",
+  "month": 3,
+  "day": 18,
   "text": "About 200,000 US postal workers staged a wildcat strike, the largest in the agency’s history. It won them collective bargaining rights."
  },
  {
+  "year": "1970",
+  "month": 5,
+  "day": 4,
+  "text": "Ohio National Guard troops fired on students protesting the invasion of Cambodia at Kent State University, killing four. Eleven days later police killed two students at Jackson State."
+ },
+ {
   "year": "1971",
-  "md": "08-15",
+  "text": "Eduardo Galeano published Open Veins of Latin America, a history of five centuries of plunder of the continent."
+ },
+ {
+  "year": "1971",
+  "month": 8,
+  "day": 15,
   "text": "Nixon suspended the dollar’s convertibility into gold, ending the Bretton Woods system of fixed exchange rates."
+ },
+ {
+  "year": "1972",
+  "text": "Walter Rodney published How Europe Underdeveloped Africa, arguing that Europe’s development and Africa’s underdevelopment were two sides of one process."
+ },
+ {
+  "year": "1972",
+  "month": 1,
+  "day": 30,
+  "text": "British paratroopers shot 26 unarmed civil rights marchers in Derry, Northern Ireland, killing 13 on the day. One more died later."
+ },
+ {
+  "year": "1973",
+  "month": 9,
+  "day": 11,
+  "text": "Chile’s military, with US backing, overthrew the elected socialist government of Salvador Allende. Thousands were killed and tens of thousands tortured under the dictatorship."
+ },
+ {
+  "year": "1973",
+  "month": 11,
+  "day": 17,
+  "text": "A tank broke through the gates of the Athens Polytechnic to end a student occupation against Greece’s military junta. The anniversary is still marked by marches every year."
  },
  {
   "year": "1974",
   "text": "Harry Braverman published Labor and Monopoly Capital, a study of how management deskills work, which launched the labor process debate."
  },
  {
-  "year": "1980",
-  "md": "08-31",
-  "text": "Strikers at the Gdańsk shipyard signed an agreement with the Polish government that led to the founding of Solidarność, an independent trade union."
+  "year": "1974",
+  "month": 4,
+  "day": 25,
+  "text": "Junior officers overthrew Portugal’s dictatorship in the Carnation Revolution, opening the way to independence for Angola, Mozambique and Guinea-Bissau."
  },
  {
-  "year": "1981",
-  "md": "08-05",
-  "text": "Reagan fired more than 11,000 striking air traffic controllers in PATCO, a signal to employers that permanent replacement of strikers was acceptable."
+  "year": "1976",
+  "month": 6,
+  "day": 16,
+  "text": "Police opened fire on schoolchildren in Soweto protesting the imposition of Afrikaans in their schools. Hundreds died in the uprising that followed."
+ },
+ {
+  "year": "1977",
+  "month": 4,
+  "text": "The Combahee River Collective, a group of Black lesbian socialist feminists in Boston, issued its statement on interlocking oppressions."
+ },
+ {
+  "year": "1979",
+  "month": 7,
+  "day": 19,
+  "text": "The Sandinista National Liberation Front entered Managua, ending the Somoza family dictatorship in Nicaragua."
+ },
+ {
+  "year": "1980",
+  "month": 5,
+  "day": 18,
+  "text": "Students in Gwangju, South Korea, protested martial law. Paratroopers attacked, and citizens armed themselves and held the city for days before the army retook it. Hundreds were killed."
+ },
+ {
+  "year": "1980",
+  "month": 8,
+  "day": 31,
+  "text": "Strikers at the Gdańsk shipyard signed an agreement with the Polish government that led to the founding of Solidarność, an independent trade union."
  },
  {
   "year": "1981",
   "text": "The Volcker shock pushed the US federal funds rate to around 20%, breaking inflation and accelerating the collapse of industrial employment."
  },
  {
+  "year": "1981",
+  "month": 8,
+  "day": 5,
+  "text": "Reagan fired more than 11,000 striking air traffic controllers in PATCO, a signal to employers that permanent replacement of strikers was acceptable."
+ },
+ {
+  "year": "1983",
+  "text": "Cedric Robinson published Black Marxism, tracing a Black radical tradition that grew alongside, and often against, European Marxism."
+ },
+ {
   "year": "1984",
-  "md": "03-06",
-  "text": "The UK miners’ strike began over pit closures and lasted almost a year, one of the longest major strikes in British history."
+  "month": 3,
+  "day": 6,
+  "text": "The National Coal Board announced pit closures, setting off the UK miners’ strike, which lasted almost a year."
+ },
+ {
+  "year": "1984",
+  "month": 6,
+  "day": 18,
+  "text": "Mounted police charged picketing miners at the Orgreave coking plant near Sheffield. Charges of riot against 95 miners later collapsed."
+ },
+ {
+  "year": "1986",
+  "text": "Ngũgĩ wa Thiong’o published Decolonising the Mind, explaining his decision to stop writing fiction in English and write in Gĩkũyũ."
+ },
+ {
+  "year": "1989",
+  "month": 2,
+  "day": 27,
+  "text": "Protests against IMF-backed fuel price rises erupted in Caracas. Security forces killed hundreds in the Caracazo."
+ },
+ {
+  "year": "1994",
+  "month": 1,
+  "day": 1,
+  "text": "The day NAFTA took effect, the Zapatista Army of National Liberation rose in Chiapas, Mexico, demanding land, autonomy and Indigenous rights."
  },
  {
   "year": "1954",
   "text": "US union membership peaked at roughly a third of wage and salary workers in the mid-1950s. Today it is about one in ten."
+ },
+ {
+  "year": "1999",
+  "month": 11,
+  "day": 30,
+  "text": "Tens of thousands of union members, environmentalists and other activists shut down the opening of the World Trade Organization’s meeting in Seattle."
+ },
+ {
+  "year": "2000",
+  "month": 4,
+  "text": "Residents of Cochabamba, Bolivia, forced out a private consortium that had sharply raised water prices, in what became known as the Water War."
+ },
+ {
+  "year": "2010",
+  "month": 12,
+  "day": 17,
+  "text": "Street vendor Mohamed Bouazizi set himself on fire in Sidi Bouzid, Tunisia, after police confiscated his cart. Protests that followed began the Arab uprisings."
+ },
+ {
+  "year": "2011",
+  "month": 9,
+  "day": 17,
+  "text": "Protesters began occupying Zuccotti Park in New York, launching Occupy Wall Street and the slogan “We are the 99%.”"
+ },
+ {
+  "year": "2012",
+  "month": 8,
+  "day": 16,
+  "text": "South African police shot dead 34 striking platinum miners at Marikana, the deadliest use of force by police since the end of apartheid."
  }
 ]

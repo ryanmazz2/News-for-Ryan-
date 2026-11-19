@@ -1,0 +1,737 @@
+[
+ {
+  "name": "Eunus",
+  "died": "c. 132 BCE",
+  "bio": "A Syrian slave and reputed prophet who led the First Servile War in Sicily, where rebels held cities and proclaimed him king for several years."
+ },
+ {
+  "name": "Spartacus",
+  "died": "71 BCE",
+  "bio": "A Thracian gladiator who led the largest slave revolt against Rome. His army of escaped slaves defeated several Roman forces before being crushed in southern Italy."
+ },
+ {
+  "name": "Boudica",
+  "died": "c. 61",
+  "bio": "Queen of the Iceni who led a revolt against Roman occupation of Britain after Roman officials seized her family’s lands and assaulted her and her daughters."
+ },
+ {
+  "name": "Mazdak",
+  "died": "c. 528",
+  "bio": "A Persian reformer who preached that land and wealth should be shared in common. His movement won royal support before its followers were massacred."
+ },
+ {
+  "name": "John Ball",
+  "born": "c. 1338",
+  "died": "1381-07-15",
+  "bio": "A radical priest who preached that all people were created equal, and a leader of the English Peasants’ Revolt."
+ },
+ {
+  "name": "Wat Tyler",
+  "died": "1381-06-15",
+  "bio": "Leader of the English Peasants’ Revolt, killed while negotiating with King Richard II at Smithfield."
+ },
+ {
+  "name": "Thomas Müntzer",
+  "born": "c. 1489",
+  "died": "1525-05-27",
+  "bio": "A radical preacher who joined the German Peasants’ War, teaching that the common people should overthrow their lords. He was executed after the defeat at Frankenhausen."
+ },
+ {
+  "name": "Bartolomé de las Casas",
+  "born": "c. 1484",
+  "died": "1566",
+  "bio": "A Spanish friar who gave up his own Indigenous laborers and spent fifty years denouncing the conquest’s cruelty, though he once proposed African slaves as a substitute and later repented of it."
+ },
+ {
+  "name": "Gerrard Winstanley",
+  "born": "1609",
+  "died": "1676",
+  "bio": "Leader of the Diggers, who planted common land in 1649 and argued that the earth should be a common treasury for all."
+ },
+ {
+  "name": "Zumbi dos Palmares",
+  "born": "1655",
+  "died": "1695-11-20",
+  "bio": "Leader of Palmares, a long-lived community of escaped slaves in northeastern Brazil. The day of his death is Brazil’s Black Consciousness Day."
+ },
+ {
+  "name": "Nanny of the Maroons",
+  "born": "c. 1686",
+  "died": "c. 1733",
+  "bio": "A leader of the Windward Maroons in Jamaica who fought British forces from the mountains. She is a national hero of Jamaica."
+ },
+ {
+  "name": "Túpac Amaru II",
+  "born": "1738",
+  "died": "1781-05-18",
+  "bio": "A descendant of Inca rulers who led a great Indigenous uprising in Peru against Spanish colonial exploitation. He was executed in Cusco."
+ },
+ {
+  "name": "Túpac Katari",
+  "born": "c. 1750",
+  "died": "1781-11-15",
+  "bio": "An Aymara leader who besieged La Paz for months during the Andean uprising of 1781. He was executed by the Spanish."
+ },
+ {
+  "name": "Toussaint Louverture",
+  "born": "c. 1743",
+  "died": "1803-04-07",
+  "bio": "A formerly enslaved man who became the leading general of the Haitian Revolution. Captured by Napoleon’s forces, he died in a French prison."
+ },
+ {
+  "name": "Jean-Jacques Dessalines",
+  "born": "1758",
+  "died": "1806",
+  "bio": "Toussaint’s lieutenant who defeated Napoleon’s army and declared Haiti’s independence in 1804."
+ },
+ {
+  "name": "Olympe de Gouges",
+  "born": "1748",
+  "died": "1793-11-03",
+  "bio": "A playwright who wrote the Declaration of the Rights of Woman and of the Female Citizen in 1791. She was guillotined during the Terror."
+ },
+ {
+  "name": "Mary Wollstonecraft",
+  "born": "1759-04-27",
+  "died": "1797-09-10",
+  "bio": "Philosopher and author of A Vindication of the Rights of Woman, a founding text of feminism."
+ },
+ {
+  "name": "Gracchus Babeuf",
+  "born": "1760",
+  "died": "1797",
+  "bio": "Leader of the Conspiracy of the Equals, which aimed to complete the French Revolution with common ownership. He was executed."
+ },
+ {
+  "name": "Thomas Paine",
+  "born": "1737",
+  "died": "1809",
+  "bio": "Author of Common Sense and Rights of Man, who also proposed a basic endowment for every citizen funded by a tax on land."
+ },
+ {
+  "name": "Robert Owen",
+  "born": "1771-05-14",
+  "died": "1858-11-17",
+  "bio": "A mill owner turned socialist who cut hours and built schools at New Lanark and helped found the cooperative movement."
+ },
+ {
+  "name": "Tecumseh",
+  "born": "1768",
+  "died": "1813-10-05",
+  "bio": "A Shawnee leader who built a confederation of Native nations to resist the seizure of their lands by the United States."
+ },
+ {
+  "name": "Simón Bolívar",
+  "born": "1783-07-24",
+  "died": "1830-12-17",
+  "bio": "The leader of independence wars that freed much of South America from Spanish rule."
+ },
+ {
+  "name": "Denmark Vesey",
+  "born": "c. 1767",
+  "died": "1822",
+  "bio": "A free Black carpenter in Charleston who was executed for planning a major slave uprising."
+ },
+ {
+  "name": "Nat Turner",
+  "born": "1800-10-02",
+  "died": "1831-11-11",
+  "bio": "An enslaved preacher who led a rebellion in Virginia in 1831. He was hanged after weeks in hiding."
+ },
+ {
+  "name": "John Brown",
+  "born": "1800-05-09",
+  "died": "1859-12-02",
+  "bio": "A white abolitionist who led a raid on the federal armory at Harpers Ferry to arm enslaved people. He was hanged for treason."
+ },
+ {
+  "name": "Flora Tristan",
+  "born": "1803",
+  "died": "1844",
+  "bio": "A French-Peruvian writer who called for a universal workers’ union years before the Communist Manifesto and linked women’s emancipation to workers’ liberation."
+ },
+ {
+  "name": "Louis Auguste Blanqui",
+  "born": "1805",
+  "died": "1881",
+  "bio": "A French revolutionary who spent about half of his life in prison for his insurrections."
+ },
+ {
+  "name": "Sojourner Truth",
+  "born": "c. 1797",
+  "died": "1883-11-26",
+  "bio": "She escaped slavery in New York and became a renowned abolitionist and women’s rights speaker."
+ },
+ {
+  "name": "Frederick Douglass",
+  "born": "c. 1818",
+  "died": "1895-02-20",
+  "bio": "He escaped slavery and became the most influential abolitionist orator and writer in America, and a champion of women’s suffrage."
+ },
+ {
+  "name": "Harriet Tubman",
+  "born": "c. 1822",
+  "died": "1913-03-10",
+  "bio": "She escaped slavery and returned again and again to guide others to freedom, then served as a Union scout and spy in the Civil War."
+ },
+ {
+  "name": "Karl Marx",
+  "born": "1818-05-05",
+  "died": "1883-03-14",
+  "bio": "A philosopher and economist whose critique of capitalism in Capital remains the foundation of socialist thought."
+ },
+ {
+  "name": "Friedrich Engels",
+  "born": "1820-11-28",
+  "died": "1895-08-05",
+  "bio": "Marx’s collaborator and the editor of Capital’s later volumes, who documented the conditions of Manchester’s working class."
+ },
+ {
+  "name": "Louise Michel",
+  "born": "1830-05-29",
+  "died": "1905-01-09",
+  "bio": "A schoolteacher who fought on the barricades of the Paris Commune. Deported to New Caledonia, she sided with the Kanak uprising there."
+ },
+ {
+  "name": "Eugène Pottier",
+  "born": "1816",
+  "died": "1887",
+  "bio": "A Paris Commune member who wrote the words of The Internationale in 1871."
+ },
+ {
+  "name": "Peter Kropotkin",
+  "born": "1842-12-09",
+  "died": "1921-02-08",
+  "bio": "A Russian prince turned anarchist, whose book Mutual Aid argued that cooperation drives evolution as much as competition."
+ },
+ {
+  "name": "William Morris",
+  "born": "1834-03-24",
+  "died": "1896-10-03",
+  "bio": "A designer, poet and socialist who wanted to restore beauty and joy to labor."
+ },
+ {
+  "name": "Eleanor Marx",
+  "born": "1855-01-16",
+  "died": "1898-03-31",
+  "bio": "Marx’s youngest daughter and an organizer of the gasworkers’ and dockers’ unions in London."
+ },
+ {
+  "name": "Mother Jones",
+  "born": "1837",
+  "died": "1930",
+  "bio": "Mary Harris Jones, an Irish-born organizer who led mine workers’ strikes and marched child mill workers to the president’s house."
+ },
+ {
+  "name": "Lucy Parsons",
+  "born": "c. 1851",
+  "died": "1942",
+  "bio": "A labor radical of Black, Mexican and Native ancestry who co-founded the IWW and campaigned for the Haymarket defendants, including her husband."
+ },
+ {
+  "name": "Eugene V. Debs",
+  "born": "1855-11-05",
+  "died": "1926-10-20",
+  "bio": "A railway union leader who became a socialist and ran for president five times, once from prison, winning nearly a million votes."
+ },
+ {
+  "name": "Joe Hill",
+  "born": "1879-10-07",
+  "died": "1915-11-19",
+  "bio": "A Swedish-born IWW songwriter executed in Utah on a murder conviction widely seen as a frame-up."
+ },
+ {
+  "name": "Frank Little",
+  "born": "1879",
+  "died": "1917-08-01",
+  "bio": "An IWW organizer lynched in Butte, Montana, while supporting a strike of copper miners."
+ },
+ {
+  "name": "Emma Goldman",
+  "born": "1869-06-27",
+  "died": "1940-05-14",
+  "bio": "An anarchist writer and speaker who campaigned for free speech, birth control and workers’ rights, and was deported from the US in 1919."
+ },
+ {
+  "name": "Rosa Luxemburg",
+  "born": "1871-03-05",
+  "died": "1919-01-15",
+  "bio": "A Marxist economist and revolutionary who opposed the First World War and was murdered after the Spartacist uprising."
+ },
+ {
+  "name": "Karl Liebknecht",
+  "born": "1871-08-13",
+  "died": "1919-01-15",
+  "bio": "The only member of the German parliament to vote against war credits in December 1914. He was murdered alongside Luxemburg."
+ },
+ {
+  "name": "Clara Zetkin",
+  "born": "1857-07-05",
+  "died": "1933-06-20",
+  "bio": "A German socialist who led the international socialist women’s movement and proposed International Women’s Day."
+ },
+ {
+  "name": "Alexandra Kollontai",
+  "born": "1872-03-31",
+  "died": "1952-03-09",
+  "bio": "A Bolshevik who championed women’s liberation and later became one of the world’s first women ambassadors."
+ },
+ {
+  "name": "Vladimir Lenin",
+  "born": "1870-04-22",
+  "died": "1924-01-21",
+  "bio": "Leader of the Bolshevik Party and of the October Revolution of 1917."
+ },
+ {
+  "name": "Leon Trotsky",
+  "born": "1879",
+  "died": "1940-08-21",
+  "bio": "A leader of the 1917 revolution and founder of the Red Army who became Stalin’s leading opponent. He was assassinated in Mexico."
+ },
+ {
+  "name": "Antonio Gramsci",
+  "born": "1891-01-22",
+  "died": "1937-04-27",
+  "bio": "An Italian communist imprisoned by Mussolini, whose Prison Notebooks developed the theory of hegemony."
+ },
+ {
+  "name": "Emiliano Zapata",
+  "born": "1879-08-08",
+  "died": "1919-04-10",
+  "bio": "A leader of the Mexican Revolution who fought for peasants’ land under the slogan “Land and liberty.”"
+ },
+ {
+  "name": "Ricardo Flores Magón",
+  "born": "1873",
+  "died": "1922",
+  "bio": "A Mexican anarchist journalist whose newspaper Regeneración helped prepare the Mexican Revolution. He died in a US prison."
+ },
+ {
+  "name": "James Connolly",
+  "born": "1868-06-05",
+  "died": "1916-05-12",
+  "bio": "An Irish socialist and union leader who commanded rebel forces in the Easter Rising and was executed by a British firing squad."
+ },
+ {
+  "name": "Jim Larkin",
+  "born": "1874",
+  "died": "1947",
+  "bio": "An Irish union leader who led Dublin’s workers through the 1913 Lockout."
+ },
+ {
+  "name": "Ida B. Wells",
+  "born": "1862-07-16",
+  "died": "1931-03-25",
+  "bio": "A journalist who documented lynching in the American South and co-founded the NAACP."
+ },
+ {
+  "name": "W. E. B. Du Bois",
+  "born": "1868-02-23",
+  "died": "1963-08-27",
+  "bio": "A sociologist and historian who co-founded the NAACP and wrote The Souls of Black Folk and Black Reconstruction."
+ },
+ {
+  "name": "Hubert Harrison",
+  "born": "1883-04-27",
+  "died": "1927-12-17",
+  "bio": "A Harlem socialist street orator and writer, called the father of Harlem radicalism."
+ },
+ {
+  "name": "A. Philip Randolph",
+  "born": "1889",
+  "died": "1979",
+  "bio": "He organized the Brotherhood of Sleeping Car Porters, the first major Black-led union, and conceived the 1963 March on Washington."
+ },
+ {
+  "name": "Claudia Jones",
+  "born": "1915-02-21",
+  "died": "1964-12-24",
+  "bio": "A Trinidad-born communist and feminist deported from the US to Britain, where she founded the West Indian Gazette and helped start the Notting Hill Carnival."
+ },
+ {
+  "name": "Paul Robeson",
+  "born": "1898-04-09",
+  "died": "1976-01-23",
+  "bio": "A singer, actor and athlete whose passport was revoked for his left-wing politics and anti-colonial activism."
+ },
+ {
+  "name": "C. L. R. James",
+  "born": "1901-01-04",
+  "died": "1989-05-31",
+  "bio": "A Trinidadian historian and Marxist who wrote The Black Jacobins."
+ },
+ {
+  "name": "José Carlos Mariátegui",
+  "born": "1894-06-14",
+  "died": "1930-04-16",
+  "bio": "A Peruvian Marxist who argued that Latin American socialism must start from Indigenous communal traditions."
+ },
+ {
+  "name": "Augusto César Sandino",
+  "born": "1895",
+  "died": "1934-02-21",
+  "bio": "A Nicaraguan general who led a guerrilla war against US Marine occupation. He was assassinated on the orders of Anastasio Somoza."
+ },
+ {
+  "name": "Farabundo Martí",
+  "born": "1893",
+  "died": "1932-02-01",
+  "bio": "A Salvadoran communist executed after the 1932 uprising. The guerrilla front of the 1980s took his name."
+ },
+ {
+  "name": "Ho Chi Minh",
+  "born": "1890-05-19",
+  "died": "1969-09-02",
+  "bio": "Leader of Vietnam’s independence movement against French and then American power."
+ },
+ {
+  "name": "Bhagat Singh",
+  "born": "1907",
+  "died": "1931-03-23",
+  "bio": "An Indian socialist revolutionary hanged by the British at 23. His slogan was “Long live revolution.”"
+ },
+ {
+  "name": "B. R. Ambedkar",
+  "born": "1891-04-14",
+  "died": "1956-12-06",
+  "bio": "A Dalit jurist, economist and campaigner against caste who led the drafting of India’s constitution."
+ },
+ {
+  "name": "Mohandas Gandhi",
+  "born": "1869-10-02",
+  "died": "1948-01-30",
+  "bio": "Leader of mass nonviolent resistance to British rule in India."
+ },
+ {
+  "name": "Sylvia Pankhurst",
+  "born": "1882-05-05",
+  "died": "1960-09-27",
+  "bio": "A suffragette who broke with her family to organize working-class women in London’s East End, later championing Ethiopian independence."
+ },
+ {
+  "name": "Dolores Ibárruri",
+  "born": "1895-12-09",
+  "died": "1989-11-12",
+  "bio": "A Spanish communist known as La Pasionaria, whose cry “They shall not pass” became the slogan of the defense of Madrid."
+ },
+ {
+  "name": "Buenaventura Durruti",
+  "born": "1896-07-14",
+  "died": "1936-11-20",
+  "bio": "A Spanish anarchist who led a militia column in the Civil War and died defending Madrid."
+ },
+ {
+  "name": "Nicola Sacco and Bartolomeo Vanzetti",
+  "died": "1927-08-23",
+  "bio": "Italian immigrant anarchists executed in Massachusetts after a trial condemned worldwide as unjust."
+ },
+ {
+  "name": "Emma Tenayuca",
+  "born": "1916-12-21",
+  "died": "1999-07-23",
+  "bio": "A Mexican-American organizer who led the 1938 strike of pecan shellers in San Antonio at age 21."
+ },
+ {
+  "name": "Kwame Nkrumah",
+  "born": "1909-09-21",
+  "died": "1972-04-27",
+  "bio": "Leader of Ghana’s independence and a leading voice of pan-Africanism."
+ },
+ {
+  "name": "Patrice Lumumba",
+  "born": "1925-07-02",
+  "died": "1961-01-17",
+  "bio": "The first elected prime minister of the independent Congo, overthrown and executed within months of taking office."
+ },
+ {
+  "name": "Amílcar Cabral",
+  "born": "1924-09-12",
+  "died": "1973-01-20",
+  "bio": "Leader of the liberation struggle in Guinea-Bissau and Cape Verde, assassinated shortly before independence."
+ },
+ {
+  "name": "Frantz Fanon",
+  "born": "1925-07-20",
+  "died": "1961-12-06",
+  "bio": "A Martinican psychiatrist who joined the Algerian revolution and wrote The Wretched of the Earth."
+ },
+ {
+  "name": "Aimé Césaire",
+  "born": "1913-06-26",
+  "died": "2008-04-17",
+  "bio": "A Martinican poet and politician, co-founder of the Négritude movement and author of Discourse on Colonialism."
+ },
+ {
+  "name": "Agostinho Neto",
+  "born": "1922-09-17",
+  "died": "1979-09-10",
+  "bio": "A poet and doctor who led Angola’s liberation movement and became its first president."
+ },
+ {
+  "name": "Samora Machel",
+  "born": "1933-09-29",
+  "died": "1986-10-19",
+  "bio": "Leader of Mozambique’s liberation struggle and its first president, killed in a plane crash."
+ },
+ {
+  "name": "Thomas Sankara",
+  "born": "1949-12-21",
+  "died": "1987-10-15",
+  "bio": "Burkina Faso’s revolutionary president, who pushed land reform, mass vaccination and women’s rights before he was assassinated."
+ },
+ {
+  "name": "Walter Rodney",
+  "born": "1942-03-23",
+  "died": "1980-06-13",
+  "bio": "A Guyanese historian who wrote How Europe Underdeveloped Africa. He was killed by a bomb in Georgetown."
+ },
+ {
+  "name": "Steve Biko",
+  "born": "1946-12-18",
+  "died": "1977-09-12",
+  "bio": "Founder of South Africa’s Black Consciousness Movement. He died from injuries sustained in police custody."
+ },
+ {
+  "name": "Ruth First",
+  "born": "1925-05-13",
+  "died": "1982-08-17",
+  "bio": "A South African communist journalist and scholar killed by a parcel bomb sent by apartheid agents."
+ },
+ {
+  "name": "Chris Hani",
+  "born": "1942-06-28",
+  "died": "1993-04-10",
+  "bio": "Leader of the South African Communist Party, assassinated a year before South Africa’s first democratic election."
+ },
+ {
+  "name": "Nelson Mandela",
+  "born": "1918-07-18",
+  "died": "2013-12-05",
+  "bio": "A leader of the anti-apartheid struggle who spent 27 years in prison and became South Africa’s first democratically elected president."
+ },
+ {
+  "name": "Che Guevara",
+  "born": "1928-06-14",
+  "died": "1967-10-09",
+  "bio": "An Argentine doctor who became a commander of the Cuban Revolution. He was executed in Bolivia."
+ },
+ {
+  "name": "Fidel Castro",
+  "born": "1926-08-13",
+  "died": "2016-11-25",
+  "bio": "Leader of the Cuban Revolution and of Cuba for nearly fifty years."
+ },
+ {
+  "name": "Salvador Allende",
+  "born": "1908-06-26",
+  "died": "1973-09-11",
+  "bio": "A Marxist doctor elected president of Chile in 1970. He died during the military coup."
+ },
+ {
+  "name": "Víctor Jara",
+  "born": "1932-09-28",
+  "died": "1973-09-16",
+  "bio": "A Chilean singer of the New Song movement, tortured and killed in the days after the coup."
+ },
+ {
+  "name": "Rosa Parks",
+  "born": "1913-02-04",
+  "died": "2005-10-24",
+  "bio": "A seasoned NAACP activist whose arrest for refusing to give up her bus seat launched the Montgomery boycott."
+ },
+ {
+  "name": "Martin Luther King Jr.",
+  "born": "1929-01-15",
+  "died": "1968-04-04",
+  "bio": "A leader of the civil rights movement who was organizing a Poor People’s Campaign and supporting Memphis sanitation strikers when he was assassinated."
+ },
+ {
+  "name": "Malcolm X",
+  "born": "1925-05-19",
+  "died": "1965-02-21",
+  "bio": "A minister and revolutionary who became a powerful voice for Black self-determination and internationalism."
+ },
+ {
+  "name": "Ella Baker",
+  "born": "1903-12-13",
+  "died": "1986-12-13",
+  "bio": "A civil rights organizer who mentored the Student Nonviolent Coordinating Committee and championed grassroots, group-centered leadership."
+ },
+ {
+  "name": "Fannie Lou Hamer",
+  "born": "1917-10-06",
+  "died": "1977-03-14",
+  "bio": "A Mississippi sharecropper who became a voting rights leader and co-founded the Mississippi Freedom Democratic Party."
+ },
+ {
+  "name": "Bayard Rustin",
+  "born": "1912-03-17",
+  "died": "1987-08-24",
+  "bio": "A gay socialist pacifist who was the chief organizer of the 1963 March on Washington."
+ },
+ {
+  "name": "Fred Hampton",
+  "born": "1948-08-30",
+  "died": "1969-12-04",
+  "bio": "Chairman of the Illinois Black Panther Party, killed at 21 in a police raid organized with the FBI."
+ },
+ {
+  "name": "Cesar Chavez",
+  "born": "1927-03-31",
+  "died": "1993-04-23",
+  "bio": "Co-founder of the United Farm Workers, who led the Delano grape boycott."
+ },
+ {
+  "name": "Dolores Huerta",
+  "born": "1930-04-10",
+  "bio": "Co-founder of the United Farm Workers, a negotiator and organizer who coined the slogan “Sí, se puede.”"
+ },
+ {
+  "name": "Larry Itliong",
+  "born": "1913-10-25",
+  "died": "1977-02-08",
+  "bio": "A Filipino farmworker organizer who led the walkout that began the 1965 Delano grape strike."
+ },
+ {
+  "name": "Harvey Milk",
+  "born": "1930-05-22",
+  "died": "1978-11-27",
+  "bio": "One of the first openly gay elected officials in the US, assassinated in San Francisco City Hall."
+ },
+ {
+  "name": "Marsha P. Johnson",
+  "born": "1945-08-24",
+  "died": "1992-07-06",
+  "bio": "A Black trans activist, a figure of the Stonewall uprising, and co-founder of STAR to shelter trans youth."
+ },
+ {
+  "name": "Sylvia Rivera",
+  "born": "1951-07-02",
+  "died": "2002-02-19",
+  "bio": "A Latina trans activist, Stonewall veteran and co-founder of STAR."
+ },
+ {
+  "name": "Audre Lorde",
+  "born": "1934-02-18",
+  "died": "1992-11-17",
+  "bio": "A Black lesbian poet and essayist who wrote that the master’s tools will never dismantle the master’s house."
+ },
+ {
+  "name": "Grace Lee Boggs",
+  "born": "1915-06-27",
+  "died": "2015-10-05",
+  "bio": "A Detroit philosopher and activist who worked with C. L. R. James and spent seven decades organizing for community self-reliance."
+ },
+ {
+  "name": "Angela Davis",
+  "born": "1944-01-26",
+  "bio": "A philosopher and communist who was acquitted after a high-profile trial and became a leading voice for prison abolition."
+ },
+ {
+  "name": "Paulo Freire",
+  "born": "1921-09-19",
+  "died": "1997-05-02",
+  "bio": "A Brazilian educator who taught peasants to read through their own experience and wrote Pedagogy of the Oppressed."
+ },
+ {
+  "name": "Edward Said",
+  "born": "1935-11-01",
+  "died": "2003-09-25",
+  "bio": "A Palestinian-American literary critic who wrote Orientalism and argued for Palestinian rights."
+ },
+ {
+  "name": "Ghassan Kanafani",
+  "born": "1936-04-08",
+  "died": "1972-07-08",
+  "bio": "A Palestinian novelist and leftist who wrote Men in the Sun. He was killed by a car bomb in Beirut."
+ },
+ {
+  "name": "Mehdi Ben Barka",
+  "born": "1920",
+  "died": "1965",
+  "bio": "A Moroccan socialist and organizer of the Tricontinental Conference, abducted in Paris months before it opened and never seen again."
+ },
+ {
+  "name": "Chico Mendes",
+  "born": "1944-12-15",
+  "died": "1988-12-22",
+  "bio": "A Brazilian rubber tapper and union leader who organized to protect the Amazon. He was murdered by a rancher."
+ },
+ {
+  "name": "Ken Saro-Wiwa",
+  "born": "1941-10-10",
+  "died": "1995-11-10",
+  "bio": "A Nigerian writer who led the Ogoni campaign against oil pollution and was hanged by the military government."
+ },
+ {
+  "name": "Berta Cáceres",
+  "born": "1971",
+  "died": "2016",
+  "bio": "A Lenca environmental leader in Honduras who was murdered after leading opposition to a dam on a sacred river."
+ },
+ {
+  "name": "Wangari Maathai",
+  "born": "1940-04-01",
+  "died": "2011-09-25",
+  "bio": "A Kenyan biologist who founded the Green Belt Movement, which planted tens of millions of trees, and won the Nobel Peace Prize."
+ },
+ {
+  "name": "Rigoberta Menchú",
+  "born": "1959-01-09",
+  "bio": "A K’iche’ Maya activist who exposed the Guatemalan army’s violence against Indigenous people and won the Nobel Peace Prize."
+ },
+ {
+  "name": "Sitting Bull",
+  "born": "c. 1831",
+  "died": "1890-12-15",
+  "bio": "A Hunkpapa Lakota leader who led resistance to US seizure of the Black Hills and was killed by reservation police."
+ },
+ {
+  "name": "José Rizal",
+  "born": "1861-06-19",
+  "died": "1896-12-30",
+  "bio": "A Filipino writer whose novels exposed Spanish colonial abuses. He was executed in Manila."
+ },
+ {
+  "name": "Andrés Bonifacio",
+  "born": "1863-11-30",
+  "died": "1897-05-10",
+  "bio": "A founder of the Katipunan, which launched the Philippine Revolution against Spain."
+ },
+ {
+  "name": "Qiu Jin",
+  "born": "1875",
+  "died": "1907-07-15",
+  "bio": "A Chinese feminist and revolutionary who was beheaded after a failed uprising against the Qing dynasty."
+ },
+ {
+  "name": "Kanno Sugako",
+  "born": "1881",
+  "died": "1911",
+  "bio": "A Japanese anarchist feminist journalist executed in the High Treason Incident, the only woman among those hanged."
+ },
+ {
+  "name": "Jean Jaurès",
+  "born": "1859-09-03",
+  "died": "1914-07-31",
+  "bio": "A French socialist leader who campaigned to stop the First World War and was assassinated days before it began."
+ },
+ {
+  "name": "Keir Hardie",
+  "born": "1856-08-15",
+  "died": "1915-09-26",
+  "bio": "A Scottish miner and founder of the Labour Party who opposed the First World War."
+ },
+ {
+  "name": "Tommy Douglas",
+  "born": "1904-10-20",
+  "died": "1986-02-24",
+  "bio": "A socialist premier of Saskatchewan who brought in North America’s first single-payer public health insurance."
+ },
+ {
+  "name": "Bobby Sands",
+  "born": "1954-03-09",
+  "died": "1981-05-05",
+  "bio": "An Irish republican prisoner elected to the British Parliament during a hunger strike, on which he died at 27."
+ }
+]
