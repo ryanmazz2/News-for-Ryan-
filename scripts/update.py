@@ -25,7 +25,7 @@ SESSION = requests.Session()
 SESSION.headers["User-Agent"] = UA
 
 # How far back each section looks, and how many items it keeps.
-WINDOWS = {"economy": (4, 45), "politics": (3, 45), "left": (14, 45)}
+WINDOWS = {"economy": (4, 45), "politics": (3, 45), "left": (10, 70), "world": (14, 70)}
 PER_JOURNAL = 5
 SCHOLARSHIP_MAX = 40
 
@@ -57,11 +57,56 @@ def get(url, **params):
 
 # ---------- RSS / Atom ----------
 
+FEED_LINK = re.compile(
+    r'<link[^>]+type=["\']application/(?:rss|atom)\+xml["\'][^>]*>', re.I)
+HREF = re.compile(r'href=["\']([^"\']+)["\']', re.I)
+COMMON_PATHS = ("/feed/", "/feed", "/rss", "/rss.xml", "/feed.xml", "/index.xml", "/atom.xml")
+
+
+def try_feed(url):
+    """Return a parsed feed with entries, or None."""
+    try:
+        r = get(url)
+    except Exception:  # noqa: BLE001
+        return None, None
+    feed = feedparser.parse(r.content)
+    return (feed if feed.entries else None), r
+
+
+def load_feed(url):
+    """Fetch a feed. If the address is a web page, or is wrong, look for
+    the site's feed: first in the page's <link rel=alternate> tags, then
+    at the usual feed paths."""
+    feed, resp = try_feed(url)
+    if feed:
+        return feed
+    from urllib.parse import urljoin, urlsplit
+    parts = urlsplit(url)
+    home = f"{parts.scheme}://{parts.netloc}/"
+    candidates = []
+    for page in ([resp] if resp is not None else []) + ([try_feed(home)[1]] if url.rstrip("/") + "/" != home else []):
+        if page is None:
+            continue
+        for tag in FEED_LINK.findall(page.text[:200000]):
+            m = HREF.search(tag)
+            if m:
+                candidates.append(urljoin(page.url, html.unescape(m.group(1))))
+    candidates += [home.rstrip("/") + p for p in COMMON_PATHS]
+    seen = {url}
+    for c in candidates:
+        if c in seen:
+            continue
+        seen.add(c)
+        feed, _ = try_feed(c)
+        if feed:
+            print(f"  found feed for {url}: {c}")
+            return feed
+    raise ValueError("no feed found at this address or the site's homepage")
+
+
 def fetch_rss(section, src):
     try:
-        feed = feedparser.parse(get(src["url"]).content)
-        if feed.bozo and not feed.entries:
-            raise ValueError("unreadable feed")
+        feed = load_feed(src["url"])
     except Exception as e:  # noqa: BLE001
         failed.append({"source": src["name"], "section": section, "error": str(e)[:120]})
         return []
