@@ -11,29 +11,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Spirit-duplicator violet on cool paper: the ink of mimeographed union leaflets */
-  --paper: #F3F2F6;
-  --paper-2: #E8E5F0;
-  --ink: #221E2B;
-  --ink-soft: #5A5468;
-  --ditto: #4E33A3;
-  --ditto-wash: #DCD4F2;
-  --rule: #CFC9DD;
-  --flag: #B5781C;
+  /* Union-banner green and gold */
+  --paper: #F4F5F1;
+  --paper-2: #E6EAE2;
+  --ink: #1D241F;
+  --ink-soft: #56615A;
+  --ditto: #17603F;
+  --banner: #0F4A31;
+  --banner-ink: #F3EEDC;
+  --gold: #E3B341;
+  --rule: #CBD3C8;
+  --flag: #A8730F;
   --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --text: "Spectral", Georgia, "Times New Roman", serif;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #16131D;
-    --paper-2: #211C2B;
-    --ink: #ECE8F4;
-    --ink-soft: #A79FB8;
-    --ditto: #B6A4F5;
-    --ditto-wash: #2E2645;
-    --rule: #352E44;
-    --flag: #E2AA52;
+    --paper: #121713;
+    --paper-2: #1C241E;
+    --ink: #E9EDE6;
+    --ink-soft: #9DAA9F;
+    --ditto: #7FD1A4;
+    --banner: #0E3F2A;
+    --banner-ink: #F3EEDC;
+    --gold: #EBC15A;
+    --rule: #2C3830;
+    --flag: #E3B341;
     color-scheme: dark;
   }
 }
@@ -69,28 +73,30 @@ a { color: inherit; }
 
 /* The placard: one factoid at a time, the year set huge */
 .placard {
-  background: var(--ditto); color: var(--paper);
+  background: var(--banner); color: var(--banner-ink);
+  border-top: 6px solid var(--gold);
   display: grid; grid-template-columns: auto 1fr; gap: 0 clamp(1rem, 3vw, 2.5rem);
   align-items: center; padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 3vw, 2.5rem);
   border-radius: 4px; position: relative; overflow: hidden;
 }
-@media (prefers-color-scheme: dark) { .placard { color: #16131D; } }
 .placard .year {
   font-family: var(--display); font-weight: 900; font-stretch: 62%;
   font-size: clamp(4.5rem, 13vw, 9.5rem); line-height: .8; letter-spacing: -0.03em;
-  font-variant-numeric: lining-nums;
+  font-variant-numeric: lining-nums; color: var(--gold);
 }
+.placard .when { display: block; font-family: var(--display); font-weight: 600; font-size: 1rem; color: var(--gold); margin-bottom: .3rem; }
 .placard .fact { margin: 0; font-size: clamp(1.05rem, 1.9vw, 1.4rem); line-height: 1.4; max-width: 44ch; }
 .placard .anniv {
   display: inline-block; margin-bottom: .45rem; font-family: var(--display); font-weight: 700;
-  font-size: .9rem; background: var(--flag); color: #1A1500; padding: .1rem .5rem; border-radius: 2px;
+  font-size: .9rem; background: var(--gold); color: #1A1500; padding: .1rem .5rem; border-radius: 2px;
 }
 .placard .controls { grid-column: 1 / -1; display: flex; gap: .5rem; margin-top: 1.1rem; align-items: center; }
 .placard button {
-  font: 600 .9rem var(--display); color: inherit; background: transparent;
-  border: 1.5px solid currentColor; border-radius: 3px; padding: .35rem .75rem; cursor: pointer;
+  font: 600 .9rem var(--display); color: var(--banner-ink); background: transparent;
+  border: 1.5px solid rgba(243,238,220,.55); border-radius: 3px; padding: .35rem .75rem; cursor: pointer;
 }
-.placard button:hover { background: rgba(255,255,255,.14); }
+.placard button:hover { background: rgba(227,179,65,.18); border-color: var(--gold); }
+.placard :focus-visible { outline-color: var(--gold); }
 .placard .count { margin-left: auto; font-family: var(--display); font-size: .9rem; opacity: .8; }
 .placard.swap .year, .placard.swap .fact-wrap { animation: ink .55s ease-out; }
 @keyframes ink { from { opacity: 0; filter: blur(3px); } to { opacity: 1; filter: none; } }
@@ -99,6 +105,25 @@ a { color: inherit; }
   .placard { grid-template-columns: 1fr; }
   .placard .year { margin-bottom: .6rem; }
 }
+
+/* Figure of the day */
+.figure {
+  display: grid; grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); gap: .5rem clamp(1.25rem, 3vw, 2.5rem);
+  align-items: start; margin-top: 1rem; padding: 1.25rem clamp(1rem, 3vw, 2.5rem);
+  background: var(--paper-2); border-left: 6px solid var(--gold); border-radius: 0 4px 4px 0;
+}
+.figure h2 { margin: 0 0 .2rem; font: 600 .95rem var(--display); color: var(--ink-soft); }
+.figure .name {
+  margin: 0; font-family: var(--display); font-weight: 800; font-stretch: 78%;
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem); line-height: 1.02; color: var(--ditto);
+}
+.figure .life { margin: .35rem 0 0; font-family: var(--display); font-size: .95rem; color: var(--ink-soft); }
+.figure .bio { margin: 0; font-size: 1.1rem; line-height: 1.5; max-width: 60ch; }
+.figure .mark {
+  display: inline-block; margin-bottom: .45rem; font: 700 .85rem var(--display);
+  background: var(--gold); color: #1A1500; padding: .1rem .5rem; border-radius: 2px;
+}
+@media (max-width: 700px) { .figure { grid-template-columns: 1fr; } }
 
 /* Two streams */
 .streams {
@@ -166,6 +191,7 @@ footer ul { padding-left: 1.2rem; }
     <div class="year" id="fact-year" aria-hidden="true"></div>
     <div class="fact-wrap">
       <span class="anniv" id="fact-anniv" hidden>On this day</span>
+      <span class="when" id="fact-when"></span>
       <p class="fact" id="fact-text"></p>
     </div>
     <div class="controls">
@@ -173,6 +199,18 @@ footer ul { padding-left: 1.2rem; }
       <button type="button" id="fact-next" aria-label="Next fact">Next</button>
       <button type="button" id="fact-pause" aria-pressed="false">Pause</button>
       <span class="count" id="fact-count"></span>
+    </div>
+  </section>
+
+  <section class="figure" id="figure" aria-labelledby="fig-h" hidden>
+    <div>
+      <h2 id="fig-h">Today’s figure</h2>
+      <p class="name" id="fig-name"></p>
+      <p class="life" id="fig-life"></p>
+    </div>
+    <div>
+      <span class="mark" id="fig-mark" hidden></span>
+      <p class="bio" id="fig-bio"></p>
     </div>
   </section>
 
@@ -201,7 +239,7 @@ footer ul { padding-left: 1.2rem; }
   </main>
 
   <footer>
-    <p>A new edition is built twice a day, around 7&nbsp;am and 7&nbsp;pm Mountain time. Journal listings come from Crossref and wider scholarship from OpenAlex. Items marked with a gold dot are new since your last visit.</p>
+    <p>A new edition is built twice a day, around 7&nbsp;am and 7&nbsp;pm Mountain time. Journal listings come from Crossref and wider scholarship from OpenAlex. Items marked with a gold dot are new since your last visit. A new historical figure appears each day, chosen by birthday or anniversary when there is one.</p>
     <details id="failed" hidden>
       <summary>Some sources could not be reached in this edition</summary>
       <ul id="failed-list"></ul>
@@ -211,7 +249,7 @@ footer ul { padding-left: 1.2rem; }
 
 <script>
 (() => {
-  const NEWS = [["economy", "Economy"], ["politics", "Politics"], ["left", "Left press"]];
+  const NEWS = [["economy", "Economy"], ["politics", "Politics"], ["left", "US & UK left"], ["world", "Global left"]];
   const SCH = [["journals", "Journals"], ["scholarship", "Recent work"]];
   const PAGE = 15;
   const $ = (id) => document.getElementById(id);
@@ -243,15 +281,52 @@ footer ul { padding-left: 1.2rem; }
     return n;
   }
 
+  // ---- Historical dates ----
+  const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  function factDate(f) {
+    if (f.month && f.day) return `${MONTHS[f.month - 1]} ${f.day}, ${f.year}`;
+    if (f.month) return `${MONTHS[f.month - 1]} ${f.year}`;
+    return f.year;
+  }
+  // "1879-10-07" -> {y:1879, m:10, d:7}; "c. 1822" or "71 BCE" -> label only
+  function parseLife(s) {
+    const m = /^(\d{3,4})-(\d{2})-(\d{2})$/.exec(s || "");
+    return m ? { y: +m[1], m: +m[2], d: +m[3], label: `${MONTHS[+m[2] - 1]} ${+m[3]}, ${+m[1]}` } : { label: s || "" };
+  }
+
+  // ---- Figure of the day ----
+  async function showFigure() {
+    let people = [];
+    try { people = await (await fetch("data/figures.json", { cache: "no-cache" })).json(); } catch (e) {}
+    if (!people.length) return;
+    const now = new Date();
+    const mo = now.getMonth() + 1, da = now.getDate();
+    const dayNum = Math.floor((Date.UTC(now.getFullYear(), now.getMonth(), da)) / 864e5);
+    const hits = [];
+    people.forEach((p) => {
+      const b = parseLife(p.born), d = parseLife(p.died);
+      if (b.m === mo && b.d === da) hits.push({ p, mark: `Born on this day in ${b.y}` });
+      if (d.m === mo && d.d === da) hits.push({ p, mark: `Died on this day in ${d.y}` });
+    });
+    const pick = hits.length ? hits[dayNum % hits.length] : { p: people[dayNum % people.length] };
+    const b = parseLife(pick.p.born), d = parseLife(pick.p.died);
+    $("fig-name").textContent = pick.p.name;
+    $("fig-life").textContent = b.label && d.label ? `${b.label} to ${d.label}` : b.label ? `Born ${b.label}` : `Died ${d.label}`;
+    $("fig-bio").textContent = pick.p.bio;
+    $("fig-mark").hidden = !pick.mark;
+    $("fig-mark").textContent = pick.mark || "";
+    $("figure").hidden = false;
+  }
+
   // ---- Factoid placard ----
   async function startFacts() {
     let facts = [];
     try { facts = await (await fetch("data/factoids.json", { cache: "no-cache" })).json(); } catch (e) {}
     if (!facts.length) { $("placard").hidden = true; return; }
     const now = new Date();
-    const md = String(now.getMonth() + 1).padStart(2, "0") + "-" + String(now.getDate()).padStart(2, "0");
-    const today = facts.filter((f) => f.md === md);
-    const rest = facts.filter((f) => f.md !== md);
+    const isToday = (f) => f.month === now.getMonth() + 1 && f.day === now.getDate();
+    const today = facts.filter(isToday);
+    const rest = facts.filter((f) => !isToday(f));
     for (let i = rest.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [rest[i], rest[j]] = [rest[j], rest[i]]; }
     const order = [...today, ...rest];
     let i = 0, timer = null, paused = false;
@@ -260,9 +335,10 @@ footer ul { padding-left: 1.2rem; }
     function show(k) {
       i = (k + order.length) % order.length;
       const f = order[i];
-      $("fact-year").textContent = f.year;
+      $("fact-year").textContent = f.year.replace(" BCE", "");
+      $("fact-when").textContent = factDate(f);
       $("fact-text").textContent = f.text;
-      $("fact-anniv").hidden = f.md !== md;
+      $("fact-anniv").hidden = !isToday(f);
       $("fact-count").textContent = `${i + 1} of ${order.length}`;
       $("placard").setAttribute("aria-label", `${f.year}: ${f.text}`);
       const p = $("placard"); p.classList.remove("swap"); void p.offsetWidth; p.classList.add("swap");
@@ -367,6 +443,7 @@ footer ul { padding-left: 1.2rem; }
   }
 
   startFacts();
+  showFigure();
   loadFeed();
 })();
 </script>
