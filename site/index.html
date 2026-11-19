@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Twice Daily</title>
-<meta name="description" content="Economics, politics, the socialist press and new Marxist scholarship, refreshed every morning and evening.">
+<title>Ryan’s Feed</title>
+<meta name="description" content="Economics, politics and Marxist scholarship for Ryan and loved ones, refreshed every morning and evening.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✊</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,7 +106,7 @@ a { color: inherit; }
   .placard .year { margin-bottom: .6rem; }
 }
 
-/* Figure of the day */
+/* Hero from history */
 .figure {
   display: grid; grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); gap: .5rem clamp(1.25rem, 3vw, 2.5rem);
   align-items: start; margin-top: 1rem; padding: 1.25rem clamp(1rem, 3vw, 2.5rem);
@@ -123,6 +123,8 @@ a { color: inherit; }
   display: inline-block; margin-bottom: .45rem; font: 700 .85rem var(--display);
   background: var(--gold); color: #1A1500; padding: .1rem .5rem; border-radius: 2px;
 }
+.figure .wiki { margin: .6rem 0 0; font: 600 .95rem var(--display); }
+.figure .wiki a { color: var(--ditto); text-underline-offset: 3px; }
 @media (max-width: 700px) { .figure { grid-template-columns: 1fr; } }
 
 /* Two streams */
@@ -181,8 +183,8 @@ footer ul { padding-left: 1.2rem; }
 <div class="wrap">
   <header class="masthead">
     <div>
-      <h1>Twice Daily</h1>
-      <p>Economics, politics, the socialist press and new Marxist scholarship.</p>
+      <h1>Ryan’s Feed</h1>
+      <p>Economics, politics and Marxist scholarship for Ryan and loved ones.</p>
     </div>
     <p class="status" id="status">Loading the latest edition…</p>
   </header>
@@ -204,22 +206,23 @@ footer ul { padding-left: 1.2rem; }
 
   <section class="figure" id="figure" aria-labelledby="fig-h" hidden>
     <div>
-      <h2 id="fig-h">Today’s figure</h2>
+      <h2 id="fig-h">Today’s hero from history</h2>
       <p class="name" id="fig-name"></p>
       <p class="life" id="fig-life"></p>
     </div>
     <div>
       <span class="mark" id="fig-mark" hidden></span>
       <p class="bio" id="fig-bio"></p>
+      <p class="wiki"><a id="fig-wiki" target="_blank" rel="noopener">Read more on Wikipedia</a></p>
     </div>
   </section>
 
   <main class="streams">
     <section class="stream" aria-labelledby="news-h">
-      <h2 id="news-h">The news</h2>
+      <h2 id="news-h">Scraped Headlines</h2>
       <div class="tools">
         <div class="tabs" role="tablist" aria-label="News sections" id="news-tabs"></div>
-        <label class="visually-hidden" for="news-q">Search the news</label>
+        <label class="visually-hidden" for="news-q">Search the headlines</label>
         <input class="filter" id="news-q" type="search" placeholder="Search headlines">
       </div>
       <ul class="list" id="news-list"></ul>
@@ -227,9 +230,9 @@ footer ul { padding-left: 1.2rem; }
     </section>
 
     <section class="stream" aria-labelledby="sch-h">
-      <h2 id="sch-h">The scholarship</h2>
+      <h2 id="sch-h">New Research</h2>
       <div class="tools">
-        <div class="tabs" role="tablist" aria-label="Scholarship sections" id="sch-tabs"></div>
+        <div class="tabs" role="tablist" aria-label="Research sections" id="sch-tabs"></div>
         <label class="visually-hidden" for="sch-src">Filter by journal</label>
         <select class="filter" id="sch-src"></select>
       </div>
@@ -239,7 +242,7 @@ footer ul { padding-left: 1.2rem; }
   </main>
 
   <footer>
-    <p>A new edition is built twice a day, around 7&nbsp;am and 7&nbsp;pm Mountain time. Journal listings come from Crossref and wider scholarship from OpenAlex. Items marked with a gold dot are new since your last visit. A new historical figure appears each day, chosen by birthday or anniversary when there is one.</p>
+    <p>A new edition is built twice a day, around 7&nbsp;am and 7&nbsp;pm Mountain time. Journal listings come from Crossref and wider research from OpenAlex. Items marked with a gold dot are new since your last visit. A new hero from history appears each day, chosen by birthday or anniversary when there is one.</p>
     <details id="failed" hidden>
       <summary>Some sources could not be reached in this edition</summary>
       <ul id="failed-list"></ul>
@@ -294,7 +297,7 @@ footer ul { padding-left: 1.2rem; }
     return m ? { y: +m[1], m: +m[2], d: +m[3], label: `${MONTHS[+m[2] - 1]} ${+m[3]}, ${+m[1]}` } : { label: s || "" };
   }
 
-  // ---- Figure of the day ----
+  // ---- Hero from history ----
   async function showFigure() {
     let people = [];
     try { people = await (await fetch("data/figures.json", { cache: "no-cache" })).json(); } catch (e) {}
@@ -313,6 +316,12 @@ footer ul { padding-left: 1.2rem; }
     $("fig-name").textContent = pick.p.name;
     $("fig-life").textContent = b.label && d.label ? `${b.label} to ${d.label}` : b.label ? `Born ${b.label}` : `Died ${d.label}`;
     $("fig-bio").textContent = pick.p.bio;
+    // Goes straight to the article when the name matches a Wikipedia title or redirect,
+    // otherwise to Wikipedia's search results. Add "wiki": "Exact_Title" in figures.json to override.
+    $("fig-wiki").href = pick.p.wiki
+      ? "https://en.wikipedia.org/wiki/" + encodeURIComponent(pick.p.wiki)
+      : "https://en.wikipedia.org/wiki/Special:Search?go=Go&search=" + encodeURIComponent(pick.p.name);
+    $("fig-wiki").textContent = `Read more about ${pick.p.name} on Wikipedia`;
     $("fig-mark").hidden = !pick.mark;
     $("fig-mark").textContent = pick.mark || "";
     $("figure").hidden = false;
