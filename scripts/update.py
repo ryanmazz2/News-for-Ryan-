@@ -5,6 +5,7 @@ locally too:  pip install feedparser requests && python scripts/update.py
 """
 import html
 import json
+import os
 import re
 import sys
 import time
@@ -20,9 +21,22 @@ CONFIG = json.loads((ROOT / "sources.json").read_text())
 OUT = ROOT / "site" / "data" / "feed.json"
 NOW = datetime.now(timezone.utc)
 
-UA = f"RedWireDigest/1.0 (personal news digest; mailto:{CONFIG.get('contact_email', '')})"
+# Contact email for Crossref/OpenAlex. A CONTACT_EMAIL secret overrides sources.json.
+EMAIL = os.environ.get("CONTACT_EMAIL") or CONFIG.get("contact_email", "")
+if not EMAIL or EMAIL.endswith("example.com"):
+    EMAIL = ""
+OPENALEX_KEY = os.environ.get("OPENALEX_API_KEY", "").strip()
+
+API_UA = f"TwiceDaily/1.0 (personal news digest{'; mailto:' + EMAIL if EMAIL else ''})"
+# Many news sites turn away unknown robots, so feeds are fetched the way
+# ordinary feed readers fetch them.
+FEED_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (compatible; TwiceDaily/1.0; personal RSS reader)",
+    "Accept": "application/rss+xml, application/atom+xml, application/xml;q=0.9, text/xml;q=0.9, text/html;q=0.8, */*;q=0.5",
+    "Accept-Language": "en-US,en;q=0.9",
+}
 SESSION = requests.Session()
-SESSION.headers["User-Agent"] = UA
+SESSION.headers["User-Agent"] = API_UA
 
 # How far back each section looks, and how many items it keeps.
 WINDOWS = {"economy": (4, 45), "politics": (3, 45), "left": (10, 70), "world": (14, 70)}
@@ -49,10 +63,23 @@ def iso(dt):
     return dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") if dt else None
 
 
-def get(url, **params):
-    r = SESSION.get(url, params=params or None, timeout=25)
+def get(url, headers=None, **params):
+    r = SESSION.get(url, params=params or None, timeout=25, headers=headers)
     r.raise_for_status()
     return r
+
+
+def get_patiently(url, tries=5, **params):
+    """For the scholarly APIs: on 429 (too many requests) or a server
+    hiccup, wait as long as asked (or back off) and try again."""
+    for attempt in range(tries):
+        r = SESSION.get(url, params=params or None, timeout=40)
+        if r.status_code not in (429, 500, 502, 503, 504) or attempt == tries - 1:
+            r.raise_for_status()
+            return r
+        wait = r.headers.get("Retry-After")
+        wait = float(wait) if wait and wait.replace(".", "", 1).isdigit() else 2 * (2 ** attempt)
+        time.sleep(min(wait, 60))
 
 
 # ---------- RSS / Atom ----------
@@ -63,28 +90,55 @@ HREF = re.compile(r'href=["\']([^"\']+)["\']', re.I)
 COMMON_PATHS = ("/feed/", "/feed", "/rss", "/rss.xml", "/feed.xml", "/index.xml", "/atom.xml")
 
 
-def try_feed(url):
-    """Return a parsed feed with entries, or None."""
+def try_feed(url, problems=None):
+    """Return (parsed feed with entries or None, response or None)."""
     try:
-        r = get(url)
-    except Exception:  # noqa: BLE001
+        r = SESSION.get(url, timeout=25, headers=FEED_HEADERS)
+    except Exception as e:  # noqa: BLE001
+        if problems is not None:
+            problems.append(type(e).__name__)
+        return None, None
+    if r.status_code >= 400:
+        if problems is not None:
+            problems.append(f"HTTP {r.status_code}")
         return None, None
     feed = feedparser.parse(r.content)
     return (feed if feed.entries else None), r
+
+
+def google_news(host, days=14):
+    """Last resort: the site's recent articles as indexed by Google News."""
+    domain = host.removeprefix("www.")
+    feed, _ = try_feed(
+        "https://news.google.com/rss/search?q="
+        + requests.utils.quote(f"site:{domain} when:{days}d")
+        + "&hl=en-US&gl=US&ceid=US:en"
+    )
+    if not feed:
+        return None
+    for e in feed.entries:
+        # Google appends " - Publication Name" to each headline.
+        src = (e.get("source") or {}).get("title")
+        if src and e.get("title", "").endswith(" - " + src):
+            e["title"] = e["title"][: -len(" - " + src)]
+        e["summary"] = ""   # Google's summary is just the headline again
+    feed["via_google"] = True
+    return feed
 
 
 def load_feed(url):
     """Fetch a feed. If the address is a web page, or is wrong, look for
     the site's feed: first in the page's <link rel=alternate> tags, then
     at the usual feed paths."""
-    feed, resp = try_feed(url)
+    problems = []
+    feed, resp = try_feed(url, problems)
     if feed:
         return feed
     from urllib.parse import urljoin, urlsplit
     parts = urlsplit(url)
     home = f"{parts.scheme}://{parts.netloc}/"
     candidates = []
-    for page in ([resp] if resp is not None else []) + ([try_feed(home)[1]] if url.rstrip("/") + "/" != home else []):
+    for page in ([resp] if resp is not None else []) + ([try_feed(home, problems)[1]] if url.rstrip("/") + "/" != home else []):
         if page is None:
             continue
         for tag in FEED_LINK.findall(page.text[:200000]):
@@ -101,7 +155,12 @@ def load_feed(url):
         if feed:
             print(f"  found feed for {url}: {c}")
             return feed
-    raise ValueError("no feed found at this address or the site's homepage")
+    feed = google_news(parts.netloc)
+    if feed:
+        print(f"  using Google News for {url} (site said: {', '.join(problems) or 'no feed'})")
+        return feed
+    detail = ", ".join(dict.fromkeys(problems)) or "no feed on the page"
+    raise ValueError(f"site refused or has no feed ({detail}), and Google News had nothing recent")
 
 
 def fetch_rss(section, src):
@@ -162,12 +221,11 @@ def crossref_date(w):
 
 def fetch_journal(j):
     try:
-        data = get(
-            f"https://api.crossref.org/journals/{j['issn']}/works",
-            sort="published", order="desc", rows=25,
-            filter=f"until-pub-date:{NOW.date().isoformat()}",
-            mailto=CONFIG.get("contact_email", ""),
-        ).json()
+        params = dict(sort="published", order="desc", rows=25,
+                      filter=f"until-pub-date:{NOW.date().isoformat()}")
+        if EMAIL:
+            params["mailto"] = EMAIL
+        data = get_patiently(f"https://api.crossref.org/journals/{j['issn']}/works", **params).json()
     except Exception as e:  # noqa: BLE001
         failed.append({"source": j["name"], "section": "journals", "error": str(e)[:120]})
         return []
@@ -202,18 +260,26 @@ def rebuild_abstract(inv):
     return " ".join(w for _, w in words)
 
 
-def fetch_openalex(term, since):
+def fetch_openalex(terms, since):
+    """One request covering every search term, joined with OR."""
+    query = " OR ".join(f'"{t}"' if " " in t else t for t in terms)
+    params = dict(
+        search=query,
+        filter=f"from_publication_date:{since},to_publication_date:{NOW.date().isoformat()},type:article",
+        sort="publication_date:desc",
+        per_page=100,
+    )
+    if OPENALEX_KEY:
+        params["api_key"] = OPENALEX_KEY
+    if EMAIL:
+        params["mailto"] = EMAIL
     try:
-        data = get(
-            "https://api.openalex.org/works",
-            search=term,
-            filter=f"from_publication_date:{since},to_publication_date:{NOW.date().isoformat()},type:article",
-            sort="publication_date:desc",
-            per_page=30,
-            mailto=CONFIG.get("contact_email", ""),
-        ).json()
+        data = get_patiently("https://api.openalex.org/works", tries=3, **params).json()
     except Exception as e:  # noqa: BLE001
-        failed.append({"source": f"OpenAlex: {term}", "section": "scholarship", "error": str(e)[:120]})
+        msg = str(e).split(" for url")[0][:120]
+        if not OPENALEX_KEY:
+            msg += " (add a free OpenAlex API key: see README)"
+        failed.append({"source": "OpenAlex", "section": "scholarship", "error": msg})
         return []
     out = []
     for w in data.get("results", []):
@@ -231,7 +297,6 @@ def fetch_openalex(term, since):
             "authors": [a["author"]["display_name"] for a in w.get("authorships", [])[:4] if a.get("author")],
             "summary": clean(rebuild_abstract(w.get("abstract_inverted_index"))),
             "cited_by": w.get("cited_by_count", 0),
-            "topic": term,
         })
     return out
 
@@ -242,9 +307,11 @@ def main():
         sections[name] = build_rss_section(name, sources)
         print(f"{name}: {len(sections[name])} items")
 
-    with ThreadPoolExecutor(4) as pool:
-        journal_batches = list(pool.map(fetch_journal, CONFIG["journals"]))
-    journals = [i for b in journal_batches for i in b]
+    # Crossref allows one list request at a time (three a second with an email).
+    journals = []
+    for j in CONFIG["journals"]:
+        journals += fetch_journal(j)
+        time.sleep(0.4 if EMAIL else 1.1)
     journals.sort(key=lambda i: i["date"] or "", reverse=True)
     sections["journals"] = journals
     print(f"journals: {len(journals)} items")
@@ -253,14 +320,12 @@ def main():
     since = (NOW - timedelta(days=sch.get("days_back", 120))).date().isoformat()
     journal_titles = {re.sub(r"\W+", "", i["title"].lower()) for i in journals}
     seen, scholarship = set(), []
-    for term in sch.get("terms", []):
-        for item in fetch_openalex(term, since):
-            key = re.sub(r"\W+", "", item["title"].lower())
-            if key in seen or key in journal_titles:
-                continue
-            seen.add(key)
-            scholarship.append(item)
-        time.sleep(0.3)
+    for item in fetch_openalex(sch.get("terms", []), since):
+        key = re.sub(r"\W+", "", item["title"].lower())
+        if key in seen or key in journal_titles:
+            continue
+        seen.add(key)
+        scholarship.append(item)
     scholarship.sort(key=lambda i: i["date"] or "", reverse=True)
     sections["scholarship"] = scholarship[:SCHOLARSHIP_MAX]
     print(f"scholarship: {len(sections['scholarship'])} items")
