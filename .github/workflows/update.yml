@@ -31,6 +31,9 @@ jobs:
         run: pip install feedparser requests
       - name: Gather the latest edition
         run: python scripts/update.py
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+          CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
