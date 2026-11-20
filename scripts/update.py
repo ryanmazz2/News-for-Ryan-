@@ -39,7 +39,7 @@ SESSION = requests.Session()
 SESSION.headers["User-Agent"] = API_UA
 
 # How far back each section looks, and how many items it keeps.
-WINDOWS = {"economy": (4, 60), "politics": (3, 60), "independent": (7, 200), "artnow": (60, 30),
+WINDOWS = {"economy": (4, 60), "politics": (3, 60), "mixed": (5, 400), "essays": (21, 60), "releases": (14, 40), "papers": (180, 40), "artnow": (60, 30),
            "podcasts": (45, 30), "videos": (30, 30), "local": (5, 50)}
 PER_JOURNAL = 5
 SCHOLARSHIP_MAX = 40
@@ -91,10 +91,10 @@ HREF = re.compile(r'href=["\']([^"\']+)["\']', re.I)
 COMMON_PATHS = ("/feed/", "/feed", "/rss", "/rss.xml", "/feed.xml", "/index.xml", "/atom.xml")
 
 
-def try_feed(url, problems=None):
+def try_feed(url, problems=None, headers=None):
     """Return (parsed feed with entries or None, response or None)."""
     try:
-        r = SESSION.get(url, timeout=25, headers=FEED_HEADERS)
+        r = SESSION.get(url, timeout=25, headers=headers or FEED_HEADERS)
     except Exception as e:  # noqa: BLE001
         if problems is not None:
             problems.append(type(e).__name__)
@@ -130,12 +130,12 @@ def google_news(host, days=14):
     return tidy_google(feed) if feed else None
 
 
-def load_feed(url, allow_google=True):
+def load_feed(url, allow_google=True, headers=None):
     """Fetch a feed. If the address is a web page, or is wrong, look for
     the site's feed: first in the page's <link rel=alternate> tags, then
     at the usual feed paths."""
     problems = []
-    feed, resp = try_feed(url, problems)
+    feed, resp = try_feed(url, problems, headers)
     if feed:
         return tidy_google(feed) if "news.google.com" in url else feed
     from urllib.parse import urljoin, urlsplit
@@ -189,7 +189,8 @@ def entry_image(e):
 
 def fetch_rss(section, src):
     try:
-        feed = load_feed(src["url"], allow_google=not src.get("no_google"))
+        feed = load_feed(src["url"], allow_google=not src.get("no_google"),
+                         headers={"User-Agent": API_UA, "Accept": "application/rss+xml, application/xml, text/xml"} if src.get("official") else None)
     except Exception as e:  # noqa: BLE001
         failed.append({"source": src["name"], "section": section, "error": str(e)[:120]})
         return []
@@ -208,7 +209,11 @@ def fetch_rss(section, src):
             "source": gsrc or src["name"],
             "date": iso(dt),
             "summary": clean(e.get("summary") or e.get("description")),
+            "kind": src.get("kind", "newsroom"),
         }
+        tags = [str(t.get("term", "")).lower() for t in (e.get("tags") or []) if t.get("term")]
+        if tags:
+            item["tags"] = tags[:12]
         img = entry_image(e)
         if img:
             item["image"] = img
@@ -466,48 +471,110 @@ def gather_museums():
     return picked
 
 
-# ---------- Independent outlets, sorted into Economy or Politics ----------
+# ---------- Sorting the news: Economy, Politics, or not news at all ----------
 
+ECON_LABELS = {"economy", "economics", "business", "money", "finance", "markets", "labor", "labour", "work",
+               "workers", "unions", "jobs", "employment", "housing", "inequality", "wealth", "poverty", "taxes",
+               "trade", "wages", "personal finance", "real estate", "banking", "economic policy", "corporations",
+               "working people", "workers' rights", "labor rights", "cost of living", "monopoly", "antitrust"}
+POL_LABELS = {"politics", "elections", "election", "congress", "government", "courts", "supreme court", "justice",
+              "immigration", "foreign policy", "world", "international", "us news", "national", "democracy",
+              "war", "military", "civil rights", "criminal justice", "policing", "law", "white house", "voting",
+              "middle east", "europe", "africa", "asia", "latin america", "climate", "environment", "health", "education"}
+DROP_LABELS = {"sport", "sports", "culture", "arts", "art", "books", "book review", "film", "movies", "music",
+               "television", "tv", "reviews", "review", "lifestyle", "food", "recipes", "travel", "style", "fashion",
+               "games", "gaming", "puzzles", "crossword", "horoscopes", "celebrity", "entertainment", "podcast",
+               "podcasts", "video", "videos", "poetry", "fiction", "obituaries", "photos", "photography", "humor",
+               "comedy", "advice", "shopping", "deals", "sponsored", "events", "newsletters", "quiz"}
+ECON_PATH = re.compile(r"/(economy|economics|business|money|markets|finance|labor|labour|work|jobs|housing|real-estate)(/|-|$)", re.I)
+POL_PATH = re.compile(r"/(politics|elections?|congress|government|world|us-news|national|courts|justice|immigration)(/|-|$)", re.I)
+DROP_PATH = re.compile(r"/(sports?|culture|arts?|books|film|movies|music|tv|television|reviews?|lifestyle|food|recipes|"
+                       r"travel|style|fashion|games|puzzles|crosswords?|horoscopes?|celebrity|entertainment|podcasts?|"
+                       r"videos?|gallery|galleries|photos?|in-pictures|programmes|program|shopping|deals|sponsored|quiz)(/|-|$)", re.I)
+
+SPORTS = re.compile(r"\b(NFL|NBA|WNBA|MLB|NHL|MLS|NCAA|Premier League|Champions League|La Liga|Serie A|Bundesliga|"
+                    r"World Cup|Super Bowl|Stanley Cup|World Series|playoffs?|quarterback|touchdown|home run|"
+                    r"Olympics?|Olympian|cricket|rugby|tennis|Wimbledon|golf|PGA|Formula (1|One)|F1|Grand Prix|NASCAR|"
+                    r"boxing|UFC|wrestling|coach(es|ed)?|transfer window|striker|midfielder|goalkeeper|batting|innings)\b", re.I)
+JUNK = re.compile(r"\b(quiz|crossword|wordle|horoscopes?|recipes?|best .{0,40} (to buy|deals?)|deals? of the|"
+                  r"gift guide|shopping|sponsored|giveaway|in pictures|photos? of the|watch:|listen:|podcast:|"
+                  r"newsletter|sign up|celebrit\w*|red carpet|box office|album review|film review|tv review|"
+                  r"what to watch|streaming guide|weekend reads)\b", re.I)
+
+# Fallback when a feed gives no labels: the headline itself must be about the economy.
 ECON = re.compile(
-    r"\b(econom\w*|wages?|paychecks?|salar\w+|inflation|prices?|cost of living|jobs?|jobless|unemploy\w*|"
-    r"labou?r|workers?|workplace|unions?|unioni[sz]\w*|strik\w*|walkouts?|layoffs?|"
-    r"housing|rents?|renters?|tenants?|landlords?|evictions?|mortgages?|"
-    r"tax(es|ation)?|budgets?|debts?|deficit|austerity|privati[sz]\w*|"
-    r"tariffs?|trade|markets?|stocks?|banks?|banking|financ\w*|investors?|"
-    r"federal reserve|the fed|interest rates?|central bank|recession|gdp|growth|"
-    r"profits?|corporat\w*|billionaires?|wealth\w*|inequality|poverty|minimum wage|"
-    r"capital|capitalis\w*|neoliberal\w*|supply chains?|energy prices|oil prices|"
-    r"amazon|walmart|starbucks|tesla|uber|private equity|wall street|crypto\w*|"
-    r"food prices|grocer\w*|health ?care costs?|medicaid|social security|pensions?|benefits)\b", re.I)
+    r"\b(econom\w*|inflation|wages?|paychecks?|jobs report|unemploy\w*|jobless|labou?r market|layoffs?|"
+    r"minimum wage|unions?|unioni[sz]\w*|union drive|strik(e|es|ers|ing)|walkouts?|"
+    r"rents?|renters|tenants?|evictions?|housing (costs?|crisis|market|prices)|mortgage rates?|home prices|"
+    r"tariffs?|trade war|federal reserve|fed(?! up)|interest rates?|rates? (steady|unchanged)|rate (cut|hike)s?|recession|gdp|"
+    r"stock market|stocks|wall street|dow|s&p 500|profits?|billionaires?|wealth tax|wealth gap|inequality|poverty|"
+    r"prices|price gouging|cost of living|grocery|tax (cuts?|bill|credits?|breaks?)|budget|debt ceiling|deficit|"
+    r"private equity|antitrust|monopol\w*|ceo pay|pensions?|social security|medicaid|snap benefits|food stamps|"
+    r"supply chains?|oil prices|gas prices|bankrupt\w*|amazon|walmart|starbucks|uber|tesla)\b", re.I)
+NOT_LABOR_STRIKE = re.compile(r"(air|drone|missile|military|israeli|russian|us|u\.s\.) ?strikes?|strikes? (on|against|in) ", re.I)
+PARTY = re.compile(r"\blabou?r (party|government|leader|leadership|mps?|ministers?|conference|left|right)\b", re.I)
 
 
-PARTY = re.compile(r"\blabou?r (party|government|leader|leadership|mps?|ministers?|conference|left|right)\b|\b(capital city|the capital)\b", re.I)
+def classify(item):
+    """'economy', 'politics' or 'drop'."""
+    title = item["title"]
+    if SPORTS.search(title) or JUNK.search(title):
+        return "drop"
+    labels = set(item.get("tags") or [])
+    path = item.get("url", "")
+    if labels & DROP_LABELS or DROP_PATH.search(path):
+        return "drop"
+    if labels & ECON_LABELS or ECON_PATH.search(path):
+        return "economy"
+    if labels & POL_LABELS or POL_PATH.search(path):
+        return "politics"
+    t = PARTY.sub("", title)
+    hits = ECON.findall(t)
+    if hits and not (len(hits) == 1 and NOT_LABOR_STRIKE.search(t)):
+        return "economy"
+    return "politics"
 
 
-def is_economic(item):
-    title = PARTY.sub("", item["title"])
-    body = PARTY.sub("", item.get("summary") or "")
-    title_hits = len(ECON.findall(title))
-    body_hits = len(ECON.findall(body))
-    return title_hits >= 1 or body_hits >= 2
+def cap_per_source(items, cap):
+    counts, out = {}, []
+    for it in items:
+        n = counts.get(it["source"], 0)
+        if n < cap:
+            counts[it["source"]] = n + 1
+            out.append(it)
+    return out
 
 
-def merge_independent(sections):
-    """Read every independent outlet once, then file each article under
-    Economy or Politics by what it's about, mixed in with the wire and
-    mainstream reporting and sorted by time."""
-    items = build_rss_section("independent", CONFIG["rss"].get("independent", []))
-    econ = [i for i in items if is_economic(i)]
-    pol = [i for i in items if not is_economic(i)]
-    for key, extra, keep in (("economy", econ, 110), ("politics", pol, 130)):
+def assemble_news(sections):
+    """Single-subject feeds keep their tab (minus junk); outlets that cover
+    everything are sorted article by article. Then every tab is de-duplicated,
+    ordered by time, and capped so no outlet can flood it."""
+    mixed = build_rss_section("mixed", CONFIG["rss"].get("mixed", []))
+    pools = {"economy": [], "politics": []}
+    dropped = 0
+    for key in ("economy", "politics"):
+        for it in sections.get(key, []):
+            labels, path = set(it.get("tags") or []), it.get("url", "")
+            if SPORTS.search(it["title"]) or JUNK.search(it["title"]) or labels & DROP_LABELS or DROP_PATH.search(path):
+                dropped += 1
+                continue
+            pools[key].append(it)
+    for it in mixed:
+        where = classify(it)
+        if where == "drop":
+            dropped += 1
+        else:
+            pools[where].append(it)
+    for key, keep in (("economy", 120), ("politics", 140)):
         merged, seen = [], set()
-        for it in sorted(sections.get(key, []) + extra, key=lambda i: i["date"] or "", reverse=True):
+        for it in sorted(pools[key], key=lambda i: i["date"] or "", reverse=True):
             k = re.sub(r"\W+", "", it["title"].lower())[:80]
             if k not in seen:
                 seen.add(k)
+                it.pop("tags", None)
                 merged.append(it)
-        sections[key] = merged[:keep]
-    print(f"independent: {len(econ)} to economy, {len(pol)} to politics")
+        sections[key] = cap_per_source(merged, 6)[:keep]
+    print(f"news: {len(sections['economy'])} economy, {len(sections['politics'])} politics, {dropped} non-news dropped")
 
 
 # ---------- Strike tracker ----------
@@ -611,6 +678,227 @@ def check_texts():
     return broken
 
 
+# ---------- World economy (IMF World Economic Outlook, no key) ----------
+
+def build_world():
+    cfg = CONFIG.get("world_economy") or {}
+    countries, inds = cfg.get("countries", []), cfg.get("indicators", {})
+    if not countries:
+        return None
+    year = str(NOW.year)
+    out = {"year": year, "next": str(NOW.year + 1), "indicators": inds, "rows": []}
+    data = {}
+    for code in inds:
+        try:
+            d = get_patiently(f"https://www.imf.org/external/datamapper/api/v1/{code}/{'/'.join(countries)}", tries=3).json()
+            data[code] = (d.get("values") or {}).get(code, {})
+        except Exception as e:  # noqa: BLE001
+            failed.append({"source": f"IMF {code}", "section": "world economy", "error": str(e).split(" for url")[0][:100]})
+        time.sleep(0.5)
+    if not data:
+        return None
+    try:
+        names = get_patiently("https://www.imf.org/external/datamapper/api/v1/countries", tries=2).json().get("countries", {})
+    except Exception:  # noqa: BLE001
+        names = {}
+    for cc in countries:
+        row = {"code": cc, "name": (names.get(cc) or {}).get("label", cc), "values": {}}
+        for code in inds:
+            series = data.get(code, {}).get(cc, {})
+            row["values"][code] = {"now": series.get(year), "next": series.get(str(NOW.year + 1))}
+        out["rows"].append(row)
+    print(f"world economy: {len(out['rows'])} countries")
+    return out
+
+
+# ---------- Release calendar (BLS) ----------
+
+def build_calendar():
+    url = CONFIG.get("bls_calendar")
+    if not url:
+        return []
+    try:
+        text = SESSION.get(url, timeout=25, headers={"User-Agent": API_UA}).text
+    except Exception as e:  # noqa: BLE001
+        failed.append({"source": "BLS release calendar", "section": "official releases", "error": str(e)[:100]})
+        return []
+    events, cur = [], {}
+    for line in text.replace("\r\n ", "").splitlines():
+        if line.startswith("BEGIN:VEVENT"):
+            cur = {}
+        elif line.startswith("SUMMARY"):
+            cur["title"] = line.split(":", 1)[1].strip().replace("\\,", ",")
+        elif line.startswith("DTSTART"):
+            v = line.split(":", 1)[1].strip()
+            try:
+                dt = datetime.strptime(v[:15], "%Y%m%dT%H%M%S") if "T" in v else datetime.strptime(v[:8], "%Y%m%d")
+                cur["date"] = dt.strftime("%Y-%m-%dT%H:%M:%S")
+            except ValueError:
+                pass
+        elif line.startswith("END:VEVENT") and cur.get("title") and cur.get("date"):
+            events.append(cur)
+    today = NOW.strftime("%Y-%m-%d")
+    horizon = (NOW + timedelta(days=21)).strftime("%Y-%m-%d")
+    upcoming = sorted([e for e in events if today <= e["date"][:10] <= horizon], key=lambda e: e["date"])
+    if not events:
+        failed.append({"source": "BLS release calendar", "section": "official releases", "error": "no events found (BLS may have refused the request)"})
+    return upcoming[:20]
+
+
+# ---------- Posters (DPLA: MSU's leftist and radicalism poster collections) ----------
+
+FREE_RIGHTS = re.compile(r"(NKC|NoC-|publicdomain|/mark/1\.0|zero/1\.0)", re.I)
+
+
+def build_posters():
+    key = os.environ.get("DPLA_API_KEY", "").strip()
+    cfg = CONFIG.get("posters") or {}
+    if not key:
+        failed.append({"source": "DPLA posters", "section": "posters", "error": "add a free DPLA_API_KEY secret (see README)"})
+        return []
+    out = []
+    for coll in cfg.get("collections", []):
+        page = 1
+        while page <= 6:
+            try:
+                d = get_patiently("https://api.dp.la/v2/items", tries=3, api_key=key, page_size=100, page=page,
+                                  **{"sourceResource.collection.title": f'"{coll}"'}).json()
+            except Exception as e:  # noqa: BLE001
+                failed.append({"source": f"DPLA: {coll}", "section": "posters", "error": str(e).split(" for url")[0][:100]})
+                break
+            docs = d.get("docs") or []
+            for doc in docs:
+                sr = doc.get("sourceResource") or {}
+                rights = " ".join(sr.get("rights") if isinstance(sr.get("rights"), list) else [sr.get("rights") or ""]) + " " + str(doc.get("rights") or "")
+                img = doc.get("object")
+                if not img or not FREE_RIGHTS.search(rights):
+                    continue
+                title = sr.get("title"); title = title[0] if isinstance(title, list) else title
+                desc = sr.get("description"); desc = desc[0] if isinstance(desc, list) else desc
+                date = (sr.get("date") or {}); date = date[0] if isinstance(date, list) else date
+                place = sr.get("spatial") or []
+                out.append({
+                    "title": clean(title, 160) or "Untitled poster",
+                    "date": (date or {}).get("displayDate", ""),
+                    "description": clean(desc, 300),
+                    "place": ", ".join(p.get("name", "") for p in place[:2] if isinstance(p, dict)),
+                    "image": img, "url": doc.get("isShownAt"), "collection": coll,
+                })
+            if len(docs) < 100:
+                break
+            page += 1
+            time.sleep(0.3)
+    print(f"posters: {len(out)} free-to-use")
+    return out
+
+
+# ---------- Your shelf: StoryGraph export + the canon ----------
+
+def norm_title(t):
+    t = (t or "").lower().split(":")[0]
+    t = re.sub(r"\(.*?\)", "", t)
+    t = re.sub(r"^(the|a|an)\s+", "", t.strip())
+    return re.sub(r"[^a-z0-9]+", "", t)
+
+
+def norm_full(t):
+    t = re.sub(r"\(.*?\)", "", (t or "").lower())
+    t = re.sub(r"^(the|a|an)\s+", "", t.strip())
+    return re.sub(r"[^a-z0-9]+", "", t)
+
+
+def last_name(a):
+    a = (a or "").split(",")[0].strip()
+    return re.sub(r"[^a-z]", "", a.split(" ")[-1].lower()) if a else ""
+
+
+def build_shelf():
+    import csv
+    books_dir = ROOT / "books"
+    files = sorted(books_dir.glob("*.csv")) if books_dir.exists() else []
+    canon_path = ROOT / "site" / "data" / "canon.json"
+    if not files:
+        return None
+    path = books_dir / "storygraph.csv" if (books_dir / "storygraph.csv").exists() else files[-1]
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        rows = list(csv.DictReader(f))
+    def isbn(r):
+        v = re.sub(r"[^0-9Xx]", "", r.get("ISBN/UID") or "")
+        return v if len(v) in (10, 13) else None
+    shelf = {"current": [], "stats": {}, "recs": [], "canon_read": 0, "canon_total": 0}
+    read, toread, current = [], [], []
+    for r in rows:
+        st = (r.get("Read Status") or "").strip()
+        b = {"title": (r.get("Title") or "").strip(), "author": (r.get("Authors") or "").split(",")[0].strip(),
+             "isbn": isbn(r), "date": (r.get("Last Date Read") or "").strip()}
+        {"read": read, "to-read": toread, "currently-reading": current}.get(st, []).append(b)
+    shelf["current"] = current
+    years = {}
+    for b in read:
+        y = b["date"][:4]
+        if y.isdigit():
+            years[y] = years.get(y, 0) + 1
+    authors = {}
+    for b in read:
+        if b["author"]:
+            authors[b["author"]] = authors.get(b["author"], 0) + 1
+    shelf["stats"] = {"read": len(read), "to_read": len(toread), "this_year": years.get(str(NOW.year), 0),
+                      "by_year": dict(sorted(years.items())[-8:]),
+                      "top_authors": sorted(authors.items(), key=lambda x: -x[1])[:6]}
+    if canon_path.exists():
+        canon = json.loads(canon_path.read_text())
+        key = lambda t, a: (norm_title(t), last_name(a))
+        read_t = {norm_title(b["title"]) for b in read}
+        read_k = {key(b["title"], b["author"]) for b in read}
+        cur_t = {norm_title(b["title"]) for b in current}
+        to_t = {norm_title(b["title"]) for b in toread}
+        read_authors = {last_name(b["author"]) for b in read}
+        read_full = {norm_full(b["title"]) for b in read}
+        def is_read(w):
+            nf, nt, la_w = norm_full(w["title"]), norm_title(w["title"]), last_name(w["author"])
+            if any(f == nf or (len(nf) > 10 and f.startswith(nf)) for f in read_full):
+                return True
+            return any(t == nt and la == la_w for t, la in read_k)
+        read_works = [w for w in canon if is_read(w)]
+        topic_weight = {}
+        for w in read_works:
+            for tp in w.get("topics", []):
+                topic_weight[tp] = topic_weight.get(tp, 0) + 1
+        title_of = {norm_full(b["title"]): b["title"] for b in read + current}
+        recs = []
+        for w in canon:
+            nt = norm_title(w["title"])
+            if is_read(w) or nt in cur_t:
+                continue
+            score, because = 0.0, []
+            for a in w.get("after", []):
+                na = norm_full(a)
+                hit = next((t for t in title_of if t == na or (len(na) > 5 and t.startswith(na))), None)
+                if hit:
+                    score += 4
+                    because.append(title_of[hit])
+            score += min(3, sum(min(1.0, topic_weight.get(tp, 0) / 3) for tp in w.get("topics", [])))
+            if last_name(w["author"]) in read_authors:
+                score += 1.5
+            on_list = nt in to_t
+            if on_list:
+                score += 1.5
+            recs.append({**{k: w[k] for k in ("title", "author", "year", "shelf", "why", "venue") if k in w},
+                         "score": round(score, 2), "because": because[:2], "on_list": on_list})
+        recs.sort(key=lambda r: -r["score"])
+        per_shelf = {}
+        for r in recs:
+            per_shelf.setdefault(r["shelf"], [])
+            if len(per_shelf[r["shelf"]]) < 8:
+                per_shelf[r["shelf"]].append(r)
+        shelf["recs"] = per_shelf
+        shelf["canon_read"], shelf["canon_total"] = len(read_works), len(canon)
+        shelf["canon_read_by_shelf"] = {s: sum(1 for w in read_works if w["shelf"] == s) for s in {w["shelf"] for w in canon}}
+        shelf["canon_total_by_shelf"] = {s: sum(1 for w in canon if w["shelf"] == s) for s in {w["shelf"] for w in canon}}
+    print(f"shelf: {len(current)} current, {len(read)} read, {shelf['canon_read']}/{shelf['canon_total']} of the canon")
+    return shelf
+
+
 # ---------- Back issues ----------
 
 def save_back_issue(payload):
@@ -618,9 +906,9 @@ def save_back_issue(payload):
     which the workflow commits so the history survives between runs."""
     arch = ROOT / "site" / "archive"
     arch.mkdir(parents=True, exist_ok=True)
-    keep = ("economy", "politics", "local", "strikes", "journals", "scholarship")
+    keep = ("economy", "politics", "essays", "local", "strikes", "journals", "papers", "scholarship")
     slim = {"generated_at": payload["generated_at"], "sections": {
-        k: [{f: it[f] for f in ("title", "url", "source", "date", "authors") if f in it} for it in payload["sections"].get(k, [])[:25]]
+        k: [{f: it[f] for f in ("title", "url", "source", "date", "authors", "kind") if f in it} for it in payload["sections"].get(k, [])[:25]]
         for k in keep}}
     name = NOW.strftime("%Y-%m-%d-%H%M") + ".json"
     (arch / name).write_text(json.dumps(slim, ensure_ascii=False, separators=(",", ":")))
@@ -636,12 +924,12 @@ def save_back_issue(payload):
 def main():
     sections = {}
     for name, sources in CONFIG["rss"].items():
-        if name in ("local", "independent"):
+        if name in ("local", "mixed"):
             continue
         sections[name] = build_rss_section(name, sources)
         print(f"{name}: {len(sections[name])} items")
 
-    merge_independent(sections)
+    assemble_news(sections)
 
     # Crossref allows one list request at a time (three a second with an email).
     journals = []
@@ -666,18 +954,26 @@ def main():
     sections["scholarship"] = scholarship[:SCHOLARSHIP_MAX]
     print(f"scholarship: {len(sections['scholarship'])} items")
 
-    sections["local"] = build_local()
+    sections["local"] = [{k: v for k, v in i.items() if k != "tags"} for i in build_local()]
     print(f"local: {len(sections['local'])} items")
     sections["strikes"] = build_strikes(sections)
     print(f"strikes: {len(sections['strikes'])} items")
     sections["museums"] = gather_museums()
     images = gather_wiki_images()
 
+    for items in sections.values():
+        for i in items:
+            i.pop("tags", None)
+    world = build_world()
+    calendar = build_calendar()
+    posters = build_posters()
+    shelf = build_shelf()
     dashboard = build_dashboard()
     broken_texts = check_texts()
 
     payload = {"generated_at": iso(NOW), "sections": sections, "images": images,
                "dashboard": dashboard, "broken_texts": broken_texts,
+               "world": world, "calendar": calendar, "shelf": shelf,
                "local_place": CONFIG.get("local_place", "Local"), "failed": failed}
 
     # If everything failed (network outage), keep the last good file.
@@ -686,6 +982,8 @@ def main():
         return
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=1))
+    # posters go in their own file: the page picks a poster of the day from the whole set
+    (OUT.parent / "posters.json").write_text(json.dumps(posters, ensure_ascii=False))
     save_back_issue(payload)
     if failed:
         print(f"{len(failed)} sources failed:", *[f"  {f['source']}: {f['error']}" for f in failed], sep="\n")
