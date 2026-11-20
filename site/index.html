@@ -86,18 +86,21 @@ nav.jump a:hover { border-color: var(--orange); }
 .hero { grid-column: span 4; }
 #headlines { grid-column: span 7; }
 #research { grid-column: span 5; }
-#art { grid-column: 1 / -1; }
+#art, #economy, #listen { grid-column: 1 / -1; }
+#strikes, #local, #text, #song { grid-column: span 6; }
+#saved { grid-column: span 7; }
+#backissues { grid-column: span 5; }
 @media (max-width: 960px) {
-  .history, .hero, #headlines, #research { grid-column: 1 / -1; }
+  .history, .hero, #headlines, #research, #strikes, #local, #text, #song, #saved, #backissues { grid-column: 1 / -1; }
 }
 
 /* ---------- the sunburst: history of struggle ---------- */
 .history { align-self: center; display: grid; grid-template-columns: minmax(180px, 330px) 1fr; gap: 10px 28px; align-items: center; }
 .sun { position: relative; aspect-ratio: 1; width: 100%; }
 .sun svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.sun .rays { transform-origin: 50% 50%; animation: turn 240s linear infinite; }
+.sun svg { animation: turn 240s linear infinite; }
 @keyframes turn { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .sun .rays, .ring .rays { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .sun svg, .ring svg { animation: none; } }
 .sun .year {
   position: absolute; inset: 0; display: grid; place-items: center;
   font: 400 clamp(2rem, 6vw, 3.6rem)/1 var(--slab); color: var(--white);
@@ -167,13 +170,13 @@ nav.jump a:hover { border-color: var(--orange); }
 .hero .inner { text-align: center; }
 .ring { position: relative; width: min(200px, 70%); aspect-ratio: 1; margin: 4px auto 10px; }
 .ring svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.ring .rays { transform-origin: 50% 50%; animation: turn 300s linear infinite reverse; }
+.ring svg { animation: turn 300s linear infinite reverse; }
 .ring img, .ring .noimg {
   position: absolute; inset: 22%; width: 56%; height: 56%; border-radius: 50%;
   object-fit: cover; object-position: 50% 20%; border: 3px solid var(--plum); background: var(--blue);
 }
 .ring .noimg { display: grid; place-items: center; color: var(--white); font: 400 2.2rem var(--slab); }
-.hero .mark { display: inline-block; background: var(--orange); color: #fff; font-weight: 700; font-size: .9rem; padding: 1px 8px; margin: 0 0 6px; }
+.hero .mark, .hero-mark { display: inline-block; background: var(--orange); color: #fff; font-weight: 700; font-size: .9rem; padding: 1px 8px; margin: 0 0 6px; }
 .hero .name { margin: 0; font: 400 clamp(1.6rem, 3vw, 2.1rem)/1.05 var(--slab); }
 .hero .life { margin: 6px 0 8px; font-size: .95rem; color: var(--ink-soft); }
 .hero .bio { margin: 0 0 12px; text-align: left; }
@@ -213,6 +216,37 @@ nav.jump a:hover { border-color: var(--orange); }
 .now a:hover { text-decoration: underline; text-decoration-color: var(--orange); }
 .now .m { font-size: .82rem; color: var(--ink-soft); }
 
+/* ---------- economy in numbers ---------- */
+.dash { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.stat { border: 2px solid var(--plum); padding: 10px 12px 8px; display: flex; flex-direction: column; gap: 2px; }
+.stat .lab { font-weight: 700; font-size: .95rem; line-height: 1.25; min-height: 2.5em; }
+.stat .val { font: 400 2rem/1.1 var(--slab); color: var(--ink); }
+.stat .chg { font-size: .85rem; color: var(--ink-soft); }
+.stat .chg b { color: var(--magenta); }
+.stat svg { width: 100%; height: 56px; display: block; margin-top: 4px; }
+.stat .src { font-size: .78rem; color: var(--ink-soft); }
+
+/* ---------- save buttons and small actions ---------- */
+.save {
+  margin-left: 6px; font: 700 .75rem/1 var(--text); text-transform: lowercase; color: var(--magenta);
+  background: transparent; border: 1.5px solid currentColor; padding: 3px 6px; cursor: pointer; vertical-align: 2px;
+}
+.save[aria-pressed="true"] { background: var(--magenta); color: #fff; border-color: var(--magenta); }
+.act { font: 700 .9rem/1 var(--text); text-transform: lowercase; color: var(--ink); background: transparent; border: 2px solid var(--ink); padding: 7px 12px; cursor: pointer; text-decoration: none; display: inline-block; }
+.act:hover { background: var(--ink); color: var(--paper); }
+.act.on { background: var(--magenta); border-color: var(--magenta); color: #fff; }
+.acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.lede { font-size: .95rem; color: var(--ink-soft); margin: 0 0 8px; }
+.big { margin: 2px 0 4px; font: 400 clamp(1.5rem, 3vw, 2.1rem)/1.08 var(--slab); }
+.meta2 { margin: 0 0 8px; font-weight: 600; color: var(--ink-soft); }
+.read-list { margin: 10px 0 0; padding-left: 0; list-style: none; font-size: .92rem; columns: 2 220px; }
+.read-list li::before { content: "○ "; color: var(--magenta); }
+.read-list li.done::before { content: "● "; }
+details.more-list summary { cursor: pointer; font-weight: 700; margin-top: 12px; }
+audio { width: 100%; height: 36px; margin-top: 6px; }
+.viewing { background: var(--orange); color: #fff; padding: 8px 10px; margin-bottom: 10px; font-weight: 600; }
+.viewing button { margin-left: 8px; font: 700 .85rem var(--text); background: #fff; color: var(--orange); border: 0; padding: 4px 8px; cursor: pointer; }
+
 /* ---------- footer ---------- */
 footer { border-top: 2px solid var(--white); padding: 16px 0 28px; font-size: .95rem; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 30px; }
 footer p { margin: 0 0 6px; }
@@ -238,9 +272,17 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     <nav class="jump" aria-label="Sections">
       <a href="#history">history of struggle</a>
       <a href="#hero">hero from history</a>
+      <a href="#economy">economy in numbers</a>
+      <a href="#strikes">strike tracker</a>
+      <a href="#local" id="nav-local">local</a>
       <a href="#headlines">scraped headlines</a>
       <a href="#research">new research</a>
+      <a href="#text">text of the week</a>
+      <a href="#song">song of the day</a>
+      <a href="#listen">listen &amp; watch</a>
       <a href="#art">radical art</a>
+      <a href="#saved">reading list</a>
+      <a href="#backissues">back issues</a>
     </nav>
   </header>
 
@@ -277,9 +319,35 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
+    <section class="panel" id="economy" aria-labelledby="eco-h">
+      <div class="band"><h2 id="eco-h">the economy in numbers</h2></div>
+      <div class="inner">
+        <p class="lede">Ten-year trends from the Federal Reserve’s FRED database, updated each edition.</p>
+        <div class="dash" id="dash"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="strikes" aria-labelledby="str-h">
+      <div class="band"><h2 id="str-h">strike tracker</h2><span class="tally" id="str-tally" aria-hidden="true"></span></div>
+      <div class="inner">
+        <p class="lede" id="str-lede">Strikes, walkouts, pickets and lockouts in the news over the past week.</p>
+        <ul class="items" id="str-list"></ul>
+        <button class="more" id="str-more" hidden>show more</button>
+      </div>
+    </section>
+
+    <section class="panel" id="local" aria-labelledby="loc-h">
+      <div class="band"><h2 id="loc-h">local news</h2><span class="tally" id="loc-tally" aria-hidden="true"></span></div>
+      <div class="inner">
+        <ul class="items" id="loc-list"></ul>
+        <button class="more" id="loc-more" hidden>show more</button>
+      </div>
+    </section>
+
     <section class="panel" id="headlines" aria-labelledby="news-h">
       <div class="band"><h2 id="news-h">scraped headlines</h2><span class="tally" id="news-tally" aria-hidden="true"></span></div>
       <div class="inner">
+        <div class="viewing" id="viewing" hidden></div>
         <div class="tabs" id="news-tabs" role="tablist" aria-label="Headline sections"></div>
         <div class="find"><label class="vh" for="news-q">Search the headlines</label><input id="news-q" type="search" placeholder="search headlines"></div>
         <ul class="items" id="news-list"></ul>
@@ -294,6 +362,46 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
         <div class="find"><label class="vh" for="sch-src">Filter by journal</label><select id="sch-src"></select></div>
         <ul class="items" id="sch-list"></ul>
         <button class="more" id="sch-more" hidden>show more</button>
+      </div>
+    </section>
+
+    <section class="panel" id="text" aria-labelledby="txt-h">
+      <div class="band"><h2 id="txt-h">text of the week</h2></div>
+      <div class="inner">
+        <p class="big" id="txt-title"></p>
+        <p class="meta2" id="txt-by"></p>
+        <p id="txt-intro"></p>
+        <div class="acts">
+          <a class="act" id="txt-read" target="_blank" rel="noopener">read it</a>
+          <a class="act" id="txt-about" target="_blank" rel="noopener">about it</a>
+          <button class="act" type="button" id="txt-done" aria-pressed="false">mark as read</button>
+        </div>
+        <details class="more-list">
+          <summary id="txt-progress">the whole reading list</summary>
+          <ul class="read-list" id="txt-all"></ul>
+        </details>
+      </div>
+    </section>
+
+    <section class="panel" id="song" aria-labelledby="song-h">
+      <div class="band"><h2 id="song-h">song of the day</h2></div>
+      <div class="inner">
+        <p class="mark hero-mark" id="song-mark" hidden></p>
+        <p class="big" id="song-title"></p>
+        <p class="meta2" id="song-by"></p>
+        <p id="song-note"></p>
+        <div class="acts">
+          <a class="act" id="song-listen" target="_blank" rel="noopener">listen on youtube</a>
+          <a class="act" id="song-wiki" target="_blank" rel="noopener">look it up</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="listen" aria-labelledby="lis-h">
+      <div class="band"><h2 id="lis-h">listen &amp; watch</h2></div>
+      <div class="inner">
+        <div class="tabs" id="lis-tabs" role="tablist" aria-label="Listen and watch"></div>
+        <div id="lis-body"></div>
       </div>
     </section>
 
@@ -323,6 +431,21 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
             <ul class="now" id="artnow-list"></ul>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="panel" id="saved" aria-labelledby="sav-h">
+      <div class="band"><h2 id="sav-h">your reading list</h2><span class="tally" id="sav-tally" aria-hidden="true"></span></div>
+      <div class="inner">
+        <p class="lede">Tap “save” on any headline or article to keep it here. Your list stays in this browser.</p>
+        <ul class="items" id="sav-list"></ul>
+      </div>
+    </section>
+
+    <section class="panel" id="backissues" aria-labelledby="bi-h">
+      <div class="band"><h2 id="bi-h">back issues</h2></div>
+      <div class="inner">
+        <p class="lede">Every edition is kept for a year. Pick one to read its headlines, research, strikes and local news as they were.</p>
+        <div class="find"><label class="vh" for="bi-pick">Choose a back issue</label><select id="bi-pick"><option value="">choose an issue…</option></select></div>
       </div>
     </section>
   </main>
@@ -471,7 +594,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       const im = el("img"); im.src = img.src; im.alt = `Portrait of ${p.name}`; im.loading = "lazy";
       im.onerror = () => { im.replaceWith(initials(p.name)); $("fig-credit").hidden = true; };
       ring.append(im);
-      $("fig-credit").href = img.credit; $("fig-credit").hidden = false;
+      if (img.credit) { $("fig-credit").href = img.credit; $("fig-credit").hidden = false; }
     } else {
       ring.append(initials(p.name));
     }
@@ -498,14 +621,17 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     const fig = $("aotd-fig"), img = images && images.art && images.art[w.title];
     fig.replaceChildren();
     if (img) {
-      const im = el("img"); im.src = img.src; im.alt = `${w.title}${w.artist ? ", " + w.artist : ""}`; im.loading = "lazy";
+      const im = el("img"); im.src = img.src; im.alt = `${w.title}${w.artist ? ", " + w.artist : ""}`;
+      im.onerror = () => { fig.replaceChildren(placeholder("The picture didn’t load. See it on Wikipedia.")); $("aotd-credit").hidden = true; };
       fig.append(im);
-      $("aotd-credit").href = img.credit; $("aotd-credit").hidden = false;
+      if (img.credit) { $("aotd-credit").href = img.credit; $("aotd-credit").hidden = false; }
     } else {
-      const ph = el("div", "ph"); ph.innerHTML = smallBurst();
-      ph.append(el("div", null, w.noimage ? "Follow the link to see this artist’s work." : "This work is still under copyright. See it on Wikipedia."));
-      fig.append(ph);
+      fig.append(placeholder(w.noimage ? "Follow the link to see this artist’s work." : "No free image of this work. See it on Wikipedia."));
     }
+  }
+  function placeholder(text) {
+    const ph = el("div", "ph"); ph.innerHTML = smallBurst(); ph.append(el("div", null, text));
+    return ph;
   }
 
   // ---------- museum archives and art now ----------
@@ -534,12 +660,234 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     });
   }
 
+  // ---------- reading list (saved in this browser) ----------
+  const SKEY = "td-saved";
+  const getSaved = () => { try { return JSON.parse(localStorage.getItem(SKEY)) || []; } catch (e) { return []; } };
+  const putSaved = (list) => { try { localStorage.setItem(SKEY, JSON.stringify(list)); } catch (e) {} };
+  const isSaved = (url) => getSaved().some((x) => x.url === url);
+  function saveButton(item) {
+    const b = el("button", "save"); b.type = "button"; b.dataset.url = item.url;
+    const sync = () => { const on = isSaved(item.url); b.textContent = on ? "saved" : "save"; b.setAttribute("aria-pressed", String(on)); b.setAttribute("aria-label", (on ? "Remove from" : "Save to") + " reading list: " + item.title); };
+    b.onclick = () => {
+      const list = getSaved();
+      const i = list.findIndex((x) => x.url === item.url);
+      if (i >= 0) list.splice(i, 1);
+      else list.unshift({ title: item.title, url: item.url, source: item.source, date: item.date, saved: Date.now() });
+      putSaved(list); refreshSaves();
+    };
+    sync(); b._sync = sync;
+    return b;
+  }
+  function refreshSaves() {
+    document.querySelectorAll("button.save").forEach((b) => b._sync && b._sync());
+    renderSaved();
+  }
+  function renderSaved() {
+    const ul = $("sav-list"), list = getSaved();
+    ul.replaceChildren();
+    $("sav-tally").textContent = list.length || "";
+    if (!list.length) { ul.append(el("li", "empty", "Nothing saved yet.")); return; }
+    list.forEach((x) => {
+      const li = el("li"), t = el("div", "t");
+      const a = el("a", null, x.title); a.href = x.url; a.target = "_blank"; a.rel = "noopener";
+      if (x.read) a.style.opacity = ".55";
+      t.append(a); li.append(t);
+      const m = el("div", "m"); m.append(el("b", null, x.source || ""), x.read ? ", read" : "");
+      li.append(m);
+      const acts = el("div", "acts");
+      const r = el("button", "act" + (x.read ? " on" : ""), x.read ? "read" : "mark read"); r.type = "button";
+      r.onclick = () => { const l = getSaved(); const it = l.find((y) => y.url === x.url); if (it) it.read = !it.read; putSaved(l); refreshSaves(); };
+      const d = el("button", "act", "remove"); d.type = "button";
+      d.onclick = () => { putSaved(getSaved().filter((y) => y.url !== x.url)); refreshSaves(); };
+      acts.append(r, d); li.append(acts);
+      ul.append(li);
+    });
+  }
+
+  // ---------- simple lists (strikes, local) ----------
+  function makeList(listEl, moreEl, tallyEl, emptyText) {
+    let items = [], shown = 10;
+    function render() {
+      listEl.replaceChildren();
+      if (!items.length) listEl.append(el("li", "empty", emptyText));
+      items.slice(0, shown).forEach((x) => listEl.append(renderItem(x, false)));
+      moreEl.hidden = items.length <= shown;
+      moreEl.textContent = `show more (${items.length - shown} left)`;
+      tallyEl.textContent = items.length || "";
+    }
+    moreEl.onclick = () => { shown += 10; render(); };
+    return { load(list) { items = list || []; shown = 10; render(); } };
+  }
+
+  // ---------- economy in numbers ----------
+  function fmtVal(v, unit) {
+    if (unit === "%") return v.toFixed(1) + "%";
+    if (unit.includes("dollars")) return "$" + Math.round(v);
+    return v.toFixed(1);
+  }
+  function spark(points) {
+    const vals = points.map((p) => p[1]), lo = Math.min(...vals), hi = Math.max(...vals), span = hi - lo || 1;
+    const W = 240, H = 56, n = points.length;
+    const xy = vals.map((v, i) => [(i / (n - 1)) * W, H - 4 - ((v - lo) / span) * (H - 10)]);
+    const line = xy.map(([x, y], i) => (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1)).join(" ");
+    const [lx, ly] = xy[xy.length - 1];
+    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">
+      <path d="${line} L${W} ${H} L0 ${H} Z" fill="${C("--magenta")}" fill-opacity=".14"/>
+      <path d="${line}" fill="none" stroke="${C("--orange")}" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+      <circle cx="${lx}" cy="${ly}" r="3.5" fill="${C("--plum")}"/></svg>`;
+  }
+  function showDash(list) {
+    const box = $("dash"); box.replaceChildren();
+    if (!list || !list.length) { box.append(el("p", "empty", "The numbers fill in at the next edition.")); return; }
+    list.forEach((d) => {
+      const c = el("div", "stat");
+      c.append(el("div", "lab", d.label), el("div", "val", fmtVal(d.latest, d.unit)));
+      const chg = el("div", "chg"), sign = d.change > 0 ? "▲ +" : d.change < 0 ? "▼ " : "";
+      const since = new Date(d.since + "T00:00:00Z").toLocaleDateString("en", { month: "short", year: "numeric", timeZone: "UTC" });
+      const latest = new Date(d.date + "T00:00:00Z").toLocaleDateString("en", { month: "short", year: "numeric", timeZone: "UTC" });
+      chg.append(el("b", null, `${sign}${d.unit === "%" ? d.change.toFixed(1) + " pts" : d.change.toFixed(1)}`), ` since ${since}`);
+      c.append(chg);
+      const g = el("div"); g.innerHTML = spark(d.points); c.append(g.firstElementChild);
+      const src = el("a", "src", `${latest} figure; ${d.unit === "%" ? "percent" : d.unit} · FRED`); src.href = d.url; src.target = "_blank"; src.rel = "noopener";
+      c.append(src);
+      box.append(c);
+    });
+  }
+
+  // ---------- text of the week ----------
+  async function showText(broken) {
+    let texts = [];
+    try { texts = await (await fetch("data/texts.json", { cache: "no-cache" })).json(); } catch (e) {}
+    if (!texts.length) { $("text").hidden = true; return; }
+    const RKEY = "td-read-texts";
+    const getRead = () => { try { return JSON.parse(localStorage.getItem(RKEY)) || []; } catch (e) { return []; } };
+    const week = Math.floor((dayNum + 3) / 7);           // weeks start on Monday
+    const tx = texts[week % texts.length];
+    $("txt-title").textContent = tx.title;
+    $("txt-by").textContent = `${tx.author}, ${tx.year} · ${tx.length}`;
+    $("txt-intro").textContent = tx.intro;
+    const bad = (broken || []).includes(tx.title);
+    $("txt-read").href = bad ? wikiURL(tx.wiki) : tx.url;
+    $("txt-read").textContent = bad ? "find it via wikipedia" : "read it";
+    $("txt-about").href = wikiURL(tx.wiki);
+    function sync() {
+      const read = getRead(), on = read.includes(tx.title);
+      $("txt-done").textContent = on ? "read ✓" : "mark as read";
+      $("txt-done").classList.toggle("on", on); $("txt-done").setAttribute("aria-pressed", String(on));
+      $("txt-progress").textContent = `the whole reading list (you’ve read ${read.length} of ${texts.length})`;
+      const ul = $("txt-all"); ul.replaceChildren();
+      texts.forEach((x) => {
+        const li = el("li", read.includes(x.title) ? "done" : ""), a = el("a", null, x.title);
+        a.href = (broken || []).includes(x.title) ? wikiURL(x.wiki) : x.url; a.target = "_blank"; a.rel = "noopener";
+        li.append(a, ` (${x.author.split(" and ")[0].split(" ").slice(-1)[0]}, ${x.year})`); ul.append(li);
+      });
+    }
+    $("txt-done").onclick = () => {
+      let read = getRead();
+      read = read.includes(tx.title) ? read.filter((x) => x !== tx.title) : read.concat(tx.title);
+      try { localStorage.setItem(RKEY, JSON.stringify(read)); } catch (e) {}
+      sync();
+    };
+    sync();
+  }
+
+  // ---------- song of the day ----------
+  async function showSong() {
+    let songs = [];
+    try { songs = await (await fetch("data/songs.json", { cache: "no-cache" })).json(); } catch (e) {}
+    if (!songs.length) { $("song").hidden = true; return; }
+    const anniv = songs.filter((x) => x.month === today.getMonth() + 1 && x.day === today.getDate());
+    const sg = anniv.length ? anniv[dayNum % anniv.length] : songs[(dayNum * 7) % songs.length];
+    $("song-mark").hidden = !anniv.length;
+    $("song-mark").textContent = "for today’s anniversary";
+    $("song-title").textContent = sg.title;
+    $("song-by").textContent = `${sg.artist}, ${sg.year}`;
+    $("song-note").textContent = sg.note;
+    $("song-listen").href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(sg.search);
+    $("song-wiki").href = "https://en.wikipedia.org/wiki/Special:Search?search=" + encodeURIComponent(sg.title + " song");
+  }
+
+  // ---------- listen & watch ----------
+  function showListen(sections) {
+    const tabs = [["podcasts", "podcasts"], ["videos", "videos"]];
+    let cur = "podcasts";
+    function draw() {
+      $("lis-tabs").replaceChildren();
+      tabs.forEach(([k, label]) => {
+        const b = el("button"); b.type = "button"; b.setAttribute("role", "tab"); b.setAttribute("aria-selected", String(k === cur));
+        b.append(label, el("span", "n", String((sections[k] || []).length)));
+        b.onclick = () => { cur = k; draw(); };
+        $("lis-tabs").append(b);
+      });
+      const body = $("lis-body"); body.replaceChildren();
+      const list = sections[cur] || [];
+      if (!list.length) { body.append(el("p", "empty", "Nothing yet. Check back after the next edition.")); return; }
+      if (cur === "videos") {
+        const grid = el("div", "cards");
+        list.slice(0, 12).forEach((v) => {
+          const a = el("a", "card"); a.href = v.url; a.target = "_blank"; a.rel = "noopener";
+          const pic = el("span", "pic"); pic.style.aspectRatio = "16 / 9";
+          if (v.image) { const im = el("img"); im.src = v.image; im.alt = ""; im.loading = "lazy"; im.style.objectFit = "cover"; im.style.width = "100%"; im.style.height = "100%"; pic.append(im); }
+          else pic.innerHTML = smallBurst();
+          a.append(pic, el("span", "ct", v.title), el("span", "cm", [v.source, when(v.date)].filter(Boolean).join(", ")));
+          grid.append(a);
+        });
+        body.append(grid);
+      } else {
+        const ul = el("ul", "items");
+        list.slice(0, 8).forEach((x) => {
+          const li = renderItem(x, false);
+          if (x.audio) { const au = el("audio"); au.controls = true; au.preload = "none"; au.src = x.audio; li.append(au); }
+          ul.append(li);
+        });
+        body.append(ul);
+      }
+    }
+    draw();
+  }
+
+  // ---------- back issues ----------
+  let today_s = null;
+  async function setupBackIssues(currentSections) {
+    today_s = currentSections;
+    let files = [];
+    try { files = await (await fetch("archive/index.json", { cache: "no-cache" })).json(); } catch (e) {}
+    const pick = $("bi-pick");
+    if (!files.length) { pick.replaceChildren(new Option("no back issues yet", "")); pick.disabled = true; return; }
+    const first = Date.UTC(2026, 10, 19, 2);
+    files.forEach((f) => {
+      const m = /^(\d{4})-(\d{2})-(\d{2})-(\d{2})(\d{2})/.exec(f);
+      if (!m) return;
+      const d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]));
+      const no = Math.max(1, Math.floor((d - first) / 432e5) + 1);
+      pick.add(new Option(`no. ${no}: ${d.toLocaleString("en", { weekday: "short", month: "short", day: "numeric", year: "numeric", hour: "numeric" }).toLowerCase()}`, f));
+    });
+    pick.onchange = async () => {
+      if (!pick.value) return showSections(today_s, null);
+      try {
+        const issue = await (await fetch("archive/" + pick.value, { cache: "force-cache" })).json();
+        showSections(issue.sections, pick.options[pick.selectedIndex].text);
+        $("headlines").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      } catch (e) {}
+    };
+  }
+  function showSections(sec, label) {
+    news.load(sec); sch.load(sec); strikes.load(sec.strikes); local.load(sec.local);
+    const v = $("viewing");
+    if (label) {
+      v.replaceChildren(`You’re reading back issue ${label}.`);
+      const b = el("button", null, "back to today"); b.type = "button";
+      b.onclick = () => { $("bi-pick").value = ""; showSections(today_s, null); };
+      v.append(b); v.hidden = false;
+    } else v.hidden = true;
+  }
+
   // ---------- headline and research lists ----------
   function renderItem(item, scholarly) {
     const li = el("li"), t = el("div", "t");
     if (lastVisit && item.date && new Date(item.date).getTime() > lastVisit) t.append(el("span", "new", "new"));
     const a = el("a", null, item.title); a.href = item.url; a.target = "_blank"; a.rel = "noopener";
-    t.append(a); li.append(t);
+    t.append(a, saveButton(item)); li.append(t);
     const m = el("div", "m"); m.append(el("b", null, item.source));
     const w = when(item.date, scholarly); if (w) m.append(", " + w);
     li.append(m);
@@ -587,6 +935,8 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
   }
   const news = makeStream({ tabs: NEWS, tabsEl: $("news-tabs"), listEl: $("news-list"), moreEl: $("news-more"), filterEl: $("news-q"), tallyEl: $("news-tally"), scholarly: false, filterKind: "search" });
   const sch = makeStream({ tabs: SCH, tabsEl: $("sch-tabs"), listEl: $("sch-list"), moreEl: $("sch-more"), filterEl: $("sch-src"), tallyEl: $("sch-tally"), scholarly: true, filterKind: "source" });
+  const strikes = makeList($("str-list"), $("str-more"), $("str-tally"), "No strike stories in the past week.");
+  const local = makeList($("loc-list"), $("loc-more"), $("loc-tally"), "Local news fills in at the next edition.");
 
   async function load() {
     let feed = null;
@@ -595,15 +945,23 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       if (res.ok) feed = await res.json();
     } catch (e) {}
     const images = feed && feed.images;
+    renderSaved();
+    showSong();
     await showHero(images);
     await showArt(images);
+    showText(feed && feed.broken_texts);
     if (!feed) {
       $("status").textContent = "no edition yet: run the “Update site” workflow on GitHub";
-      news.load({}); sch.load({}); showMuseums([]); showArtNow([]);
+      showSections({}, null); showMuseums([]); showArtNow([]); showDash([]); showListen({}); setupBackIssues({});
       return;
     }
     const s = feed.sections || {};
-    news.load(s); sch.load(s); showMuseums(s.museums); showArtNow(s.artnow);
+    showSections(s, null); showMuseums(s.museums); showArtNow(s.artnow); showDash(feed.dashboard); showListen(s);
+    setupBackIssues(s);
+    const place = (feed.local_place || "local").toLowerCase();
+    $("loc-h").textContent = `local news: ${place}`;
+    $("nav-local").textContent = place;
+    $("str-lede").textContent = `${(s.strikes || []).length} stories about strikes, walkouts, pickets and lockouts in the past week.`;
     const gen = new Date(feed.generated_at);
     // Issue number: one per edition since the first, on November 19, 2026.
     $("issue").textContent = Math.max(1, Math.floor((gen - Date.UTC(2026, 10, 19, 2)) / 432e5) + 1);
