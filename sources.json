@@ -1,5 +1,5 @@
 {
-  "_how_to_edit": "Add or remove sources here. For RSS sections you can give a feed address or just a site's homepage; the updater finds the feed itself. 'journals' take ISSNs looked up on Crossref. 'scholarship' takes search terms sent to OpenAlex. A source that fails is skipped and listed at the bottom of the site.",
+  "_how_to_edit": "Add or remove sources here. For RSS sections you can give a feed address or just a site's homepage; the updater finds the feed itself. 'journals' take ISSNs looked up on Crossref. 'scholarship' takes search terms sent to OpenAlex. A source that fails is skipped and listed at the bottom of the site. YouTube channels can be given as their @handle page. 'local_place' names the local section; 'local_searches' and 'strike_searches' are Google News searches.",
   "contact_email": "you@example.com",
   "rss": {
     "economy": [
@@ -199,6 +199,98 @@
         "name": "Center for the Study of Political Graphics",
         "url": "https://www.politicalgraphics.org/"
       }
+    ],
+    "podcasts": [
+      {
+        "name": "The Dig",
+        "url": "https://www.thedigradio.com/",
+        "no_google": true
+      },
+      {
+        "name": "Revolutionary Left Radio",
+        "url": "https://revolutionaryleftradio.libsyn.com/rss",
+        "no_google": true
+      },
+      {
+        "name": "Upstream",
+        "url": "https://www.upstreampodcast.org/",
+        "no_google": true
+      },
+      {
+        "name": "Behind the News (Doug Henwood)",
+        "url": "https://www.leftbusinessobserver.com/",
+        "no_google": true
+      },
+      {
+        "name": "Economic Update (Richard Wolff)",
+        "url": "https://www.democracyatwork.info/",
+        "no_google": true
+      },
+      {
+        "name": "Trillbilly Workers Party",
+        "url": "https://www.trillbillyworkersparty.com/",
+        "no_google": true
+      },
+      {
+        "name": "Novara Media",
+        "url": "https://novaramedia.com/category/audio/feed/",
+        "no_google": true
+      },
+      {
+        "name": "Jacobin Radio",
+        "url": "https://jacobin.com/radio",
+        "no_google": true
+      }
+    ],
+    "videos": [
+      {
+        "name": "Second Thought",
+        "url": "https://www.youtube.com/@SecondThought",
+        "no_google": true
+      },
+      {
+        "name": "Andrewism",
+        "url": "https://www.youtube.com/@Andrewism",
+        "no_google": true
+      },
+      {
+        "name": "Democracy at Work",
+        "url": "https://www.youtube.com/@democracyatwork",
+        "no_google": true
+      },
+      {
+        "name": "Breakthrough News",
+        "url": "https://www.youtube.com/@BreakThroughNews",
+        "no_google": true
+      },
+      {
+        "name": "Novara Media",
+        "url": "https://www.youtube.com/@NovaraMedia",
+        "no_google": true
+      },
+      {
+        "name": "Jacobin",
+        "url": "https://www.youtube.com/@jacobinmag",
+        "no_google": true
+      }
+    ],
+    "local": [
+      {
+        "name": "The Colorado Sun",
+        "url": "https://coloradosun.com/feed/"
+      },
+      {
+        "name": "Colorado Newsline",
+        "url": "https://coloradonewsline.com/feed/"
+      },
+      {
+        "name": "Denverite",
+        "url": "https://denverite.com/feed/"
+      },
+      {
+        "name": "Westword",
+        "url": "https://www.westword.com/"
+      }
     ]
   },
   "journals": [
@@ -281,5 +373,19 @@
       "Lewis Hine"
     ],
     "show": 12
-  }
+  },
+  "local_place": "Colorado",
+  "local_searches": [
+    "Colorado union",
+    "Colorado workers strike",
+    "Denver city council",
+    "Colorado legislature labor"
+  ],
+  "strike_searches": [
+    "workers strike",
+    "walkout union",
+    "picket line",
+    "workers lockout",
+    "union strike vote"
+  ]
 }
