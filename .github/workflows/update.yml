@@ -34,6 +34,7 @@ jobs:
         env:
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
           CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
+          DPLA_API_KEY: ${{ secrets.DPLA_API_KEY }}
       - name: Save this edition as a back issue
         run: |
           git config user.name "github-actions[bot]"
