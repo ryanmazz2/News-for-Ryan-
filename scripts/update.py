@@ -39,7 +39,8 @@ SESSION = requests.Session()
 SESSION.headers["User-Agent"] = API_UA
 
 # How far back each section looks, and how many items it keeps.
-WINDOWS = {"economy": (4, 45), "politics": (3, 45), "left": (10, 70), "world": (14, 70), "artnow": (60, 30)}
+WINDOWS = {"economy": (4, 45), "politics": (3, 45), "left": (10, 70), "world": (14, 70), "artnow": (60, 30),
+           "podcasts": (45, 30), "videos": (30, 30), "local": (5, 50)}
 PER_JOURNAL = 5
 SCHOLARSHIP_MAX = 40
 
@@ -106,16 +107,12 @@ def try_feed(url, problems=None):
     return (feed if feed.entries else None), r
 
 
-def google_news(host, days=14):
-    """Last resort: the site's recent articles as indexed by Google News."""
-    domain = host.removeprefix("www.")
-    feed, _ = try_feed(
-        "https://news.google.com/rss/search?q="
-        + requests.utils.quote(f"site:{domain} when:{days}d")
-        + "&hl=en-US&gl=US&ceid=US:en"
-    )
-    if not feed:
-        return None
+def gnews_url(query):
+    return ("https://news.google.com/rss/search?q=" + requests.utils.quote(query)
+            + "&hl=en-US&gl=US&ceid=US:en")
+
+
+def tidy_google(feed):
     for e in feed.entries:
         # Google appends " - Publication Name" to each headline.
         src = (e.get("source") or {}).get("title")
@@ -126,14 +123,21 @@ def google_news(host, days=14):
     return feed
 
 
-def load_feed(url):
+def google_news(host, days=14):
+    """Last resort: the site's recent articles as indexed by Google News."""
+    domain = host.removeprefix("www.")
+    feed, _ = try_feed(gnews_url(f"site:{domain} when:{days}d"))
+    return tidy_google(feed) if feed else None
+
+
+def load_feed(url, allow_google=True):
     """Fetch a feed. If the address is a web page, or is wrong, look for
     the site's feed: first in the page's <link rel=alternate> tags, then
     at the usual feed paths."""
     problems = []
     feed, resp = try_feed(url, problems)
     if feed:
-        return feed
+        return tidy_google(feed) if "news.google.com" in url else feed
     from urllib.parse import urljoin, urlsplit
     parts = urlsplit(url)
     home = f"{parts.scheme}://{parts.netloc}/"
@@ -155,7 +159,7 @@ def load_feed(url):
         if feed:
             print(f"  found feed for {url}: {c}")
             return feed
-    feed = google_news(parts.netloc)
+    feed = google_news(parts.netloc) if allow_google else None
     if feed:
         print(f"  using Google News for {url} (site said: {', '.join(problems) or 'no feed'})")
         return feed
@@ -185,7 +189,7 @@ def entry_image(e):
 
 def fetch_rss(section, src):
     try:
-        feed = load_feed(src["url"])
+        feed = load_feed(src["url"], allow_google=not src.get("no_google"))
     except Exception as e:  # noqa: BLE001
         failed.append({"source": src["name"], "section": section, "error": str(e)[:120]})
         return []
@@ -197,16 +201,21 @@ def fetch_rss(section, src):
         title = clean(e.get("title"), 220)
         if not (link and title):
             continue
+        gsrc = (e.get("source") or {}).get("title") if feed.get("via_google") and src.get("search") else None
         item = {
             "title": title,
             "url": link,
-            "source": src["name"],
+            "source": gsrc or src["name"],
             "date": iso(dt),
             "summary": clean(e.get("summary") or e.get("description")),
         }
         img = entry_image(e)
         if img:
             item["image"] = img
+        for enc in e.get("enclosures") or []:
+            if str(enc.get("type", "")).startswith("audio") and enc.get("href"):
+                item["audio"] = enc["href"]
+                break
         items.append(item)
     return items
 
@@ -328,26 +337,30 @@ def fetch_openalex(terms, since):
 # ---------- Pictures from Wikipedia (heroes and artwork of the day) ----------
 
 def wiki_image(title):
-    """Lead image of a Wikipedia article, but only if it lives on Wikimedia
-    Commons (freely licensed). Fair-use images on English Wikipedia are skipped."""
-    url = "https://en.wikipedia.org/api/rest_v1/page/summary/" + requests.utils.quote(title.replace(" ", "_"), safe="")
+    """Lead image of a Wikipedia article, using the MediaWiki API's
+    free-licence filter, so only Commons images (no fair-use files) come back.
+    Asks for a 640px rendering, which also turns SVG drawings into PNGs."""
     try:
-        d = get_patiently(url, tries=3).json()
+        d = get_patiently(
+            "https://en.wikipedia.org/w/api.php", tries=3,
+            action="query", format="json", formatversion=2, redirects=1, titles=title,
+            prop="pageimages|info", piprop="thumbnail|name", pithumbsize=640,
+            pilicense="free", inprop="url",
+        ).json()
     except Exception:  # noqa: BLE001
         return None
-    orig = d.get("originalimage") or {}
-    thumb = (d.get("thumbnail") or {}).get("source", "")
-    src = orig.get("source", "")
-    if "/wikipedia/commons/" not in src:
+    pages = ((d or {}).get("query") or {}).get("pages") or []
+    if not pages or pages[0].get("missing"):
         return None
-    # Ask for a 640px copy rather than a huge original.
-    if orig.get("width", 0) > 900 and re.search(r"/\d+px-", thumb):
-        src = re.sub(r"/\d+px-", "/640px-", thumb)
-    filename = requests.utils.unquote(orig["source"].rsplit("/", 1)[-1])
+    page = pages[0]
+    thumb = (page.get("thumbnail") or {}).get("source")
+    name = page.get("pageimage")
+    if not thumb or "/wikipedia/commons/" not in thumb:
+        return None
     return {
-        "src": src,
-        "credit": "https://commons.wikimedia.org/wiki/File:" + requests.utils.quote(filename),
-        "page": (d.get("content_urls") or {}).get("desktop", {}).get("page"),
+        "src": thumb,
+        "credit": "https://commons.wikimedia.org/wiki/File:" + requests.utils.quote(name) if name else None,
+        "page": page.get("fullurl"),
     }
 
 
@@ -453,9 +466,134 @@ def gather_museums():
     return picked
 
 
+# ---------- Strike tracker ----------
+
+STRIKE_WORDS = re.compile(r"\b(strik(e|es|ers|ing)|walk ?outs?|walked out|picket(s|ing|ers)?|lockouts?|locked out|work stoppages?|sick-?outs?)\b", re.I)
+NOT_LABOR = re.compile(r"air ?strikes?|drone strikes?|missile strikes?|strikes? (down|back|deal|a balance|a chord|out)|struck down|lucky strike|strike zone|first strike|preemptive|military strike|striker\b.*\b(goal|club|signs?)|strikes? again", re.I)
+
+
+def build_strikes(sections):
+    searches = [{"name": "Google News", "url": gnews_url(q + " when:7d"), "search": True, "no_google": True}
+                for q in CONFIG.get("strike_searches", [])]
+    pool = [i for src in searches for i in fetch_rss("strikes", src)]
+    pool += [i for k in ("economy", "politics", "left", "world", "local") for i in sections.get(k, [])]
+    cutoff = NOW - timedelta(days=7)
+    seen, out = set(), []
+    for it in sorted(pool, key=lambda i: i["date"] or "", reverse=True):
+        t = it["title"]
+        if not STRIKE_WORDS.search(t) or NOT_LABOR.search(t):
+            continue
+        if it["date"] and datetime.fromisoformat(it["date"].replace("Z", "+00:00")) < cutoff:
+            continue
+        key = re.sub(r"\W+", "", t.lower())[:70]
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append({k: it[k] for k in ("title", "url", "source", "date") if k in it})
+    return out[:40]
+
+
+def build_local():
+    srcs = list(CONFIG["rss"].get("local", []))
+    srcs += [{"name": "Google News", "url": gnews_url(q + " when:5d"), "search": True, "no_google": True}
+             for q in CONFIG.get("local_searches", [])]
+    return build_rss_section("local", srcs)
+
+
+# ---------- Economy in numbers (FRED, no key needed) ----------
+
+DASHBOARD = [
+    ("UNRATE", "Unemployment rate", "%", "level"),
+    ("CPIAUCSL", "Inflation over the past year", "%", "yoy"),
+    ("LES1252881600Q", "Median weekly pay, adjusted for inflation", "1982–84 dollars", "level"),
+    ("PRS85006173", "Workers’ share of business income", "index, 2017 = 100", "level"),
+    ("WFRBST01134", "Share of wealth held by the richest 1%", "%", "level"),
+    ("WFRBSB50215", "Share of wealth held by the bottom half", "%", "level"),
+]
+
+
+def fred_series(sid, mode):
+    start = (NOW - timedelta(days=365 * 12)).date().isoformat()
+    text = get_patiently("https://fred.stlouisfed.org/graph/fredgraph.csv", tries=3, id=sid, cosd=start).text
+    rows = []
+    for line in text.strip().splitlines()[1:]:
+        parts = line.split(",")
+        if len(parts) >= 2 and parts[1] not in (".", ""):
+            try:
+                rows.append((parts[0], float(parts[1])))
+            except ValueError:
+                pass
+    if mode == "yoy":
+        rows = [(d, round((v / rows[i - 12][1] - 1) * 100, 2)) for i, (d, v) in enumerate(rows) if i >= 12]
+    return rows[-120:]
+
+
+def build_dashboard():
+    out = []
+    for sid, label, unit, mode in DASHBOARD:
+        try:
+            pts = fred_series(sid, mode)
+        except Exception as e:  # noqa: BLE001
+            failed.append({"source": f"FRED {sid}", "section": "economy in numbers", "error": str(e).split(" for url")[0][:100]})
+            continue
+        if len(pts) < 2:
+            continue
+        # change over roughly one year, whatever the series frequency
+        per_year = 12 if len(pts) > 60 else 4
+        back = pts[-1 - per_year] if len(pts) > per_year else pts[0]
+        out.append({"id": sid, "label": label, "unit": unit, "latest": pts[-1][1], "date": pts[-1][0],
+                    "change": round(pts[-1][1] - back[1], 2), "since": back[0], "points": pts,
+                    "url": f"https://fred.stlouisfed.org/series/{sid}"})
+        time.sleep(0.3)
+    print(f"dashboard: {len(out)} series")
+    return out
+
+
+# ---------- Text of the week: check the links still work ----------
+
+def check_texts():
+    path = ROOT / "site" / "data" / "texts.json"
+    if not path.exists():
+        return []
+    broken = []
+    for t in json.loads(path.read_text()):
+        try:
+            r = SESSION.get(t["url"], timeout=20, headers=FEED_HEADERS, stream=True)
+            r.close()
+            if r.status_code >= 400:
+                broken.append(t["title"])
+        except Exception:  # noqa: BLE001
+            broken.append(t["title"])
+    return broken
+
+
+# ---------- Back issues ----------
+
+def save_back_issue(payload):
+    """Keep a slim copy of each edition (headlines only) in site/archive,
+    which the workflow commits so the history survives between runs."""
+    arch = ROOT / "site" / "archive"
+    arch.mkdir(parents=True, exist_ok=True)
+    keep = ("economy", "politics", "left", "world", "local", "strikes", "journals", "scholarship")
+    slim = {"generated_at": payload["generated_at"], "sections": {
+        k: [{f: it[f] for f in ("title", "url", "source", "date", "authors") if f in it} for it in payload["sections"].get(k, [])[:25]]
+        for k in keep}}
+    name = NOW.strftime("%Y-%m-%d-%H%M") + ".json"
+    (arch / name).write_text(json.dumps(slim, ensure_ascii=False, separators=(",", ":")))
+    # keep a year of editions
+    files = sorted(f for f in arch.glob("20*.json"))
+    for old in files[:-730]:
+        old.unlink()
+    files = sorted(f.name for f in arch.glob("20*.json"))
+    (arch / "index.json").write_text(json.dumps(list(reversed(files))))
+    print(f"back issues: {len(files)} saved")
+
+
 def main():
     sections = {}
     for name, sources in CONFIG["rss"].items():
+        if name == "local":
+            continue
         sections[name] = build_rss_section(name, sources)
         print(f"{name}: {len(sections[name])} items")
 
@@ -482,10 +620,19 @@ def main():
     sections["scholarship"] = scholarship[:SCHOLARSHIP_MAX]
     print(f"scholarship: {len(sections['scholarship'])} items")
 
+    sections["local"] = build_local()
+    print(f"local: {len(sections['local'])} items")
+    sections["strikes"] = build_strikes(sections)
+    print(f"strikes: {len(sections['strikes'])} items")
     sections["museums"] = gather_museums()
     images = gather_wiki_images()
 
-    payload = {"generated_at": iso(NOW), "sections": sections, "images": images, "failed": failed}
+    dashboard = build_dashboard()
+    broken_texts = check_texts()
+
+    payload = {"generated_at": iso(NOW), "sections": sections, "images": images,
+               "dashboard": dashboard, "broken_texts": broken_texts,
+               "local_place": CONFIG.get("local_place", "Local"), "failed": failed}
 
     # If everything failed (network outage), keep the last good file.
     if not any(v for k, v in sections.items() if k != "museums") and OUT.exists():
@@ -493,6 +640,7 @@ def main():
         return
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=1))
+    save_back_issue(payload)
     if failed:
         print(f"{len(failed)} sources failed:", *[f"  {f['source']}: {f['error']}" for f in failed], sep="\n")
 
