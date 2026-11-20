@@ -1,15 +1,16 @@
 {
-  "_how_to_edit": "Add or remove sources here. For RSS sections you can give a feed address or just a site's homepage; the updater finds the feed itself. 'journals' take ISSNs looked up on Crossref. 'scholarship' takes search terms sent to OpenAlex. A source that fails is skipped and listed at the bottom of the site. YouTube channels can be given as their @handle page. 'local_place' names the local section; 'local_searches' and 'strike_searches' are Google News searches.",
+  "_how_to_edit": "Add or remove sources here. For RSS sections you can give a feed address or just a site's homepage; the updater finds the feed itself. Sources under 'independent' are sorted article by article into Economy or Politics depending on the subject. 'journals' take ISSNs looked up on Crossref. 'scholarship' takes search terms sent to OpenAlex. A source that fails is skipped and listed at the bottom of the site. YouTube channels can be given as their @handle page. 'local_place' names the local section; 'local_searches' and 'strike_searches' are Google News searches.",
   "contact_email": "you@example.com",
   "rss": {
     "economy": [
       {
-        "name": "The Guardian",
-        "url": "https://www.theguardian.com/business/economics/rss"
+        "name": "AP News",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com+(economy+OR+inflation+OR+jobs+OR+wages+OR+tariffs+OR+markets+OR+\"Federal+Reserve\"+OR+union+OR+strike)+when:2d&hl=en-US&gl=US&ceid=US:en",
+        "no_google": true
       },
       {
-        "name": "BBC News",
-        "url": "https://feeds.bbci.co.uk/news/business/rss.xml"
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/business/economics/rss"
       },
       {
         "name": "NPR",
@@ -22,16 +23,17 @@
     ],
     "politics": [
       {
+        "name": "AP News",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com+(politics+OR+Congress+OR+\"White+House\"+OR+election+OR+Supreme+Court+OR+governor)+when:2d&hl=en-US&gl=US&ceid=US:en",
+        "no_google": true
+      },
+      {
         "name": "The Guardian",
         "url": "https://www.theguardian.com/politics/rss"
       },
       {
         "name": "The Guardian (US)",
         "url": "https://www.theguardian.com/us-news/us-politics/rss"
-      },
-      {
-        "name": "BBC News",
-        "url": "https://feeds.bbci.co.uk/news/politics/rss.xml"
       },
       {
         "name": "NPR",
@@ -42,7 +44,7 @@
         "url": "https://www.aljazeera.com/xml/rss/all.xml"
       }
     ],
-    "left": [
+    "independent": [
       {
         "name": "Jacobin",
         "url": "https://jacobin.com/feed/"
@@ -114,9 +116,7 @@
       {
         "name": "Morning Star",
         "url": "https://morningstaronline.co.uk/"
-      }
-    ],
-    "world": [
+      },
       {
         "name": "Le Monde diplomatique",
         "url": "https://mondediplo.com/backend"
