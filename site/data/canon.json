@@ -1,0 +1,2643 @@
+[
+ {
+  "shelf": "theory",
+  "title": "Capital, Volume I",
+  "author": "Karl Marx",
+  "year": "1867",
+  "why": "The foundation: commodities, value, surplus value, and the working day.",
+  "topics": [
+   "value",
+   "political-economy",
+   "labor"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Grundrisse",
+  "author": "Karl Marx",
+  "year": "1857–58",
+  "why": "Marx’s notebooks for Capital, freer and more speculative, including the “Fragment on Machines.”",
+  "topics": [
+   "value",
+   "political-economy"
+  ],
+  "after": [
+   "Capital Volume I"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The German Ideology",
+  "author": "Karl Marx and Friedrich Engels",
+  "year": "1846",
+  "why": "The first full statement of historical materialism.",
+  "topics": [
+   "history",
+   "philosophy"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "A Contribution to the Critique of Political Economy",
+  "author": "Karl Marx",
+  "year": "1859",
+  "why": "Its preface is the most famous short summary of historical materialism.",
+  "topics": [
+   "value",
+   "history"
+  ],
+  "after": [
+   "Grundrisse",
+   "The German Ideology"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Theories of Surplus Value",
+  "author": "Karl Marx",
+  "year": "1862–63",
+  "why": "Marx’s history of economic thought, sometimes called the fourth volume of Capital.",
+  "topics": [
+   "value",
+   "political-economy"
+  ],
+  "after": [
+   "Capital Volume III",
+   "Capital Volume I"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Results of the Immediate Process of Production",
+  "author": "Karl Marx",
+  "year": "1863–64",
+  "why": "A lost draft chapter of Capital on the formal and real subsumption of labor.",
+  "topics": [
+   "value",
+   "labor"
+  ],
+  "after": [
+   "Capital Volume I",
+   "Time, Labor, and Social Domination"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Socialism: Utopian and Scientific",
+  "author": "Friedrich Engels",
+  "year": "1880",
+  "why": "The short introduction most socialists of the 1880s and 1890s actually read.",
+  "topics": [
+   "socialism"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "The Origin of the Family, Private Property and the State",
+  "author": "Friedrich Engels",
+  "year": "1884",
+  "why": "Engels on how class, the state and women’s subordination arose together.",
+  "topics": [
+   "gender",
+   "state",
+   "history"
+  ],
+  "after": [
+   "Socialism: Utopian and Scientific",
+   "Anti-Dühring"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Condition of the Working Class in England",
+  "author": "Friedrich Engels",
+  "year": "1845",
+  "why": "Engels at 24 on the slums and factories of Manchester.",
+  "topics": [
+   "labor",
+   "urban",
+   "history"
+  ],
+  "after": [
+   "The Making of the English Working Class",
+   "The Urban Experience"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Finance Capital",
+  "author": "Rudolf Hilferding",
+  "year": "1910",
+  "why": "How banks and industry fuse into finance capital; the book Lenin built on.",
+  "topics": [
+   "finance",
+   "imperialism"
+  ],
+  "after": [
+   "Imperialism: The Highest Stage of Capitalism",
+   "Capital Volume III"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Accumulation of Capital",
+  "author": "Rosa Luxemburg",
+  "year": "1913",
+  "why": "Capitalism needs a non-capitalist outside to keep accumulating.",
+  "topics": [
+   "imperialism",
+   "political-economy"
+  ],
+  "after": [
+   "Reform or Revolution",
+   "Capital Volume II"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Mass Strike",
+  "author": "Rosa Luxemburg",
+  "year": "1906",
+  "why": "Mass strikes grow from struggle; they can’t be called on command.",
+  "topics": [
+   "labor",
+   "revolution"
+  ],
+  "after": [
+   "Reform or Revolution",
+   "What Is to Be Done?"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "History and Class Consciousness",
+  "author": "Georg Lukács",
+  "year": "1923",
+  "why": "Reification and the standpoint of the proletariat; the founding text of Western Marxism.",
+  "topics": [
+   "philosophy",
+   "culture"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Essays on Marx’s Theory of Value",
+  "author": "Isaak Illich Rubin",
+  "year": "1928",
+  "why": "The classic reading of value as a social form, rediscovered in the 1970s.",
+  "topics": [
+   "value"
+  ],
+  "after": [
+   "An Introduction to the Three Volumes of Karl Marx's Capital",
+   "Capital Volume I",
+   "Time, Labor, and Social Domination"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Prison Notebooks",
+  "author": "Antonio Gramsci",
+  "year": "1929–35",
+  "why": "Hegemony, the war of position, and the organic intellectual, written in a fascist prison.",
+  "topics": [
+   "state",
+   "culture",
+   "hegemony"
+  ],
+  "after": [
+   "History and Class Consciousness",
+   "For Marx",
+   "The State in Capitalist Society"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Black Jacobins",
+  "author": "C. L. R. James",
+  "year": "1938",
+  "why": "The Haitian Revolution as a revolution of modern workers.",
+  "topics": [
+   "race",
+   "revolution",
+   "history"
+  ],
+  "after": [
+   "Black Reconstruction in America"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Black Reconstruction in America",
+  "author": "W. E. B. Du Bois",
+  "year": "1935",
+  "why": "The end of slavery as a general strike, and Reconstruction as a lost workers’ democracy.",
+  "topics": [
+   "race",
+   "history",
+   "labor"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Capitalism and Slavery",
+  "author": "Eric Williams",
+  "year": "1944",
+  "why": "How slavery’s profits fed British industry, and why abolition followed economics.",
+  "topics": [
+   "race",
+   "history",
+   "political-economy"
+  ],
+  "after": [
+   "Capitalism: A Global History",
+   "Black Reconstruction in America"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Great Transformation",
+  "author": "Karl Polanyi",
+  "year": "1944",
+  "why": "The self-regulating market as a utopia that society always resists.",
+  "topics": [
+   "political-economy",
+   "history"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Behemoth",
+  "author": "Franz Neumann",
+  "year": "1942",
+  "why": "The Frankfurt School’s anatomy of the Nazi state and its economy.",
+  "topics": [
+   "fascism",
+   "state"
+  ],
+  "after": [
+   "Fascism: What It Is and How to Fight It",
+   "Blackshirts and Reds"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Dialectic of Enlightenment",
+  "author": "Max Horkheimer and Theodor Adorno",
+  "year": "1944",
+  "why": "Reason turned into domination, and the culture industry.",
+  "topics": [
+   "philosophy",
+   "culture"
+  ],
+  "after": [
+   "History and Class Consciousness",
+   "The Society of the Spectacle"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Minima Moralia",
+  "author": "Theodor Adorno",
+  "year": "1951",
+  "why": "Aphorisms on damaged life: “wrong life cannot be lived rightly.”",
+  "topics": [
+   "philosophy",
+   "culture"
+  ],
+  "after": [
+   "Dialectic of Enlightenment",
+   "Capitalist Realism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Illuminations",
+  "author": "Walter Benjamin",
+  "year": "1968",
+  "why": "Essays including the theses on history and on art in the age of mechanical reproduction.",
+  "topics": [
+   "culture",
+   "philosophy"
+  ],
+  "after": [
+   "The Society of the Spectacle"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Theory of Capitalist Development",
+  "author": "Paul Sweezy",
+  "year": "1942",
+  "why": "The clearest mid-century textbook of Marxian economics.",
+  "topics": [
+   "political-economy"
+  ],
+  "after": [
+   "Capital Volume I",
+   "The Making of Economic Society"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Political Economy of Growth",
+  "author": "Paul Baran",
+  "year": "1957",
+  "why": "Why the global South’s surplus flowed out instead of building development.",
+  "topics": [
+   "imperialism",
+   "development"
+  ],
+  "after": [
+   "Imperialism: The Highest Stage of Capitalism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Monopoly Capital",
+  "author": "Paul Baran and Paul Sweezy",
+  "year": "1966",
+  "why": "Giant corporations, surplus absorption, and stagnation.",
+  "topics": [
+   "political-economy"
+  ],
+  "after": [
+   "Late Capitalism",
+   "Monopolized"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Labor and Monopoly Capital",
+  "author": "Harry Braverman",
+  "year": "1974",
+  "why": "How management deskills work; launched the labor process debate.",
+  "topics": [
+   "labor"
+  ],
+  "after": [
+   "Capital Volume I",
+   "Mute Compulsion"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Late Capitalism",
+  "author": "Ernest Mandel",
+  "year": "1972",
+  "why": "Long waves and the postwar boom from a classical Marxist economist.",
+  "topics": [
+   "political-economy",
+   "crisis"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Unequal Development",
+  "author": "Samir Amin",
+  "year": "1973",
+  "why": "How the world economy reproduces center and periphery.",
+  "topics": [
+   "imperialism",
+   "development"
+  ],
+  "after": [
+   "How Europe Underdeveloped Africa",
+   "Imperialism: The Highest Stage of Capitalism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "How Europe Underdeveloped Africa",
+  "author": "Walter Rodney",
+  "year": "1972",
+  "why": "Europe’s development and Africa’s underdevelopment as one process.",
+  "topics": [
+   "colonialism",
+   "imperialism",
+   "history"
+  ],
+  "after": [
+   "The Wretched of the Earth"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Selected Essays on the Dynamics of the Capitalist Economy",
+  "author": "Michał Kalecki",
+  "year": "1971",
+  "why": "Effective demand, profits and the politics of full employment, often before Keynes.",
+  "topics": [
+   "political-economy"
+  ],
+  "after": [
+   "The Capital Order",
+   "The Great Transformation"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Stabilizing an Unstable Economy",
+  "author": "Hyman Minsky",
+  "year": "1986",
+  "why": "Stability breeds instability: the theory of financial fragility.",
+  "topics": [
+   "finance",
+   "crisis"
+  ],
+  "after": [
+   "A Short History of Financial Euphoria",
+   "Debt"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Long Twentieth Century",
+  "author": "Giovanni Arrighi",
+  "year": "1994",
+  "why": "Cycles of accumulation from Genoa to the United States, and the turn to finance.",
+  "topics": [
+   "finance",
+   "world-system",
+   "history"
+  ],
+  "after": [
+   "The Limits to Capital",
+   "Debt",
+   "Globalists"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Economics of Global Turbulence",
+  "author": "Robert Brenner",
+  "year": "2006",
+  "why": "Overcapacity and the long downturn since 1973.",
+  "topics": [
+   "crisis",
+   "political-economy"
+  ],
+  "after": [
+   "A Brief History of Neoliberalism",
+   "The Limits to Capital"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Making of Global Capitalism",
+  "author": "Leo Panitch and Sam Gindin",
+  "year": "2012",
+  "why": "How the American state built and manages global capitalism.",
+  "topics": [
+   "state",
+   "finance",
+   "imperialism"
+  ],
+  "after": [
+   "Globalists",
+   "States and the Reemergence of Global Finance",
+   "How to Hide an Empire"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Imperialism in the Twenty-First Century",
+  "author": "John Smith",
+  "year": "2016",
+  "why": "Global value chains and super-exploitation in the South.",
+  "topics": [
+   "imperialism",
+   "labor"
+  ],
+  "after": [
+   "Imperialism: The Highest Stage of Capitalism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Capital and Ideology",
+  "author": "Thomas Piketty",
+  "year": "2019",
+  "why": "A world history of the ideologies that justify inequality.",
+  "topics": [
+   "inequality",
+   "history"
+  ],
+  "after": [
+   "Time for Socialism",
+   "The Economics of Inequality"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Beyond Capital",
+  "author": "Michael Lebowitz",
+  "year": "1992",
+  "why": "The missing book on wage labor and the political economy of the working class.",
+  "topics": [
+   "labor",
+   "value"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "The Limits to Capital",
+  "author": "David Harvey",
+  "year": "1982",
+  "why": "Harvey’s most rigorous book: crisis, finance and the spatial fix.",
+  "topics": [
+   "crisis",
+   "urban",
+   "value"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Time, Labor, and Social Domination",
+  "author": "Moishe Postone",
+  "year": "1993",
+  "why": "Capitalism as abstract domination by time and value, not just class.",
+  "topics": [
+   "value",
+   "philosophy"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Mute Compulsion",
+  "author": "Søren Mau",
+  "year": "2023",
+  "why": "How capital rules through economic power rather than force or ideology.",
+  "topics": [
+   "value",
+   "philosophy"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "For Marx",
+  "author": "Louis Althusser",
+  "year": "1965",
+  "why": "Overdetermination and the epistemological break.",
+  "topics": [
+   "philosophy"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Reading Capital",
+  "author": "Louis Althusser, Étienne Balibar et al.",
+  "year": "1965",
+  "why": "The seminar that remade how Capital was read.",
+  "topics": [
+   "philosophy",
+   "value"
+  ],
+  "after": [
+   "For Marx",
+   "Capital Volume I"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Lenin and Philosophy and Other Essays",
+  "author": "Louis Althusser",
+  "year": "1971",
+  "why": "Includes “Ideology and Ideological State Apparatuses.”",
+  "topics": [
+   "state",
+   "philosophy"
+  ],
+  "after": [
+   "For Marx"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Poverty of Theory",
+  "author": "E. P. Thompson",
+  "year": "1978",
+  "why": "Thompson’s furious defense of history and experience against Althusser.",
+  "topics": [
+   "history",
+   "philosophy"
+  ],
+  "after": [
+   "For Marx",
+   "The Making of the English Working Class"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Considerations on Western Marxism",
+  "author": "Perry Anderson",
+  "year": "1976",
+  "why": "A short, sharp history of Marxism’s retreat into philosophy.",
+  "topics": [
+   "philosophy",
+   "history"
+  ],
+  "after": [
+   "History and Class Consciousness",
+   "For Marx"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The State in Capitalist Society",
+  "author": "Ralph Miliband",
+  "year": "1969",
+  "why": "Who runs the capitalist state, and in whose interest.",
+  "topics": [
+   "state"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "State, Power, Socialism",
+  "author": "Nicos Poulantzas",
+  "year": "1978",
+  "why": "The state as a condensation of class relations.",
+  "topics": [
+   "state"
+  ],
+  "after": [
+   "The State in Capitalist Society"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Fascism and Dictatorship",
+  "author": "Nicos Poulantzas",
+  "year": "1970",
+  "why": "A structural theory of fascism.",
+  "topics": [
+   "fascism",
+   "state"
+  ],
+  "after": [
+   "Fascism: What It Is and How to Fight It",
+   "The State in Capitalist Society"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Marxism and Literature",
+  "author": "Raymond Williams",
+  "year": "1977",
+  "why": "Culture as material production; the “structure of feeling.”",
+  "topics": [
+   "culture"
+  ],
+  "after": [
+   "History and Class Consciousness"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "One-Dimensional Man",
+  "author": "Herbert Marcuse",
+  "year": "1964",
+  "why": "How advanced society absorbs dissent.",
+  "topics": [
+   "culture",
+   "philosophy"
+  ],
+  "after": [
+   "The Society of the Spectacle",
+   "Capitalist Realism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Postmodernism, or, The Cultural Logic of Late Capitalism",
+  "author": "Fredric Jameson",
+  "year": "1991",
+  "why": "Postmodern culture read through Mandel’s late capitalism.",
+  "topics": [
+   "culture"
+  ],
+  "after": [
+   "Late Capitalism",
+   "Capitalist Realism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Archaeologies of the Future",
+  "author": "Fredric Jameson",
+  "year": "2005",
+  "why": "Utopia and science fiction, from More to Le Guin.",
+  "topics": [
+   "utopia",
+   "culture",
+   "sci-fi"
+  ],
+  "after": [
+   "The Dispossessed",
+   "The Left Hand of Darkness",
+   "Utopia"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Production of Space",
+  "author": "Henri Lefebvre",
+  "year": "1974",
+  "why": "Space is produced, and every society produces its own.",
+  "topics": [
+   "urban",
+   "philosophy"
+  ],
+  "after": [
+   "Critique of Everyday Life",
+   "The Urban Experience"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Policing the Crisis",
+  "author": "Stuart Hall et al.",
+  "year": "1978",
+  "why": "A moral panic over “mugging” and the drift to an authoritarian state.",
+  "topics": [
+   "race",
+   "state",
+   "culture"
+  ],
+  "after": [
+   "The Reactionary Mind"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Hard Road to Renewal",
+  "author": "Stuart Hall",
+  "year": "1988",
+  "why": "Hall’s essays on Thatcherism as authoritarian populism.",
+  "topics": [
+   "neoliberalism",
+   "culture"
+  ],
+  "after": [
+   "The Rise and Fall of the Neoliberal Order",
+   "A Brief History of Neoliberalism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Undoing the Demos",
+  "author": "Wendy Brown",
+  "year": "2015",
+  "why": "Neoliberalism as a political rationality that hollows out democracy.",
+  "topics": [
+   "neoliberalism"
+  ],
+  "after": [
+   "Globalists",
+   "A Brief History of Neoliberalism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Inventing the Future",
+  "author": "Nick Srnicek and Alex Williams",
+  "year": "2015",
+  "why": "A left case for automation, a shorter week and universal basic income.",
+  "topics": [
+   "socialism",
+   "technology"
+  ],
+  "after": [
+   "Capitalist Realism",
+   "Technofeudalism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Platform Capitalism",
+  "author": "Nick Srnicek",
+  "year": "2016",
+  "why": "How data platforms became a new business model.",
+  "topics": [
+   "technology",
+   "political-economy"
+  ],
+  "after": [
+   "Technofeudalism",
+   "Capital's Grave"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Envisioning Real Utopias",
+  "author": "Erik Olin Wright",
+  "year": "2010",
+  "why": "A sociologist’s map of realistic alternatives to capitalism.",
+  "topics": [
+   "socialism"
+  ],
+  "after": [
+   "The Blueprint",
+   "Democracy at Work"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Black Marxism",
+  "author": "Cedric Robinson",
+  "year": "1983",
+  "why": "The Black radical tradition and racial capitalism.",
+  "topics": [
+   "race",
+   "history"
+  ],
+  "after": [
+   "Black Reconstruction in America",
+   "The Wretched of the Earth"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Wages of Whiteness",
+  "author": "David Roediger",
+  "year": "1991",
+  "why": "How white workers came to see themselves as white.",
+  "topics": [
+   "race",
+   "labor"
+  ],
+  "after": [
+   "Black Reconstruction in America"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Golden Gulag",
+  "author": "Ruth Wilson Gilmore",
+  "year": "2007",
+  "why": "California’s prison boom as a fix for surplus land, labor and capital.",
+  "topics": [
+   "race",
+   "state"
+  ],
+  "after": [
+   "Freedom Is a Constant Struggle"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Women, Race & Class",
+  "author": "Angela Y. Davis",
+  "year": "1981",
+  "why": "Feminism, slavery and labor bound together.",
+  "topics": [
+   "gender",
+   "race"
+  ],
+  "after": [
+   "Freedom Is a Constant Struggle"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Caliban and the Witch",
+  "author": "Silvia Federici",
+  "year": "2004",
+  "why": "The witch hunts as part of primitive accumulation.",
+  "topics": [
+   "gender",
+   "history"
+  ],
+  "after": [
+   "The Origin of Capitalism",
+   "The End of Capitalism (as We Knew It)"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Marxism and the Oppression of Women",
+  "author": "Lise Vogel",
+  "year": "1983",
+  "why": "The founding text of social reproduction theory.",
+  "topics": [
+   "gender",
+   "value"
+  ],
+  "after": [
+   "Cannibal Capitalism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Patriarchy and Accumulation on a World Scale",
+  "author": "Maria Mies",
+  "year": "1986",
+  "why": "Housewifization and colonization as twin processes.",
+  "topics": [
+   "gender",
+   "colonialism"
+  ],
+  "after": [
+   "Cannibal Capitalism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Social Reproduction Theory",
+  "author": "Tithi Bhattacharya, ed.",
+  "year": "2017",
+  "why": "Who produces the workers? The new wave of the theory.",
+  "topics": [
+   "gender",
+   "labor"
+  ],
+  "after": [
+   "Cannibal Capitalism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Black Skin, White Masks",
+  "author": "Frantz Fanon",
+  "year": "1952",
+  "why": "The psychology of colonial racism.",
+  "topics": [
+   "colonialism",
+   "race"
+  ],
+  "after": [
+   "The Wretched of the Earth"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Discourse on Colonialism",
+  "author": "Aimé Césaire",
+  "year": "1950",
+  "why": "Colonization degrades the colonizer, and fascism is colonialism come home.",
+  "topics": [
+   "colonialism"
+  ],
+  "after": [
+   "The Wretched of the Earth"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Orientalism",
+  "author": "Edward Said",
+  "year": "1978",
+  "why": "How the West imagined the East in order to rule it.",
+  "topics": [
+   "colonialism",
+   "culture"
+  ],
+  "after": [
+   "The Wretched of the Earth"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Darker Nations",
+  "author": "Vijay Prashad",
+  "year": "2007",
+  "why": "A people’s history of the Third World project.",
+  "topics": [
+   "imperialism",
+   "history"
+  ],
+  "after": [
+   "The Jakarta Method",
+   "All the Shah's Men"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Late Victorian Holocausts",
+  "author": "Mike Davis",
+  "year": "2001",
+  "why": "Famines, El Niño and empire in the late nineteenth century.",
+  "topics": [
+   "colonialism",
+   "ecology",
+   "history"
+  ],
+  "after": [
+   "How Europe Underdeveloped Africa"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Making of the English Working Class",
+  "author": "E. P. Thompson",
+  "year": "1963",
+  "why": "Class as something that happens.",
+  "topics": [
+   "history",
+   "labor"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Whigs and Hunters",
+  "author": "E. P. Thompson",
+  "year": "1975",
+  "why": "The Black Act and the uses of law against commoners.",
+  "topics": [
+   "history",
+   "state"
+  ],
+  "after": [
+   "The Making of the English Working Class"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Many-Headed Hydra",
+  "author": "Peter Linebaugh and Marcus Rediker",
+  "year": "2000",
+  "why": "Sailors, slaves and commoners of the revolutionary Atlantic.",
+  "topics": [
+   "history",
+   "labor",
+   "race"
+  ],
+  "after": [
+   "The Making of the English Working Class"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Age of Revolution: 1789–1848",
+  "author": "Eric Hobsbawm",
+  "year": "1962",
+  "why": "The first volume of Hobsbawm’s great history of the long nineteenth century.",
+  "topics": [
+   "history"
+  ],
+  "after": [
+   "A People's History of the World"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Lineages of the Absolutist State",
+  "author": "Perry Anderson",
+  "year": "1974",
+  "why": "How absolutism grew from feudalism East and West.",
+  "topics": [
+   "history",
+   "state"
+  ],
+  "after": [
+   "The Origin of Capitalism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Brenner Debate",
+  "author": "T. H. Aston and C. H. E. Philpin, eds.",
+  "year": "1985",
+  "why": "Historians argue over how capitalism began in the English countryside.",
+  "topics": [
+   "history",
+   "transition"
+  ],
+  "after": [
+   "The Origin of Capitalism",
+   "The American Road to Capitalism"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Origin of Capitalism",
+  "author": "Ellen Meiksins Wood",
+  "year": "1999",
+  "why": "Capitalism born of agrarian social relations, not trade.",
+  "topics": [
+   "history",
+   "transition"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Uneven Development",
+  "author": "Neil Smith",
+  "year": "1984",
+  "why": "Nature, capital and the production of space.",
+  "topics": [
+   "urban",
+   "ecology"
+  ],
+  "after": [
+   "The Limits to Capital"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "City of Quartz",
+  "author": "Mike Davis",
+  "year": "1990",
+  "why": "Los Angeles as the future of the capitalist city.",
+  "topics": [
+   "urban"
+  ],
+  "after": [
+   "The Urban Experience"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Planet of Slums",
+  "author": "Mike Davis",
+  "year": "2006",
+  "why": "A billion people in the world’s informal settlements.",
+  "topics": [
+   "urban",
+   "development"
+  ],
+  "after": [
+   "The Urban Experience"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Condition of Postmodernity",
+  "author": "David Harvey",
+  "year": "1989",
+  "why": "Flexible accumulation and time-space compression.",
+  "topics": [
+   "culture",
+   "urban"
+  ],
+  "after": [
+   "The Limits to Capital"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Marx’s Ecology",
+  "author": "John Bellamy Foster",
+  "year": "2000",
+  "why": "The metabolic rift between society and nature.",
+  "topics": [
+   "ecology"
+  ],
+  "after": [
+   "Fossil Capital"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Marx in the Anthropocene",
+  "author": "Kohei Saito",
+  "year": "2023",
+  "why": "The case for degrowth communism from Marx’s late notebooks.",
+  "topics": [
+   "ecology"
+  ],
+  "after": [
+   "Climate Change as Class War",
+   "Fossil Capital"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Capitalism in the Web of Life",
+  "author": "Jason W. Moore",
+  "year": "2015",
+  "why": "Cheap nature and the world-ecology of capital.",
+  "topics": [
+   "ecology",
+   "world-system"
+  ],
+  "after": [
+   "Fossil Capital"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "Fossil Capital",
+  "author": "Andreas Malm",
+  "year": "2016",
+  "why": "Why steam beat water power: control over labor.",
+  "topics": [
+   "ecology",
+   "history"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Mutual Aid",
+  "author": "Peter Kropotkin",
+  "year": "1902",
+  "why": "Cooperation as a factor of evolution.",
+  "topics": [
+   "anarchism"
+  ],
+  "after": [
+   "The Conquest of Bread"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Dawn of Everything",
+  "author": "David Graeber and David Wengrow",
+  "year": "2021",
+  "why": "Early societies experimented freely with equality and hierarchy.",
+  "topics": [
+   "history",
+   "anarchism"
+  ],
+  "after": [
+   "Debt",
+   "Sapiens"
+  ]
+ },
+ {
+  "shelf": "theory",
+  "title": "The Wretched of the Earth",
+  "author": "Frantz Fanon",
+  "year": "1961",
+  "why": "Decolonization, violence and the pitfalls of national consciousness.",
+  "topics": [
+   "colonialism",
+   "revolution"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Capitalist Realism",
+  "author": "Mark Fisher",
+  "year": "2009",
+  "why": "It is easier to imagine the end of the world than the end of capitalism.",
+  "topics": [
+   "culture"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Debt: The First 5,000 Years",
+  "author": "David Graeber",
+  "year": "2011",
+  "why": "Money and debt as moral and political relations.",
+  "topics": [
+   "finance",
+   "history",
+   "anarchism"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "A Brief History of Neoliberalism",
+  "author": "David Harvey",
+  "year": "2005",
+  "why": "Neoliberalism as a project to restore class power.",
+  "topics": [
+   "neoliberalism"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Imperialism: The Highest Stage of Capitalism",
+  "author": "Vladimir Lenin",
+  "year": "1917",
+  "why": "Monopoly, finance capital and the division of the world.",
+  "topics": [
+   "imperialism"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "The State and Revolution",
+  "author": "Vladimir Lenin",
+  "year": "1917",
+  "why": "What workers should do with the state once they take power.",
+  "topics": [
+   "state",
+   "revolution"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "Reform or Revolution",
+  "author": "Rosa Luxemburg",
+  "year": "1900",
+  "why": "Against socialism by gradual reform alone.",
+  "topics": [
+   "revolution"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "theory",
+  "title": "The Society of the Spectacle",
+  "author": "Guy Debord",
+  "year": "1967",
+  "why": "Social life mediated by images.",
+  "topics": [
+   "culture"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "articles",
+  "title": "Agrarian Class Structure and Economic Development in Pre-Industrial Europe",
+  "author": "Robert Brenner",
+  "year": "1976",
+  "why": "Started the Brenner debate: class struggle, not population or trade, made English capitalism.",
+  "topics": [
+   "history",
+   "transition"
+  ],
+  "after": [
+   "The Origin of Capitalism",
+   "The American Road to Capitalism"
+  ],
+  "venue": "Past & Present 70"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Origins of Capitalist Development: A Critique of Neo-Smithian Marxism",
+  "author": "Robert Brenner",
+  "year": "1977",
+  "why": "Brenner takes on Sweezy, Frank and Wallerstein over where capitalism comes from.",
+  "topics": [
+   "history",
+   "transition",
+   "world-system"
+  ],
+  "after": [
+   "The Origin of Capitalism"
+  ],
+  "venue": "New Left Review I/104"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Transition from Feudalism to Capitalism",
+  "author": "Paul Sweezy",
+  "year": "1950",
+  "why": "Sweezy’s critique of Maurice Dobb opened the first great transition debate.",
+  "topics": [
+   "history",
+   "transition"
+  ],
+  "after": [
+   "The Origin of Capitalism"
+  ],
+  "venue": "Science & Society 14:2"
+ },
+ {
+  "shelf": "articles",
+  "title": "Time, Work-Discipline, and Industrial Capitalism",
+  "author": "E. P. Thompson",
+  "year": "1967",
+  "why": "How the clock and the factory remade the experience of time.",
+  "topics": [
+   "history",
+   "labor"
+  ],
+  "after": [
+   "The Making of the English Working Class",
+   "Time, Labor, and Social Domination"
+  ],
+  "venue": "Past & Present 38"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Moral Economy of the English Crowd in the Eighteenth Century",
+  "author": "E. P. Thompson",
+  "year": "1971",
+  "why": "Food riots as the defense of a popular sense of justice.",
+  "topics": [
+   "history"
+  ],
+  "after": [
+   "The Making of the English Working Class"
+  ],
+  "venue": "Past & Present 50"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Separation of the Economic and the Political in Capitalism",
+  "author": "Ellen Meiksins Wood",
+  "year": "1981",
+  "why": "Why capitalist exploitation looks purely economic.",
+  "topics": [
+   "state",
+   "value"
+  ],
+  "after": [
+   "The Origin of Capitalism",
+   "Mute Compulsion"
+  ],
+  "venue": "New Left Review I/127"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Problem of the Capitalist State",
+  "author": "Nicos Poulantzas",
+  "year": "1969",
+  "why": "Poulantzas’s review of Miliband that began their famous debate.",
+  "topics": [
+   "state"
+  ],
+  "after": [
+   "The State in Capitalist Society"
+  ],
+  "venue": "New Left Review I/58"
+ },
+ {
+  "shelf": "articles",
+  "title": "Political Aspects of Full Employment",
+  "author": "Michał Kalecki",
+  "year": "1943",
+  "why": "Why business opposes full employment even when it raises profits.",
+  "topics": [
+   "political-economy",
+   "labor"
+  ],
+  "after": [
+   "The Capital Order",
+   "A Monetary and Fiscal History of the United States"
+  ],
+  "venue": "Political Quarterly 14:4"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Development of Underdevelopment",
+  "author": "Andre Gunder Frank",
+  "year": "1966",
+  "why": "Latin America was underdeveloped by its incorporation into world capitalism.",
+  "topics": [
+   "development",
+   "imperialism"
+  ],
+  "after": [
+   "How Europe Underdeveloped Africa"
+  ],
+  "venue": "Monthly Review 18:4"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Rise and Future Demise of the World Capitalist System",
+  "author": "Immanuel Wallerstein",
+  "year": "1974",
+  "why": "The founding statement of world-systems analysis.",
+  "topics": [
+   "world-system"
+  ],
+  "after": [
+   "Capitalism: A Global History"
+  ],
+  "venue": "Comparative Studies in Society and History 16:4"
+ },
+ {
+  "shelf": "articles",
+  "title": "Dialectics of Dependency",
+  "author": "Ruy Mauro Marini",
+  "year": "1973",
+  "why": "Super-exploitation and the place of Latin America in the world economy.",
+  "topics": [
+   "development",
+   "imperialism",
+   "labor"
+  ],
+  "after": [
+   "Imperialism: The Highest Stage of Capitalism"
+  ]
+ },
+ {
+  "shelf": "articles",
+  "title": "The Weapon of Theory",
+  "author": "Amílcar Cabral",
+  "year": "1966",
+  "why": "Liberation movements need theory rooted in their own history.",
+  "topics": [
+   "colonialism",
+   "revolution"
+  ],
+  "after": [
+   "The Wretched of the Earth"
+  ],
+  "venue": "Tricontinental Conference, Havana"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Revolution against Capital",
+  "author": "Antonio Gramsci",
+  "year": "1917",
+  "why": "The young Gramsci hails the Bolsheviks for defying a mechanical reading of Marx.",
+  "topics": [
+   "revolution",
+   "philosophy"
+  ],
+  "after": [
+   "The State and Revolution"
+  ],
+  "venue": "Avanti!"
+ },
+ {
+  "shelf": "articles",
+  "title": "Ideology and Ideological State Apparatuses",
+  "author": "Louis Althusser",
+  "year": "1970",
+  "why": "Ideology hails individuals as subjects.",
+  "topics": [
+   "state",
+   "philosophy",
+   "culture"
+  ],
+  "after": [
+   "For Marx"
+  ]
+ },
+ {
+  "shelf": "articles",
+  "title": "Base and Superstructure in Marxist Cultural Theory",
+  "author": "Raymond Williams",
+  "year": "1973",
+  "why": "Rethinking the most misused metaphor in Marxism.",
+  "topics": [
+   "culture"
+  ],
+  "after": [
+   "The German Ideology",
+   "History and Class Consciousness"
+  ],
+  "venue": "New Left Review I/82"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Work of Art in the Age of Mechanical Reproduction",
+  "author": "Walter Benjamin",
+  "year": "1935",
+  "why": "Film, photography and the loss of the aura.",
+  "topics": [
+   "culture"
+  ],
+  "after": [
+   "The Society of the Spectacle"
+  ]
+ },
+ {
+  "shelf": "articles",
+  "title": "On the Concept of History",
+  "author": "Walter Benjamin",
+  "year": "1940",
+  "why": "Benjamin’s last theses: the angel of history and the brush against the grain.",
+  "topics": [
+   "philosophy",
+   "history"
+  ],
+  "after": [
+   "The Society of the Spectacle",
+   "History and Class Consciousness"
+  ]
+ },
+ {
+  "shelf": "articles",
+  "title": "Postmodernism, or, The Cultural Logic of Late Capitalism (essay)",
+  "author": "Fredric Jameson",
+  "year": "1984",
+  "why": "The essay that set the terms for debates about postmodern culture.",
+  "topics": [
+   "culture"
+  ],
+  "after": [
+   "Late Capitalism",
+   "Capitalist Realism"
+  ],
+  "venue": "New Left Review I/146"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Great Moving Right Show",
+  "author": "Stuart Hall",
+  "year": "1979",
+  "why": "Hall named Thatcherism before Thatcher took office.",
+  "topics": [
+   "neoliberalism",
+   "culture"
+  ],
+  "after": [
+   "The Rise and Fall of the Neoliberal Order",
+   "The Reactionary Mind"
+  ],
+  "venue": "Marxism Today"
+ },
+ {
+  "shelf": "articles",
+  "title": "Race, Articulation and Societies Structured in Dominance",
+  "author": "Stuart Hall",
+  "year": "1980",
+  "why": "How race and class are articulated together.",
+  "topics": [
+   "race"
+  ],
+  "after": [
+   "Black Reconstruction in America"
+  ]
+ },
+ {
+  "shelf": "articles",
+  "title": "The Combahee River Collective Statement",
+  "author": "Combahee River Collective",
+  "year": "1977",
+  "why": "Black socialist feminism and the idea of interlocking oppressions.",
+  "topics": [
+   "gender",
+   "race"
+  ],
+  "after": [
+   "Freedom Is a Constant Struggle"
+  ]
+ },
+ {
+  "shelf": "articles",
+  "title": "Wages Against Housework",
+  "author": "Silvia Federici",
+  "year": "1975",
+  "why": "Demanding wages for housework to expose unwaged work.",
+  "topics": [
+   "gender",
+   "labor"
+  ],
+  "after": [
+   "Cannibal Capitalism"
+  ]
+ },
+ {
+  "shelf": "articles",
+  "title": "Reflections on the Black Woman’s Role in the Community of Slaves",
+  "author": "Angela Y. Davis",
+  "year": "1971",
+  "why": "Written in jail; a landmark of Black feminist history.",
+  "topics": [
+   "gender",
+   "race",
+   "history"
+  ],
+  "after": [
+   "Freedom Is a Constant Struggle"
+  ],
+  "venue": "The Black Scholar 3:4"
+ },
+ {
+  "shelf": "articles",
+  "title": "Behind Marx’s Hidden Abode",
+  "author": "Nancy Fraser",
+  "year": "2014",
+  "why": "Capitalism’s background conditions: care, nature and political power.",
+  "topics": [
+   "gender",
+   "ecology"
+  ],
+  "after": [
+   "Cannibal Capitalism"
+  ],
+  "venue": "New Left Review 86"
+ },
+ {
+  "shelf": "articles",
+  "title": "Can the Subaltern Speak?",
+  "author": "Gayatri Chakravorty Spivak",
+  "year": "1988",
+  "why": "Who gets to speak, and who is spoken for.",
+  "topics": [
+   "colonialism",
+   "philosophy"
+  ],
+  "after": [
+   "The Wretched of the Earth"
+  ]
+ },
+ {
+  "shelf": "articles",
+  "title": "The Second Crisis of Economic Theory",
+  "author": "Joan Robinson",
+  "year": "1972",
+  "why": "Robinson’s lecture to the American Economic Association on what economics ignores.",
+  "topics": [
+   "political-economy"
+  ],
+  "after": [
+   "Thinking Like an Economist",
+   "The Capital Order"
+  ],
+  "venue": "American Economic Review 62"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Financial Instability Hypothesis",
+  "author": "Hyman Minsky",
+  "year": "1992",
+  "why": "The short version of Minsky’s theory of financial fragility.",
+  "topics": [
+   "finance",
+   "crisis"
+  ],
+  "after": [
+   "A Short History of Financial Euphoria"
+  ],
+  "venue": "Levy Institute Working Paper 74"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Right to the City",
+  "author": "David Harvey",
+  "year": "2008",
+  "why": "Who has a say in how cities are made?",
+  "topics": [
+   "urban"
+  ],
+  "after": [
+   "The Urban Experience",
+   "Rebel Cities"
+  ],
+  "venue": "New Left Review 53"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Antinomies of Antonio Gramsci",
+  "author": "Perry Anderson",
+  "year": "1976",
+  "why": "A close reading of the contradictions in Gramsci’s concepts.",
+  "topics": [
+   "state",
+   "hegemony"
+  ],
+  "after": [
+   "Prison Notebooks"
+  ],
+  "venue": "New Left Review I/100"
+ },
+ {
+  "shelf": "articles",
+  "title": "The Russian Revolution",
+  "author": "Rosa Luxemburg",
+  "year": "1918",
+  "why": "Luxemburg’s comradely critique of the Bolsheviks: freedom is always the freedom of the one who thinks differently.",
+  "topics": [
+   "revolution"
+  ],
+  "after": [
+   "The State and Revolution",
+   "Reform or Revolution"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Germinal",
+  "author": "Émile Zola",
+  "year": "1885",
+  "why": "A miners’ strike in northern France, researched in the pits.",
+  "topics": [
+   "labor"
+  ],
+  "after": [
+   "The Jungle"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "The Grapes of Wrath",
+  "author": "John Steinbeck",
+  "year": "1939",
+  "why": "The Joads and the Dust Bowl migration.",
+  "topics": [
+   "labor"
+  ],
+  "after": [
+   "Of Mice and Men",
+   "East of Eden"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "The Iron Heel",
+  "author": "Jack London",
+  "year": "1908",
+  "why": "An oligarchy crushes the American labor movement.",
+  "topics": [
+   "dystopia",
+   "labor"
+  ],
+  "after": [
+   "The Jungle",
+   "1984"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Hard Times",
+  "author": "Charles Dickens",
+  "year": "1854",
+  "why": "Coketown, utilitarianism and the factory hands.",
+  "topics": [
+   "labor"
+  ],
+  "after": [
+   "The Jungle"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "The Ragged-Trousered Philanthropists",
+  "author": "Robert Tressell",
+  "year": "1914",
+  "why": "House painters who defend the system that exploits them.",
+  "topics": [
+   "labor"
+  ],
+  "after": [
+   "The Jungle"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Mother",
+  "author": "Maxim Gorky",
+  "year": "1906",
+  "why": "A factory worker’s mother becomes a revolutionary.",
+  "topics": [
+   "revolution"
+  ],
+  "after": [
+   "What Is to Be Done?"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Cement",
+  "author": "Fyodor Gladkov",
+  "year": "1925",
+  "why": "Rebuilding a factory after the Russian civil war.",
+  "topics": [
+   "revolution",
+   "labor"
+  ],
+  "after": [
+   "The Master and Margarita"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "The Foundation Pit",
+  "author": "Andrei Platonov",
+  "year": "1930",
+  "why": "A visionary, bleak satire of collectivization, unpublished in the USSR until 1987.",
+  "topics": [
+   "revolution",
+   "satire"
+  ],
+  "after": [
+   "The Master and Margarita",
+   "The Deserted House"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "The Case of Comrade Tulayev",
+  "author": "Victor Serge",
+  "year": "1948",
+  "why": "An assassination sets off a purge, told from many lives.",
+  "topics": [
+   "revolution"
+  ],
+  "after": [
+   "The Master and Margarita",
+   "1984"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Life and Fate",
+  "author": "Vasily Grossman",
+  "year": "1960",
+  "why": "Stalingrad and two totalitarianisms; the KGB confiscated the manuscript.",
+  "topics": [
+   "history"
+  ],
+  "after": [
+   "The Deserted House",
+   "Night"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "The Good Soldier Švejk",
+  "author": "Jaroslav Hašek",
+  "year": "1921–23",
+  "why": "An anti-war satire of the Habsburg army.",
+  "topics": [
+   "satire"
+  ],
+  "after": [
+   "Slaughterhouse-Five",
+   "Catch-22"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Fontamara",
+  "author": "Ignazio Silone",
+  "year": "1933",
+  "why": "Peasants of the Abruzzi under fascism.",
+  "topics": [
+   "fascism"
+  ],
+  "after": [
+   "Mother Night"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "The Crab Cannery Ship",
+  "author": "Takiji Kobayashi",
+  "year": "1929",
+  "why": "Workers on a factory ship rebel; the author was tortured to death by police in 1933.",
+  "topics": [
+   "labor"
+  ],
+  "after": [
+   "No Longer Human",
+   "The Setting Sun"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "God’s Bits of Wood",
+  "author": "Ousmane Sembène",
+  "year": "1960",
+  "why": "The 1947–48 Dakar–Niger railway strike.",
+  "topics": [
+   "labor",
+   "colonialism"
+  ],
+  "after": [
+   "The Wretched of the Earth"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Petals of Blood",
+  "author": "Ngũgĩ wa Thiong’o",
+  "year": "1977",
+  "why": "Neocolonial Kenya; Ngũgĩ was jailed without trial the same year.",
+  "topics": [
+   "colonialism"
+  ],
+  "after": [
+   "The Wretched of the Earth"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "One Hundred Years of Solitude",
+  "author": "Gabriel García Márquez",
+  "year": "1967",
+  "why": "Macondo, the banana company and the massacre history forgot.",
+  "topics": [
+   "colonialism",
+   "history"
+  ],
+  "after": [
+   "Cloud Atlas",
+   "The Master and Margarita"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Native Son",
+  "author": "Richard Wright",
+  "year": "1940",
+  "why": "Bigger Thomas, Chicago, and a communist lawyer’s defense.",
+  "topics": [
+   "race"
+  ],
+  "after": [
+   "Giovanni's Room",
+   "Passing"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Invisible Man",
+  "author": "Ralph Ellison",
+  "year": "1952",
+  "why": "A nameless narrator, including his time in “the Brotherhood.”",
+  "topics": [
+   "race"
+  ],
+  "after": [
+   "Giovanni's Room",
+   "Passing"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Beloved",
+  "author": "Toni Morrison",
+  "year": "1987",
+  "why": "The afterlife of slavery in one Ohio house.",
+  "topics": [
+   "race",
+   "history"
+  ],
+  "after": [
+   "Black Reconstruction in America",
+   "Uncle Tom's Cabin"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Kindred",
+  "author": "Octavia E. Butler",
+  "year": "1979",
+  "why": "A Black woman is pulled back in time to an antebellum plantation.",
+  "topics": [
+   "race",
+   "sci-fi"
+  ],
+  "after": [
+   "Parable of the Sower"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Parable of the Talents",
+  "author": "Octavia E. Butler",
+  "year": "1998",
+  "why": "The sequel: Earthseed under a theocratic president.",
+  "topics": [
+   "sci-fi",
+   "dystopia"
+  ],
+  "after": [
+   "Parable of the Sower"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Red Star",
+  "author": "Alexander Bogdanov",
+  "year": "1908",
+  "why": "A Bolshevik visits a socialist society on Mars.",
+  "topics": [
+   "utopia",
+   "sci-fi"
+  ],
+  "after": [
+   "The Dispossessed"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "News from Nowhere",
+  "author": "William Morris",
+  "year": "1890",
+  "why": "Morris’s pastoral communist utopia, an answer to Bellamy.",
+  "topics": [
+   "utopia"
+  ],
+  "after": [
+   "Utopia"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Looking Backward: 2000–1887",
+  "author": "Edward Bellamy",
+  "year": "1888",
+  "why": "A Bostonian wakes in a cooperative future; a best-seller that spawned clubs.",
+  "topics": [
+   "utopia"
+  ],
+  "after": [
+   "Utopia"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "We",
+  "author": "Yevgeny Zamyatin",
+  "year": "1924",
+  "why": "The dystopia that came before Huxley and Orwell.",
+  "topics": [
+   "dystopia",
+   "sci-fi"
+  ],
+  "after": [
+   "1984",
+   "Brave New World"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Woman on the Edge of Time",
+  "author": "Marge Piercy",
+  "year": "1976",
+  "why": "A woman in a psychiatric ward glimpses a feminist utopia.",
+  "topics": [
+   "utopia",
+   "sci-fi",
+   "gender"
+  ],
+  "after": [
+   "The Dispossessed"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "The Word for World Is Forest",
+  "author": "Ursula K. Le Guin",
+  "year": "1972",
+  "why": "Colonists and forest people, a Vietnam War allegory.",
+  "topics": [
+   "sci-fi",
+   "colonialism"
+  ],
+  "after": [
+   "The Left Hand of Darkness",
+   "The Dispossessed"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "The Dispossessed",
+  "author": "Ursula K. Le Guin",
+  "year": "1974",
+  "why": "An ambiguous anarchist utopia.",
+  "topics": [
+   "utopia",
+   "sci-fi"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "fiction",
+  "title": "Red Mars",
+  "author": "Kim Stanley Robinson",
+  "year": "1992",
+  "why": "The first colonists of Mars argue over everything, including economics.",
+  "topics": [
+   "sci-fi",
+   "utopia"
+  ],
+  "after": [
+   "Rendezvous with Rama",
+   "Dune",
+   "Project Hail Mary"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "The Ministry for the Future",
+  "author": "Kim Stanley Robinson",
+  "year": "2020",
+  "why": "A climate agency and a militant underground in the next decades.",
+  "topics": [
+   "sci-fi",
+   "ecology"
+  ],
+  "after": [
+   "How to Blow Up a Pipeline",
+   "Climate Change as Class War"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "The Space Merchants",
+  "author": "Frederik Pohl and C. M. Kornbluth",
+  "year": "1952",
+  "why": "Advertising agencies run the world.",
+  "topics": [
+   "sci-fi",
+   "satire"
+  ],
+  "after": [
+   "The Sirens of Titan",
+   "Brave New World"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Walkaway",
+  "author": "Cory Doctorow",
+  "year": "2017",
+  "why": "Post-scarcity dropouts build a gift economy.",
+  "topics": [
+   "sci-fi",
+   "utopia"
+  ],
+  "after": [
+   "Technofeudalism",
+   "The Dispossessed"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Babel",
+  "author": "R. F. Kuang",
+  "year": "2022",
+  "why": "Translation, silver and the British Empire.",
+  "topics": [
+   "colonialism"
+  ],
+  "after": [
+   "Piranesi",
+   "The Secret History"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Sunset Song",
+  "author": "Lewis Grassic Gibbon",
+  "year": "1932",
+  "why": "A Scottish farming community before and during the First World War.",
+  "topics": [
+   "history"
+  ],
+  "after": [
+   "East of Eden"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "Tropic of Orange",
+  "author": "Karen Tei Yamashita",
+  "year": "1997",
+  "why": "Los Angeles, the border and NAFTA, in magical-realist overdrive.",
+  "topics": [
+   "urban"
+  ],
+  "after": [
+   "The Urban Experience"
+  ]
+ },
+ {
+  "shelf": "fiction",
+  "title": "The Jungle",
+  "author": "Upton Sinclair",
+  "year": "1906",
+  "why": "Chicago’s meatpacking workers.",
+  "topics": [
+   "labor"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "fiction",
+  "title": "Parable of the Sower",
+  "author": "Octavia E. Butler",
+  "year": "1993",
+  "why": "Climate collapse and a new faith.",
+  "topics": [
+   "sci-fi",
+   "dystopia"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Songs of Innocence and of Experience",
+  "author": "William Blake",
+  "year": "1794",
+  "why": "Includes “London” and its “mind-forged manacles.”",
+  "topics": [
+   "poetry"
+  ],
+  "after": [
+   "Paradise Lost"
+  ]
+ },
+ {
+  "shelf": "poetry",
+  "title": "The Masque of Anarchy",
+  "author": "Percy Bysshe Shelley",
+  "year": "1819",
+  "why": "Written after Peterloo: “Ye are many—they are few.”",
+  "topics": [
+   "poetry",
+   "history"
+  ],
+  "after": [
+   "Frankenstein"
+  ]
+ },
+ {
+  "shelf": "poetry",
+  "title": "The Man with the Hoe",
+  "author": "Edwin Markham",
+  "year": "1899",
+  "why": "A poem on Millet’s painting of a laborer that became a sensation.",
+  "topics": [
+   "poetry",
+   "labor"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Chicago Poems",
+  "author": "Carl Sandburg",
+  "year": "1916",
+  "why": "Sandburg, a former socialist organizer, on the city of big shoulders.",
+  "topics": [
+   "poetry",
+   "labor",
+   "urban"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "If We Must Die",
+  "author": "Claude McKay",
+  "year": "1919",
+  "why": "A sonnet of resistance from the Red Summer.",
+  "topics": [
+   "poetry",
+   "race"
+  ],
+  "after": [
+   "Passing"
+  ]
+ },
+ {
+  "shelf": "poetry",
+  "title": "Let America Be America Again",
+  "author": "Langston Hughes",
+  "year": "1936",
+  "why": "America as it never was, for the poor and the excluded.",
+  "topics": [
+   "poetry",
+   "race"
+  ],
+  "after": [
+   "Giovanni's Room"
+  ]
+ },
+ {
+  "shelf": "poetry",
+  "title": "A Cloud in Trousers",
+  "author": "Vladimir Mayakovsky",
+  "year": "1915",
+  "why": "The futurist who became the revolution’s poet.",
+  "topics": [
+   "poetry",
+   "revolution"
+  ],
+  "after": [
+   "The Master and Margarita"
+  ]
+ },
+ {
+  "shelf": "poetry",
+  "title": "First Hymn to Lenin",
+  "author": "Hugh MacDiarmid",
+  "year": "1931",
+  "why": "The Scottish modernist’s communist poems.",
+  "topics": [
+   "poetry",
+   "revolution"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Poems 1913–1956",
+  "author": "Bertolt Brecht",
+  "year": "1976",
+  "why": "Includes “Questions from a Worker Who Reads”: who built Thebes?",
+  "topics": [
+   "poetry"
+  ],
+  "after": [
+   "Fascism: What It Is and How to Fight It"
+  ]
+ },
+ {
+  "shelf": "poetry",
+  "title": "The Book of the Dead",
+  "author": "Muriel Rukeyser",
+  "year": "1938",
+  "why": "Documentary poetry on the Hawk’s Nest tunnel, where silicosis killed hundreds of workers.",
+  "topics": [
+   "poetry",
+   "labor"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Spain, Take This Chalice from Me",
+  "author": "César Vallejo",
+  "year": "1939",
+  "why": "Vallejo’s poems on the Spanish Civil War, published after his death.",
+  "topics": [
+   "poetry",
+   "revolution"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Poet in New York",
+  "author": "Federico García Lorca",
+  "year": "1940",
+  "why": "Lorca in the city of the Depression; published after Franco’s forces killed him.",
+  "topics": [
+   "poetry",
+   "urban"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Notebook of a Return to the Native Land",
+  "author": "Aimé Césaire",
+  "year": "1939",
+  "why": "The founding poem of Négritude.",
+  "topics": [
+   "poetry",
+   "colonialism"
+  ],
+  "after": [
+   "The Wretched of the Earth"
+  ]
+ },
+ {
+  "shelf": "poetry",
+  "title": "Canto General",
+  "author": "Pablo Neruda",
+  "year": "1950",
+  "why": "An epic history of the Americas, partly written in hiding.",
+  "topics": [
+   "poetry",
+   "history"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Zero Hour",
+  "author": "Ernesto Cardenal",
+  "year": "1960",
+  "why": "Sandino, the dictatorship and the banana companies.",
+  "topics": [
+   "poetry",
+   "colonialism"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Human Landscapes from My Country",
+  "author": "Nâzım Hikmet",
+  "year": "1966",
+  "why": "An epic of Turkish life, written in prison.",
+  "topics": [
+   "poetry"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Identity Card",
+  "author": "Mahmoud Darwish",
+  "year": "1964",
+  "why": "“Record! I am an Arab”: the poem that made Darwish famous.",
+  "topics": [
+   "poetry",
+   "colonialism"
+  ],
+  "after": [
+   "Except for Palestine"
+  ]
+ },
+ {
+  "shelf": "poetry",
+  "title": "The Rebel (Bidrohi)",
+  "author": "Kazi Nazrul Islam",
+  "year": "1922",
+  "why": "Bengal’s rebel poet; the British jailed him for sedition later that year.",
+  "topics": [
+   "poetry",
+   "colonialism"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "We Shall See (Hum Dekhenge)",
+  "author": "Faiz Ahmed Faiz",
+  "year": "1979",
+  "why": "Written against Zia’s dictatorship, it became a protest anthem across South Asia.",
+  "topics": [
+   "poetry"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Clandestine Poems",
+  "author": "Roque Dalton",
+  "year": "1975",
+  "why": "The Salvadoran revolutionary poet, killed by his own comrades in 1975.",
+  "topics": [
+   "poetry",
+   "revolution"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Letter to an Imaginary Friend",
+  "author": "Thomas McGrath",
+  "year": "1962–85",
+  "why": "A blacklisted communist poet’s epic of the American left.",
+  "topics": [
+   "poetry"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Diving into the Wreck",
+  "author": "Adrienne Rich",
+  "year": "1973",
+  "why": "Rich shared her National Book Award on behalf of all women.",
+  "topics": [
+   "poetry",
+   "gender"
+  ],
+  "after": [
+   "The Bell Jar"
+  ]
+ },
+ {
+  "shelf": "poetry",
+  "title": "The Black Unicorn",
+  "author": "Audre Lorde",
+  "year": "1978",
+  "why": "Lorde’s poems of Africa, motherhood and anger.",
+  "topics": [
+   "poetry",
+   "gender",
+   "race"
+  ],
+  "after": [
+   "Freedom Is a Constant Struggle"
+  ]
+ },
+ {
+  "shelf": "poetry",
+  "title": "Poem About My Rights",
+  "author": "June Jordan",
+  "year": "1980",
+  "why": "On being told what you can’t do, from a Black feminist poet.",
+  "topics": [
+   "poetry",
+   "gender",
+   "race"
+  ],
+  "after": []
+ },
+ {
+  "shelf": "poetry",
+  "title": "Aniara",
+  "author": "Harry Martinson",
+  "year": "1956",
+  "why": "A spaceship adrift: science fiction as epic poem.",
+  "topics": [
+   "poetry",
+   "sci-fi"
+  ],
+  "after": []
+ }
+]
