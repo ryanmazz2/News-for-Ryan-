@@ -1,185 +1,366 @@
 {
-  "_how_to_edit": "Add or remove sources here. For RSS sections you can give a feed address or just a site's homepage; the updater finds the feed itself. Sources under 'independent' are sorted article by article into Economy or Politics depending on the subject. 'journals' take ISSNs looked up on Crossref. 'scholarship' takes search terms sent to OpenAlex. A source that fails is skipped and listed at the bottom of the site. YouTube channels can be given as their @handle page. 'local_place' names the local section; 'local_searches' and 'strike_searches' are Google News searches.",
+  "_how_to_edit": "Add or remove sources here. Give a feed address or just a site's homepage; the updater finds the feed itself. 'economy' and 'politics' take feeds that are already about one subject. 'mixed' takes outlets that cover everything: each article is filed under Economy or Politics using the outlet's own section labels, or its headline when there are none. 'kind' is 'newsroom' or 'independent', used by the source filter on the page. Sports, entertainment and other non-news are dropped, and no outlet gets more than a few stories per tab. 'journals' take ISSNs looked up on Crossref; 'scholarship' takes OpenAlex search terms. YouTube channels can be given as their @handle page. 'local_place' names the local section; 'local_searches' and 'strike_searches' are Google News searches.",
   "contact_email": "you@example.com",
   "rss": {
     "economy": [
       {
-        "name": "AP News",
-        "url": "https://news.google.com/rss/search?q=site:apnews.com+(economy+OR+inflation+OR+jobs+OR+wages+OR+tariffs+OR+markets+OR+\"Federal+Reserve\"+OR+union+OR+strike)+when:2d&hl=en-US&gl=US&ceid=US:en",
-        "no_google": true
+        "name": "PBS NewsHour",
+        "url": "https://www.pbs.org/newshour/feeds/rss/economy",
+        "kind": "newsroom"
       },
       {
-        "name": "The Guardian",
-        "url": "https://www.theguardian.com/business/economics/rss"
+        "name": "CNBC",
+        "url": "https://www.cnbc.com/id/20910258/device/rss/rss.html",
+        "kind": "newsroom"
+      },
+      {
+        "name": "Marketplace",
+        "url": "https://www.marketplace.org/feed/",
+        "kind": "newsroom"
       },
       {
         "name": "NPR",
-        "url": "https://feeds.npr.org/1017/rss.xml"
+        "url": "https://feeds.npr.org/1017/rss.xml",
+        "kind": "newsroom"
       },
       {
-        "name": "Phenomenal World",
-        "url": "https://www.phenomenalworld.org/feed/"
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/business/economics/rss",
+        "kind": "newsroom"
+      },
+      {
+        "name": "AP News",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com+(\"Federal+Reserve\"+OR+inflation+OR+\"jobs+report\"+OR+tariffs+OR+economy+OR+unemployment)+when:2d&hl=en-US&gl=US&ceid=US:en",
+        "kind": "newsroom",
+        "no_google": true
+      },
+      {
+        "name": "CEPR",
+        "url": "https://cepr.net/feed/",
+        "kind": "independent"
       }
     ],
     "politics": [
       {
-        "name": "AP News",
-        "url": "https://news.google.com/rss/search?q=site:apnews.com+(politics+OR+Congress+OR+\"White+House\"+OR+election+OR+Supreme+Court+OR+governor)+when:2d&hl=en-US&gl=US&ceid=US:en",
-        "no_google": true
-      },
-      {
-        "name": "The Guardian",
-        "url": "https://www.theguardian.com/politics/rss"
-      },
-      {
-        "name": "The Guardian (US)",
-        "url": "https://www.theguardian.com/us-news/us-politics/rss"
+        "name": "PBS NewsHour",
+        "url": "https://www.pbs.org/newshour/feeds/rss/politics",
+        "kind": "newsroom"
       },
       {
         "name": "NPR",
-        "url": "https://feeds.npr.org/1014/rss.xml"
+        "url": "https://feeds.npr.org/1014/rss.xml",
+        "kind": "newsroom"
+      },
+      {
+        "name": "Politico",
+        "url": "https://rss.politico.com/politics-news.xml",
+        "kind": "newsroom"
+      },
+      {
+        "name": "CNBC",
+        "url": "https://www.cnbc.com/id/10000113/device/rss/rss.html",
+        "kind": "newsroom"
+      },
+      {
+        "name": "The Guardian (US)",
+        "url": "https://www.theguardian.com/us-news/us-politics/rss",
+        "kind": "newsroom"
+      },
+      {
+        "name": "The Guardian",
+        "url": "https://www.theguardian.com/politics/rss",
+        "kind": "newsroom"
+      },
+      {
+        "name": "Stateline",
+        "url": "https://stateline.org/feed/",
+        "kind": "newsroom"
+      },
+      {
+        "name": "AP News",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com+(Congress+OR+Senate+OR+\"White+House\"+OR+\"Supreme+Court\"+OR+election)+when:2d&hl=en-US&gl=US&ceid=US:en",
+        "kind": "newsroom",
+        "no_google": true
       },
       {
         "name": "Al Jazeera",
-        "url": "https://www.aljazeera.com/xml/rss/all.xml"
+        "url": "https://www.aljazeera.com/xml/rss/all.xml",
+        "kind": "newsroom"
       }
     ],
-    "independent": [
+    "mixed": [
       {
-        "name": "Jacobin",
-        "url": "https://jacobin.com/feed/"
+        "name": "ProPublica",
+        "url": "https://feeds.propublica.org/propublica/main",
+        "kind": "newsroom"
       },
       {
-        "name": "The Nation",
-        "url": "https://www.thenation.com/feed/?post_type=article"
-      },
-      {
-        "name": "In These Times",
-        "url": "https://inthesetimes.com/rss"
-      },
-      {
-        "name": "Dissent",
-        "url": "https://www.dissentmagazine.org/feed"
-      },
-      {
-        "name": "Monthly Review",
-        "url": "https://monthlyreview.org/feed/"
-      },
-      {
-        "name": "MR Online",
-        "url": "https://mronline.org/feed/"
-      },
-      {
-        "name": "Spectre",
-        "url": "https://spectrejournal.com/feed/"
-      },
-      {
-        "name": "Labor Notes",
-        "url": "https://labornotes.org/rss.xml"
-      },
-      {
-        "name": "Democracy Now!",
-        "url": "https://www.democracynow.org/democracynow.rss"
-      },
-      {
-        "name": "Common Dreams",
-        "url": "https://www.commondreams.org/"
+        "name": "The Marshall Project",
+        "url": "https://www.themarshallproject.org/",
+        "kind": "newsroom"
       },
       {
         "name": "The Intercept",
-        "url": "https://theintercept.com/feed/?lang=en"
+        "url": "https://theintercept.com/feed/?lang=en",
+        "kind": "independent"
+      },
+      {
+        "name": "Mother Jones",
+        "url": "https://www.motherjones.com/feed/",
+        "kind": "independent"
+      },
+      {
+        "name": "The American Prospect",
+        "url": "https://prospect.org/",
+        "kind": "independent"
+      },
+      {
+        "name": "The Lever",
+        "url": "https://www.levernews.com/",
+        "kind": "independent"
+      },
+      {
+        "name": "Capital & Main",
+        "url": "https://capitalandmain.com/feed",
+        "kind": "independent"
+      },
+      {
+        "name": "Jacobin",
+        "url": "https://jacobin.com/feed/",
+        "kind": "independent"
+      },
+      {
+        "name": "The Nation",
+        "url": "https://www.thenation.com/feed/?post_type=article",
+        "kind": "independent"
+      },
+      {
+        "name": "In These Times",
+        "url": "https://inthesetimes.com/rss",
+        "kind": "independent"
+      },
+      {
+        "name": "Monthly Review",
+        "url": "https://monthlyreview.org/feed/",
+        "kind": "independent"
+      },
+      {
+        "name": "MR Online",
+        "url": "https://mronline.org/feed/",
+        "kind": "independent"
+      },
+      {
+        "name": "Spectre",
+        "url": "https://spectrejournal.com/feed/",
+        "kind": "independent"
+      },
+      {
+        "name": "Labor Notes",
+        "url": "https://labornotes.org/rss.xml",
+        "kind": "independent"
+      },
+      {
+        "name": "Democracy Now!",
+        "url": "https://www.democracynow.org/democracynow.rss",
+        "kind": "independent"
+      },
+      {
+        "name": "Common Dreams",
+        "url": "https://www.commondreams.org/",
+        "kind": "independent"
       },
       {
         "name": "Truthout",
-        "url": "https://truthout.org/feed/"
+        "url": "https://truthout.org/feed/",
+        "kind": "independent"
       },
       {
         "name": "Current Affairs",
-        "url": "https://www.currentaffairs.org/"
+        "url": "https://www.currentaffairs.org/",
+        "kind": "independent"
       },
       {
         "name": "CounterPunch",
-        "url": "https://www.counterpunch.org/feed/"
+        "url": "https://www.counterpunch.org/feed/",
+        "kind": "independent"
       },
       {
         "name": "Tribune",
-        "url": "https://tribunemag.co.uk/feed"
+        "url": "https://tribunemag.co.uk/feed",
+        "kind": "independent"
       },
       {
         "name": "Novara Media",
-        "url": "https://novaramedia.com/feed/"
+        "url": "https://novaramedia.com/feed/",
+        "kind": "independent"
       },
       {
         "name": "Red Pepper",
-        "url": "https://www.redpepper.org.uk/feed/"
+        "url": "https://www.redpepper.org.uk/feed/",
+        "kind": "independent"
       },
       {
         "name": "Morning Star",
-        "url": "https://morningstaronline.co.uk/"
+        "url": "https://morningstaronline.co.uk/",
+        "kind": "independent"
       },
       {
         "name": "Le Monde diplomatique",
-        "url": "https://mondediplo.com/backend"
+        "url": "https://mondediplo.com/backend",
+        "kind": "independent"
       },
       {
         "name": "Peoples Dispatch",
-        "url": "https://peoplesdispatch.org/feed/"
+        "url": "https://peoplesdispatch.org/feed/",
+        "kind": "independent"
       },
       {
         "name": "Tricontinental",
-        "url": "https://thetricontinental.org/feed/"
+        "url": "https://thetricontinental.org/feed/",
+        "kind": "independent"
       },
       {
         "name": "Africa Is a Country",
-        "url": "https://africasacountry.com/feed"
+        "url": "https://africasacountry.com/feed",
+        "kind": "independent"
       },
       {
         "name": "Review of African Political Economy",
-        "url": "https://roape.net/feed/"
+        "url": "https://roape.net/feed/",
+        "kind": "independent"
       },
       {
         "name": "il manifesto global",
-        "url": "https://global.ilmanifesto.it/feed/"
+        "url": "https://global.ilmanifesto.it/feed/",
+        "kind": "independent"
       },
       {
         "name": "NACLA",
-        "url": "https://nacla.org/"
+        "url": "https://nacla.org/",
+        "kind": "independent"
       },
       {
         "name": "The Wire (India)",
-        "url": "https://thewire.in/"
+        "url": "https://thewire.in/",
+        "kind": "independent"
       },
       {
         "name": "Mondoweiss",
-        "url": "https://mondoweiss.net/feed/"
+        "url": "https://mondoweiss.net/feed/",
+        "kind": "independent"
       },
       {
         "name": "+972 Magazine",
-        "url": "https://www.972mag.com/feed/"
+        "url": "https://www.972mag.com/feed/",
+        "kind": "independent"
       },
       {
         "name": "openDemocracy",
-        "url": "https://www.opendemocracy.net/en/"
+        "url": "https://www.opendemocracy.net/en/",
+        "kind": "independent"
       },
       {
         "name": "New Internationalist",
-        "url": "https://newint.org/"
+        "url": "https://newint.org/",
+        "kind": "independent"
       },
       {
         "name": "Green Left (Australia)",
-        "url": "https://www.greenleft.org.au/"
+        "url": "https://www.greenleft.org.au/",
+        "kind": "independent"
       },
       {
         "name": "LINKS",
-        "url": "https://links.org.au/"
+        "url": "https://links.org.au/",
+        "kind": "independent"
       },
       {
         "name": "rabble.ca",
-        "url": "https://rabble.ca/feed/"
+        "url": "https://rabble.ca/feed/",
+        "kind": "independent"
       },
       {
         "name": "Canadian Dimension",
-        "url": "https://canadiandimension.com/"
+        "url": "https://canadiandimension.com/",
+        "kind": "independent"
+      }
+    ],
+    "essays": [
+      {
+        "name": "Boston Review",
+        "url": "https://www.bostonreview.net/feed/",
+        "kind": "independent"
+      },
+      {
+        "name": "Dissent",
+        "url": "https://www.dissentmagazine.org/feed",
+        "kind": "independent"
+      },
+      {
+        "name": "Phenomenal World",
+        "url": "https://www.phenomenalworld.org/feed/",
+        "kind": "independent"
+      },
+      {
+        "name": "n+1",
+        "url": "https://www.nplusonemag.com/feed/",
+        "kind": "independent"
+      },
+      {
+        "name": "NLR Sidecar",
+        "url": "https://newleftreview.org/sidecar",
+        "kind": "independent"
+      },
+      {
+        "name": "The Baffler",
+        "url": "https://thebaffler.com/feed",
+        "kind": "independent"
+      }
+    ],
+    "releases": [
+      {
+        "name": "Bureau of Labor Statistics",
+        "url": "https://www.bls.gov/feed/bls_latest.rss",
+        "kind": "newsroom",
+        "official": true
+      },
+      {
+        "name": "IMF",
+        "url": "https://www.imf.org/en/News",
+        "kind": "newsroom",
+        "official": true
+      },
+      {
+        "name": "World Bank",
+        "url": "https://www.worldbank.org/en/news",
+        "kind": "newsroom",
+        "official": true
+      }
+    ],
+    "papers": [
+      {
+        "name": "PERI (UMass Amherst)",
+        "url": "https://peri.umass.edu/",
+        "kind": "independent",
+        "no_google": true
+      },
+      {
+        "name": "Institute for New Economic Thinking",
+        "url": "https://www.ineteconomics.org/",
+        "kind": "independent",
+        "no_google": true
+      },
+      {
+        "name": "Levy Economics Institute",
+        "url": "https://www.levyinstitute.org/",
+        "kind": "independent",
+        "no_google": true
+      },
+      {
+        "name": "Economic Policy Institute",
+        "url": "https://www.epi.org/",
+        "kind": "independent",
+        "no_google": true
       }
     ],
     "artnow": [
@@ -387,5 +568,39 @@
     "picket line",
     "workers lockout",
     "union strike vote"
-  ]
+  ],
+  "world_economy": {
+    "_note": "IMF World Economic Outlook figures (free, no key). Countries are ISO codes.",
+    "countries": [
+      "USA",
+      "CHN",
+      "JPN",
+      "DEU",
+      "GBR",
+      "FRA",
+      "IND",
+      "BRA",
+      "MEX",
+      "ZAF",
+      "RUS",
+      "IDN"
+    ],
+    "indicators": {
+      "NGDP_RPCH": "GDP growth, %",
+      "PCPIPCH": "Inflation, %",
+      "LUR": "Unemployment, %",
+      "GGXWDG_NGDP": "Government debt, % of GDP"
+    }
+  },
+  "bls_calendar": "https://www.bls.gov/schedule/news_release/bls.ics",
+  "posters": {
+    "_note": "Pulled through the Digital Public Library of America (needs the free DPLA_API_KEY secret). Only images marked free to reuse are shown.",
+    "collections": [
+      "Leftist Political Posters Collection",
+      "Radicalism Posters Collection"
+    ]
+  },
+  "reading": {
+    "_note": "Upload your StoryGraph export to the books folder as books/storygraph.csv. Only titles, authors, dates and covers are shown on the site."
+  }
 }
