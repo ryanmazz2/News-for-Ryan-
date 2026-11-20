@@ -1,0 +1,20 @@
+name: Request a DPLA key
+
+# Run this once from the Actions tab. DPLA emails a free API key to the
+# address in your CONTACT_EMAIL secret. Then add that key as a new secret
+# named DPLA_API_KEY.
+on:
+  workflow_dispatch:
+
+jobs:
+  request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask DPLA to email a key
+        run: |
+          if [ -z "${{ secrets.CONTACT_EMAIL }}" ]; then
+            echo "Add a CONTACT_EMAIL secret first."; exit 1
+          fi
+          curl -s -X POST "https://api.dp.la/v2/api_key/${{ secrets.CONTACT_EMAIL }}"
+          echo
+          echo "Check your inbox for the DPLA key, then add it as the DPLA_API_KEY secret."
