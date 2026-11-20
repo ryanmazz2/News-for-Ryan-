@@ -44,7 +44,7 @@ Secrets stay private even though the repository is public.
 ## Four pages
 
 - **Today:** history of struggle, hero from history, strike tracker, local news, and the Economy / Politics / Essays & Ideas headlines.
-- **Economy & research:** US numbers (FRED), the world economy (IMF World Economic Outlook), official releases from the BLS, IMF and World Bank with the BLS release calendar, journals, working papers (PERI, INET, Levy, EPI) and recent research, and the text of the week.
+- **Economy & research:** US numbers and global prices (FRED), profits vs. wages since 1947, the debt squeeze in poorer countries, an interactive world map of growth, inflation, unemployment and inequality, the world economy table (World Bank), official releases from the BLS, IMF and World Bank with the BLS release calendar, journals, working papers (PERI, INET, Levy, EPI) and recent research, and the text of the week.
 - **Culture:** artwork of the day, museum archives, posters from MSU's Leftist Political Posters and Radicalism collections, radical art now, song of the day, and listen & watch.
 - **My shelf:** what you're currently reading, reading stats, recommendations from the canon (`site/data/canon.json`), your saved reading list and back issues.
 
