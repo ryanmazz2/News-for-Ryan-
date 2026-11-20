@@ -23,7 +23,8 @@
   "name": "John Ball",
   "born": "c. 1338",
   "died": "1381-07-15",
-  "bio": "A radical priest who preached that all people were created equal, and a leader of the English Peasants’ Revolt."
+  "bio": "A radical priest who preached that all people were created equal, and a leader of the English Peasants’ Revolt.",
+  "wiki": "John Ball (priest)"
  },
  {
   "name": "Wat Tyler",
@@ -58,7 +59,8 @@
   "name": "Nanny of the Maroons",
   "born": "c. 1686",
   "died": "c. 1733",
-  "bio": "A leader of the Windward Maroons in Jamaica who fought British forces from the mountains. She is a national hero of Jamaica."
+  "bio": "A leader of the Windward Maroons in Jamaica who fought British forces from the mountains. She is a national hero of Jamaica.",
+  "wiki": "Queen Nanny"
  },
  {
   "name": "Túpac Amaru II",
@@ -142,7 +144,8 @@
   "name": "John Brown",
   "born": "1800-05-09",
   "died": "1859-12-02",
-  "bio": "A white abolitionist who led a raid on the federal armory at Harpers Ferry to arm enslaved people. He was hanged for treason."
+  "bio": "A white abolitionist who led a raid on the federal armory at Harpers Ferry to arm enslaved people. He was hanged for treason.",
+  "wiki": "John Brown (abolitionist)"
  },
  {
   "name": "Flora Tristan",
@@ -154,7 +157,8 @@
   "name": "Louis Auguste Blanqui",
   "born": "1805",
   "died": "1881",
-  "bio": "A French revolutionary who spent about half of his life in prison for his insurrections."
+  "bio": "A French revolutionary who spent about half of his life in prison for his insurrections.",
+  "wiki": "Louis Auguste Blanqui"
  },
  {
   "name": "Sojourner Truth",
@@ -220,7 +224,8 @@
   "name": "Mother Jones",
   "born": "1837",
   "died": "1930",
-  "bio": "Mary Harris Jones, an Irish-born organizer who led mine workers’ strikes and marched child mill workers to the president’s house."
+  "bio": "Mary Harris Jones, an Irish-born organizer who led mine workers’ strikes and marched child mill workers to the president’s house.",
+  "wiki": "Mary Harris Jones"
  },
  {
   "name": "Lucy Parsons",
@@ -244,7 +249,8 @@
   "name": "Frank Little",
   "born": "1879",
   "died": "1917-08-01",
-  "bio": "An IWW organizer lynched in Butte, Montana, while supporting a strike of copper miners."
+  "bio": "An IWW organizer lynched in Butte, Montana, while supporting a strike of copper miners.",
+  "wiki": "Frank Little (unionist)"
  },
  {
   "name": "Emma Goldman",
@@ -316,7 +322,8 @@
   "name": "Jim Larkin",
   "born": "1874",
   "died": "1947",
-  "bio": "An Irish union leader who led Dublin’s workers through the 1913 Lockout."
+  "bio": "An Irish union leader who led Dublin’s workers through the 1913 Lockout.",
+  "wiki": "James Larkin"
  },
  {
   "name": "Ida B. Wells",
@@ -400,7 +407,8 @@
   "name": "Mohandas Gandhi",
   "born": "1869-10-02",
   "died": "1948-01-30",
-  "bio": "Leader of mass nonviolent resistance to British rule in India."
+  "bio": "Leader of mass nonviolent resistance to British rule in India.",
+  "wiki": "Mahatma Gandhi"
  },
  {
   "name": "Sylvia Pankhurst",
@@ -423,7 +431,8 @@
  {
   "name": "Nicola Sacco and Bartolomeo Vanzetti",
   "died": "1927-08-23",
-  "bio": "Italian immigrant anarchists executed in Massachusetts after a trial condemned worldwide as unjust."
+  "bio": "Italian immigrant anarchists executed in Massachusetts after a trial condemned worldwide as unjust.",
+  "wiki": "Sacco and Vanzetti"
  },
  {
   "name": "Emma Tenayuca",
