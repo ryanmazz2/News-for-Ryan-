@@ -39,7 +39,7 @@ SESSION = requests.Session()
 SESSION.headers["User-Agent"] = API_UA
 
 # How far back each section looks, and how many items it keeps.
-WINDOWS = {"economy": (4, 45), "politics": (3, 45), "left": (10, 70), "world": (14, 70)}
+WINDOWS = {"economy": (4, 45), "politics": (3, 45), "left": (10, 70), "world": (14, 70), "artnow": (60, 30)}
 PER_JOURNAL = 5
 SCHOLARSHIP_MAX = 40
 
@@ -163,6 +163,26 @@ def load_feed(url):
     raise ValueError(f"site refused or has no feed ({detail}), and Google News had nothing recent")
 
 
+IMG_SRC = re.compile(r'<img[^>]+src=["\']([^"\']+)["\']', re.I)
+
+
+def entry_image(e):
+    """The picture a feed attaches to an item, if any."""
+    for key in ("media_thumbnail", "media_content"):
+        for m in e.get(key) or []:
+            url = m.get("url")
+            if url and (m.get("medium") in (None, "image") or re.search(r"\.(jpe?g|png|webp|gif)", url, re.I)):
+                return url
+    for enc in e.get("enclosures") or []:
+        if str(enc.get("type", "")).startswith("image") and enc.get("href"):
+            return enc["href"]
+    for blob in [*(c.get("value", "") for c in e.get("content") or []), e.get("summary", "")]:
+        m = IMG_SRC.search(blob or "")
+        if m and not m.group(1).startswith("data:"):
+            return html.unescape(m.group(1))
+    return None
+
+
 def fetch_rss(section, src):
     try:
         feed = load_feed(src["url"])
@@ -177,13 +197,17 @@ def fetch_rss(section, src):
         title = clean(e.get("title"), 220)
         if not (link and title):
             continue
-        items.append({
+        item = {
             "title": title,
             "url": link,
             "source": src["name"],
             "date": iso(dt),
             "summary": clean(e.get("summary") or e.get("description")),
-        })
+        }
+        img = entry_image(e)
+        if img:
+            item["image"] = img
+        items.append(item)
     return items
 
 
@@ -301,6 +325,134 @@ def fetch_openalex(terms, since):
     return out
 
 
+# ---------- Pictures from Wikipedia (heroes and artwork of the day) ----------
+
+def wiki_image(title):
+    """Lead image of a Wikipedia article, but only if it lives on Wikimedia
+    Commons (freely licensed). Fair-use images on English Wikipedia are skipped."""
+    url = "https://en.wikipedia.org/api/rest_v1/page/summary/" + requests.utils.quote(title.replace(" ", "_"), safe="")
+    try:
+        d = get_patiently(url, tries=3).json()
+    except Exception:  # noqa: BLE001
+        return None
+    orig = d.get("originalimage") or {}
+    thumb = (d.get("thumbnail") or {}).get("source", "")
+    src = orig.get("source", "")
+    if "/wikipedia/commons/" not in src:
+        return None
+    # Ask for a 640px copy rather than a huge original.
+    if orig.get("width", 0) > 900 and re.search(r"/\d+px-", thumb):
+        src = re.sub(r"/\d+px-", "/640px-", thumb)
+    filename = requests.utils.unquote(orig["source"].rsplit("/", 1)[-1])
+    return {
+        "src": src,
+        "credit": "https://commons.wikimedia.org/wiki/File:" + requests.utils.quote(filename),
+        "page": (d.get("content_urls") or {}).get("desktop", {}).get("page"),
+    }
+
+
+def gather_wiki_images():
+    data = ROOT / "site" / "data"
+    people = json.loads((data / "figures.json").read_text())
+    art = json.loads((data / "art.json").read_text())
+    jobs = [("figures", p["name"], p.get("wiki") or p["name"]) for p in people]
+    jobs += [("art", w["title"], w["wiki"]) for w in art if not w.get("noimage")]
+    out = {"figures": {}, "art": {}}
+    def run(job):
+        kind, key, title = job
+        return kind, key, wiki_image(title)
+    with ThreadPoolExecutor(4) as pool:
+        for kind, key, img in pool.map(run, jobs):
+            if img:
+                out[kind][key] = img
+    print(f"wikipedia images: {len(out['figures'])} heroes, {len(out['art'])} artworks")
+    return out
+
+
+# ---------- Public-domain art from three museums ----------
+
+def aic(term):
+    d = get_patiently(
+        "https://api.artic.edu/api/v1/artworks/search", tries=3, q=term, limit=15,
+        fields="id,title,artist_title,artist_display,date_display,image_id,is_public_domain",
+        **{"query[term][is_public_domain]": "true"},
+    ).json()
+    for w in d.get("data", []):
+        if w.get("image_id") and w.get("is_public_domain"):
+            yield {
+                "title": clean(w["title"], 140), "artist": w.get("artist_title") or clean(w.get("artist_display"), 80),
+                "date": w.get("date_display") or "", "museum": "Art Institute of Chicago",
+                "image": f"https://www.artic.edu/iiif/2/{w['image_id']}/full/400,/0/default.jpg",
+                "url": f"https://www.artic.edu/artworks/{w['id']}",
+            }
+
+
+def met(term):
+    ids = (get_patiently("https://collectionapi.metmuseum.org/public/collection/v1/search", tries=3,
+                         q=term, hasImages="true").json().get("objectIDs") or [])[:8]
+    for i in ids:
+        try:
+            w = get_patiently(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{i}", tries=2).json()
+        except Exception:  # noqa: BLE001
+            continue
+        if w.get("isPublicDomain") and w.get("primaryImageSmall"):
+            yield {
+                "title": clean(w.get("title"), 140), "artist": w.get("artistDisplayName") or "",
+                "date": w.get("objectDate") or "", "museum": "The Met",
+                "image": w["primaryImageSmall"], "url": w.get("objectURL"),
+            }
+        time.sleep(0.1)
+
+
+def cleveland(term):
+    d = get_patiently("https://openaccess-api.clevelandart.org/api/artworks/", tries=3,
+                      q=term, cc0=1, has_image=1, limit=10).json()
+    for w in d.get("data", []):
+        img = ((w.get("images") or {}).get("web") or {}).get("url")
+        if img:
+            creators = w.get("creators") or []
+            yield {
+                "title": clean(w.get("title"), 140),
+                "artist": clean(creators[0].get("description"), 80) if creators else "",
+                "date": w.get("creation_date") or "", "museum": "Cleveland Museum of Art",
+                "image": img, "url": w.get("url"),
+            }
+
+
+def gather_museums():
+    cfg = CONFIG.get("museums", {})
+    pool, seen = [], set()
+    for name, fn in (("Art Institute of Chicago", aic), ("The Met", met), ("Cleveland Museum of Art", cleveland)):
+        got = 0
+        for term in cfg.get("terms", []):
+            try:
+                for w in fn(term):
+                    key = (w["title"].lower(), w["museum"])
+                    if w["title"] and key not in seen:
+                        seen.add(key)
+                        w["term"] = term
+                        pool.append(w)
+                        got += 1
+            except Exception as e:  # noqa: BLE001
+                failed.append({"source": f"{name} ({term})", "section": "museums", "error": str(e).split(" for url")[0][:100]})
+                break   # one failure usually means the museum is refusing; don't keep knocking
+            time.sleep(0.3)
+        print(f"  {name}: {got} works")
+    # A different mix each edition, spread across museums and search terms.
+    import random
+    rng = random.Random(NOW.strftime("%Y%m%d%H"))
+    rng.shuffle(pool)
+    picked, per_term = [], {}
+    for w in pool:
+        if per_term.get(w["term"], 0) < 2:
+            picked.append(w)
+            per_term[w["term"]] = per_term.get(w["term"], 0) + 1
+        if len(picked) >= cfg.get("show", 12):
+            break
+    print(f"museums: {len(picked)} shown from {len(pool)} found")
+    return picked
+
+
 def main():
     sections = {}
     for name, sources in CONFIG["rss"].items():
@@ -330,10 +482,13 @@ def main():
     sections["scholarship"] = scholarship[:SCHOLARSHIP_MAX]
     print(f"scholarship: {len(sections['scholarship'])} items")
 
-    payload = {"generated_at": iso(NOW), "sections": sections, "failed": failed}
+    sections["museums"] = gather_museums()
+    images = gather_wiki_images()
+
+    payload = {"generated_at": iso(NOW), "sections": sections, "images": images, "failed": failed}
 
     # If everything failed (network outage), keep the last good file.
-    if not any(sections.values()) and OUT.exists():
+    if not any(v for k, v in sections.items() if k != "museums") and OUT.exists():
         print("Nothing fetched; keeping previous feed.json", file=sys.stderr)
         return
     OUT.parent.mkdir(parents=True, exist_ok=True)
