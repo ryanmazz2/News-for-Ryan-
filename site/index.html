@@ -3,266 +3,388 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ryan’s Feed</title>
+<title>ryan’s feed</title>
 <meta name="description" content="Economics, politics and Marxist scholarship for Ryan and loved ones, refreshed every morning and evening.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✊</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%232A7AAA'/><circle cx='50' cy='50' r='34' fill='%23F33322'/><circle cx='50' cy='50' r='20' fill='%232A7AAA' stroke='%23F0F2E6' stroke-width='4'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Zilla+Slab:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
+/* ryan's feed
+   After the cover of Tricontinental no. 64 (OSPAAAL, Havana):
+   flat cerulean ground, a sunburst of red-orange and magenta rays
+   outlined in plum, white ruled frames, chunky lowercase slab type. */
 :root {
-  /* Union-banner green and gold */
-  --paper: #F4F5F1;
-  --paper-2: #E6EAE2;
-  --ink: #1D241F;
-  --ink-soft: #56615A;
-  --ditto: #17603F;
-  --banner: #0F4A31;
-  --banner-ink: #F3EEDC;
-  --gold: #E3B341;
-  --rule: #CBD3C8;
-  --flag: #A8730F;
-  --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --text: "Spectral", Georgia, "Times New Roman", serif;
+  --blue: #2A7AAA;
+  --blue-deep: #22668F;
+  --orange: #F33322;
+  --magenta: #AF2770;
+  --white: #F0F2E6;
+  --plum: #3E273A;
+  --paper: #F0F2E6;
+  --ink: #3E273A;
+  --ink-soft: #6B5866;
+  --slab: "Alfa Slab One", "Rockwell Extra Bold", "Rockwell", "Courier New", serif;
+  --text: "Zilla Slab", Rockwell, "Roboto Slab", Georgia, serif;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #121713;
-    --paper-2: #1C241E;
-    --ink: #E9EDE6;
-    --ink-soft: #9DAA9F;
-    --ditto: #7FD1A4;
-    --banner: #0E3F2A;
-    --banner-ink: #F3EEDC;
-    --gold: #EBC15A;
-    --rule: #2C3830;
-    --flag: #E3B341;
+    --blue: #17435F;
+    --blue-deep: #12364D;
+    --paper: #241B26;
+    --ink: #F0F2E6;
+    --ink-soft: #C2B4BE;
+    --magenta: #C9408A;
     color-scheme: dark;
   }
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
 body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--text);
-  font-size: 1.0625rem;
-  line-height: 1.55;
-  padding-top: env(safe-area-inset-top, 0px);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  margin: 0; background: var(--blue); color: var(--white);
+  font: 400 18px/1.45 var(--text);
+  padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px);
 }
-a { color: inherit; }
-:focus-visible { outline: 3px solid var(--ditto); outline-offset: 3px; border-radius: 2px; }
-.wrap { max-width: 82rem; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2.5rem); }
+a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(14px, 3vw, 32px); }
 
-/* Masthead */
-.masthead {
-  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
-  gap: .5rem 2rem; padding-top: 1.5rem; padding-bottom: 1rem;
+/* ---------- masthead: the cover's ruled logo box ---------- */
+.mast { padding-top: clamp(14px, 3vw, 28px); }
+.logo {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: stretch;
+  border: 2px solid var(--white);
 }
-.masthead h1 {
-  margin: 0; font-family: var(--display); font-stretch: 75%; font-weight: 800;
-  font-size: clamp(1.6rem, 3.2vw, 2.1rem); letter-spacing: -0.01em; color: var(--ditto);
+.logo > * { display: flex; align-items: center; }
+.logo .emblem { padding: 8px 14px; border-right: 2px solid var(--white); }
+.logo .emblem svg { width: clamp(52px, 8vw, 84px); height: auto; display: block; }
+.logo h1 {
+  margin: 0; padding: 6px clamp(12px, 3vw, 28px); font: 400 clamp(2.2rem, 7.5vw, 5.2rem)/1 var(--slab);
+  letter-spacing: -.01em; text-transform: lowercase; color: var(--white);
 }
-.masthead p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
-.status { font-size: .95rem; color: var(--ink-soft); }
-.status strong { color: var(--ink); font-weight: 600; }
+.logo .no {
+  flex-direction: column; justify-content: center; padding: 6px clamp(12px, 2.5vw, 26px);
+  border-left: 2px solid var(--white); text-align: center;
+}
+.logo .no small { font: 600 .8rem/1 var(--text); letter-spacing: .04em; }
+.logo .no b { font: 400 clamp(1.8rem, 5vw, 3.4rem)/1 var(--slab); }
+.subline {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px;
+  margin: 10px 0 0; font-size: 1rem;
+}
+.subline p { margin: 0; }
+.subline .ed { opacity: .9; }
+nav.jump { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 10px; font: 600 1rem var(--text); }
+nav.jump a { text-decoration: none; border-bottom: 3px solid transparent; }
+nav.jump a:hover { border-color: var(--orange); }
 
-/* The placard: one factoid at a time, the year set huge */
-.placard {
-  background: var(--banner); color: var(--banner-ink);
-  border-top: 6px solid var(--gold);
-  display: grid; grid-template-columns: auto 1fr; gap: 0 clamp(1rem, 3vw, 2.5rem);
-  align-items: center; padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 3vw, 2.5rem);
-  border-radius: 4px; position: relative; overflow: hidden;
-}
-.placard .year {
-  font-family: var(--display); font-weight: 900; font-stretch: 62%;
-  font-size: clamp(4.5rem, 13vw, 9.5rem); line-height: .8; letter-spacing: -0.03em;
-  font-variant-numeric: lining-nums; color: var(--gold);
-}
-.placard .when { display: block; font-family: var(--display); font-weight: 600; font-size: 1rem; color: var(--gold); margin-bottom: .3rem; }
-.placard .fact { margin: 0; font-size: clamp(1.05rem, 1.9vw, 1.4rem); line-height: 1.4; max-width: 44ch; }
-.placard .anniv {
-  display: inline-block; margin-bottom: .45rem; font-family: var(--display); font-weight: 700;
-  font-size: .9rem; background: var(--gold); color: #1A1500; padding: .1rem .5rem; border-radius: 2px;
-}
-.placard .controls { grid-column: 1 / -1; display: flex; gap: .5rem; margin-top: 1.1rem; align-items: center; }
-.placard button {
-  font: 600 .9rem var(--display); color: var(--banner-ink); background: transparent;
-  border: 1.5px solid rgba(243,238,220,.55); border-radius: 3px; padding: .35rem .75rem; cursor: pointer;
-}
-.placard button:hover { background: rgba(227,179,65,.18); border-color: var(--gold); }
-.placard :focus-visible { outline-color: var(--gold); }
-.placard .count { margin-left: auto; font-family: var(--display); font-size: .9rem; opacity: .8; }
-.placard.swap .year, .placard.swap .fact-wrap { animation: ink .55s ease-out; }
-@keyframes ink { from { opacity: 0; filter: blur(3px); } to { opacity: 1; filter: none; } }
-@media (prefers-reduced-motion: reduce) { .placard.swap .year, .placard.swap .fact-wrap { animation: none; } }
-@media (max-width: 560px) {
-  .placard { grid-template-columns: 1fr; }
-  .placard .year { margin-bottom: .6rem; }
+/* ---------- grid ---------- */
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(18px, 2.5vw, 30px); margin: clamp(22px, 4vw, 40px) 0; }
+.history { grid-column: span 8; }
+.hero { grid-column: span 4; }
+#headlines { grid-column: span 7; }
+#research { grid-column: span 5; }
+#art { grid-column: 1 / -1; }
+@media (max-width: 960px) {
+  .history, .hero, #headlines, #research { grid-column: 1 / -1; }
 }
 
-/* Hero from history */
-.figure {
-  display: grid; grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); gap: .5rem clamp(1.25rem, 3vw, 2.5rem);
-  align-items: start; margin-top: 1rem; padding: 1.25rem clamp(1rem, 3vw, 2.5rem);
-  background: var(--paper-2); border-left: 6px solid var(--gold); border-radius: 0 4px 4px 0;
+/* ---------- the sunburst: history of struggle ---------- */
+.history { align-self: center; display: grid; grid-template-columns: minmax(180px, 330px) 1fr; gap: 10px 28px; align-items: center; }
+.sun { position: relative; aspect-ratio: 1; width: 100%; }
+.sun svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sun .rays { transform-origin: 50% 50%; animation: turn 240s linear infinite; }
+@keyframes turn { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .sun .rays, .ring .rays { animation: none; } }
+.sun .year {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font: 400 clamp(2rem, 6vw, 3.6rem)/1 var(--slab); color: var(--white);
 }
-.figure h2 { margin: 0 0 .2rem; font: 600 .95rem var(--display); color: var(--ink-soft); }
-.figure .name {
-  margin: 0; font-family: var(--display); font-weight: 800; font-stretch: 78%;
-  font-size: clamp(1.7rem, 3.4vw, 2.5rem); line-height: 1.02; color: var(--ditto);
+.history .label { margin: 0 0 6px; font: 400 1.3rem/1.1 var(--slab); text-transform: lowercase; }
+.history .when { font-weight: 700; color: var(--white); }
+.history .anniv { display: inline-block; background: var(--orange); color: var(--white); font-weight: 700; padding: 0 8px; margin-right: 8px; }
+.history .fact { margin: 6px 0 14px; font-size: clamp(1.15rem, 2vw, 1.4rem); line-height: 1.4; max-width: 40ch; }
+.btns { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.btn {
+  font: 700 .95rem/1 var(--text); color: var(--white); background: transparent;
+  border: 2px solid var(--white); padding: 8px 14px; cursor: pointer; text-transform: lowercase;
 }
-.figure .life { margin: .35rem 0 0; font-family: var(--display); font-size: .95rem; color: var(--ink-soft); }
-.figure .bio { margin: 0; font-size: 1.1rem; line-height: 1.5; max-width: 60ch; }
-.figure .mark {
-  display: inline-block; margin-bottom: .45rem; font: 700 .85rem var(--display);
-  background: var(--gold); color: #1A1500; padding: .1rem .5rem; border-radius: 2px;
+.btn:hover { background: var(--white); color: var(--blue); }
+.btns .count { margin-left: 6px; font-size: .9rem; opacity: .85; }
+@media (max-width: 620px) {
+  .history { grid-template-columns: 1fr; justify-items: start; }
+  .history .sun { max-width: 260px; justify-self: center; }
 }
-.figure .wiki { margin: .6rem 0 0; font: 600 .95rem var(--display); }
-.figure .wiki a { color: var(--ditto); text-underline-offset: 3px; }
-@media (max-width: 700px) { .figure { grid-template-columns: 1fr; } }
 
-/* Two streams */
-.streams {
-  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: 0 clamp(1.5rem, 4vw, 3.5rem); margin-top: 2.25rem;
+/* ---------- panels (headlines, research, hero, art) ---------- */
+.panel { background: var(--paper); color: var(--ink); border: 2px solid var(--plum); }
+.band {
+  display: flex; align-items: stretch; background: var(--blue-deep); color: var(--white);
+  border-bottom: 2px solid var(--plum);
 }
-@media (max-width: 900px) { .streams { grid-template-columns: 1fr; } .stream + .stream { margin-top: 3rem; } }
-.stream h2 {
-  font-family: var(--display); font-stretch: 80%; font-weight: 800;
-  font-size: clamp(1.7rem, 3vw, 2.3rem); margin: 0 0 .75rem; line-height: 1;
+.band h2 {
+  flex: 1; margin: 0; padding: 10px 16px 8px; font: 400 clamp(1.4rem, 3vw, 2rem)/1.05 var(--slab); text-transform: lowercase;
 }
-.tools { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin-bottom: .5rem; }
-.tabs { display: flex; flex-wrap: wrap; gap: .25rem; }
+.band .tally { display: grid; place-items: center; padding: 0 16px; border-left: 2px solid var(--white); font: 400 1.4rem var(--slab); }
+.band .tally:empty { display: none; }
+.panel .inner { padding: 14px 16px 18px; }
+
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .tabs button {
-  font: 600 .95rem var(--display); font-stretch: 90%; color: var(--ink-soft);
-  background: transparent; border: 0; padding: .45rem .7rem; cursor: pointer; border-radius: 3px;
+  font: 700 .95rem/1 var(--text); text-transform: lowercase; color: var(--ink); background: transparent;
+  border: 2px solid var(--ink); padding: 7px 10px; cursor: pointer;
 }
-.tabs button:hover { color: var(--ink); background: var(--paper-2); }
-.tabs button[aria-selected="true"] { color: var(--paper); background: var(--ink); }
-.tabs .n { font-weight: 400; opacity: .7; margin-left: .2rem; }
-.filter {
-  margin-left: auto; font: .95rem var(--text); color: var(--ink); background: var(--paper);
-  border: 1.5px solid var(--rule); border-radius: 3px; padding: .4rem .6rem; min-width: 0; width: 13rem; max-width: 100%;
-}
-select.filter { width: auto; max-width: 15rem; }
-@media (max-width: 560px) { .filter, select.filter { margin-left: 0; width: 100%; max-width: none; } }
-
-.list { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
-.item { padding: 1rem 0 1.05rem; border-bottom: 1px solid var(--rule); }
-.item h3 { margin: 0; font-size: 1.14rem; font-weight: 600; line-height: 1.3; max-width: 62ch; }
-.item h3 a { text-decoration: none; }
-.item h3 a:hover { text-decoration: underline; text-decoration-color: var(--ditto); text-underline-offset: 3px; }
-.item .meta { margin: .3rem 0 0; font-family: var(--display); font-size: .88rem; color: var(--ink-soft); }
-.item .meta .src { color: var(--ditto); font-weight: 600; }
-.item .who { font-style: italic; color: var(--ink-soft); margin: .25rem 0 0; font-size: .97rem; }
-.item .summary { margin: .4rem 0 0; color: var(--ink); opacity: .86; max-width: 66ch; font-size: .99rem; }
-.new-dot {
-  display: inline-block; width: .5rem; height: .5rem; border-radius: 50%; background: var(--flag);
-  margin-right: .45rem; vertical-align: .15em;
-}
-.empty { padding: 2rem 0; color: var(--ink-soft); }
-.more {
-  margin-top: 1rem; font: 600 .95rem var(--display); background: transparent; color: var(--ink);
-  border: 1.5px solid var(--ink); border-radius: 3px; padding: .5rem .9rem; cursor: pointer;
+.tabs button:hover { border-color: var(--orange); color: var(--orange); }
+.tabs button[aria-selected="true"] { background: var(--magenta); border-color: var(--magenta); color: #fff; }
+.tabs .n { font-weight: 400; margin-left: 4px; opacity: .8; }
+.find input, .find select {
+  font: 1rem var(--text); color: var(--ink); background: var(--paper);
+  border: 2px solid var(--ink); padding: 6px 8px; width: 100%; max-width: 22rem; margin-bottom: 10px;
 }
 
-footer { margin: 4rem 0 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); color: var(--ink-soft); font-size: .92rem; }
-footer details { margin-top: .5rem; }
-footer summary { cursor: pointer; }
-footer ul { padding-left: 1.2rem; }
-.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.items { list-style: none; margin: 0; padding: 0; }
+.items > li { position: relative; padding: 10px 0 12px 28px; border-top: 2px dotted color-mix(in srgb, var(--ink) 35%, transparent); }
+.items > li::before {
+  content: ""; position: absolute; left: 0; top: 15px; width: 17px; height: 17px;
+  background: var(--burst) center / contain no-repeat;
+}
+.items .t { font: 600 1.1rem/1.3 var(--text); }
+.items .t a { text-decoration: none; }
+.items .t a:hover { text-decoration: underline; text-decoration-color: var(--orange); }
+.items .m { font-size: .88rem; color: var(--ink-soft); margin-top: 2px; }
+.items .m b { color: var(--magenta); font-weight: 700; }
+.items .who { font-style: italic; font-size: .95rem; }
+.items .s { font-size: .98rem; margin-top: 4px; }
+.new { display: inline-block; background: var(--orange); color: #fff; font: 700 .72rem/1.5 var(--text); padding: 0 6px; margin-right: 6px; vertical-align: 2px; text-transform: lowercase; }
+.empty { color: var(--ink-soft); font-style: italic; padding: 12px 0; }
+.empty::before { display: none; }
+.more { margin-top: 10px; font: 700 .95rem var(--text); text-transform: lowercase; color: var(--ink); background: transparent; border: 2px solid var(--ink); padding: 8px 14px; cursor: pointer; }
+.more:hover { background: var(--ink); color: var(--paper); }
+
+/* ---------- hero from history ---------- */
+.hero .inner { text-align: center; }
+.ring { position: relative; width: min(200px, 70%); aspect-ratio: 1; margin: 4px auto 10px; }
+.ring svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ring .rays { transform-origin: 50% 50%; animation: turn 300s linear infinite reverse; }
+.ring img, .ring .noimg {
+  position: absolute; inset: 22%; width: 56%; height: 56%; border-radius: 50%;
+  object-fit: cover; object-position: 50% 20%; border: 3px solid var(--plum); background: var(--blue);
+}
+.ring .noimg { display: grid; place-items: center; color: var(--white); font: 400 2.2rem var(--slab); }
+.hero .mark { display: inline-block; background: var(--orange); color: #fff; font-weight: 700; font-size: .9rem; padding: 1px 8px; margin: 0 0 6px; }
+.hero .name { margin: 0; font: 400 clamp(1.6rem, 3vw, 2.1rem)/1.05 var(--slab); }
+.hero .life { margin: 6px 0 8px; font-size: .95rem; color: var(--ink-soft); }
+.hero .bio { margin: 0 0 12px; text-align: left; }
+.hero .links { font-weight: 700; font-size: .98rem; }
+.credit { display: block; margin-top: 6px; font-size: .78rem; color: var(--ink-soft); }
+
+/* ---------- radical art ---------- */
+.aotd { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 18px 26px; align-items: start; padding-bottom: 18px; border-bottom: 2px solid var(--plum); }
+.aotd figure { margin: 0; background: var(--blue); border: 2px solid var(--plum); display: grid; place-items: center; min-height: 220px; }
+.aotd figure img { display: block; max-width: 100%; max-height: 520px; height: auto; }
+.aotd figure .ph { padding: 24px; text-align: center; color: var(--white); width: 100%; }
+.aotd figure .ph svg { width: 160px; height: 160px; display: block; margin: 0 auto 10px; }
+.aotd .kicker { font: 400 1.05rem var(--slab); color: var(--magenta); text-transform: lowercase; margin: 0; }
+.aotd h3 { margin: 4px 0 4px; font: 400 clamp(1.6rem, 3.4vw, 2.5rem)/1.05 var(--slab); }
+.aotd .by { margin: 0 0 10px; font-weight: 600; color: var(--ink-soft); }
+.aotd .note { margin: 0 0 12px; font-size: 1.1rem; max-width: 46ch; }
+.aotd .links { font-weight: 700; }
+@media (max-width: 760px) { .aotd { grid-template-columns: 1fr; } }
+
+.artcols { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 26px; margin-top: 18px; }
+@media (max-width: 860px) { .artcols { grid-template-columns: 1fr; } }
+.artcols h3 { margin: 0 0 4px; font: 400 1.35rem var(--slab); text-transform: lowercase; color: var(--orange); }
+.artcols .sub { margin: 0 0 12px; font-size: .92rem; color: var(--ink-soft); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+.card { display: block; text-decoration: none; }
+.card .pic { aspect-ratio: 1; background: var(--blue); border: 2px solid var(--plum); display: grid; place-items: center; overflow: hidden; }
+.card img { max-width: 100%; max-height: 100%; display: block; }
+.card .ct { display: block; margin-top: 6px; font: 600 .95rem/1.25 var(--text); }
+.card:hover .ct { text-decoration: underline; text-decoration-color: var(--orange); }
+.card .cm { display: block; font-size: .8rem; color: var(--ink-soft); margin-top: 2px; }
+.now { list-style: none; margin: 0; padding: 0; }
+.now li { display: grid; grid-template-columns: 84px 1fr; gap: 10px; padding: 10px 0; border-top: 2px dotted color-mix(in srgb, var(--ink) 35%, transparent); }
+.now .thumb { width: 84px; height: 84px; background: var(--blue); border: 2px solid var(--plum); overflow: hidden; display: grid; place-items: center; }
+.now .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.now .thumb svg { width: 60px; height: 60px; }
+.now a { font-weight: 600; text-decoration: none; }
+.now a:hover { text-decoration: underline; text-decoration-color: var(--orange); }
+.now .m { font-size: .82rem; color: var(--ink-soft); }
+
+/* ---------- footer ---------- */
+footer { border-top: 2px solid var(--white); padding: 16px 0 28px; font-size: .95rem; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 30px; }
+footer p { margin: 0 0 6px; }
+footer details summary { cursor: pointer; font-weight: 700; }
+footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
+@media (max-width: 700px) { footer { grid-template-columns: 1fr; } }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="masthead">
-    <div>
-      <h1>Ryan’s Feed</h1>
-      <p>Economics, politics and Marxist scholarship for Ryan and loved ones.</p>
+
+  <header class="mast">
+    <div class="logo">
+      <div class="emblem" id="emblem" aria-hidden="true"></div>
+      <h1>ryan’s feed</h1>
+      <div class="no"><small>no.</small><b id="issue">1</b></div>
     </div>
-    <p class="status" id="status">Loading the latest edition…</p>
+    <div class="subline">
+      <p>economics, politics and marxist scholarship for ryan and loved ones</p>
+      <p class="ed" id="status">loading the latest edition…</p>
+    </div>
+    <nav class="jump" aria-label="Sections">
+      <a href="#history">history of struggle</a>
+      <a href="#hero">hero from history</a>
+      <a href="#headlines">scraped headlines</a>
+      <a href="#research">new research</a>
+      <a href="#art">radical art</a>
+    </nav>
   </header>
 
-  <section class="placard" id="placard" aria-label="From the history of labor and the economy">
-    <div class="year" id="fact-year" aria-hidden="true"></div>
-    <div class="fact-wrap">
-      <span class="anniv" id="fact-anniv" hidden>On this day</span>
-      <span class="when" id="fact-when"></span>
-      <p class="fact" id="fact-text"></p>
-    </div>
-    <div class="controls">
-      <button type="button" id="fact-prev" aria-label="Previous fact">Previous</button>
-      <button type="button" id="fact-next" aria-label="Next fact">Next</button>
-      <button type="button" id="fact-pause" aria-pressed="false">Pause</button>
-      <span class="count" id="fact-count"></span>
-    </div>
-  </section>
+  <main class="grid">
 
-  <section class="figure" id="figure" aria-labelledby="fig-h" hidden>
-    <div>
-      <h2 id="fig-h">Today’s hero from history</h2>
-      <p class="name" id="fig-name"></p>
-      <p class="life" id="fig-life"></p>
-    </div>
-    <div>
-      <span class="mark" id="fig-mark" hidden></span>
-      <p class="bio" id="fig-bio"></p>
-      <p class="wiki"><a id="fig-wiki" target="_blank" rel="noopener">Read more on Wikipedia</a></p>
-    </div>
-  </section>
-
-  <main class="streams">
-    <section class="stream" aria-labelledby="news-h">
-      <h2 id="news-h">Scraped Headlines</h2>
-      <div class="tools">
-        <div class="tabs" role="tablist" aria-label="News sections" id="news-tabs"></div>
-        <label class="visually-hidden" for="news-q">Search the headlines</label>
-        <input class="filter" id="news-q" type="search" placeholder="Search headlines">
+    <section class="history" id="history" aria-labelledby="hist-h">
+      <div class="sun">
+        <div id="sun-art" aria-hidden="true"></div>
+        <div class="year" id="fact-year" aria-hidden="true"></div>
       </div>
-      <ul class="list" id="news-list"></ul>
-      <button class="more" id="news-more" hidden>Show more</button>
+      <div>
+        <h2 class="label" id="hist-h">from the history of struggle</h2>
+        <div><span class="anniv" id="fact-anniv" hidden>on this day</span><span class="when" id="fact-when"></span></div>
+        <p class="fact" id="fact-text"></p>
+        <div class="btns">
+          <button class="btn" type="button" id="fact-prev">‹ prev</button>
+          <button class="btn" type="button" id="fact-next">next ›</button>
+          <button class="btn" type="button" id="fact-pause" aria-pressed="false">pause</button>
+          <span class="count" id="fact-count"></span>
+        </div>
+      </div>
     </section>
 
-    <section class="stream" aria-labelledby="sch-h">
-      <h2 id="sch-h">New Research</h2>
-      <div class="tools">
-        <div class="tabs" role="tablist" aria-label="Research sections" id="sch-tabs"></div>
-        <label class="visually-hidden" for="sch-src">Filter by journal</label>
-        <select class="filter" id="sch-src"></select>
+    <section class="panel hero" id="hero" aria-labelledby="hero-h" hidden>
+      <div class="band"><h2 id="hero-h">today’s hero from history</h2></div>
+      <div class="inner">
+        <div class="ring" id="ring"></div>
+        <p class="mark" id="fig-mark" hidden></p>
+        <p class="name" id="fig-name"></p>
+        <p class="life" id="fig-life"></p>
+        <p class="bio" id="fig-bio"></p>
+        <a class="links" id="fig-wiki" target="_blank" rel="noopener">read more on wikipedia</a>
+        <a class="credit" id="fig-credit" target="_blank" rel="noopener" hidden>photo: wikimedia commons</a>
       </div>
-      <ul class="list" id="sch-list"></ul>
-      <button class="more" id="sch-more" hidden>Show more</button>
+    </section>
+
+    <section class="panel" id="headlines" aria-labelledby="news-h">
+      <div class="band"><h2 id="news-h">scraped headlines</h2><span class="tally" id="news-tally" aria-hidden="true"></span></div>
+      <div class="inner">
+        <div class="tabs" id="news-tabs" role="tablist" aria-label="Headline sections"></div>
+        <div class="find"><label class="vh" for="news-q">Search the headlines</label><input id="news-q" type="search" placeholder="search headlines"></div>
+        <ul class="items" id="news-list"></ul>
+        <button class="more" id="news-more" hidden>show more</button>
+      </div>
+    </section>
+
+    <section class="panel" id="research" aria-labelledby="sch-h">
+      <div class="band"><h2 id="sch-h">new research</h2><span class="tally" id="sch-tally" aria-hidden="true"></span></div>
+      <div class="inner">
+        <div class="tabs" id="sch-tabs" role="tablist" aria-label="Research sections"></div>
+        <div class="find"><label class="vh" for="sch-src">Filter by journal</label><select id="sch-src"></select></div>
+        <ul class="items" id="sch-list"></ul>
+        <button class="more" id="sch-more" hidden>show more</button>
+      </div>
+    </section>
+
+    <section class="panel" id="art" aria-labelledby="art-h">
+      <div class="band"><h2 id="art-h">radical art, past and present</h2></div>
+      <div class="inner">
+        <div class="aotd" id="aotd">
+          <figure id="aotd-fig"></figure>
+          <div>
+            <p class="kicker">artwork of the day</p>
+            <h3 id="aotd-title"></h3>
+            <p class="by" id="aotd-by"></p>
+            <p class="note" id="aotd-note"></p>
+            <a class="links" id="aotd-link" target="_blank" rel="noopener">about this work on wikipedia</a>
+            <a class="credit" id="aotd-credit" target="_blank" rel="noopener" hidden>image: wikimedia commons</a>
+          </div>
+        </div>
+        <div class="artcols">
+          <div>
+            <h3>from the museum archives</h3>
+            <p class="sub">Public-domain works from the Art Institute of Chicago, the Met and the Cleveland Museum of Art. A new selection every edition.</p>
+            <div class="cards" id="museum-cards"></div>
+          </div>
+          <div>
+            <h3>radical art now</h3>
+            <p class="sub">The latest from artist collectives and political-graphics archives.</p>
+            <ul class="now" id="artnow-list"></ul>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>A new edition is built twice a day, around 7&nbsp;am and 7&nbsp;pm Mountain time. Journal listings come from Crossref and wider research from OpenAlex. Items marked with a gold dot are new since your last visit. A new hero from history appears each day, chosen by birthday or anniversary when there is one.</p>
-    <details id="failed" hidden>
-      <summary>Some sources could not be reached in this edition</summary>
-      <ul id="failed-list"></ul>
-    </details>
+    <div>
+      <p>A new edition is printed twice a day, around 7&nbsp;am and 7&nbsp;pm Mountain time. Journals come from Crossref and wider research from OpenAlex. Pictures come from Wikimedia Commons and museum open-access collections.</p>
+      <p id="visits"></p>
+    </div>
+    <div>
+      <p>Design after the cover of <i>Tricontinental</i> no.&nbsp;64, published by OSPAAAL in Havana.</p>
+      <details id="failed" hidden>
+        <summary>Sources that didn’t answer this edition</summary>
+        <ul id="failed-list"></ul>
+      </details>
+    </div>
   </footer>
 </div>
 
 <script>
 (() => {
-  const NEWS = [["economy", "Economy"], ["politics", "Politics"], ["left", "US & UK left"], ["world", "Global left"]];
-  const SCH = [["journals", "Journals"], ["scholarship", "Recent work"]];
+  const NEWS = [["economy", "economy"], ["politics", "politics"], ["left", "us & uk left"], ["world", "global left"]];
+  const SCH = [["journals", "journals"], ["scholarship", "recent work"]];
   const PAGE = 15;
   const $ = (id) => document.getElementById(id);
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+  const css = getComputedStyle(document.documentElement);
+  const C = (v) => css.getPropertyValue(v).trim();
 
-  // ---- Last visit, for the “new” markers ----
-  let lastVisit = 0;
-  try { lastVisit = Number(localStorage.getItem("td-last-visit")) || 0; } catch (e) {}
+  // ---------- the sunburst, drawn in code ----------
+  // Long red-orange rays alternate with shorter magenta rays, all outlined in plum.
+  function sunburst({ n = 16, inner = 0.5, long = 1, short = 0.8, center = true, stroke = 1.4 } = {}) {
+    const R = 100, rays = [], step = Math.PI / n, half = step * 1.02;
+    for (let k = 0; k < 2 * n; k++) {
+      const a = k * step - Math.PI / 2, tip = (k % 2 ? short : long) * R, base = inner * R;
+      const p = (r, t) => `${(r * Math.cos(t)).toFixed(2)},${(r * Math.sin(t)).toFixed(2)}`;
+      rays.push(`<polygon points="${p(base, a - half)} ${p(tip, a)} ${p(base, a + half)}" fill="${k % 2 ? C("--magenta") : C("--orange")}" stroke="${C("--plum")}" stroke-width="${stroke}" stroke-linejoin="round"/>`);
+    }
+    // magenta rays sit behind the orange ones, as on the cover
+    const ordered = rays.filter((_, k) => k % 2).concat(rays.filter((_, k) => !(k % 2)));
+    return `<svg viewBox="-102 -102 204 204" xmlns="http://www.w3.org/2000/svg"><g class="rays">${ordered.join("")}</g>` +
+      (center ? `<circle r="${inner * R + 1}" fill="${C("--blue")}" stroke="${C("--plum")}" stroke-width="${stroke}"/>` : "") + `</svg>`;
+  }
+  $("sun-art").innerHTML = sunburst({ inner: 0.46 });
+  $("emblem").innerHTML = sunburst({ n: 10, inner: 0.42, stroke: 3 }).replace("</svg>",
+    `<circle r="30" fill="none" stroke="${C("--white")}" stroke-width="5"/><ellipse rx="13" ry="30" fill="none" stroke="${C("--white")}" stroke-width="4"/><line x1="-30" x2="30" stroke="${C("--white")}" stroke-width="4"/></svg>`);
+  // tiny sunburst used as the bullet for every list item
+  const bullet = sunburst({ n: 8, inner: 0.32, short: 0.72, stroke: 6 });
+  document.documentElement.style.setProperty("--burst", `url("data:image/svg+xml,${encodeURIComponent(bullet)}")`);
+  const smallBurst = () => sunburst({ n: 12, inner: 0.4 });
+
+  // ---------- visits and "new" markers (this browser only) ----------
+  let lastVisit = 0, visits = 0;
+  try {
+    lastVisit = Number(localStorage.getItem("td-last-visit")) || 0;
+    visits = (Number(localStorage.getItem("td-visits")) || 0) + 1;
+    localStorage.setItem("td-visits", String(visits));
+  } catch (e) {}
+  if (visits > 1) $("visits").textContent = `You’ve opened this page ${visits} times on this device.`;
   const markVisit = () => { try { localStorage.setItem("td-last-visit", String(Date.now())); } catch (e) {} };
 
-  // ---- Dates ----
+  // ---------- dates ----------
   const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
   function when(iso, scholarly) {
     if (!iso) return "";
@@ -276,71 +398,34 @@ footer ul { padding-left: 1.2rem; }
   }
   function nextEdition(gen) {
     // Builds are scheduled at 02:00 and 14:00 UTC; GitHub can run them a little late.
-    const t = new Date(gen);
-    const n = new Date(t);
+    const t = new Date(gen), n = new Date(t);
     n.setUTCMinutes(0, 0, 0);
     n.setUTCHours(t.getUTCHours() < 14 ? 14 : 26);
     if (t.getUTCHours() < 2) n.setUTCHours(2);
     return n;
   }
-
-  // ---- Historical dates ----
   const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  function factDate(f) {
-    if (f.month && f.day) return `${MONTHS[f.month - 1]} ${f.day}, ${f.year}`;
-    if (f.month) return `${MONTHS[f.month - 1]} ${f.year}`;
-    return f.year;
-  }
-  // "1879-10-07" -> {y:1879, m:10, d:7}; "c. 1822" or "71 BCE" -> label only
+  const factDate = (f) => f.month && f.day ? `${MONTHS[f.month - 1]} ${f.day}, ${f.year}` : f.month ? `${MONTHS[f.month - 1]} ${f.year}` : f.year;
   function parseLife(s) {
     const m = /^(\d{3,4})-(\d{2})-(\d{2})$/.exec(s || "");
     return m ? { y: +m[1], m: +m[2], d: +m[3], label: `${MONTHS[+m[2] - 1]} ${+m[3]}, ${+m[1]}` } : { label: s || "" };
   }
+  const today = new Date();
+  const dayNum = Math.floor(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) / 864e5);
+  const wikiURL = (title) => "https://en.wikipedia.org/wiki/" + encodeURIComponent(title.replace(/ /g, "_"));
 
-  // ---- Hero from history ----
-  async function showFigure() {
-    let people = [];
-    try { people = await (await fetch("data/figures.json", { cache: "no-cache" })).json(); } catch (e) {}
-    if (!people.length) return;
-    const now = new Date();
-    const mo = now.getMonth() + 1, da = now.getDate();
-    const dayNum = Math.floor((Date.UTC(now.getFullYear(), now.getMonth(), da)) / 864e5);
-    const hits = [];
-    people.forEach((p) => {
-      const b = parseLife(p.born), d = parseLife(p.died);
-      if (b.m === mo && b.d === da) hits.push({ p, mark: `Born on this day in ${b.y}` });
-      if (d.m === mo && d.d === da) hits.push({ p, mark: `Died on this day in ${d.y}` });
-    });
-    const pick = hits.length ? hits[dayNum % hits.length] : { p: people[dayNum % people.length] };
-    const b = parseLife(pick.p.born), d = parseLife(pick.p.died);
-    $("fig-name").textContent = pick.p.name;
-    $("fig-life").textContent = b.label && d.label ? `${b.label} to ${d.label}` : b.label ? `Born ${b.label}` : `Died ${d.label}`;
-    $("fig-bio").textContent = pick.p.bio;
-    // Goes straight to the article when the name matches a Wikipedia title or redirect,
-    // otherwise to Wikipedia's search results. Add "wiki": "Exact_Title" in figures.json to override.
-    $("fig-wiki").href = pick.p.wiki
-      ? "https://en.wikipedia.org/wiki/" + encodeURIComponent(pick.p.wiki)
-      : "https://en.wikipedia.org/wiki/Special:Search?go=Go&search=" + encodeURIComponent(pick.p.name);
-    $("fig-wiki").textContent = `Read more about ${pick.p.name} on Wikipedia`;
-    $("fig-mark").hidden = !pick.mark;
-    $("fig-mark").textContent = pick.mark || "";
-    $("figure").hidden = false;
-  }
-
-  // ---- Factoid placard ----
+  // ---------- history of struggle ----------
   async function startFacts() {
     let facts = [];
     try { facts = await (await fetch("data/factoids.json", { cache: "no-cache" })).json(); } catch (e) {}
-    if (!facts.length) { $("placard").hidden = true; return; }
-    const now = new Date();
-    const isToday = (f) => f.month === now.getMonth() + 1 && f.day === now.getDate();
-    const today = facts.filter(isToday);
-    const rest = facts.filter((f) => !isToday(f));
+    if (!facts.length) { $("history").hidden = true; return; }
+    const isToday = (f) => f.month === today.getMonth() + 1 && f.day === today.getDate();
+    const first = facts.filter(isToday), rest = facts.filter((f) => !isToday(f));
     for (let i = rest.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [rest[i], rest[j]] = [rest[j], rest[i]]; }
-    const order = [...today, ...rest];
-    let i = 0, timer = null, paused = false;
-    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-
+    const order = [...first, ...rest];
+    let i = 0, timer = null, paused = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const pb = $("fact-pause");
+    const sync = () => { pb.textContent = paused ? "play" : "pause"; pb.setAttribute("aria-pressed", String(paused)); };
     function show(k) {
       i = (k + order.length) % order.length;
       const f = order[i];
@@ -349,44 +434,120 @@ footer ul { padding-left: 1.2rem; }
       $("fact-text").textContent = f.text;
       $("fact-anniv").hidden = !isToday(f);
       $("fact-count").textContent = `${i + 1} of ${order.length}`;
-      $("placard").setAttribute("aria-label", `${f.year}: ${f.text}`);
-      const p = $("placard"); p.classList.remove("swap"); void p.offsetWidth; p.classList.add("swap");
     }
     function schedule() { clearInterval(timer); if (!paused) timer = setInterval(() => show(i + 1), 14000); }
     $("fact-next").onclick = () => { show(i + 1); schedule(); };
     $("fact-prev").onclick = () => { show(i - 1); schedule(); };
-    $("fact-pause").onclick = (e) => {
-      paused = !paused;
-      e.currentTarget.textContent = paused ? "Play" : "Pause";
-      e.currentTarget.setAttribute("aria-pressed", String(paused));
-      schedule();
-    };
-    if (reduce) { paused = true; $("fact-pause").textContent = "Play"; $("fact-pause").setAttribute("aria-pressed", "true"); }
-    show(0); schedule();
+    pb.onclick = () => { paused = !paused; sync(); schedule(); };
+    sync(); show(0); schedule();
   }
 
-  // ---- Lists ----
-  function el(tag, cls, text) { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
-
-  function renderItem(item, scholarly) {
-    const li = el("li", "item");
-    const h = el("h3");
-    if (item.date && new Date(item.date).getTime() > lastVisit && lastVisit) {
-      const dot = el("span", "new-dot"); dot.title = "New since your last visit"; h.append(dot);
+  // ---------- hero from history (with photo) ----------
+  let heroName = null;
+  async function showHero(images) {
+    let people = [];
+    try { people = await (await fetch("data/figures.json", { cache: "no-cache" })).json(); } catch (e) {}
+    if (!people.length) return;
+    const mo = today.getMonth() + 1, da = today.getDate(), hits = [];
+    people.forEach((p) => {
+      const b = parseLife(p.born), d = parseLife(p.died);
+      if (b.m === mo && b.d === da) hits.push({ p, mark: `born on this day in ${b.y}` });
+      if (d.m === mo && d.d === da) hits.push({ p, mark: `died on this day in ${d.y}` });
+    });
+    const pick = hits.length ? hits[dayNum % hits.length] : { p: people[dayNum % people.length] };
+    const p = pick.p, b = parseLife(p.born), d = parseLife(p.died);
+    heroName = p.name;
+    $("fig-name").textContent = p.name;
+    $("fig-life").textContent = b.label && d.label ? `${b.label} – ${d.label}` : b.label ? `born ${b.label}` : `died ${d.label}`;
+    $("fig-bio").textContent = p.bio;
+    $("fig-wiki").href = p.wiki ? wikiURL(p.wiki) : "https://en.wikipedia.org/wiki/Special:Search?go=Go&search=" + encodeURIComponent(p.name);
+    $("fig-wiki").textContent = `read more about ${p.name} on wikipedia`;
+    $("fig-mark").hidden = !pick.mark;
+    $("fig-mark").textContent = pick.mark || "";
+    const ring = $("ring");
+    ring.innerHTML = sunburst({ n: 18, inner: 0.56, short: 0.84 });
+    const img = images && images.figures && images.figures[p.name];
+    if (img) {
+      const im = el("img"); im.src = img.src; im.alt = `Portrait of ${p.name}`; im.loading = "lazy";
+      im.onerror = () => { im.replaceWith(initials(p.name)); $("fig-credit").hidden = true; };
+      ring.append(im);
+      $("fig-credit").href = img.credit; $("fig-credit").hidden = false;
+    } else {
+      ring.append(initials(p.name));
     }
+    $("hero").hidden = false;
+  }
+  function initials(name) {
+    const d = el("div", "noimg", name.split(/\s+/).filter((w) => /^[A-ZÀ-Ý]/.test(w)).slice(0, 2).map((w) => w[0]).join(""));
+    d.setAttribute("aria-hidden", "true");
+    return d;
+  }
+
+  // ---------- artwork of the day ----------
+  async function showArt(images) {
+    let art = [];
+    try { art = await (await fetch("data/art.json", { cache: "no-cache" })).json(); } catch (e) {}
+    if (!art.length) { $("aotd").hidden = true; return; }
+    // Pair with today's hero when a work is about them; otherwise rotate daily.
+    const w = art.find((x) => x.related && x.related === heroName) || art[dayNum % art.length];
+    $("aotd-title").textContent = w.title;
+    $("aotd-by").textContent = [w.artist, w.year].filter(Boolean).join(", ");
+    $("aotd-note").textContent = w.note;
+    $("aotd-link").href = wikiURL(w.wiki);
+    $("aotd-link").textContent = w.noimage ? `about ${w.artist || w.title} on wikipedia` : "about this work on wikipedia";
+    const fig = $("aotd-fig"), img = images && images.art && images.art[w.title];
+    fig.replaceChildren();
+    if (img) {
+      const im = el("img"); im.src = img.src; im.alt = `${w.title}${w.artist ? ", " + w.artist : ""}`; im.loading = "lazy";
+      fig.append(im);
+      $("aotd-credit").href = img.credit; $("aotd-credit").hidden = false;
+    } else {
+      const ph = el("div", "ph"); ph.innerHTML = smallBurst();
+      ph.append(el("div", null, w.noimage ? "Follow the link to see this artist’s work." : "This work is still under copyright. See it on Wikipedia."));
+      fig.append(ph);
+    }
+  }
+
+  // ---------- museum archives and art now ----------
+  function showMuseums(list) {
+    const box = $("museum-cards"); box.replaceChildren();
+    if (!list || !list.length) { box.append(el("p", "empty", "The museum archives fill in at the next edition.")); return; }
+    list.forEach((w) => {
+      const a = el("a", "card"); a.href = w.url; a.target = "_blank"; a.rel = "noopener";
+      const pic = el("span", "pic"), im = el("img"); im.src = w.image; im.alt = w.title; im.loading = "lazy";
+      im.onerror = () => { pic.innerHTML = smallBurst(); };
+      pic.append(im);
+      a.append(pic, el("span", "ct", w.title), el("span", "cm", [w.artist, w.date].filter(Boolean).join(", ")), el("span", "cm", w.museum));
+      box.append(a);
+    });
+  }
+  function showArtNow(list) {
+    const ul = $("artnow-list"); ul.replaceChildren();
+    if (!list || !list.length) { ul.append(el("li", "empty", "Nothing yet. Check back after the next edition.")); return; }
+    list.slice(0, 8).forEach((x) => {
+      const li = el("li"), th = el("div", "thumb");
+      if (x.image) { const im = el("img"); im.src = x.image; im.alt = ""; im.loading = "lazy"; im.onerror = () => { th.innerHTML = smallBurst(); }; th.append(im); }
+      else th.innerHTML = smallBurst();
+      const body = el("div"), a = el("a", null, x.title); a.href = x.url; a.target = "_blank"; a.rel = "noopener";
+      body.append(a, el("div", "m", [x.source, when(x.date)].filter(Boolean).join(", ")));
+      li.append(th, body); ul.append(li);
+    });
+  }
+
+  // ---------- headline and research lists ----------
+  function renderItem(item, scholarly) {
+    const li = el("li"), t = el("div", "t");
+    if (lastVisit && item.date && new Date(item.date).getTime() > lastVisit) t.append(el("span", "new", "new"));
     const a = el("a", null, item.title); a.href = item.url; a.target = "_blank"; a.rel = "noopener";
-    h.append(a); li.append(h);
-    const meta = el("p", "meta");
-    meta.append(el("span", "src", item.source));
-    const w = when(item.date, scholarly);
-    if (w) meta.append(document.createTextNode(", " + w));
-    li.append(meta);
-    if (item.authors && item.authors.length) li.append(el("p", "who", item.authors.join(", ")));
-    if (item.summary) li.append(el("p", "summary", item.summary));
+    t.append(a); li.append(t);
+    const m = el("div", "m"); m.append(el("b", null, item.source));
+    const w = when(item.date, scholarly); if (w) m.append(", " + w);
+    li.append(m);
+    if (item.authors && item.authors.length) li.append(el("div", "who", "by " + item.authors.join(", ")));
+    if (item.summary) li.append(el("div", "s", item.summary));
     return li;
   }
-
-  function makeStream({ tabs, tabsEl, listEl, moreEl, filterEl, scholarly, filterKind }) {
+  function makeStream({ tabs, tabsEl, listEl, moreEl, filterEl, tallyEl, scholarly, filterKind }) {
     let current = tabs[0][0], shown = PAGE, data = {};
     function items() {
       let list = data[current] || [];
@@ -398,19 +559,16 @@ footer ul { padding-left: 1.2rem; }
     function fillSources() {
       if (filterKind !== "source") return;
       const names = [...new Set((data[current] || []).map((x) => x.source))].sort();
-      filterEl.replaceChildren(new Option(current === "journals" ? "All journals" : "All venues", ""));
+      filterEl.replaceChildren(new Option(current === "journals" ? "all journals" : "all venues", ""));
       names.forEach((n) => filterEl.add(new Option(n, n.toLowerCase())));
     }
     function render() {
       const list = items();
       listEl.replaceChildren();
-      if (!list.length) {
-        const msg = filterEl.value ? "Nothing matches that filter. Clear it to see everything." : "Nothing in this section yet. It fills in at the next edition.";
-        listEl.append(el("li", "empty", msg));
-      }
+      if (!list.length) listEl.append(el("li", "empty", filterEl.value ? "Nothing matches. Clear the box to see everything." : "Nothing here yet. Check back after the next edition."));
       list.slice(0, shown).forEach((x) => listEl.append(renderItem(x, scholarly)));
       moreEl.hidden = list.length <= shown;
-      moreEl.textContent = `Show more (${list.length - shown} left)`;
+      moreEl.textContent = `show more (${list.length - shown} left)`;
     }
     function drawTabs() {
       tabsEl.replaceChildren();
@@ -421,39 +579,45 @@ footer ul { padding-left: 1.2rem; }
         b.onclick = () => { current = key; shown = PAGE; filterEl.value = ""; drawTabs(); fillSources(); render(); };
         tabsEl.append(b);
       });
+      tallyEl.textContent = tabs.reduce((s, [k]) => s + (data[k] || []).length, 0) || "";
     }
     filterEl.addEventListener(filterKind === "search" ? "input" : "change", () => { shown = PAGE; render(); });
     moreEl.onclick = () => { shown += PAGE; render(); };
     return { load(d) { data = d; drawTabs(); fillSources(); render(); } };
   }
+  const news = makeStream({ tabs: NEWS, tabsEl: $("news-tabs"), listEl: $("news-list"), moreEl: $("news-more"), filterEl: $("news-q"), tallyEl: $("news-tally"), scholarly: false, filterKind: "search" });
+  const sch = makeStream({ tabs: SCH, tabsEl: $("sch-tabs"), listEl: $("sch-list"), moreEl: $("sch-more"), filterEl: $("sch-src"), tallyEl: $("sch-tally"), scholarly: true, filterKind: "source" });
 
-  const news = makeStream({ tabs: NEWS, tabsEl: $("news-tabs"), listEl: $("news-list"), moreEl: $("news-more"), filterEl: $("news-q"), scholarly: false, filterKind: "search" });
-  const sch = makeStream({ tabs: SCH, tabsEl: $("sch-tabs"), listEl: $("sch-list"), moreEl: $("sch-more"), filterEl: $("sch-src"), scholarly: true, filterKind: "source" });
-
-  async function loadFeed() {
+  async function load() {
+    let feed = null;
     try {
       const res = await fetch("data/feed.json", { cache: "no-cache" });
-      if (!res.ok) throw new Error(res.status);
-      const feed = await res.json();
-      news.load(feed.sections); sch.load(feed.sections);
-      const gen = new Date(feed.generated_at);
-      const fmt = (d) => d.toLocaleString("en", { weekday: "short", hour: "numeric", minute: "2-digit" });
-      $("status").innerHTML = "";
-      $("status").append("Edition of ", el("strong", null, fmt(gen)), `. Next around ${fmt(nextEdition(gen))}.`);
-      if (feed.failed && feed.failed.length) {
-        $("failed").hidden = false;
-        feed.failed.forEach((f) => $("failed-list").append(el("li", null, `${f.source} (${f.section}): ${f.error}`)));
-      }
-      markVisit();
-    } catch (e) {
-      $("status").textContent = "The first edition hasn’t been built yet. Run the “Update site” workflow on GitHub to build it.";
-      news.load({}); sch.load({});
+      if (res.ok) feed = await res.json();
+    } catch (e) {}
+    const images = feed && feed.images;
+    await showHero(images);
+    await showArt(images);
+    if (!feed) {
+      $("status").textContent = "no edition yet: run the “Update site” workflow on GitHub";
+      news.load({}); sch.load({}); showMuseums([]); showArtNow([]);
+      return;
     }
+    const s = feed.sections || {};
+    news.load(s); sch.load(s); showMuseums(s.museums); showArtNow(s.artnow);
+    const gen = new Date(feed.generated_at);
+    // Issue number: one per edition since the first, on November 19, 2026.
+    $("issue").textContent = Math.max(1, Math.floor((gen - Date.UTC(2026, 10, 19, 2)) / 432e5) + 1);
+    const fmt = (d) => d.toLocaleString("en", { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }).toLowerCase();
+    $("status").textContent = `printed ${fmt(gen)}; next about ${fmt(nextEdition(gen))}`;
+    if (feed.failed && feed.failed.length) {
+      $("failed").hidden = false;
+      feed.failed.forEach((f) => $("failed-list").append(el("li", null, `${f.source} (${f.section}): ${f.error}`)));
+    }
+    markVisit();
   }
 
   startFacts();
-  showFigure();
-  loadFeed();
+  load();
 })();
 </script>
 </body>
