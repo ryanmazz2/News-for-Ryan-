@@ -181,6 +181,24 @@
         "name": "Canadian Dimension",
         "url": "https://canadiandimension.com/"
       }
+    ],
+    "artnow": [
+      {
+        "name": "Justseeds",
+        "url": "https://justseeds.org/feed/"
+      },
+      {
+        "name": "Amplifier",
+        "url": "https://amplifier.org/feed/"
+      },
+      {
+        "name": "Interference Archive",
+        "url": "https://interferencearchive.org/feed/"
+      },
+      {
+        "name": "Center for the Study of Political Graphics",
+        "url": "https://www.politicalgraphics.org/"
+      }
     ]
   },
   "journals": [
@@ -243,5 +261,25 @@
       "labor movement history"
     ],
     "days_back": 120
+  },
+  "museums": {
+    "_note": "Search terms sent to the Art Institute of Chicago, the Met and the Cleveland Museum of Art. Only public-domain works with images are kept; a fresh mix of 12 is shown each edition.",
+    "terms": [
+      "strike",
+      "strikers",
+      "revolution",
+      "barricade",
+      "protest",
+      "workers",
+      "emancipation",
+      "abolition",
+      "Kollwitz",
+      "Daumier",
+      "Posada",
+      "Masereel",
+      "Millet peasant",
+      "Lewis Hine"
+    ],
+    "show": 12
   }
 }
