@@ -142,6 +142,9 @@ nav.jump a:hover { border-color: var(--orange); }
 .tabs button:hover { border-color: var(--orange); color: var(--orange); }
 .tabs button[aria-selected="true"] { background: var(--magenta); border-color: var(--magenta); color: #fff; }
 .tabs .n { font-weight: 400; margin-left: 4px; opacity: .8; }
+.find.two { display: flex; flex-wrap: wrap; gap: 8px; }
+.find.two select { width: auto; }
+.find.two input { flex: 1; min-width: 12rem; }
 .find input, .find select {
   font: 1rem var(--text); color: var(--ink); background: var(--paper);
   border: 2px solid var(--ink); padding: 6px 8px; width: 100%; max-width: 22rem; margin-bottom: 10px;
@@ -247,6 +250,56 @@ audio { width: 100%; height: 36px; margin-top: 6px; }
 .viewing { background: var(--orange); color: #fff; padding: 8px 10px; margin-bottom: 10px; font-weight: 600; }
 .viewing button { margin-left: 8px; font: 700 .85rem var(--text); background: #fff; color: var(--orange); border: 0; padding: 4px 8px; cursor: pointer; }
 
+/* ---------- pages ---------- */
+nav.pages { display: flex; flex-wrap: wrap; gap: 0; margin-top: 14px; border: 2px solid var(--white); width: fit-content; max-width: 100%; }
+nav.pages a { font: 400 clamp(1rem, 2.4vw, 1.25rem)/1 var(--slab); text-decoration: none; padding: 10px 16px; border-right: 2px solid var(--white); }
+nav.pages a:last-child { border-right: 0; }
+nav.pages a:hover { background: color-mix(in srgb, var(--white) 15%, transparent); }
+nav.pages a[aria-current="page"] { background: var(--orange); color: #fff; }
+#headlines, #economy, #art, #posters, #reading, #recs { grid-column: 1 / -1; }
+#art { order: -2; } #posters { order: -1; }
+#world, #research, #listen { grid-column: span 7; }
+#releases, #text, #song { grid-column: span 5; }
+@media (max-width: 960px) {
+  #world, #research, #listen, #releases, #text, #song { grid-column: 1 / -1; }
+}
+@media (min-width: 1000px) {
+  #headlines .items { columns: 2; column-gap: 34px; }
+  #headlines .items > li { break-inside: avoid; }
+}
+
+/* world table */
+.tablewrap { overflow-x: auto; }
+table.world { border-collapse: collapse; width: 100%; font-size: .95rem; min-width: 520px; }
+table.world th, table.world td { padding: 6px 8px; text-align: right; border-bottom: 2px dotted color-mix(in srgb, var(--ink) 30%, transparent); white-space: nowrap; }
+table.world th:first-child, table.world td:first-child { text-align: left; }
+table.world thead th { font-weight: 700; font-size: .85rem; color: var(--ink-soft); vertical-align: bottom; white-space: normal; }
+table.world td .nx { display: block; font-size: .78rem; color: var(--ink-soft); }
+table.world td.neg { color: var(--orange); font-weight: 700; }
+.src-note { font-size: .8rem; color: var(--ink-soft); margin: 8px 0 0; }
+
+/* releases */
+h3.minor { margin: 4px 0 8px; font: 400 1.15rem var(--slab); color: var(--orange); }
+.cal { list-style: none; margin: 0 0 16px; padding: 0; }
+.cal li { display: grid; grid-template-columns: 6.2em 1fr; gap: 8px; padding: 6px 0; border-top: 2px dotted color-mix(in srgb, var(--ink) 30%, transparent); font-size: .95rem; }
+.cal b { color: var(--magenta); }
+
+/* shelf */
+.covers { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px; }
+.book .cv { aspect-ratio: 2 / 3; background: var(--blue); border: 2px solid var(--plum); overflow: hidden; display: grid; place-items: center; }
+.book .cv img { width: 100%; height: 100%; object-fit: cover; }
+.book .cv .ph { color: var(--white); font: 400 1rem/1.15 var(--slab); padding: 10px; text-align: center; }
+.book .bt { display: block; margin-top: 6px; font-weight: 700; font-size: .95rem; line-height: 1.25; }
+.book .ba { display: block; font-size: .82rem; color: var(--ink-soft); }
+.statrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 20px; border-top: 2px solid var(--plum); padding-top: 14px; }
+.statrow .n { font: 400 2.2rem/1 var(--slab); }
+.statrow .l { font-size: .9rem; color: var(--ink-soft); }
+.statrow svg { width: 100%; height: 70px; display: block; }
+.statrow ol { margin: 4px 0 0; padding-left: 20px; font-size: .92rem; }
+.because { font-size: .88rem; color: var(--ink-soft); margin-top: 3px; }
+.because b { color: var(--magenta); }
+.tag { display: inline-block; font: 700 .72rem/1.5 var(--text); text-transform: lowercase; background: var(--blue); color: var(--white); padding: 0 6px; margin-left: 6px; vertical-align: 2px; }
+
 /* ---------- footer ---------- */
 footer { border-top: 2px solid var(--white); padding: 16px 0 28px; font-size: .95rem; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 30px; }
 footer p { margin: 0 0 6px; }
@@ -269,26 +322,18 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       <p>economics, politics and marxist scholarship for ryan and loved ones</p>
       <p class="ed" id="status">loading the latest edition…</p>
     </div>
-    <nav class="jump" aria-label="Sections">
-      <a href="#history">history of struggle</a>
-      <a href="#hero">hero from history</a>
-      <a href="#economy">economy in numbers</a>
-      <a href="#strikes">strike tracker</a>
-      <a href="#local" id="nav-local">local</a>
-      <a href="#headlines">scraped headlines</a>
-      <a href="#research">new research</a>
-      <a href="#text">text of the week</a>
-      <a href="#song">song of the day</a>
-      <a href="#listen">listen &amp; watch</a>
-      <a href="#art">radical art</a>
-      <a href="#saved">reading list</a>
-      <a href="#backissues">back issues</a>
+    <nav class="pages" aria-label="Pages">
+      <a href="#today" data-page="today">today</a>
+      <a href="#economy-research" data-page="economy-research">economy &amp; research</a>
+      <a href="#culture" data-page="culture">culture</a>
+      <a href="#shelf" data-page="shelf">my shelf</a>
     </nav>
+    <nav class="jump" id="subnav" aria-label="On this page"></nav>
   </header>
 
   <main class="grid">
 
-    <section class="history" id="history" aria-labelledby="hist-h">
+    <section class="history" id="history" data-page="today" aria-labelledby="hist-h">
       <div class="sun">
         <div id="sun-art" aria-hidden="true"></div>
         <div class="year" id="fact-year" aria-hidden="true"></div>
@@ -306,7 +351,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel hero" id="hero" aria-labelledby="hero-h" hidden>
+    <section class="panel hero" id="hero" data-page="today" aria-labelledby="hero-h" hidden>
       <div class="band"><h2 id="hero-h">today’s hero from history</h2></div>
       <div class="inner">
         <div class="ring" id="ring"></div>
@@ -319,7 +364,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="economy" aria-labelledby="eco-h">
+    <section class="panel" id="economy" data-page="economy-research" aria-labelledby="eco-h">
       <div class="band"><h2 id="eco-h">the economy in numbers</h2></div>
       <div class="inner">
         <p class="lede">Ten-year trends from the Federal Reserve’s FRED database, updated each edition.</p>
@@ -327,7 +372,28 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="strikes" aria-labelledby="str-h">
+    <section class="panel" id="world" data-page="economy-research" aria-labelledby="world-h">
+      <div class="band"><h2 id="world-h">the world economy</h2></div>
+      <div class="inner">
+        <p class="lede" id="world-lede">IMF World Economic Outlook estimates and forecasts.</p>
+        <div class="tablewrap"><table class="world" id="world-table"></table></div>
+        <p class="src-note">Source: <a href="https://www.imf.org/external/datamapper" target="_blank" rel="noopener">IMF DataMapper</a>. Figures for the current year are estimates; next year’s are forecasts.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="releases" data-page="economy-research" aria-labelledby="rel-h">
+      <div class="band"><h2 id="rel-h">official releases</h2></div>
+      <div class="inner">
+        <h3 class="minor">coming up from the BLS</h3>
+        <ul class="cal" id="cal-list"></ul>
+        <h3 class="minor">latest from the BLS, IMF and World Bank</h3>
+        <ul class="items" id="rel-list"></ul>
+        <button class="more" id="rel-more" hidden>show more</button>
+        <span class="tally" id="rel-tally" hidden></span>
+      </div>
+    </section>
+
+    <section class="panel" id="strikes" data-page="today" aria-labelledby="str-h">
       <div class="band"><h2 id="str-h">strike tracker</h2><span class="tally" id="str-tally" aria-hidden="true"></span></div>
       <div class="inner">
         <p class="lede" id="str-lede">Strikes, walkouts, pickets and lockouts in the news over the past week.</p>
@@ -336,7 +402,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="local" aria-labelledby="loc-h">
+    <section class="panel" id="local" data-page="today" aria-labelledby="loc-h">
       <div class="band"><h2 id="loc-h">local news</h2><span class="tally" id="loc-tally" aria-hidden="true"></span></div>
       <div class="inner">
         <ul class="items" id="loc-list"></ul>
@@ -344,18 +410,26 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="headlines" aria-labelledby="news-h">
+    <section class="panel" id="headlines" data-page="today" aria-labelledby="news-h">
       <div class="band"><h2 id="news-h">scraped headlines</h2><span class="tally" id="news-tally" aria-hidden="true"></span></div>
       <div class="inner">
         <div class="viewing" id="viewing" hidden></div>
         <div class="tabs" id="news-tabs" role="tablist" aria-label="Headline sections"></div>
-        <div class="find"><label class="vh" for="news-q">Search the headlines</label><input id="news-q" type="search" placeholder="search headlines"></div>
+        <div class="find two">
+          <label class="vh" for="news-kind">Which sources</label>
+          <select id="news-kind">
+            <option value="">all sources</option>
+            <option value="newsroom">newsrooms &amp; wires</option>
+            <option value="independent">left &amp; independent</option>
+          </select>
+          <label class="vh" for="news-q">Search the headlines</label><input id="news-q" type="search" placeholder="search headlines">
+        </div>
         <ul class="items" id="news-list"></ul>
         <button class="more" id="news-more" hidden>show more</button>
       </div>
     </section>
 
-    <section class="panel" id="research" aria-labelledby="sch-h">
+    <section class="panel" id="research" data-page="economy-research" aria-labelledby="sch-h">
       <div class="band"><h2 id="sch-h">new research</h2><span class="tally" id="sch-tally" aria-hidden="true"></span></div>
       <div class="inner">
         <div class="tabs" id="sch-tabs" role="tablist" aria-label="Research sections"></div>
@@ -365,7 +439,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="text" aria-labelledby="txt-h">
+    <section class="panel" id="text" data-page="economy-research" aria-labelledby="txt-h">
       <div class="band"><h2 id="txt-h">text of the week</h2></div>
       <div class="inner">
         <p class="big" id="txt-title"></p>
@@ -383,7 +457,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="song" aria-labelledby="song-h">
+    <section class="panel" id="song" data-page="culture" aria-labelledby="song-h">
       <div class="band"><h2 id="song-h">song of the day</h2></div>
       <div class="inner">
         <p class="mark hero-mark" id="song-mark" hidden></p>
@@ -397,7 +471,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="listen" aria-labelledby="lis-h">
+    <section class="panel" id="listen" data-page="culture" aria-labelledby="lis-h">
       <div class="band"><h2 id="lis-h">listen &amp; watch</h2></div>
       <div class="inner">
         <div class="tabs" id="lis-tabs" role="tablist" aria-label="Listen and watch"></div>
@@ -405,7 +479,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="art" aria-labelledby="art-h">
+    <section class="panel" id="art" data-page="culture" aria-labelledby="art-h">
       <div class="band"><h2 id="art-h">radical art, past and present</h2></div>
       <div class="inner">
         <div class="aotd" id="aotd">
@@ -433,7 +507,42 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
         </div>
       </div>
     </section>
-    <section class="panel" id="saved" aria-labelledby="sav-h">
+    <section class="panel" id="posters" data-page="culture" aria-labelledby="pos-h">
+      <div class="band"><h2 id="pos-h">posters from the movements</h2></div>
+      <div class="inner">
+        <p class="lede">From Michigan State University’s Leftist Political Posters and Radicalism collections, mostly European and American movements of the 1960s to the 1980s, through the Digital Public Library of America. Only posters marked free to reuse are shown.</p>
+        <div class="aotd" id="potd">
+          <figure id="potd-fig"></figure>
+          <div>
+            <p class="kicker">poster of the day</p>
+            <h3 id="potd-title"></h3>
+            <p class="by" id="potd-by"></p>
+            <p class="note" id="potd-note"></p>
+            <a class="links" id="potd-link" target="_blank" rel="noopener">see it at MSU Libraries</a>
+          </div>
+        </div>
+        <div class="cards" id="poster-cards" style="margin-top:18px"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="reading" data-page="shelf" aria-labelledby="rd-h">
+      <div class="band"><h2 id="rd-h">currently reading</h2><span class="tally" id="rd-tally" aria-hidden="true"></span></div>
+      <div class="inner">
+        <div class="covers" id="rd-current"></div>
+        <div class="statrow" id="rd-stats"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="recs" data-page="shelf" aria-labelledby="rec-h">
+      <div class="band"><h2 id="rec-h">what to read next</h2></div>
+      <div class="inner">
+        <p class="lede" id="rec-lede">Unread works from a canon of pathbreaking left and Marxist books, articles, fiction and poetry, ranked by how they connect to what you’ve read.</p>
+        <div class="tabs" id="rec-tabs" role="tablist" aria-label="Kinds of work"></div>
+        <ul class="items" id="rec-list"></ul>
+      </div>
+    </section>
+
+    <section class="panel" id="saved" data-page="shelf" aria-labelledby="sav-h">
       <div class="band"><h2 id="sav-h">your reading list</h2><span class="tally" id="sav-tally" aria-hidden="true"></span></div>
       <div class="inner">
         <p class="lede">Tap “save” on any headline or article to keep it here. Your list stays in this browser.</p>
@@ -441,7 +550,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="backissues" aria-labelledby="bi-h">
+    <section class="panel" id="backissues" data-page="shelf" aria-labelledby="bi-h">
       <div class="band"><h2 id="bi-h">back issues</h2></div>
       <div class="inner">
         <p class="lede">Every edition is kept for a year. Pick one to read its headlines, research, strikes and local news as they were.</p>
@@ -467,8 +576,8 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
 
 <script>
 (() => {
-  const NEWS = [["economy", "economy"], ["politics", "politics"]];
-  const SCH = [["journals", "journals"], ["scholarship", "recent work"]];
+  const NEWS = [["economy", "economy"], ["politics", "politics"], ["essays", "essays & ideas"]];
+  const SCH = [["journals", "journals"], ["papers", "working papers"], ["scholarship", "recent work"]];
   const PAGE = 15;
   const $ = (id) => document.getElementById(id);
   const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
@@ -659,6 +768,33 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       li.append(th, body); ul.append(li);
     });
   }
+
+  // ---------- pages ----------
+  const PAGES = ["today", "economy-research", "culture", "shelf"];
+  const LABELS = { history: "history", hero: "hero", strikes: "strikes", local: "local", headlines: "headlines",
+    economy: "us numbers", world: "world", releases: "releases", research: "research", text: "text of the week",
+    art: "art", posters: "posters", song: "song", listen: "listen & watch",
+    reading: "reading", recs: "what next", saved: "saved", backissues: "back issues" };
+  function route() {
+    const h = decodeURIComponent(location.hash.slice(1));
+    let page = PAGES.includes(h) ? h : null, target = null;
+    if (!page && h) {
+      const el2 = document.getElementById(h);
+      if (el2 && el2.dataset.page) { page = el2.dataset.page; target = el2; }
+    }
+    page = page || "today";
+    document.querySelectorAll("main > section[data-page]").forEach((sec) => { sec.hidden = sec.dataset.page !== page || sec.dataset.empty === "1"; });
+    document.querySelectorAll("nav.pages a").forEach((a) => {
+      if (a.dataset.page === page) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+    const sub = $("subnav"); sub.replaceChildren();
+    document.querySelectorAll(`main > section[data-page="${page}"]`).forEach((sec) => {
+      if (sec.dataset.empty === "1") return;
+      const a = el("a", null, LABELS[sec.id] || sec.id); a.href = "#" + sec.id; sub.append(a);
+    });
+    if (target) target.scrollIntoView(); else if (PAGES.includes(h)) window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", route);
 
   // ---------- reading list (saved in this browser) ----------
   const SKEY = "td-saved";
@@ -882,6 +1018,148 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     } else v.hidden = true;
   }
 
+  // ---------- world economy ----------
+  function showWorld(w) {
+    const t = $("world-table"); t.replaceChildren();
+    if (!w || !w.rows || !w.rows.length) { $("world-lede").textContent = "The world figures fill in at the next edition."; return; }
+    $("world-lede").textContent = `IMF estimates for ${w.year}, with the forecast for ${w.next} underneath.`;
+    const codes = Object.keys(w.indicators);
+    const thead = el("thead"), hr = el("tr");
+    hr.append(el("th", null, "country"));
+    codes.forEach((c) => hr.append(el("th", null, w.indicators[c].toLowerCase())));
+    thead.append(hr); t.append(thead);
+    const tb = el("tbody");
+    w.rows.forEach((r) => {
+      const tr = el("tr"); tr.append(el("td", null, r.name));
+      codes.forEach((c) => {
+        const v = r.values[c] || {}, td = el("td");
+        td.append(v.now == null ? "–" : (+v.now).toFixed(1));
+        if (v.next != null) td.append(el("span", "nx", `${w.next}: ${(+v.next).toFixed(1)}`));
+        if (c === "NGDP_RPCH" && v.now != null && v.now < 0) td.className = "neg";
+        tr.append(td);
+      });
+      tb.append(tr);
+    });
+    t.append(tb);
+  }
+
+  // ---------- official releases ----------
+  function showCalendar(list) {
+    const ul = $("cal-list"); ul.replaceChildren();
+    if (!list || !list.length) { ul.append(el("li", "empty", "The BLS calendar didn’t come through this edition.")); return; }
+    list.forEach((e) => {
+      const d = new Date(e.date);
+      const li = el("li");
+      li.append(el("b", null, d.toLocaleDateString("en", { weekday: "short", month: "short", day: "numeric" }).toLowerCase()), el("span", null, e.title));
+      ul.append(li);
+    });
+  }
+
+  // ---------- posters (MSU via DPLA) ----------
+  async function showPosters() {
+    let list = [];
+    try { list = await (await fetch("data/posters.json", { cache: "no-cache" })).json(); } catch (e) {}
+    if (!list.length) {
+      $("potd").replaceChildren(el("p", "empty", "Posters appear once the free DPLA key is added (see the README)."));
+      return;
+    }
+    const p = list[dayNum % list.length];
+    $("potd-title").textContent = p.title;
+    $("potd-by").textContent = [p.date, p.place].filter(Boolean).join(", ");
+    $("potd-note").textContent = p.description || "";
+    $("potd-link").href = p.url;
+    const fig = $("potd-fig"); fig.replaceChildren();
+    const im = el("img"); im.src = p.image; im.alt = p.title; im.onerror = () => fig.replaceChildren(placeholder("The image didn’t load. See it at MSU."));
+    fig.append(im);
+    // eight more, a different set each day
+    const box = $("poster-cards"); box.replaceChildren();
+    let seed = dayNum;
+    const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+    const picks = new Set();
+    while (picks.size < Math.min(8, list.length - 1)) { const i = Math.floor(rnd() * list.length); if (list[i] !== p) picks.add(i); }
+    [...picks].forEach((i) => {
+      const w = list[i], a = el("a", "card"); a.href = w.url; a.target = "_blank"; a.rel = "noopener";
+      const pic = el("span", "pic"), img = el("img"); img.src = w.image; img.alt = w.title; img.loading = "lazy";
+      img.onerror = () => { pic.innerHTML = smallBurst(); };
+      pic.append(img);
+      a.append(pic, el("span", "ct", w.title), el("span", "cm", [w.date, w.place].filter(Boolean).join(", ")));
+      box.append(a);
+    });
+  }
+
+  // ---------- my shelf ----------
+  const shortTitle = (t) => { const head = t.split(":")[0].trim(); return head.split(/\s+/).length <= 2 && t.includes(":") ? t : head; };
+  function showShelf(sh) {
+    if (!sh) {
+      $("rd-current").replaceChildren(el("p", "empty", "Upload your StoryGraph export as books/storygraph.csv (see the README)."));
+      $("rec-list").replaceChildren(el("li", "empty", "Recommendations appear once your StoryGraph export is uploaded."));
+      return;
+    }
+    const cur = $("rd-current"); cur.replaceChildren();
+    $("rd-tally").textContent = sh.current.length || "";
+    if (!sh.current.length) cur.append(el("p", "empty", "Nothing marked as currently reading."));
+    sh.current.forEach((b) => {
+      const d = el("a", "book card"); d.target = "_blank"; d.rel = "noopener";
+      d.href = "https://openlibrary.org/search?q=" + encodeURIComponent(shortTitle(b.title) + " " + b.author);
+      const cv = el("span", "cv");
+      const ph = () => { const x = el("span", "ph", shortTitle(b.title)); cv.replaceChildren(x); };
+      if (b.isbn) { const im = el("img"); im.src = `https://covers.openlibrary.org/b/isbn/${b.isbn}-M.jpg?default=false`; im.alt = ""; im.loading = "lazy"; im.onerror = ph; cv.append(im); } else ph();
+      d.append(cv, el("span", "bt", shortTitle(b.title)), el("span", "ba", b.author));
+      cur.append(d);
+    });
+    const st = sh.stats || {}, row = $("rd-stats"); row.replaceChildren();
+    const box = (n, l) => { const d = el("div"); d.append(el("div", "n", String(n)), el("div", "l", l)); return d; };
+    row.append(box(st.read || 0, "books read, all time"), box(st.this_year || 0, `read so far in ${today.getFullYear()}`), box(st.to_read || 0, "on your to-read list"));
+    const yrs = Object.entries(st.by_year || {});
+    if (yrs.length) {
+      const d = el("div"), max = Math.max(...yrs.map(([, v]) => v)), W = 240, H = 70, bw = W / yrs.length;
+      const bars = yrs.map(([y, v], i) => `<rect x="${i * bw + 4}" y="${H - 16 - (v / max) * (H - 26)}" width="${bw - 8}" height="${(v / max) * (H - 26)}" fill="${C("--orange")}" stroke="${C("--plum")}" stroke-width="1.5"/><text x="${i * bw + bw / 2}" y="${H - 3}" text-anchor="middle" font-size="10" fill="currentColor">${y}</text><text x="${i * bw + bw / 2}" y="${H - 20 - (v / max) * (H - 26)}" text-anchor="middle" font-size="10" fill="currentColor">${v}</text>`).join("");
+      d.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Books read per year">${bars}</svg>`;
+      d.append(el("div", "l", "books read per year"));
+      row.append(d);
+    }
+    if ((st.top_authors || []).length) {
+      const d = el("div"), ol = el("ol");
+      st.top_authors.forEach(([a, n]) => ol.append(el("li", null, `${a} (${n})`)));
+      d.append(el("div", "l", "most-read authors"), ol); row.append(d);
+    }
+    showRecs(sh);
+  }
+  function showRecs(sh) {
+    const SH = [["theory", "theory & political economy"], ["articles", "landmark articles"], ["fiction", "fiction"], ["poetry", "poetry"]];
+    let cur = "theory";
+    const rb = sh.canon_read_by_shelf || {}, tb = sh.canon_total_by_shelf || {};
+    $("rec-lede").textContent = `You’ve read ${sh.canon_read} of the ${sh.canon_total} works in the canon. These unread ones connect most closely to what you’ve read.`;
+    function draw() {
+      $("rec-tabs").replaceChildren();
+      SH.forEach(([k, label]) => {
+        const b = el("button"); b.type = "button"; b.setAttribute("role", "tab"); b.setAttribute("aria-selected", String(k === cur));
+        b.append(label, el("span", "n", `${rb[k] || 0}/${tb[k] || 0} read`));
+        b.onclick = () => { cur = k; draw(); };
+        $("rec-tabs").append(b);
+      });
+      const ul = $("rec-list"); ul.replaceChildren();
+      ((sh.recs || {})[cur] || []).forEach((r) => {
+        const li = el("li"), t = el("div", "t");
+        const url = cur === "articles"
+          ? "https://scholar.google.com/scholar?q=" + encodeURIComponent(`"${r.title}" ${r.author}`)
+          : "https://openlibrary.org/search?q=" + encodeURIComponent(r.title + " " + r.author);
+        const a = el("a", null, r.title); a.href = url; a.target = "_blank"; a.rel = "noopener";
+        t.append(a);
+        if (r.on_list) t.append(el("span", "tag", "on your to-read list"));
+        t.append(saveButton({ title: r.title, url, source: r.author, date: null }));
+        li.append(t, el("div", "m", [r.author, r.venue, r.year].filter(Boolean).join(", ")), el("div", "s", r.why));
+        if (r.because && r.because.length) {
+          const bc = el("div", "because"); bc.append("because you read ");
+          r.because.forEach((x, i) => { if (i) bc.append(" and "); bc.append(el("b", null, shortTitle(x))); });
+          li.append(bc);
+        }
+        ul.append(li);
+      });
+    }
+    draw();
+  }
+
   // ---------- headline and research lists ----------
   function renderItem(item, scholarly) {
     const li = el("li"), t = el("div", "t");
@@ -895,10 +1173,11 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     if (item.summary) li.append(el("div", "s", item.summary));
     return li;
   }
-  function makeStream({ tabs, tabsEl, listEl, moreEl, filterEl, tallyEl, scholarly, filterKind }) {
+  function makeStream({ tabs, tabsEl, listEl, moreEl, filterEl, tallyEl, scholarly, filterKind, kindEl }) {
     let current = tabs[0][0], shown = PAGE, data = {};
     function items() {
       let list = data[current] || [];
+      if (kindEl && kindEl.value) list = list.filter((x) => (x.kind || "newsroom") === kindEl.value);
       const q = filterEl.value.trim().toLowerCase();
       if (q && filterKind === "search") list = list.filter((x) => (x.title + " " + (x.summary || "") + " " + x.source).toLowerCase().includes(q));
       if (q && filterKind === "source") list = list.filter((x) => x.source.toLowerCase() === q);
@@ -930,13 +1209,15 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       tallyEl.textContent = tabs.reduce((s, [k]) => s + (data[k] || []).length, 0) || "";
     }
     filterEl.addEventListener(filterKind === "search" ? "input" : "change", () => { shown = PAGE; render(); });
+    if (kindEl) kindEl.addEventListener("change", () => { shown = PAGE; render(); });
     moreEl.onclick = () => { shown += PAGE; render(); };
     return { load(d) { data = d; drawTabs(); fillSources(); render(); } };
   }
-  const news = makeStream({ tabs: NEWS, tabsEl: $("news-tabs"), listEl: $("news-list"), moreEl: $("news-more"), filterEl: $("news-q"), tallyEl: $("news-tally"), scholarly: false, filterKind: "search" });
+  const news = makeStream({ tabs: NEWS, tabsEl: $("news-tabs"), listEl: $("news-list"), moreEl: $("news-more"), filterEl: $("news-q"), tallyEl: $("news-tally"), scholarly: false, filterKind: "search", kindEl: $("news-kind") });
   const sch = makeStream({ tabs: SCH, tabsEl: $("sch-tabs"), listEl: $("sch-list"), moreEl: $("sch-more"), filterEl: $("sch-src"), tallyEl: $("sch-tally"), scholarly: true, filterKind: "source" });
   const strikes = makeList($("str-list"), $("str-more"), $("str-tally"), "No strike stories in the past week.");
   const local = makeList($("loc-list"), $("loc-more"), $("loc-tally"), "Local news fills in at the next edition.");
+  const releases = makeList($("rel-list"), $("rel-more"), $("rel-tally"), "Releases fill in at the next edition.");
 
   async function load() {
     let feed = null;
@@ -953,14 +1234,16 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     if (!feed) {
       $("status").textContent = "no edition yet: run the “Update site” workflow on GitHub";
       showSections({}, null); showMuseums([]); showArtNow([]); showDash([]); showListen({}); setupBackIssues({});
+      showWorld(null); showCalendar([]); releases.load([]); showShelf(null);
       return;
     }
     const s = feed.sections || {};
     showSections(s, null); showMuseums(s.museums); showArtNow(s.artnow); showDash(feed.dashboard); showListen(s);
+    showWorld(feed.world); showCalendar(feed.calendar); releases.load(s.releases); showShelf(feed.shelf);
     setupBackIssues(s);
     const place = (feed.local_place || "local").toLowerCase();
     $("loc-h").textContent = `local news: ${place}`;
-    $("nav-local").textContent = place;
+    LABELS.local = place; route();
     $("str-lede").textContent = `${(s.strikes || []).length} stories about strikes, walkouts, pickets and lockouts in the past week.`;
     const gen = new Date(feed.generated_at);
     // Issue number: one per edition since the first, on November 19, 2026.
@@ -974,7 +1257,9 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     markVisit();
   }
 
+  route();
   startFacts();
+  showPosters();
   load();
 })();
 </script>
