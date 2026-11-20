@@ -268,13 +268,36 @@ nav.pages a[aria-current="page"] { background: var(--orange); color: #fff; }
   #headlines .items > li { break-inside: avoid; }
 }
 
+#prices, #map { grid-column: 1 / -1; }
+#shares { grid-column: span 7; }
+#debt { grid-column: span 5; }
+@media (max-width: 960px) { #shares, #debt { grid-column: 1 / -1; } }
+.chart svg { width: 100%; height: auto; display: block; }
+.chart + .chart { margin-top: 10px; }
+.chart .ttl { font-weight: 700; font-size: .95rem; margin: 6px 0 2px; }
+.chart .ttl b { color: var(--magenta); }
+ul.bars { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
+ul.bars li { display: grid; grid-template-columns: 8.5em 1fr 3.4em; gap: 8px; align-items: center; padding: 3px 0; }
+ul.bars .track { display: block; }
+ul.bars .bar { display: block; height: 14px; background: var(--orange); border: 1.5px solid var(--plum); }
+ul.bars .v { text-align: right; font-weight: 700; }
+.mapbox { position: relative; width: 100%; aspect-ratio: 2 / 1; background: color-mix(in srgb, var(--blue) 18%, var(--paper)); border: 2px solid var(--plum); }
+.mapbox svg { width: 100%; height: 100%; display: block; }
+.mapbox path.c { stroke: var(--plum); stroke-width: .5; cursor: pointer; }
+.mapbox path.c:hover, .mapbox path.c.on { stroke-width: 2; }
+.mapfoot { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; justify-content: space-between; margin-top: 10px; }
+.legend { display: flex; align-items: center; gap: 8px; font-size: .85rem; }
+.legend .ramp { width: 200px; height: 12px; border: 1.5px solid var(--plum); }
+.mapinfo { margin: 0; font-weight: 600; }
+
 /* world table */
 .tablewrap { overflow-x: auto; }
 table.world { border-collapse: collapse; width: 100%; font-size: .95rem; min-width: 520px; }
 table.world th, table.world td { padding: 6px 8px; text-align: right; border-bottom: 2px dotted color-mix(in srgb, var(--ink) 30%, transparent); white-space: nowrap; }
 table.world th:first-child, table.world td:first-child { text-align: left; }
 table.world thead th { font-weight: 700; font-size: .85rem; color: var(--ink-soft); vertical-align: bottom; white-space: normal; }
-table.world td .nx { display: block; font-size: .78rem; color: var(--ink-soft); }
+table.world td .nx { display: flex; justify-content: flex-end; align-items: center; gap: 4px; font-size: .74rem; color: var(--ink-soft); }
+table.world .mini { width: 60px; height: 18px; }
 table.world td.neg { color: var(--orange); font-weight: 700; }
 .src-note { font-size: .8rem; color: var(--ink-soft); margin: 8px 0 0; }
 
@@ -372,12 +395,54 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
+    <section class="panel" id="prices" data-page="economy-research" aria-labelledby="pr-h">
+      <div class="band"><h2 id="pr-h">global prices</h2></div>
+      <div class="inner">
+        <p class="lede">The prices behind the world’s cost of living, over the past ten years.</p>
+        <div class="dash" id="price-dash"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="shares" data-page="economy-research" aria-labelledby="sh-h">
+      <div class="band"><h2 id="sh-h">profits vs. wages</h2></div>
+      <div class="inner">
+        <p class="lede" id="sh-lede">Workers’ pay and corporate profits as shares of US GDP since 1947.</p>
+        <div class="chart" id="sh-wages"></div>
+        <div class="chart" id="sh-profits"></div>
+        <p class="src-note">Source: Bureau of Economic Analysis via FRED (compensation of employees, corporate profits after tax, GDP). Recessions are not shaded.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="debt" data-page="economy-research" aria-labelledby="debt-h">
+      <div class="band"><h2 id="debt-h">the debt squeeze</h2></div>
+      <div class="inner">
+        <p class="lede">Share of export earnings that poorer countries pay out in foreign debt service.</p>
+        <div class="chart" id="debt-chart"></div>
+        <h3 class="minor">interest as a share of government revenue</h3>
+        <ul class="bars" id="debt-bars"></ul>
+        <p class="src-note">Source: World Bank International Debt Statistics and World Development Indicators. Debt figures lag by a year or two.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="map" data-page="economy-research" aria-labelledby="map-h">
+      <div class="band"><h2 id="map-h">the world, mapped</h2></div>
+      <div class="inner">
+        <div class="tabs" id="map-tabs" role="tablist" aria-label="Map indicator"></div>
+        <div class="mapbox" id="map-box"></div>
+        <div class="mapfoot">
+          <div class="legend" id="map-legend"></div>
+          <p class="mapinfo" id="map-info" aria-live="polite">Tap or hover over a country.</p>
+        </div>
+        <p class="src-note">Source: World Bank, World Development Indicators. Each country shows its latest reported year.</p>
+      </div>
+    </section>
+
     <section class="panel" id="world" data-page="economy-research" aria-labelledby="world-h">
       <div class="band"><h2 id="world-h">the world economy</h2></div>
       <div class="inner">
-        <p class="lede" id="world-lede">IMF World Economic Outlook estimates and forecasts.</p>
+        <p class="lede" id="world-lede">World Bank figures for twelve major economies.</p>
         <div class="tablewrap"><table class="world" id="world-table"></table></div>
-        <p class="src-note">Source: <a href="https://www.imf.org/external/datamapper" target="_blank" rel="noopener">IMF DataMapper</a>. Figures for the current year are estimates; next year’s are forecasts.</p>
+        <p class="src-note">Source: <a href="https://data.worldbank.org/" target="_blank" rel="noopener">World Bank, World Development Indicators</a>. Each figure shows the latest year reported.</p>
       </div>
     </section>
 
@@ -772,7 +837,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
   // ---------- pages ----------
   const PAGES = ["today", "economy-research", "culture", "shelf"];
   const LABELS = { history: "history", hero: "hero", strikes: "strikes", local: "local", headlines: "headlines",
-    economy: "us numbers", world: "world", releases: "releases", research: "research", text: "text of the week",
+    economy: "us numbers", prices: "prices", shares: "profits vs. wages", debt: "debt", map: "map", world: "world table", releases: "releases", research: "research", text: "text of the week",
     art: "art", posters: "posters", song: "song", listen: "listen & watch",
     reading: "reading", recs: "what next", saved: "saved", backissues: "back issues" };
   function route() {
@@ -792,6 +857,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       if (sec.dataset.empty === "1") return;
       const a = el("a", null, LABELS[sec.id] || sec.id); a.href = "#" + sec.id; sub.append(a);
     });
+    if (page === "economy-research") showMap();
     if (target) target.scrollIntoView(); else if (PAGES.includes(h)) window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", route);
@@ -858,7 +924,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
   // ---------- economy in numbers ----------
   function fmtVal(v, unit) {
     if (unit === "%") return v.toFixed(1) + "%";
-    if (unit.includes("dollars")) return "$" + Math.round(v);
+    if (unit.includes("dollars")) return "$" + Math.round(v).toLocaleString("en");
     return v.toFixed(1);
   }
   function spark(points) {
@@ -872,8 +938,8 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       <path d="${line}" fill="none" stroke="${C("--orange")}" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
       <circle cx="${lx}" cy="${ly}" r="3.5" fill="${C("--plum")}"/></svg>`;
   }
-  function showDash(list) {
-    const box = $("dash"); box.replaceChildren();
+  function showDash(list, boxId = "dash") {
+    const box = $(boxId); box.replaceChildren();
     if (!list || !list.length) { box.append(el("p", "empty", "The numbers fill in at the next edition.")); return; }
     list.forEach((d) => {
       const c = el("div", "stat");
@@ -1018,24 +1084,148 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     } else v.hidden = true;
   }
 
+  // ---------- line charts (hand-drawn SVG) ----------
+  function lineChart(series, { unit = "", h = 200, w = 640, fmt = (v) => v.toFixed(1) } = {}) {
+    const W = w, H = h, L = 44, R = 12, T = 12, B = 26;
+    const all = series.flatMap((s) => s.points);
+    if (!all.length) return "";
+    const xs = all.map((p) => Date.parse(p[0])), ys = all.map((p) => p[1]);
+    const x0 = Math.min(...xs), x1 = Math.max(...xs);
+    let y0 = Math.min(...ys), y1 = Math.max(...ys);
+    const pad = (y1 - y0) * 0.08 || 1; y0 -= pad; y1 += pad;
+    const X = (t) => L + ((t - x0) / (x1 - x0 || 1)) * (W - L - R);
+    const Y = (v) => T + (1 - (v - y0) / (y1 - y0)) * (H - T - B);
+    // tidy ticks
+    const step = (() => { const raw = (y1 - y0) / 4, m = Math.pow(10, Math.floor(Math.log10(raw))); return [1, 2, 2.5, 5, 10].map((k) => k * m).find((k) => raw <= k); })();
+    let g = "";
+    for (let v = Math.ceil(y0 / step) * step; v <= y1; v += step) {
+      g += `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" stroke-opacity=".15"/><text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end" font-size="11" fill="currentColor">${fmt(v)}${unit}</text>`;
+    }
+    const y0yr = new Date(x0).getUTCFullYear(), y1yr = new Date(x1).getUTCFullYear(), span = y1yr - y0yr;
+    const every = span > 50 ? 10 : span > 20 ? 5 : span > 8 ? 2 : 1;
+    for (let y = Math.ceil(y0yr / every) * every; y <= y1yr; y += every) {
+      const t = Date.UTC(y, 0, 1); if (t < x0) continue;
+      g += `<text x="${X(t)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="currentColor">${y}</text>`;
+    }
+    series.forEach((s) => {
+      const d = s.points.map((p, i) => `${i ? "L" : "M"}${X(Date.parse(p[0])).toFixed(1)} ${Y(p[1]).toFixed(1)}`).join(" ");
+      g += `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2.2" stroke-linejoin="round"/>`;
+      const last = s.points[s.points.length - 1];
+      g += `<circle cx="${X(Date.parse(last[0]))}" cy="${Y(last[1])}" r="3.5" fill="${s.color}" stroke="${C("--plum")}"/>`;
+    });
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${series.map((s) => s.name).join(" and ")}">${g}</svg>`;
+  }
+  const yr = (d) => d.slice(0, 4);
+
+  function showShares(sh) {
+    if (!sh || !(sh.profits || []).length) { $("sh-lede").textContent = "These charts fill in at the next edition."; return; }
+    const w = sh.wages || [], p = sh.profits || [];
+    if (w.length) {
+      const peak = w.reduce((a, b) => (b[1] > a[1] ? b : a));
+      $("sh-wages").innerHTML = `<p class="ttl">Workers’ pay: <b>${w[w.length - 1][1].toFixed(1)}%</b> of GDP in ${yr(w[w.length - 1][0])}, against a peak of ${peak[1].toFixed(1)}% in ${yr(peak[0])}</p>` + lineChart([{ name: "Workers’ pay", color: C("--magenta"), points: w }], { unit: "%" });
+    }
+    const pk = p.reduce((a, b) => (b[1] > a[1] ? b : a));
+    $("sh-profits").innerHTML = `<p class="ttl">Corporate profits after tax: <b>${p[p.length - 1][1].toFixed(1)}%</b> of GDP in ${yr(p[p.length - 1][0])}, against a peak of ${pk[1].toFixed(1)}% in ${yr(pk[0])}</p>` + lineChart([{ name: "Corporate profits", color: C("--orange"), points: p }], { unit: "%" });
+    if (sh.wages_note) $("sh-lede").textContent = "Workers’ pay as a share of gross domestic income, and corporate profits as a share of GDP, since 1947.";
+  }
+
+  function showDebt(d) {
+    if (!d) { $("debt-chart").replaceChildren(el("p", "empty", "Debt figures fill in at the next edition.")); return; }
+    const cols = [C("--orange"), C("--magenta")];
+    const series = Object.entries(d.groups || {}).map(([k, pts], i) => ({ name: (d.group_names || {})[k] || k, color: cols[i % 2], points: pts.map(([y, v]) => [y + "-01-01", v]) }));
+    if (series.length) {
+      const key = series.map((s) => `<span style="color:${s.color}">■</span> ${s.name} (${s.points[s.points.length - 1][1].toFixed(1)}% in ${yr(s.points[s.points.length - 1][0])})`).join("<br>");
+      $("debt-chart").innerHTML = `<p class="ttl">${key}</p>` + lineChart(series, { unit: "%", h: 240, w: 400 });
+    }
+    const ul = $("debt-bars"); ul.replaceChildren();
+    const max = Math.max(...(d.countries || []).map((c) => c.value), 1);
+    (d.countries || []).forEach((c) => {
+      const li = el("li"), bar = el("span", "bar"); bar.style.width = (c.value / max * 100).toFixed(1) + "%";
+      const wrap = el("span", "track"); wrap.append(bar);
+      li.append(el("span", null, `${c.name} (${c.year})`), wrap, el("span", "v", c.value.toFixed(0) + "%"));
+      ul.append(li);
+    });
+  }
+
+  // ---------- world map (d3 + Natural Earth, loaded only when needed) ----------
+  const loadScript = (src) => new Promise((ok, bad) => { const sc = document.createElement("script"); sc.src = src; sc.onload = ok; sc.onerror = bad; document.head.append(sc); });
+  let mapDrawn = false;
+  async function showMap() {
+    if (mapDrawn) return; mapDrawn = true;
+    const box = $("map-box");
+    let data = {};
+    try { data = await (await fetch("data/worldmap.json", { cache: "no-cache" })).json(); } catch (e) {}
+    const codes = Object.keys(data || {});
+    if (!codes.length) { box.replaceChildren(el("p", "empty", "The map fills in at the next edition.")); return; }
+    let geo;
+    try {
+      if (!window.d3) await loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js");
+      for (const ref of ["v5.1.2", "master"]) {
+        try { geo = await (await fetch(`https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@${ref}/geojson/ne_110m_admin_0_countries.geojson`)).json(); break; } catch (e) {}
+      }
+    } catch (e) {}
+    if (!window.d3 || !geo) { box.replaceChildren(el("p", "empty", "The map couldn’t load its outlines. Try refreshing.")); return; }
+    geo.features = geo.features.filter((f) => f.properties.ADM0_A3 !== "ATA");   // leave out Antarctica
+    const W = 960, H = 480;
+    const proj = d3.geoNaturalEarth1().fitSize([W, H], geo), path = d3.geoPath(proj);
+    const svg = d3.select(box).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img").attr("aria-label", "World map");
+    const iso = (f) => { const a = f.properties.ADM0_A3, b = f.properties.ISO_A3; return a === "SDS" ? "SSD" : a === "KOS" ? "XKX" : (b && b !== "-99" ? b : a); };
+    const shapes = svg.selectAll("path").data(geo.features).join("path").attr("class", "c").attr("d", path);
+    let cur = codes[0];
+    function paint() {
+      const ind = data[cur], vals = Object.values(ind.values).map((v) => v[0]).sort((a, b) => a - b);
+      const q = (p) => vals[Math.floor(p * (vals.length - 1))];
+      const lo = q(0.05), hi = q(0.95);
+      const diverging = cur.includes("GDP.MKTP");
+      const scale = diverging
+        ? d3.scaleDiverging([Math.min(lo, -hi * 0.5), 0, hi], d3.interpolateRgbBasis([C("--magenta"), "#F3EEDC", C("--blue")])).clamp(true)
+        : d3.scaleSequential([lo, hi], d3.interpolateRgbBasis(["#F3EEDC", C("--orange"), C("--magenta"), C("--plum")])).clamp(true);
+      shapes.attr("fill", (f) => { const v = ind.values[iso(f)]; return v ? scale(v[0]) : "#cfcac0"; })
+        .on("mouseenter click", function (ev, f) {
+          shapes.classed("on", false); d3.select(this).classed("on", true).raise();
+          const v = ind.values[iso(f)];
+          $("map-info").textContent = v ? `${v[2]}: ${v[0]}${ind.label.includes("%") ? "%" : ""} (${v[1]})` : `${f.properties.NAME}: no recent data`;
+        });
+      shapes.selectAll("title").remove();
+      shapes.append("title").text((f) => { const v = ind.values[iso(f)]; return v ? `${v[2]}: ${v[0]} (${v[1]})` : f.properties.NAME; });
+      const stops = d3.range(0, 1.01, 0.1).map((t) => scale(diverging ? (t < 0.5 ? Math.min(lo, -hi * 0.5) * (1 - t * 2) : hi * (t * 2 - 1)) : lo + t * (hi - lo)));
+      $("map-legend").innerHTML = `<span>${(diverging ? Math.min(lo, -hi * 0.5) : lo).toFixed(1)}</span><span class="ramp" style="background:linear-gradient(90deg,${stops.join(",")})"></span><span>${hi.toFixed(1)}+</span>`;
+      $("map-tabs").replaceChildren();
+      codes.forEach((k) => {
+        const b = el("button", null, data[k].label.replace(/, %$/, "").toLowerCase()); b.type = "button"; b.setAttribute("role", "tab");
+        b.setAttribute("aria-selected", String(k === cur)); b.onclick = () => { cur = k; paint(); };
+        $("map-tabs").append(b);
+      });
+    }
+    paint();
+  }
+
   // ---------- world economy ----------
   function showWorld(w) {
     const t = $("world-table"); t.replaceChildren();
     if (!w || !w.rows || !w.rows.length) { $("world-lede").textContent = "The world figures fill in at the next edition."; return; }
-    $("world-lede").textContent = `IMF estimates for ${w.year}, with the forecast for ${w.next} underneath.`;
+    $("world-lede").textContent = "The latest annual figure for each country, with its trend over the past decade.";
     const codes = Object.keys(w.indicators);
     const thead = el("thead"), hr = el("tr");
     hr.append(el("th", null, "country"));
     codes.forEach((c) => hr.append(el("th", null, w.indicators[c].toLowerCase())));
     thead.append(hr); t.append(thead);
     const tb = el("tbody");
+    const mini = (pts) => {
+      if (!pts || pts.length < 3) return "";
+      const vals = pts.map((p) => p[1]), lo = Math.min(...vals), hi = Math.max(...vals), span = hi - lo || 1;
+      const d = vals.map((v, i) => `${i ? "L" : "M"}${(i / (vals.length - 1)) * 60} ${16 - ((v - lo) / span) * 14}`).join(" ");
+      return `<svg class="mini" viewBox="0 0 60 18" aria-hidden="true"><path d="${d}" fill="none" stroke="${C("--orange")}" stroke-width="1.6"/></svg>`;
+    };
     w.rows.forEach((r) => {
       const tr = el("tr"); tr.append(el("td", null, r.name));
       codes.forEach((c) => {
-        const v = r.values[c] || {}, td = el("td");
-        td.append(v.now == null ? "–" : (+v.now).toFixed(1));
-        if (v.next != null) td.append(el("span", "nx", `${w.next}: ${(+v.next).toFixed(1)}`));
-        if (c === "NGDP_RPCH" && v.now != null && v.now < 0) td.className = "neg";
+        const v = r.values[c], td = el("td");
+        if (!v) { td.append("–"); tr.append(td); return; }
+        const top = el("span", "wv", (+v.latest).toFixed(1));
+        td.append(top);
+        const sub = el("span", "nx"); sub.innerHTML = mini(v.points) + " " + v.year; td.append(sub);
+        if (c.includes("GDP.MKTP") && v.latest < 0) td.className = "neg";
         tr.append(td);
       });
       tb.append(tr);
@@ -1235,11 +1425,13 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       $("status").textContent = "no edition yet: run the “Update site” workflow on GitHub";
       showSections({}, null); showMuseums([]); showArtNow([]); showDash([]); showListen({}); setupBackIssues({});
       showWorld(null); showCalendar([]); releases.load([]); showShelf(null);
+      showDash([], "price-dash"); showShares(null); showDebt(null);
       return;
     }
     const s = feed.sections || {};
     showSections(s, null); showMuseums(s.museums); showArtNow(s.artnow); showDash(feed.dashboard); showListen(s);
     showWorld(feed.world); showCalendar(feed.calendar); releases.load(s.releases); showShelf(feed.shelf);
+    showDash(feed.prices, "price-dash"); showShares(feed.shares); showDebt(feed.debt);
     setupBackIssues(s);
     const place = (feed.local_place || "local").toLowerCase();
     $("loc-h").textContent = `local news: ${place}`;
