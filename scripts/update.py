@@ -39,7 +39,7 @@ SESSION = requests.Session()
 SESSION.headers["User-Agent"] = API_UA
 
 # How far back each section looks, and how many items it keeps.
-WINDOWS = {"economy": (4, 45), "politics": (3, 45), "left": (10, 70), "world": (14, 70), "artnow": (60, 30),
+WINDOWS = {"economy": (4, 60), "politics": (3, 60), "independent": (7, 200), "artnow": (60, 30),
            "podcasts": (45, 30), "videos": (30, 30), "local": (5, 50)}
 PER_JOURNAL = 5
 SCHOLARSHIP_MAX = 40
@@ -466,6 +466,50 @@ def gather_museums():
     return picked
 
 
+# ---------- Independent outlets, sorted into Economy or Politics ----------
+
+ECON = re.compile(
+    r"\b(econom\w*|wages?|paychecks?|salar\w+|inflation|prices?|cost of living|jobs?|jobless|unemploy\w*|"
+    r"labou?r|workers?|workplace|unions?|unioni[sz]\w*|strik\w*|walkouts?|layoffs?|"
+    r"housing|rents?|renters?|tenants?|landlords?|evictions?|mortgages?|"
+    r"tax(es|ation)?|budgets?|debts?|deficit|austerity|privati[sz]\w*|"
+    r"tariffs?|trade|markets?|stocks?|banks?|banking|financ\w*|investors?|"
+    r"federal reserve|the fed|interest rates?|central bank|recession|gdp|growth|"
+    r"profits?|corporat\w*|billionaires?|wealth\w*|inequality|poverty|minimum wage|"
+    r"capital|capitalis\w*|neoliberal\w*|supply chains?|energy prices|oil prices|"
+    r"amazon|walmart|starbucks|tesla|uber|private equity|wall street|crypto\w*|"
+    r"food prices|grocer\w*|health ?care costs?|medicaid|social security|pensions?|benefits)\b", re.I)
+
+
+PARTY = re.compile(r"\blabou?r (party|government|leader|leadership|mps?|ministers?|conference|left|right)\b|\b(capital city|the capital)\b", re.I)
+
+
+def is_economic(item):
+    title = PARTY.sub("", item["title"])
+    body = PARTY.sub("", item.get("summary") or "")
+    title_hits = len(ECON.findall(title))
+    body_hits = len(ECON.findall(body))
+    return title_hits >= 1 or body_hits >= 2
+
+
+def merge_independent(sections):
+    """Read every independent outlet once, then file each article under
+    Economy or Politics by what it's about, mixed in with the wire and
+    mainstream reporting and sorted by time."""
+    items = build_rss_section("independent", CONFIG["rss"].get("independent", []))
+    econ = [i for i in items if is_economic(i)]
+    pol = [i for i in items if not is_economic(i)]
+    for key, extra, keep in (("economy", econ, 110), ("politics", pol, 130)):
+        merged, seen = [], set()
+        for it in sorted(sections.get(key, []) + extra, key=lambda i: i["date"] or "", reverse=True):
+            k = re.sub(r"\W+", "", it["title"].lower())[:80]
+            if k not in seen:
+                seen.add(k)
+                merged.append(it)
+        sections[key] = merged[:keep]
+    print(f"independent: {len(econ)} to economy, {len(pol)} to politics")
+
+
 # ---------- Strike tracker ----------
 
 STRIKE_WORDS = re.compile(r"\b(strik(e|es|ers|ing)|walk ?outs?|walked out|picket(s|ing|ers)?|lockouts?|locked out|work stoppages?|sick-?outs?)\b", re.I)
@@ -476,7 +520,7 @@ def build_strikes(sections):
     searches = [{"name": "Google News", "url": gnews_url(q + " when:7d"), "search": True, "no_google": True}
                 for q in CONFIG.get("strike_searches", [])]
     pool = [i for src in searches for i in fetch_rss("strikes", src)]
-    pool += [i for k in ("economy", "politics", "left", "world", "local") for i in sections.get(k, [])]
+    pool += [i for k in ("economy", "politics", "local") for i in sections.get(k, [])]
     cutoff = NOW - timedelta(days=7)
     seen, out = set(), []
     for it in sorted(pool, key=lambda i: i["date"] or "", reverse=True):
@@ -574,7 +618,7 @@ def save_back_issue(payload):
     which the workflow commits so the history survives between runs."""
     arch = ROOT / "site" / "archive"
     arch.mkdir(parents=True, exist_ok=True)
-    keep = ("economy", "politics", "left", "world", "local", "strikes", "journals", "scholarship")
+    keep = ("economy", "politics", "local", "strikes", "journals", "scholarship")
     slim = {"generated_at": payload["generated_at"], "sections": {
         k: [{f: it[f] for f in ("title", "url", "source", "date", "authors") if f in it} for it in payload["sections"].get(k, [])[:25]]
         for k in keep}}
@@ -592,10 +636,12 @@ def save_back_issue(payload):
 def main():
     sections = {}
     for name, sources in CONFIG["rss"].items():
-        if name == "local":
+        if name in ("local", "independent"):
             continue
         sections[name] = build_rss_section(name, sources)
         print(f"{name}: {len(sections[name])} items")
+
+    merge_independent(sections)
 
     # Crossref allows one list request at a time (three a second with an email).
     journals = []
