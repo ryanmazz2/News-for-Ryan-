@@ -1,0 +1,272 @@
+[
+ {
+  "title": "Manifesto of the Communist Party",
+  "author": "Karl Marx and Friedrich Engels",
+  "year": "1848",
+  "url": "https://www.marxists.org/archive/marx/works/1848/communist-manifesto/",
+  "wiki": "The Communist Manifesto",
+  "intro": "A pamphlet written for a small league of German workers that became one of the most read political texts in history. Start with section one, a portrait of capitalism as a revolutionary force.",
+  "length": "short book"
+ },
+ {
+  "title": "Wage Labour and Capital",
+  "author": "Karl Marx",
+  "year": "1849",
+  "url": "https://www.marxists.org/archive/marx/works/1847/wage-labour/",
+  "wiki": "Wage Labour and Capital",
+  "intro": "Lectures Marx gave to German workers in Brussels explaining in plain language what wages are and where profit comes from. The best first step toward Capital.",
+  "length": "long essay"
+ },
+ {
+  "title": "Value, Price and Profit",
+  "author": "Karl Marx",
+  "year": "1865",
+  "url": "https://www.marxists.org/archive/marx/works/1865/value-price-profit/",
+  "wiki": "Value, Price and Profit",
+  "intro": "A talk to the First International arguing that unions can and should fight for higher wages, and explaining the theory of surplus value along the way.",
+  "length": "long essay"
+ },
+ {
+  "title": "Theses on Feuerbach",
+  "author": "Karl Marx",
+  "year": "1845",
+  "url": "https://www.marxists.org/archive/marx/works/1845/theses/",
+  "wiki": "Theses on Feuerbach",
+  "intro": "Eleven short notes, ending with the famous line that philosophers have only interpreted the world, while the point is to change it.",
+  "length": "a few pages"
+ },
+ {
+  "title": "The Eighteenth Brumaire of Louis Bonaparte",
+  "author": "Karl Marx",
+  "year": "1852",
+  "url": "https://www.marxists.org/archive/marx/works/1852/18th-brumaire/",
+  "wiki": "The Eighteenth Brumaire of Louis Bonaparte",
+  "intro": "How a failed revolution ended in a nephew of Napoleon seizing power. Marx’s sharpest piece of political history, and the source of “first as tragedy, then as farce.”",
+  "length": "short book"
+ },
+ {
+  "title": "The Civil War in France",
+  "author": "Karl Marx",
+  "year": "1871",
+  "url": "https://www.marxists.org/archive/marx/works/1871/civil-war-france/",
+  "wiki": "The Civil War in France",
+  "intro": "Marx’s account of the Paris Commune, written for the International while the bodies were still being counted. It shaped every later debate about what a workers’ state would look like.",
+  "length": "short book"
+ },
+ {
+  "title": "Critique of the Gotha Programme",
+  "author": "Karl Marx",
+  "year": "1875",
+  "url": "https://www.marxists.org/archive/marx/works/1875/gotha/",
+  "wiki": "Critique of the Gotha Programme",
+  "intro": "Marx’s notes on a German socialist party program, including his clearest sketch of a communist society: from each according to ability, to each according to needs.",
+  "length": "long essay"
+ },
+ {
+  "title": "Capital, Volume One, Chapter 10: The Working Day",
+  "author": "Karl Marx",
+  "year": "1867",
+  "url": "https://www.marxists.org/archive/marx/works/1867-c1/ch10.htm",
+  "wiki": "Das Kapital",
+  "intro": "The chapter where Capital comes alive: factory inspectors’ reports on child labor and the long fight to limit the working day. Readable on its own.",
+  "length": "long chapter"
+ },
+ {
+  "title": "The Condition of the Working Class in England",
+  "author": "Friedrich Engels",
+  "year": "1845",
+  "url": "https://www.marxists.org/archive/marx/works/1845/condition-working-class/",
+  "wiki": "The Condition of the Working Class in England",
+  "intro": "Engels, at 24, walked the slums of Manchester and wrote what he saw. Read the chapter on the great towns.",
+  "length": "book"
+ },
+ {
+  "title": "Socialism: Utopian and Scientific",
+  "author": "Friedrich Engels",
+  "year": "1880",
+  "url": "https://www.marxists.org/archive/marx/works/1880/soc-utop/",
+  "wiki": "Socialism: Utopian and Scientific",
+  "intro": "The short introduction to Marxism that most socialists of the 1880s and 1890s actually read.",
+  "length": "long essay"
+ },
+ {
+  "title": "The Right to Be Lazy",
+  "author": "Paul Lafargue",
+  "year": "1883",
+  "url": "https://www.marxists.org/archive/lafargue/1883/lazy/",
+  "wiki": "The Right to Be Lazy",
+  "intro": "Marx’s son-in-law argues, with jokes, that the labor movement should fight for less work rather than the right to more of it.",
+  "length": "long essay"
+ },
+ {
+  "title": "Useful Work versus Useless Toil",
+  "author": "William Morris",
+  "year": "1884",
+  "url": "https://www.marxists.org/archive/morris/works/1884/useful.htm",
+  "wiki": "Useful Work Versus Useless Toil",
+  "intro": "Morris asks what work would be like if it were done for use and pleasure rather than profit.",
+  "length": "essay"
+ },
+ {
+  "title": "Reform or Revolution",
+  "author": "Rosa Luxemburg",
+  "year": "1900",
+  "url": "https://www.marxists.org/archive/luxemburg/1900/reform-revolution/",
+  "wiki": "Social Reform or Revolution?",
+  "intro": "Luxemburg’s answer to the argument that socialism could arrive through gradual reforms alone.",
+  "length": "short book"
+ },
+ {
+  "title": "The Mass Strike",
+  "author": "Rosa Luxemburg",
+  "year": "1906",
+  "url": "https://www.marxists.org/archive/luxemburg/1906/mass-strike/",
+  "wiki": "The Mass Strike, the Political Party and the Trade Unions",
+  "intro": "Written after the 1905 revolution in Russia, it argues that mass strikes grow out of struggle rather than being called on command.",
+  "length": "short book"
+ },
+ {
+  "title": "The Junius Pamphlet",
+  "author": "Rosa Luxemburg",
+  "year": "1915",
+  "url": "https://www.marxists.org/archive/luxemburg/1915/junius/",
+  "wiki": "Junius Pamphlet",
+  "intro": "Written in prison against the First World War, with its famous choice between socialism and barbarism.",
+  "length": "short book"
+ },
+ {
+  "title": "The Social Basis of the Woman Question",
+  "author": "Alexandra Kollontai",
+  "year": "1909",
+  "url": "https://www.marxists.org/archive/kollontai/1909/social-basis.htm",
+  "wiki": "Alexandra Kollontai",
+  "intro": "Kollontai argues that women’s liberation depends on the liberation of labor, and takes on the middle-class feminism of her time.",
+  "length": "essay"
+ },
+ {
+  "title": "Imperialism, the Highest Stage of Capitalism",
+  "author": "Vladimir Lenin",
+  "year": "1916",
+  "url": "https://www.marxists.org/archive/lenin/works/1916/imp-hsc/",
+  "wiki": "Imperialism, the Highest Stage of Capitalism",
+  "intro": "Lenin’s account of how monopoly and finance capital drove the great powers to carve up the world.",
+  "length": "short book"
+ },
+ {
+  "title": "The State and Revolution",
+  "author": "Vladimir Lenin",
+  "year": "1917",
+  "url": "https://www.marxists.org/archive/lenin/works/1917/staterev/",
+  "wiki": "The State and Revolution",
+  "intro": "Written between the February and October revolutions, it asks what workers should do with the state once they take power.",
+  "length": "short book"
+ },
+ {
+  "title": "Statement to the Court",
+  "author": "Eugene V. Debs",
+  "year": "1918",
+  "url": "https://www.marxists.org/archive/debs/works/1918/court.htm",
+  "wiki": "Eugene V. Debs",
+  "intro": "Debs’s speech on being sentenced to ten years for opposing the First World War: while there is a lower class, I am in it.",
+  "length": "speech"
+ },
+ {
+  "title": "Fascism",
+  "author": "Clara Zetkin",
+  "year": "1923",
+  "url": "https://www.marxists.org/archive/zetkin/1923/06/fascism.htm",
+  "wiki": "Clara Zetkin",
+  "intro": "An early Marxist analysis of fascism, delivered months after Mussolini took power, warning that it drew its strength from a desperate middle class.",
+  "length": "long essay"
+ },
+ {
+  "title": "Labour in Irish History",
+  "author": "James Connolly",
+  "year": "1910",
+  "url": "https://www.marxists.org/archive/connolly/1910/lih/",
+  "wiki": "Labour in Irish History",
+  "intro": "Connolly retells Irish history from the side of the poor, arguing that the national and the social question are one.",
+  "length": "book"
+ },
+ {
+  "title": "The Transitional Program",
+  "author": "Leon Trotsky",
+  "year": "1938",
+  "url": "https://www.marxists.org/archive/trotsky/1938/tp/",
+  "wiki": "Transitional Program",
+  "intro": "Trotsky’s program for linking everyday demands to the struggle for power, written on the eve of the Second World War.",
+  "length": "long essay"
+ },
+ {
+  "title": "The Weapon of Theory",
+  "author": "Amílcar Cabral",
+  "year": "1966",
+  "url": "https://www.marxists.org/subject/africa/cabral/1966/weapon-theory.htm",
+  "wiki": "Amílcar Cabral",
+  "intro": "Cabral’s speech at the Tricontinental Conference in Havana on why national liberation movements need their own theory, rooted in their own history.",
+  "length": "speech"
+ },
+ {
+  "title": "The Souls of Black Folk",
+  "author": "W. E. B. Du Bois",
+  "year": "1903",
+  "url": "https://www.gutenberg.org/ebooks/408",
+  "wiki": "The Souls of Black Folk",
+  "intro": "Essays on Black life after Reconstruction that introduced the idea of double consciousness.",
+  "length": "book"
+ },
+ {
+  "title": "A Vindication of the Rights of Woman",
+  "author": "Mary Wollstonecraft",
+  "year": "1792",
+  "url": "https://www.gutenberg.org/ebooks/3420",
+  "wiki": "A Vindication of the Rights of Woman",
+  "intro": "The founding argument that women are not naturally inferior but deprived of education.",
+  "length": "book"
+ },
+ {
+  "title": "Common Sense",
+  "author": "Thomas Paine",
+  "year": "1776",
+  "url": "https://www.gutenberg.org/ebooks/147",
+  "wiki": "Common Sense",
+  "intro": "The pamphlet that persuaded ordinary colonists to break with the king, written for readers in plain language.",
+  "length": "pamphlet"
+ },
+ {
+  "title": "The Soul of Man under Socialism",
+  "author": "Oscar Wilde",
+  "year": "1891",
+  "url": "https://www.gutenberg.org/ebooks/1017",
+  "wiki": "The Soul of Man Under Socialism",
+  "intro": "Wilde argues that socialism would free people to become fully themselves, and that charity only prolongs the disease it treats.",
+  "length": "essay"
+ },
+ {
+  "title": "Civil Disobedience",
+  "author": "Henry David Thoreau",
+  "year": "1849",
+  "url": "https://www.gutenberg.org/ebooks/71",
+  "wiki": "Civil Disobedience (Thoreau)",
+  "intro": "Written after a night in jail for refusing to pay taxes that supported slavery and the war on Mexico.",
+  "length": "essay"
+ },
+ {
+  "title": "The Iron Heel",
+  "author": "Jack London",
+  "year": "1908",
+  "url": "https://www.gutenberg.org/ebooks/1164",
+  "wiki": "The Iron Heel",
+  "intro": "A novel imagining an American oligarchy crushing the labor movement, written decades before the word totalitarian existed.",
+  "length": "novel"
+ },
+ {
+  "title": "The Jungle",
+  "author": "Upton Sinclair",
+  "year": "1906",
+  "url": "https://www.gutenberg.org/ebooks/140",
+  "wiki": "The Jungle",
+  "intro": "Sinclair aimed at readers’ hearts with the lives of Chicago meatpacking workers and, as he said, hit them in the stomach instead.",
+  "length": "novel"
+ }
+]
