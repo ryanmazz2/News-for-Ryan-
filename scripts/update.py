@@ -187,8 +187,40 @@ def entry_image(e):
     return None
 
 
+def itunes_feed(src):
+    """Find a podcast's official feed in Apple's public directory."""
+    d = get_patiently("https://itunes.apple.com/search", tries=3, term=src["itunes"], media="podcast", entity="podcast", limit=8).json()
+    want = src.get("match", src["name"]).lower()
+    for r in d.get("results", []):
+        if want in (r.get("collectionName") or "").lower() and r.get("feedUrl"):
+            return r["feedUrl"]
+    raise ValueError("not found in Apple's podcast directory")
+
+
+def crossref_prefix_items(section, src):
+    d = get_patiently(f"https://api.crossref.org/prefixes/{src['crossref_prefix']}/works", tries=4,
+                      sort="published", order="desc", rows=20, **({"mailto": EMAIL} if EMAIL else {})).json()
+    out = []
+    for w in d.get("message", {}).get("items", []):
+        title = clean((w.get("title") or [""])[0], 240)
+        if not title:
+            continue
+        authors = [" ".join(filter(None, [a.get("given"), a.get("family")])) for a in w.get("author", [])][:4]
+        out.append({"title": title, "url": w.get("URL"), "source": src["name"], "date": iso(crossref_date(w)),
+                    "authors": [a for a in authors if a], "summary": clean(w.get("abstract")), "kind": src.get("kind", "independent")})
+    return out
+
+
 def fetch_rss(section, src):
+    if src.get("crossref_prefix"):
+        try:
+            return crossref_prefix_items(section, src)
+        except Exception as e:  # noqa: BLE001
+            failed.append({"source": src["name"], "section": section, "error": str(e).split(" for url")[0][:120]})
+            return []
     try:
+        if src.get("itunes"):
+            src = {**src, "url": itunes_feed(src)}
         feed = load_feed(src["url"], allow_google=not src.get("no_google"),
                          headers={"User-Agent": API_UA, "Accept": "application/rss+xml, application/xml, text/xml"} if src.get("official") else None)
     except Exception as e:  # noqa: BLE001
@@ -440,7 +472,7 @@ def cleveland(term):
 def gather_museums():
     cfg = CONFIG.get("museums", {})
     pool, seen = [], set()
-    for name, fn in (("Art Institute of Chicago", aic), ("The Met", met), ("Cleveland Museum of Art", cleveland)):
+    for name, fn in (("Art Institute of Chicago", aic), ("Cleveland Museum of Art", cleveland)):
         got = 0
         for term in cfg.get("terms", []):
             try:
@@ -623,8 +655,8 @@ DASHBOARD = [
 ]
 
 
-def fred_series(sid, mode):
-    start = (NOW - timedelta(days=365 * 12)).date().isoformat()
+def fred_series(sid, mode, start=None):
+    start = start or (NOW - timedelta(days=365 * 12)).date().isoformat()
     text = get_patiently("https://fred.stlouisfed.org/graph/fredgraph.csv", tries=3, id=sid, cosd=start).text
     rows = []
     for line in text.strip().splitlines()[1:]:
@@ -636,28 +668,130 @@ def fred_series(sid, mode):
                 pass
     if mode == "yoy":
         rows = [(d, round((v / rows[i - 12][1] - 1) * 100, 2)) for i, (d, v) in enumerate(rows) if i >= 12]
+    if mode == "all":
+        return rows
     return rows[-120:]
 
 
-def build_dashboard():
+GLOBAL_PRICES = [
+    ("POILBREUSDM", "Brent crude oil", "dollars per barrel", "level"),
+    ("PFOODINDEXM", "Global food prices", "index, 2016 = 100", "level"),
+    ("PWHEAMTUSDM", "Wheat", "dollars per metric ton", "level"),
+    ("PCOPPUSDM", "Copper", "dollars per metric ton", "level"),
+    ("RTWEXBGS", "Strength of the US dollar", "index, Jan 2006 = 100", "level"),
+]
+
+
+def build_dashboard(series_list=None, label="economy in numbers"):
     out = []
-    for sid, label, unit, mode in DASHBOARD:
+    for sid, label_, unit, mode in (series_list or DASHBOARD):
+        label_txt = label_
         try:
             pts = fred_series(sid, mode)
         except Exception as e:  # noqa: BLE001
-            failed.append({"source": f"FRED {sid}", "section": "economy in numbers", "error": str(e).split(" for url")[0][:100]})
+            failed.append({"source": f"FRED {sid}", "section": label, "error": str(e).split(" for url")[0][:100]})
             continue
         if len(pts) < 2:
             continue
         # change over roughly one year, whatever the series frequency
         per_year = 12 if len(pts) > 60 else 4
         back = pts[-1 - per_year] if len(pts) > per_year else pts[0]
-        out.append({"id": sid, "label": label, "unit": unit, "latest": pts[-1][1], "date": pts[-1][0],
+        out.append({"id": sid, "label": label_txt, "unit": unit, "latest": pts[-1][1], "date": pts[-1][0],
                     "change": round(pts[-1][1] - back[1], 2), "since": back[0], "points": pts,
                     "url": f"https://fred.stlouisfed.org/series/{sid}"})
         time.sleep(0.3)
-    print(f"dashboard: {len(out)} series")
+    print(f"{label}: {len(out)} series")
     return out
+
+
+# ---------- Profits vs. wages (FRED, back to 1947) ----------
+
+def build_shares():
+    try:
+        gdp = dict(fred_series("GDP", "all", "1947-01-01"))
+        cp = fred_series("CP", "all", "1947-01-01")
+        try:
+            coe = fred_series("COE", "all", "1947-01-01")
+        except Exception:  # noqa: BLE001
+            coe = []
+    except Exception as e:  # noqa: BLE001
+        failed.append({"source": "FRED profits and wages", "section": "profits vs. wages", "error": str(e).split(" for url")[0][:100]})
+        return None
+    share = lambda rows: [(d, round(v / gdp[d] * 100, 2)) for d, v in rows if gdp.get(d)]
+    out = {"profits": share(cp), "wages": share(coe)}
+    if not out["wages"]:
+        try:   # annual fallback: compensation's share of gross domestic income
+            out["wages"] = [(d, round(v, 2)) for d, v in fred_series("W270RE1A156NBEA", "all", "1947-01-01")]
+            out["wages_note"] = "share of gross domestic income"
+        except Exception:  # noqa: BLE001
+            pass
+    print(f"profits vs. wages: {len(out['profits'])} and {len(out['wages'])} points")
+    return out
+
+
+# ---------- World map and the debt squeeze (World Bank) ----------
+
+MAP_INDICATORS = {
+    "NY.GDP.MKTP.KD.ZG": "GDP growth, %",
+    "FP.CPI.TOTL.ZG": "Inflation, %",
+    "SL.UEM.TOTL.ZS": "Unemployment, %",
+    "SI.POV.GINI": "Inequality (Gini index)",
+}
+
+
+def wb_all(code, countries="all", first=None):
+    d = get_patiently(f"https://api.worldbank.org/v2/country/{countries}/indicator/{code}", tries=3,
+                      format="json", per_page=20000, date=f"{first or NOW.year - 12}:{NOW.year}").json()
+    return d[1] if isinstance(d, list) and len(d) > 1 and d[1] else []
+
+
+def build_world_map():
+    out = {}
+    for code, label in MAP_INDICATORS.items():
+        try:
+            rows = wb_all(code)
+        except Exception as e:  # noqa: BLE001
+            failed.append({"source": f"World Bank {code}", "section": "world map", "error": str(e).split(" for url")[0][:100]})
+            continue
+        latest = {}
+        for o in rows:
+            cc, v = o.get("countryiso3code"), o.get("value")
+            if cc and v is not None and (cc not in latest or o["date"] > latest[cc][1]):
+                latest[cc] = (round(v, 1), o["date"], (o.get("country") or {}).get("value", cc))
+        out[code] = {"label": label, "values": latest}
+        time.sleep(0.3)
+    print(f"world map: {len(out)} indicators")
+    return out or None
+
+
+DEBT_GROUPS = {"LIC": "Low-income countries", "LMC": "Lower-middle-income countries"}
+DEBT_COUNTRIES = ["PAK", "EGY", "KEN", "GHA", "ZMB", "LKA", "ARG", "NGA", "ETH", "TUN", "BGD", "COL"]
+
+
+def build_debt():
+    out = {"groups": {}, "countries": []}
+    try:
+        rows = wb_all("DT.TDS.DECT.EX.ZS", ";".join(DEBT_GROUPS), 2000)
+        for o in rows:
+            if o.get("value") is not None:
+                out["groups"].setdefault(o["countryiso3code"], []).append((o["date"], round(o["value"], 1)))
+        for k in out["groups"]:
+            out["groups"][k].sort()
+        out["group_names"] = DEBT_GROUPS
+    except Exception as e:  # noqa: BLE001
+        failed.append({"source": "World Bank debt service", "section": "debt squeeze", "error": str(e).split(" for url")[0][:100]})
+    try:
+        rows = wb_all("GC.XPN.INTP.RV.ZS", ";".join(DEBT_COUNTRIES), NOW.year - 8)
+        latest = {}
+        for o in rows:
+            cc, v = o.get("countryiso3code"), o.get("value")
+            if v is not None and (cc not in latest or o["date"] > latest[cc]["year"]):
+                latest[cc] = {"code": cc, "name": (o.get("country") or {}).get("value", cc), "value": round(v, 1), "year": o["date"]}
+        out["countries"] = sorted(latest.values(), key=lambda x: -x["value"])
+    except Exception as e:  # noqa: BLE001
+        failed.append({"source": "World Bank interest payments", "section": "debt squeeze", "error": str(e).split(" for url")[0][:100]})
+    print(f"debt squeeze: {len(out['groups'])} groups, {len(out['countries'])} countries")
+    return out if (out["groups"] or out["countries"]) else None
 
 
 # ---------- Text of the week: check the links still work ----------
@@ -678,37 +812,41 @@ def check_texts():
     return broken
 
 
-# ---------- World economy (IMF World Economic Outlook, no key) ----------
+# ---------- World economy (World Bank, no key) ----------
 
 def build_world():
     cfg = CONFIG.get("world_economy") or {}
     countries, inds = cfg.get("countries", []), cfg.get("indicators", {})
     if not countries:
         return None
-    year = str(NOW.year)
-    out = {"year": year, "next": str(NOW.year + 1), "indicators": inds, "rows": []}
-    data = {}
+    first = NOW.year - 12
+    rows = {cc: {"code": cc, "name": cc, "values": {}} for cc in countries}
+    got = False
     for code in inds:
         try:
-            d = get_patiently(f"https://www.imf.org/external/datamapper/api/v1/{code}/{'/'.join(countries)}", tries=3).json()
-            data[code] = (d.get("values") or {}).get(code, {})
+            d = get_patiently(f"https://api.worldbank.org/v2/country/{';'.join(countries)}/indicator/{code}", tries=3,
+                              format="json", per_page=2000, date=f"{first}:{NOW.year}").json()
         except Exception as e:  # noqa: BLE001
-            failed.append({"source": f"IMF {code}", "section": "world economy", "error": str(e).split(" for url")[0][:100]})
-        time.sleep(0.5)
-    if not data:
+            failed.append({"source": f"World Bank {code}", "section": "world economy", "error": str(e).split(" for url")[0][:100]})
+            continue
+        if not isinstance(d, list) or len(d) < 2 or not d[1]:
+            continue
+        series = {}
+        for obs in d[1]:
+            cc = obs.get("countryiso3code")
+            if cc in rows:
+                rows[cc]["name"] = (obs.get("country") or {}).get("value", cc)
+                if obs.get("value") is not None:
+                    series.setdefault(cc, []).append((obs["date"], round(obs["value"], 2)))
+        for cc, pts in series.items():
+            pts.sort()
+            rows[cc]["values"][code] = {"latest": pts[-1][1], "year": pts[-1][0], "points": pts}
+            got = True
+        time.sleep(0.3)
+    if not got:
         return None
-    try:
-        names = get_patiently("https://www.imf.org/external/datamapper/api/v1/countries", tries=2).json().get("countries", {})
-    except Exception:  # noqa: BLE001
-        names = {}
-    for cc in countries:
-        row = {"code": cc, "name": (names.get(cc) or {}).get("label", cc), "values": {}}
-        for code in inds:
-            series = data.get(code, {}).get(cc, {})
-            row["values"][code] = {"now": series.get(year), "next": series.get(str(NOW.year + 1))}
-        out["rows"].append(row)
-    print(f"world economy: {len(out['rows'])} countries")
-    return out
+    print(f"world economy: {len(rows)} countries")
+    return {"indicators": inds, "rows": [rows[cc] for cc in countries]}
 
 
 # ---------- Release calendar (BLS) ----------
@@ -969,11 +1107,16 @@ def main():
     posters = build_posters()
     shelf = build_shelf()
     dashboard = build_dashboard()
+    prices = build_dashboard(GLOBAL_PRICES, "global prices")
+    shares = build_shares()
+    world_map = build_world_map()
+    debt = build_debt()
     broken_texts = check_texts()
 
     payload = {"generated_at": iso(NOW), "sections": sections, "images": images,
                "dashboard": dashboard, "broken_texts": broken_texts,
                "world": world, "calendar": calendar, "shelf": shelf,
+               "prices": prices, "shares": shares, "debt": debt,
                "local_place": CONFIG.get("local_place", "Local"), "failed": failed}
 
     # If everything failed (network outage), keep the last good file.
@@ -984,6 +1127,8 @@ def main():
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=1))
     # posters go in their own file: the page picks a poster of the day from the whole set
     (OUT.parent / "posters.json").write_text(json.dumps(posters, ensure_ascii=False))
+    # the map data is large-ish and only needed on one page
+    (OUT.parent / "worldmap.json").write_text(json.dumps(world_map or {}, ensure_ascii=False, separators=(",", ":")))
     save_back_issue(payload)
     if failed:
         print(f"{len(failed)} sources failed:", *[f"  {f['source']}: {f['error']}" for f in failed], sep="\n")
