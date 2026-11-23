@@ -1358,6 +1358,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     t.append(a, saveButton(item)); li.append(t);
     const m = el("div", "m"); m.append(el("b", null, item.source));
     const w = when(item.date, scholarly); if (w) m.append(", " + w);
+    if (item.also && item.also.length) m.append(`; also covered by ${item.also.join(", ")}`);
     li.append(m);
     if (item.authors && item.authors.length) li.append(el("div", "who", "by " + item.authors.join(", ")));
     if (item.summary) li.append(el("div", "s", item.summary));
