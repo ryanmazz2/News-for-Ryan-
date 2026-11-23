@@ -290,6 +290,34 @@ ul.bars .v { text-align: right; font-weight: 700; }
 .legend .ramp { width: 200px; height: 12px; border: 1.5px solid var(--plum); }
 .mapinfo { margin: 0; font-weight: 600; }
 
+#left, #library { grid-column: 1 / -1; }
+@media (min-width: 1000px) { .leftstrip { columns: 2; column-gap: 34px; } .leftstrip > li { break-inside: avoid; } }
+.beat { display: inline-block; font: 700 .7rem/1.5 var(--text); text-transform: lowercase; color: var(--blue); border: 1.5px solid var(--blue); padding: 0 5px; margin-left: 6px; vertical-align: 2px; }
+.hide { margin-left: 8px; font: 600 .75rem var(--text); color: var(--ink-soft); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+.muted { font-size: .85rem; color: var(--ink-soft); margin: 0 0 8px; }
+.muted button { font: 700 .78rem var(--text); color: var(--magenta); background: none; border: 1.5px solid var(--magenta); margin: 0 4px 4px 0; padding: 1px 6px; cursor: pointer; }
+.board { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 18px 26px; }
+@media (max-width: 560px) { .board { grid-template-columns: 1fr; } }
+.board h3 { margin: 0 0 4px; font: 400 1.15rem var(--slab); color: var(--orange); text-transform: lowercase; }
+.board table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.board td, .board th { padding: 5px 4px; border-bottom: 2px dotted color-mix(in srgb, var(--ink) 25%, transparent); text-align: right; white-space: nowrap; }
+.board th { font-size: .75rem; color: var(--ink-soft); font-weight: 700; }
+.board td:first-child, .board th:first-child { text-align: left; white-space: normal; }
+.board td:first-child a { font-weight: 700; text-decoration: none; }
+.board td:first-child small { display: block; color: var(--ink-soft); font-size: .74rem; }
+.board .up { color: var(--blue); } .board .down { color: var(--orange); }
+@media (prefers-color-scheme: dark) { .board .up { color: #8EC5E8; } }
+.board svg { width: 70px; height: 20px; vertical-align: middle; }
+.board .dt { color: var(--ink-soft); font-size: .74rem; }
+.check { display: inline-flex; gap: 8px; align-items: center; font-weight: 600; margin-bottom: 8px; }
+.school { margin-top: 18px; padding-top: 12px; border-top: 2px solid var(--plum); }
+.school h3 { margin: 0; font: 400 1.4rem var(--slab); }
+.school .si { margin: 2px 0 8px; color: var(--ink-soft); font-size: .95rem; }
+.school .prog { font-weight: 700; color: var(--magenta); font-size: .9rem; }
+.tag.start { background: var(--orange); }
+.tag.read { background: var(--magenta); }
+.tag.free { background: none; color: var(--blue); border: 1.5px solid var(--blue); }
+
 /* world table */
 .tablewrap { overflow-x: auto; }
 table.world { border-collapse: collapse; width: 100%; font-size: .95rem; min-width: 520px; }
@@ -349,6 +377,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       <a href="#today" data-page="today">today</a>
       <a href="#economy-research" data-page="economy-research">economy &amp; research</a>
       <a href="#culture" data-page="culture">culture</a>
+      <a href="#library" data-page="library">library</a>
       <a href="#shelf" data-page="shelf">my shelf</a>
     </nav>
     <nav class="jump" id="subnav" aria-label="On this page"></nav>
@@ -396,10 +425,11 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     </section>
 
     <section class="panel" id="prices" data-page="economy-research" aria-labelledby="pr-h">
-      <div class="band"><h2 id="pr-h">global prices</h2></div>
+      <div class="band"><h2 id="pr-h">markets &amp; indicators</h2></div>
       <div class="inner">
-        <p class="lede">The prices behind the world’s cost of living, over the past ten years.</p>
-        <div class="dash" id="price-dash"></div>
+        <p class="lede">Currencies, commodities, markets, the US economy and inequality, with changes over the past month and year.</p>
+        <div class="board" id="board"></div>
+        <p class="src-note">Source: Federal Reserve Bank of St. Louis (FRED). Daily figures are the latest market close; others are the latest release.</p>
       </div>
     </section>
 
@@ -475,6 +505,14 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
+    <section class="panel" id="left" data-page="today" aria-labelledby="left-h">
+      <div class="band"><h2 id="left-h">from the left</h2></div>
+      <div class="inner">
+        <p class="lede">The latest from socialist and independent left outlets, two per outlet at most.</p>
+        <ul class="items leftstrip" id="left-list"></ul>
+      </div>
+    </section>
+
     <section class="panel" id="headlines" data-page="today" aria-labelledby="news-h">
       <div class="band"><h2 id="news-h">scraped headlines</h2><span class="tally" id="news-tally" aria-hidden="true"></span></div>
       <div class="inner">
@@ -487,8 +525,13 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
             <option value="newsroom">newsrooms &amp; wires</option>
             <option value="independent">left &amp; independent</option>
           </select>
+          <label class="vh" for="news-sort">Order</label>
+          <select id="news-sort"><option value="top">top stories</option><option value="latest">latest</option></select>
+          <label class="vh" for="news-beat">Beat</label>
+          <select id="news-beat"><option value="">all beats</option></select>
           <label class="vh" for="news-q">Search the headlines</label><input id="news-q" type="search" placeholder="search headlines">
         </div>
+        <p class="muted" id="muted" hidden></p>
         <ul class="items" id="news-list"></ul>
         <button class="more" id="news-more" hidden>show more</button>
       </div>
@@ -590,6 +633,15 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
+    <section class="panel" id="library" data-page="library" aria-labelledby="lib-h">
+      <div class="band"><h2 id="lib-h">the library</h2></div>
+      <div class="inner">
+        <p class="lede" id="lib-lede">Essential texts of the Marxist tradition, school by school. “Start here” marks the way in; links go to free full texts where they exist.</p>
+        <label class="check"><input type="checkbox" id="lib-unread"> show only what I haven’t read</label>
+        <div id="lib-body"></div>
+      </div>
+    </section>
+
     <section class="panel" id="reading" data-page="shelf" aria-labelledby="rd-h">
       <div class="band"><h2 id="rd-h">currently reading</h2><span class="tally" id="rd-tally" aria-hidden="true"></span></div>
       <div class="inner">
@@ -642,7 +694,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
 <script>
 (() => {
   const NEWS = [["economy", "economy"], ["politics", "politics"], ["essays", "essays & ideas"]];
-  const SCH = [["journals", "journals"], ["papers", "working papers"], ["scholarship", "recent work"]];
+  const SCH = [["journals", "journals"], ["scholars", "scholars you follow"], ["debates", "debates"], ["papers", "working papers"], ["reviews", "book reviews"], ["scholarship", "recent work"]];
   const PAGE = 15;
   const $ = (id) => document.getElementById(id);
   const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
@@ -835,11 +887,11 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
   }
 
   // ---------- pages ----------
-  const PAGES = ["today", "economy-research", "culture", "shelf"];
+  const PAGES = ["today", "economy-research", "culture", "library", "shelf"];
   const LABELS = { history: "history", hero: "hero", strikes: "strikes", local: "local", headlines: "headlines",
     economy: "us numbers", prices: "prices", shares: "profits vs. wages", debt: "debt", map: "map", world: "world table", releases: "releases", research: "research", text: "text of the week",
     art: "art", posters: "posters", song: "song", listen: "listen & watch",
-    reading: "reading", recs: "what next", saved: "saved", backissues: "back issues" };
+    reading: "reading", recs: "what next", left: "from the left", library: "library", saved: "saved", backissues: "back issues" };
   function route() {
     const h = decodeURIComponent(location.hash.slice(1));
     let page = PAGES.includes(h) ? h : null, target = null;
@@ -861,6 +913,21 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     if (target) target.scrollIntoView(); else if (PAGES.includes(h)) window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", route);
+
+  // ---------- outlets you've hidden (this browser only) ----------
+  const MKEY = "td-muted";
+  const getMuted = () => { try { return JSON.parse(localStorage.getItem(MKEY)) || []; } catch (e) { return []; } };
+  const setMuted = (l) => { try { localStorage.setItem(MKEY, JSON.stringify(l)); } catch (e) {} };
+  let onMuteChange = () => {};
+  function muteSource(src) { const l = getMuted(); if (!l.includes(src)) { l.push(src); setMuted(l); onMuteChange(); } }
+  function drawMuted() {
+    const box = $("muted"), l = getMuted();
+    box.replaceChildren(); box.hidden = !l.length;
+    if (!l.length) return;
+    box.append("Hidden outlets: ");
+    l.forEach((src) => { const b = el("button", null, src + " ×"); b.type = "button"; b.title = "Show " + src + " again";
+      b.onclick = () => { setMuted(getMuted().filter((x) => x !== src)); onMuteChange(); }; box.append(b); });
+  }
 
   // ---------- reading list (saved in this browser) ----------
   const SKEY = "td-saved";
@@ -1074,7 +1141,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     };
   }
   function showSections(sec, label) {
-    news.load(sec); sch.load(sec); strikes.load(sec.strikes); local.load(sec.local);
+    news.load(sec); sch.load(sec); strikes.load(sec.strikes); local.load(sec.local); showLeft(sec);
     const v = $("viewing");
     if (label) {
       v.replaceChildren(`You’re reading back issue ${label}.`);
@@ -1082,6 +1149,103 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       b.onclick = () => { $("bi-pick").value = ""; showSections(today_s, null); };
       v.append(b); v.hidden = false;
     } else v.hidden = true;
+  }
+
+  // ---------- from the left ----------
+  let leftPool = [];
+  function showLeft(sec) {
+    if (sec) leftPool = ["economy", "politics", "essays"].flatMap((k) => sec[k] || []).filter((x) => x.kind === "independent" && x.date);
+    const muted = getMuted(), per = {}, out = [];
+    [...leftPool].sort((a, b) => b.date.localeCompare(a.date)).forEach((x) => {
+      if (muted.includes(x.source) || out.length >= 12) return;
+      per[x.source] = (per[x.source] || 0) + 1;
+      if (per[x.source] <= 2 && !out.some((y) => y.url === x.url)) out.push(x);
+    });
+    const ul = $("left-list"); ul.replaceChildren();
+    if (!out.length) ul.append(el("li", "empty", "Nothing yet. Check back after the next edition."));
+    out.forEach((x) => ul.append(renderItem(x, false)));
+  }
+
+  // ---------- markets & indicators board ----------
+  function showBoard(list) {
+    const box = $("board"); box.replaceChildren();
+    if (!list || !list.length) { box.append(el("p", "empty", "The indicators fill in at the next edition.")); return; }
+    const pct = (u) => u === "%" || u === "points";
+    const fmt = (v, u) => {
+      const a = Math.abs(v);
+      let dp = a >= 1000 ? 0 : a >= 100 ? 1 : 2;
+      if (u === "dollars per euro" || u === "dollars per pound") dp = 4;   // exchange rates near 1
+      if (u === "%" || u === "points") dp = 2;
+      const s = dp === 0 ? Math.round(v).toLocaleString("en") : v.toFixed(dp);
+      return (u.startsWith("dollars per") && !u.includes("euro") && !u.includes("pound") ? "$" : "") + s + (u === "%" ? "%" : "");
+    };
+    const chg = (d, which) => {
+      const v = d[which]; if (v == null) return el("td", null, "–");
+      const td = el("td");
+      const txt = pct(d.unit) ? `${v > 0 ? "+" : ""}${v.toFixed(2)} pts` : which === "y1" && d.y1pct != null ? `${d.y1pct > 0 ? "+" : ""}${d.y1pct.toFixed(1)}%` : `${v > 0 ? "+" : ""}${fmt(v, d.unit.includes("euro") || d.unit.includes("pound") ? d.unit : "").replace("$", "")}`;
+      td.textContent = txt; td.className = v > 0 ? "up" : v < 0 ? "down" : ""; return td;
+    };
+    const spk = (vals) => {
+      const lo = Math.min(...vals), hi = Math.max(...vals), sp = hi - lo || 1;
+      const d = vals.map((v, i) => `${i ? "L" : "M"}${(i / (vals.length - 1) * 70).toFixed(1)} ${(18 - (v - lo) / sp * 16).toFixed(1)}`).join(" ");
+      return `<svg viewBox="0 0 70 20" aria-hidden="true"><path d="${d}" fill="none" stroke="${C("--magenta")}" stroke-width="1.5"/></svg>`;
+    };
+    const groups = [...new Set(list.map((d) => d.group))];
+    groups.forEach((g) => {
+      const wrap = el("div"); wrap.append(el("h3", null, g));
+      const tb = el("table"), th = el("tr");
+      ["", "latest", "1 month", "1 year", "trend"].forEach((h) => th.append(el("th", null, h)));
+      const thead = el("thead"); thead.append(th); tb.append(thead);
+      const body = el("tbody");
+      list.filter((d) => d.group === g).forEach((d) => {
+        const tr = el("tr"), name = el("td"), a = el("a", null, d.label);
+        a.href = d.url; a.target = "_blank"; a.rel = "noopener";
+        name.append(a, el("small", null, `${d.unit} · ${new Date(d.date + "T00:00:00Z").toLocaleDateString("en", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}`));
+        const sp = el("td"); sp.innerHTML = spk(d.spark);
+        tr.append(name, el("td", null, fmt(d.latest, d.unit)), chg(d, "m1"), chg(d, "y1"), sp);
+        body.append(tr);
+      });
+      tb.append(body); wrap.append(tb); box.append(wrap);
+    });
+  }
+
+  // ---------- the library ----------
+  async function showLibrary(shelf) {
+    let lib = null;
+    try { lib = await (await fetch("data/library.json", { cache: "no-cache" })).json(); } catch (e) {}
+    if (!lib) return;
+    const read = new Set((shelf && shelf.library_read) || []), toread = new Set((shelf && shelf.library_toread) || []), broken = new Set(window.__broken || []);
+    const total = lib.schools.reduce((n, s) => n + s.texts.length, 0);
+    if (shelf && shelf.library_read) $("lib-lede").textContent = `Essential texts of the Marxist tradition, school by school. You’ve read ${read.size} of ${total}. “Start here” marks the way in; links go to free full texts where they exist.`;
+    function draw() {
+      const onlyUnread = $("lib-unread").checked, body = $("lib-body"); body.replaceChildren();
+      lib.schools.forEach((sch) => {
+        const texts = [...sch.texts].sort((a, b) => (b.start ? 1 : 0) - (a.start ? 1 : 0)).filter((t) => !onlyUnread || !read.has(t.title));
+        if (!texts.length) return;
+        const box = el("div", "school");
+        const done = sch.texts.filter((t) => read.has(t.title)).length;
+        const h = el("h3", null, sch.name.toLowerCase());
+        box.append(h, el("p", "si", sch.intro));
+        if (read.size) box.append(el("p", "prog", `${done} of ${sch.texts.length} read`));
+        const ul = el("ul", "items");
+        texts.forEach((t) => {
+          const li = el("li"), tt = el("div", "t");
+          const free = t.url && !broken.has(t.title);
+          const a = el("a", null, t.title); a.target = "_blank"; a.rel = "noopener";
+          a.href = free ? t.url : "https://en.wikipedia.org/wiki/Special:Search?go=Go&search=" + encodeURIComponent(t.wiki || t.title);
+          tt.append(a);
+          if (t.start) tt.append(el("span", "tag start", "start here"));
+          if (free) tt.append(el("span", "tag free", "free text"));
+          if (read.has(t.title)) tt.append(el("span", "tag read", "read ✓"));
+          else if (toread.has(t.title)) tt.append(el("span", "tag", "on your to-read list"));
+          li.append(tt, el("div", "m", `${t.author}, ${t.year}`), el("div", "s", t.note));
+          ul.append(li);
+        });
+        box.append(ul); body.append(box);
+      });
+    }
+    $("lib-unread").onchange = draw;
+    draw();
   }
 
   // ---------- line charts (hand-drawn SVG) ----------
@@ -1355,20 +1519,31 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     const li = el("li"), t = el("div", "t");
     if (lastVisit && item.date && new Date(item.date).getTime() > lastVisit) t.append(el("span", "new", "new"));
     const a = el("a", null, item.title); a.href = item.url; a.target = "_blank"; a.rel = "noopener";
-    t.append(a, saveButton(item)); li.append(t);
+    t.append(a);
+    (item.beats || []).forEach((b) => t.append(el("span", "beat", b)));
+    t.append(saveButton(item)); li.append(t);
     const m = el("div", "m"); m.append(el("b", null, item.source));
     const w = when(item.date, scholarly); if (w) m.append(", " + w);
     if (item.also && item.also.length) m.append(`; also covered by ${item.also.join(", ")}`);
+    if (item.scholar) m.append(`; new from ${item.scholar}`);
+    if (item.debate) m.append(`; in conversation with ${item.debate}`);
+    if (!scholarly && item.source) {
+      const h = el("button", "hide", "hide this outlet"); h.type = "button"; h.onclick = () => muteSource(item.source);
+      m.append(h);
+    }
     li.append(m);
     if (item.authors && item.authors.length) li.append(el("div", "who", "by " + item.authors.join(", ")));
     if (item.summary) li.append(el("div", "s", item.summary));
     return li;
   }
-  function makeStream({ tabs, tabsEl, listEl, moreEl, filterEl, tallyEl, scholarly, filterKind, kindEl }) {
+  function makeStream({ tabs, tabsEl, listEl, moreEl, filterEl, tallyEl, scholarly, filterKind, kindEl, sortEl, beatEl }) {
     let current = tabs[0][0], shown = PAGE, data = {};
     function items() {
       let list = data[current] || [];
+      if (!scholarly) { const m = getMuted(); if (m.length) list = list.filter((x) => !m.includes(x.source)); }
       if (kindEl && kindEl.value) list = list.filter((x) => (x.kind || "newsroom") === kindEl.value);
+      if (beatEl && beatEl.value) list = list.filter((x) => (x.beats || []).includes(beatEl.value));
+      if (sortEl && sortEl.value === "top" && list.some((x) => x.score != null)) list = [...list].sort((a, b) => (b.score || 0) - (a.score || 0));
       const q = filterEl.value.trim().toLowerCase();
       if (q && filterKind === "search") list = list.filter((x) => (x.title + " " + (x.summary || "") + " " + x.source).toLowerCase().includes(q));
       if (q && filterKind === "source") list = list.filter((x) => x.source.toLowerCase() === q);
@@ -1401,10 +1576,19 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     }
     filterEl.addEventListener(filterKind === "search" ? "input" : "change", () => { shown = PAGE; render(); });
     if (kindEl) kindEl.addEventListener("change", () => { shown = PAGE; render(); });
+    [sortEl, beatEl].forEach((x) => x && x.addEventListener("change", () => { shown = PAGE; render(); }));
     moreEl.onclick = () => { shown += PAGE; render(); };
-    return { load(d) { data = d; drawTabs(); fillSources(); render(); } };
+    function fillBeats() {
+      if (!beatEl) return;
+      const keep = beatEl.value, names = new Set();
+      tabs.forEach(([k]) => (data[k] || []).forEach((x) => (x.beats || []).forEach((b) => names.add(b))));
+      beatEl.replaceChildren(new Option("all beats", ""));
+      [...names].sort().forEach((b) => beatEl.add(new Option(b, b)));
+      beatEl.value = names.has(keep) ? keep : "";
+    }
+    return { load(d) { data = d; drawTabs(); fillSources(); fillBeats(); render(); }, render };
   }
-  const news = makeStream({ tabs: NEWS, tabsEl: $("news-tabs"), listEl: $("news-list"), moreEl: $("news-more"), filterEl: $("news-q"), tallyEl: $("news-tally"), scholarly: false, filterKind: "search", kindEl: $("news-kind") });
+  const news = makeStream({ tabs: NEWS, tabsEl: $("news-tabs"), listEl: $("news-list"), moreEl: $("news-more"), filterEl: $("news-q"), tallyEl: $("news-tally"), scholarly: false, filterKind: "search", kindEl: $("news-kind"), sortEl: $("news-sort"), beatEl: $("news-beat") });
   const sch = makeStream({ tabs: SCH, tabsEl: $("sch-tabs"), listEl: $("sch-list"), moreEl: $("sch-more"), filterEl: $("sch-src"), tallyEl: $("sch-tally"), scholarly: true, filterKind: "source" });
   const strikes = makeList($("str-list"), $("str-more"), $("str-tally"), "No strike stories in the past week.");
   const local = makeList($("loc-list"), $("loc-more"), $("loc-tally"), "Local news fills in at the next edition.");
@@ -1426,13 +1610,16 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       $("status").textContent = "no edition yet: run the “Update site” workflow on GitHub";
       showSections({}, null); showMuseums([]); showArtNow([]); showDash([]); showListen({}); setupBackIssues({});
       showWorld(null); showCalendar([]); releases.load([]); showShelf(null);
-      showDash([], "price-dash"); showShares(null); showDebt(null);
+      showBoard([]); showShares(null); showDebt(null); showLibrary(null);
       return;
     }
     const s = feed.sections || {};
+    window.__broken = feed.broken_texts || [];
+    s.debates = (feed.debates || []).flatMap((d) => (d.items || []).map((x) => ({ ...x, debate: d.label })))
+      .sort((a, b) => (b.date || "").localeCompare(a.date || ""));
     showSections(s, null); showMuseums(s.museums); showArtNow(s.artnow); showDash(feed.dashboard); showListen(s);
     showWorld(feed.world); showCalendar(feed.calendar); releases.load(s.releases); showShelf(feed.shelf);
-    showDash(feed.prices, "price-dash"); showShares(feed.shares); showDebt(feed.debt);
+    showBoard(feed.indicators); showShares(feed.shares); showDebt(feed.debt); showLibrary(feed.shelf);
     setupBackIssues(s);
     const place = (feed.local_place || "local").toLowerCase();
     $("loc-h").textContent = `local news: ${place}`;
@@ -1450,6 +1637,8 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     markVisit();
   }
 
+  onMuteChange = () => { drawMuted(); news.render(); strikes.load && showLeft(); };
+  drawMuted();
   route();
   startFacts();
   showPosters();
