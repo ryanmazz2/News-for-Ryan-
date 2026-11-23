@@ -39,7 +39,7 @@ SESSION = requests.Session()
 SESSION.headers["User-Agent"] = API_UA
 
 # How far back each section looks, and how many items it keeps.
-WINDOWS = {"economy": (4, 60), "politics": (3, 60), "mixed": (5, 400), "essays": (21, 60), "releases": (14, 40), "papers": (180, 40), "artnow": (60, 30),
+WINDOWS = {"economy": (4, 60), "politics": (3, 60), "mixed": (5, 400), "essays": (21, 60), "releases": (14, 40), "papers": (180, 40), "reviews": (90, 40), "artnow": (60, 30),
            "podcasts": (45, 30), "videos": (30, 30), "local": (5, 50)}
 PER_JOURNAL = 5
 SCHOLARSHIP_MAX = 40
@@ -646,6 +646,32 @@ def cap_per_source(items, cap):
     return out
 
 
+def beat_patterns():
+    return {name: re.compile(r"\b(" + "|".join(re.escape(w) for w in words) + r")\b", re.I)
+            for name, words in (CONFIG.get("beats") or {}).items()}
+
+
+def rank(items):
+    """Tag each story with your beats and give it a score for the 'top stories'
+    view: more outlets covering it, a newsroom source, a beat you follow and
+    freshness all count. The list itself stays newest first."""
+    pats = beat_patterns()
+    for it in items:
+        text = it["title"] + " " + (it.get("summary") or "")
+        beats = [n for n, rx in pats.items() if rx.search(text)]
+        if beats:
+            it["beats"] = beats[:3]
+        try:
+            hours = max(0.0, (NOW - datetime.fromisoformat(it["date"].replace("Z", "+00:00"))).total_seconds() / 3600)
+        except Exception:  # noqa: BLE001
+            hours = 24.0
+        score = (1 + 0.9 * len(it.get("also", []))) * (1.15 if it.get("kind", "newsroom") == "newsroom" else 1.0)
+        score *= 1.25 if beats else 1.0
+        score *= 0.5 ** (hours / 16)
+        it["score"] = round(score, 4)
+    return items
+
+
 def assemble_news(sections):
     """Single-subject feeds keep their tab (minus junk); outlets that cover
     everything are sorted article by article. Then every tab is de-duplicated,
@@ -674,7 +700,7 @@ def assemble_news(sections):
                 seen.add(k)
                 it.pop("tags", None)
                 merged.append(it)
-        sections[key] = cap_per_source(merge_similar(merged), 6)[:keep]
+        sections[key] = rank(cap_per_source(merge_similar(merged), 6))[:keep]
     print(f"news: {len(sections['economy'])} economy, {len(sections['politics'])} politics, {dropped} non-news dropped")
 
 
@@ -866,11 +892,18 @@ def build_debt():
 # ---------- Text of the week: check the links still work ----------
 
 def check_texts():
-    path = ROOT / "site" / "data" / "texts.json"
-    if not path.exists():
-        return []
+    data = ROOT / "site" / "data"
+    texts = []
+    for name in ("texts.json", "library.json"):
+        if (data / name).exists():
+            d = json.loads((data / name).read_text())
+            texts += d if isinstance(d, list) else [t for sch in d.get("schools", []) for t in sch["texts"] if t.get("url")]
     broken = []
-    for t in json.loads(path.read_text()):
+    seen = set()
+    for t in texts:
+        if t["url"] in seen:
+            continue
+        seen.add(t["url"])
         try:
             r = SESSION.get(t["url"], timeout=20, headers=FEED_HEADERS, stream=True)
             r.close()
@@ -1100,10 +1133,171 @@ def build_shelf():
                 per_shelf[r["shelf"]].append(r)
         shelf["recs"] = per_shelf
         shelf["canon_read"], shelf["canon_total"] = len(read_works), len(canon)
+        lib_path = ROOT / "site" / "data" / "library.json"
+        if lib_path.exists():
+            lib = json.loads(lib_path.read_text())
+            def lib_read(t):
+                return is_read(t) or any(is_read({**t, "title": a}) for a in t.get("aka", []))
+            shelf["library_read"] = [t["title"] for sch in lib.get("schools", []) for t in sch["texts"] if lib_read(t)]
+            to_full = {norm_full(b["title"]) for b in toread}
+            shelf["library_toread"] = [t["title"] for sch in lib.get("schools", []) for t in sch["texts"]
+                                       if t["title"] not in shelf["library_read"]
+                                       and any(norm_full(x) in to_full or norm_title(x) in to_t for x in [t["title"], *t.get("aka", [])])]
         shelf["canon_read_by_shelf"] = {s: sum(1 for w in read_works if w["shelf"] == s) for s in {w["shelf"] for w in canon}}
         shelf["canon_total_by_shelf"] = {s: sum(1 for w in canon if w["shelf"] == s) for s in {w["shelf"] for w in canon}}
     print(f"shelf: {len(current)} current, {len(read)} read, {shelf['canon_read']}/{shelf['canon_total']} of the canon")
     return shelf
+
+
+# ---------- Scholars you follow and debates you track (OpenAlex) ----------
+
+def _oa(path, **params):
+    if OPENALEX_KEY:
+        params["api_key"] = OPENALEX_KEY
+    if EMAIL:
+        params["mailto"] = EMAIL
+    return get_patiently("https://api.openalex.org/" + path, tries=3, **params).json()
+
+
+def _fold(t):
+    import unicodedata
+    return re.sub(r"[^a-z ]", "", unicodedata.normalize("NFKD", t).encode("ascii", "ignore").decode().lower()).strip()
+
+
+def _work_item(w, **extra):
+    loc = (w.get("primary_location") or {})
+    venue = ((loc.get("source") or {}).get("display_name")) or "Preprint or other venue"
+    return {"title": clean(w.get("display_name"), 240), "url": w.get("doi") or loc.get("landing_page_url") or w.get("id"),
+            "source": venue, "date": (w.get("publication_date") or "") + "T00:00:00Z",
+            "authors": [a["author"]["display_name"] for a in w.get("authorships", [])[:4] if a.get("author")],
+            "summary": clean(rebuild_abstract(w.get("abstract_inverted_index"))), **extra}
+
+
+def build_scholars():
+    names = CONFIG.get("scholars") or []
+    if not names:
+        return []
+    ids = {}
+    for n in names:
+        try:
+            res = _oa("authors", search=n, per_page=10).get("results", [])
+        except Exception as e:  # noqa: BLE001
+            failed.append({"source": f"OpenAlex: {n}", "section": "scholars", "error": str(e).split(" for url")[0][:80]})
+            continue
+        exact = [a for a in res if _fold(a.get("display_name", "")) == _fold(n)] or res[:1]
+        if exact:
+            best = max(exact, key=lambda a: a.get("cited_by_count", 0))
+            ids[best["id"].rsplit("/", 1)[-1]] = n
+        time.sleep(0.2)
+    if not ids:
+        return []
+    since = (NOW - timedelta(days=540)).date().isoformat()
+    try:
+        res = _oa("works", filter=f"authorships.author.id:{'|'.join(ids)},from_publication_date:{since},to_publication_date:{NOW.date().isoformat()}",
+                  sort="publication_date:desc", per_page=60).get("results", [])
+    except Exception as e:  # noqa: BLE001
+        failed.append({"source": "OpenAlex: scholars", "section": "scholars", "error": str(e).split(" for url")[0][:80]})
+        return []
+    out, seen = [], set()
+    for w in res:
+        who = [ids[a["author"]["id"].rsplit("/", 1)[-1]] for a in w.get("authorships", []) if a.get("author") and a["author"].get("id", "").rsplit("/", 1)[-1] in ids]
+        key = _fold(w.get("display_name") or "")[:80]
+        if who and key and key not in seen:
+            seen.add(key)
+            out.append(_work_item(w, scholar=who[0]))
+    print(f"scholars: {len(ids)} found, {len(out)} new works")
+    return out[:40]
+
+
+def build_debates():
+    out = []
+    since = (NOW - timedelta(days=365)).date().isoformat()
+    for d in CONFIG.get("debates") or []:
+        try:
+            res = _oa("works", search=d["title"], per_page=15).get("results", [])
+            want = _fold(d["title"])[:30]
+            cands = [w for w in res if _fold(w.get("display_name") or "").startswith(want[:20])
+                     and any(_fold(d["author"]) in _fold(a["author"]["display_name"]) for a in w.get("authorships", []) if a.get("author"))]
+            if not cands:
+                failed.append({"source": f"Debate: {d['label']}", "section": "debates", "error": "couldn't find the work on OpenAlex"})
+                continue
+            target = max(cands, key=lambda w: w.get("cited_by_count", 0))
+            wid = target["id"].rsplit("/", 1)[-1]
+            cites = _oa("works", filter=f"cites:{wid},from_publication_date:{since},to_publication_date:{NOW.date().isoformat()}",
+                        sort="publication_date:desc", per_page=6).get("results", [])
+            out.append({"label": d["label"], "cited_by": target.get("cited_by_count", 0),
+                        "items": [_work_item(w) for w in cites if w.get("display_name")]})
+        except Exception as e:  # noqa: BLE001
+            failed.append({"source": f"Debate: {d['label']}", "section": "debates", "error": str(e).split(" for url")[0][:80]})
+        time.sleep(0.3)
+    print(f"debates: {len(out)} tracked")
+    return out
+
+
+# ---------- Markets & indicators board (FRED, no key) ----------
+
+INDICATORS = [
+    ("currencies", "DEXUSEU", "Euro", "dollars per euro", "d"),
+    ("currencies", "DEXUSUK", "British pound", "dollars per pound", "d"),
+    ("currencies", "DEXJPUS", "Japanese yen", "yen per dollar", "d"),
+    ("currencies", "DEXCHUS", "Chinese yuan", "yuan per dollar", "d"),
+    ("currencies", "DEXINUS", "Indian rupee", "rupees per dollar", "d"),
+    ("currencies", "DEXBZUS", "Brazilian real", "reais per dollar", "d"),
+    ("currencies", "DEXMXUS", "Mexican peso", "pesos per dollar", "d"),
+    ("currencies", "RTWEXBGS", "Dollar against all trading partners", "index, Jan 2006 = 100", "m"),
+    ("commodities", "POILBREUSDM", "Brent crude oil", "dollars per barrel", "m"),
+    ("commodities", "MHHNGSP", "US natural gas (Henry Hub)", "dollars per million BTU", "m"),
+    ("commodities", "PFOODINDEXM", "Global food prices", "index, 2016 = 100", "m"),
+    ("commodities", "PWHEAMTUSDM", "Wheat", "dollars per metric ton", "m"),
+    ("commodities", "PMAIZMTUSDM", "Corn", "dollars per metric ton", "m"),
+    ("commodities", "PCOPPUSDM", "Copper", "dollars per metric ton", "m"),
+    ("markets", "SP500", "S&P 500 stock index", "index", "d"),
+    ("markets", "DGS10", "10-year Treasury yield", "%", "d"),
+    ("markets", "T10Y2Y", "Yield curve (10-year minus 2-year)", "points", "d"),
+    ("markets", "FEDFUNDS", "Federal funds rate", "%", "m"),
+    ("markets", "MORTGAGE30US", "30-year mortgage rate", "%", "w"),
+    ("us economy", "A191RL1Q225SBEA", "Real GDP growth (annual rate)", "%", "q"),
+    ("us economy", "UNRATE", "Unemployment rate", "%", "m"),
+    ("us economy", "CPIAUCSL", "Consumer prices", "index", "m"),
+    ("us economy", "PAYEMS", "Jobs (nonfarm payrolls)", "thousands", "m"),
+    ("us economy", "CSUSHPINSA", "Home prices (Case-Shiller)", "index", "m"),
+    ("inequality", "WFRBST01134", "Wealth share of the top 1%", "%", "q"),
+    ("inequality", "WFRBSB50215", "Wealth share of the bottom 50%", "%", "q"),
+    ("inequality", "GINIALLRF", "US income inequality (Gini)", "index", "a"),
+    ("inequality", "LES1252881600Q", "Median weekly pay, adjusted for inflation", "1982–84 dollars", "q"),
+]
+
+
+def build_indicators():
+    out = []
+    for group, sid, label, unit, freq in INDICATORS:
+        years = 3 if freq == "d" else 6 if freq in ("w", "m") else 15
+        try:
+            pts = fred_series(sid, "all", (NOW - timedelta(days=365 * years)).date().isoformat())
+        except Exception as e:  # noqa: BLE001
+            failed.append({"source": f"FRED {sid}", "section": "markets & indicators", "error": str(e).split(" for url")[0][:80]})
+            continue
+        if len(pts) < 3:
+            continue
+        last_d, last_v = pts[-1]
+        ld = datetime.fromisoformat(last_d)
+        def ago(days):
+            target = (ld - timedelta(days=days)).date().isoformat()
+            older = [v for d, v in pts if d <= target]
+            return older[-1] if older else None
+        m1, y1 = ago(30), ago(365)
+        step = max(1, len(pts) // 60)
+        spark = pts[::step][-60:]
+        if spark[-1] != pts[-1]:
+            spark.append(pts[-1])
+        out.append({"group": group, "id": sid, "label": label, "unit": unit, "date": last_d, "latest": last_v,
+                    "m1": None if m1 is None or freq in ("q", "a") else round(last_v - m1, 4),
+                    "y1": None if y1 is None else round(last_v - y1, 4),
+                    "y1pct": None if not y1 else round((last_v / y1 - 1) * 100, 2),
+                    "spark": [v for _, v in spark], "url": f"https://fred.stlouisfed.org/series/{sid}"})
+        time.sleep(0.25)
+    print(f"indicators: {len(out)} of {len(INDICATORS)}")
+    return out
 
 
 # ---------- Back issues ----------
@@ -1187,6 +1381,9 @@ def main():
     posters = safe("posters", build_posters, [])
     shelf = safe("your shelf", build_shelf)
     dashboard = safe("economy in numbers", build_dashboard, [])
+    indicators = safe("markets & indicators", build_indicators, [])
+    sections["scholars"] = safe("scholars", build_scholars, [])
+    debates = safe("debates", build_debates, [])
     prices = safe("global prices", lambda: build_dashboard(GLOBAL_PRICES, "global prices"), [])
     shares = safe("profits vs. wages", build_shares)
     world_map = safe("world map", build_world_map)
@@ -1196,7 +1393,7 @@ def main():
     payload = {"generated_at": iso(NOW), "sections": sections, "images": images,
                "dashboard": dashboard, "broken_texts": broken_texts,
                "world": world, "calendar": calendar, "shelf": shelf,
-               "prices": prices, "shares": shares, "debt": debt,
+               "prices": prices, "shares": shares, "debt": debt, "indicators": indicators, "debates": debates,
                "local_place": CONFIG.get("local_place", "Local"), "failed": failed}
 
     # If everything failed (network outage), keep the last good file.
