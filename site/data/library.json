@@ -1,0 +1,628 @@
+{
+ "schools": [
+  {
+   "name": "Classical Marxism",
+   "intro": "Marx and Engels: the critique of political economy, historical materialism, and the politics of the workers’ movement.",
+   "texts": [
+    {
+     "title": "Manifesto of the Communist Party",
+     "author": "Karl Marx and Friedrich Engels",
+     "year": "1848",
+     "url": "https://www.marxists.org/archive/marx/works/1848/communist-manifesto/",
+     "note": "The shortest way in. Read section one twice.",
+     "start": true,
+     "wiki": "The Communist Manifesto",
+     "aka": [
+      "The Communist Manifesto",
+      "The Economic and Philosophic Manuscripts of 1844 and the Communist Manifesto"
+     ]
+    },
+    {
+     "title": "Wage Labour and Capital",
+     "author": "Karl Marx",
+     "year": "1849",
+     "url": "https://www.marxists.org/archive/marx/works/1847/wage-labour/",
+     "note": "Plain-language lectures on wages and profit; the ideal warm-up for Capital.",
+     "start": true,
+     "wiki": "Wage Labour and Capital"
+    },
+    {
+     "title": "Capital, Volume I",
+     "author": "Karl Marx",
+     "year": "1867",
+     "url": "https://www.marxists.org/archive/marx/works/1867-c1/",
+     "note": "The foundation. Chapters 1, 10 and 26–33 are the heart.",
+     "start": true,
+     "wiki": "Das Kapital"
+    },
+    {
+     "title": "Economic and Philosophic Manuscripts of 1844",
+     "author": "Karl Marx",
+     "year": "1844",
+     "url": "https://www.marxists.org/archive/marx/works/1844/manuscripts/preface.htm",
+     "note": "The young Marx on alienated labor.",
+     "wiki": "Economic and Philosophic Manuscripts of 1844"
+    },
+    {
+     "title": "Theses on Feuerbach",
+     "author": "Karl Marx",
+     "year": "1845",
+     "url": "https://www.marxists.org/archive/marx/works/1845/theses/",
+     "note": "Eleven notes; the last is the most famous sentence Marx wrote.",
+     "wiki": "Theses on Feuerbach",
+     "aka": [
+      "Eleven Theses on Feuerbach"
+     ]
+    },
+    {
+     "title": "The German Ideology",
+     "author": "Karl Marx and Friedrich Engels",
+     "year": "1846",
+     "url": "https://www.marxists.org/archive/marx/works/1845/german-ideology/",
+     "note": "The first full statement of historical materialism.",
+     "wiki": "The German Ideology"
+    },
+    {
+     "title": "The Eighteenth Brumaire of Louis Bonaparte",
+     "author": "Karl Marx",
+     "year": "1852",
+     "url": "https://www.marxists.org/archive/marx/works/1852/18th-brumaire/",
+     "note": "Class, politics and farce in the French Second Republic.",
+     "wiki": "The Eighteenth Brumaire of Louis Bonaparte"
+    },
+    {
+     "title": "Grundrisse",
+     "author": "Karl Marx",
+     "year": "1857–58",
+     "url": "https://www.marxists.org/archive/marx/works/1857/grundrisse/",
+     "note": "The notebooks behind Capital, including the “Fragment on Machines.”",
+     "wiki": "Grundrisse"
+    },
+    {
+     "title": "Value, Price and Profit",
+     "author": "Karl Marx",
+     "year": "1865",
+     "url": "https://www.marxists.org/archive/marx/works/1865/value-price-profit/",
+     "note": "Why unions can raise wages, and what surplus value is.",
+     "wiki": "Value, Price and Profit"
+    },
+    {
+     "title": "Capital, Volume II",
+     "author": "Karl Marx",
+     "year": "1885",
+     "url": "https://www.marxists.org/archive/marx/works/1885-c2/",
+     "note": "Circulation, turnover and the reproduction schemes.",
+     "wiki": "Capital, Volume II"
+    },
+    {
+     "title": "Capital, Volume III",
+     "author": "Karl Marx",
+     "year": "1894",
+     "url": "https://www.marxists.org/archive/marx/works/1894-c3/",
+     "note": "Profit, the falling rate of profit, credit and rent.",
+     "wiki": "Capital, Volume III"
+    },
+    {
+     "title": "The Civil War in France",
+     "author": "Karl Marx",
+     "year": "1871",
+     "url": "https://www.marxists.org/archive/marx/works/1871/civil-war-france/",
+     "note": "The Paris Commune as the first workers’ government.",
+     "wiki": "The Civil War in France"
+    },
+    {
+     "title": "Critique of the Gotha Programme",
+     "author": "Karl Marx",
+     "year": "1875",
+     "url": "https://www.marxists.org/archive/marx/works/1875/gotha/",
+     "note": "Marx’s clearest sketch of a communist society.",
+     "wiki": "Critique of the Gotha Programme",
+     "aka": [
+      "Critique of the Gotha Program"
+     ]
+    },
+    {
+     "title": "The Condition of the Working Class in England",
+     "author": "Friedrich Engels",
+     "year": "1845",
+     "url": "https://www.marxists.org/archive/marx/works/1845/condition-working-class/",
+     "note": "Manchester’s slums and factories.",
+     "wiki": "The Condition of the Working Class in England"
+    },
+    {
+     "title": "Socialism: Utopian and Scientific",
+     "author": "Friedrich Engels",
+     "year": "1880",
+     "url": "https://www.marxists.org/archive/marx/works/1880/soc-utop/",
+     "note": "The most-read introduction of the nineteenth century.",
+     "wiki": "Socialism: Utopian and Scientific"
+    },
+    {
+     "title": "The Origin of the Family, Private Property and the State",
+     "author": "Friedrich Engels",
+     "year": "1884",
+     "url": "https://www.marxists.org/archive/marx/works/1884/origin-family/",
+     "note": "Class, the state and women’s oppression.",
+     "wiki": "The Origin of the Family, Private Property and the State"
+    }
+   ]
+  },
+  {
+   "name": "The Second International and its critics",
+   "intro": "Mass socialist parties, the reform-or-revolution debate, and the first theories of imperialism.",
+   "texts": [
+    {
+     "title": "The Class Struggle (Erfurt Program)",
+     "author": "Karl Kautsky",
+     "year": "1892",
+     "url": "https://www.marxists.org/archive/kautsky/1892/erfurt/",
+     "note": "The orthodox Marxism of German Social Democracy.",
+     "wiki": "The Class Struggle (Erfurt Program)",
+     "aka": [
+      "The Class Struggle"
+     ]
+    },
+    {
+     "title": "Reform or Revolution",
+     "author": "Rosa Luxemburg",
+     "year": "1900",
+     "url": "https://www.marxists.org/archive/luxemburg/1900/reform-revolution/",
+     "note": "Luxemburg’s answer to Bernstein’s revisionism.",
+     "start": true,
+     "wiki": "Reform or Revolution"
+    },
+    {
+     "title": "The Mass Strike",
+     "author": "Rosa Luxemburg",
+     "year": "1906",
+     "url": "https://www.marxists.org/archive/luxemburg/1906/mass-strike/",
+     "note": "What the 1905 revolution taught about strikes.",
+     "wiki": "The Mass Strike"
+    },
+    {
+     "title": "Finance Capital",
+     "author": "Rudolf Hilferding",
+     "year": "1910",
+     "url": "https://www.marxists.org/archive/hilferding/1910/finkap/",
+     "note": "Banks, monopoly and the state.",
+     "wiki": "Finance Capital"
+    },
+    {
+     "title": "The Accumulation of Capital",
+     "author": "Rosa Luxemburg",
+     "year": "1913",
+     "url": "https://www.marxists.org/archive/luxemburg/1913/accumulation-capital/",
+     "note": "Capitalism’s need for a non-capitalist outside.",
+     "wiki": "The Accumulation of Capital"
+    },
+    {
+     "title": "The Junius Pamphlet",
+     "author": "Rosa Luxemburg",
+     "year": "1915",
+     "url": "https://www.marxists.org/archive/luxemburg/1915/junius/",
+     "note": "Socialism or barbarism, written in prison.",
+     "wiki": "The Junius Pamphlet"
+    },
+    {
+     "title": "The Russian Revolution",
+     "author": "Rosa Luxemburg",
+     "year": "1918",
+     "url": "https://www.marxists.org/archive/luxemburg/1918/russian-revolution/",
+     "note": "A comradely critique of the Bolsheviks.",
+     "wiki": "The Russian Revolution"
+    },
+    {
+     "title": "Statement to the Court",
+     "author": "Eugene V. Debs",
+     "year": "1918",
+     "url": "https://www.marxists.org/archive/debs/works/1918/court.htm",
+     "note": "While there is a lower class, I am in it.",
+     "wiki": "Statement to the Court"
+    }
+   ]
+  },
+  {
+   "name": "The Russian Revolution",
+   "intro": "The Bolsheviks and their critics, before and after 1917.",
+   "texts": [
+    {
+     "title": "What Is to Be Done?",
+     "author": "Vladimir Lenin",
+     "year": "1902",
+     "url": "https://www.marxists.org/archive/lenin/works/1901/witbd/",
+     "note": "Organization, consciousness and the revolutionary paper.",
+     "start": true,
+     "wiki": "What Is to Be Done?"
+    },
+    {
+     "title": "Imperialism, the Highest Stage of Capitalism",
+     "author": "Vladimir Lenin",
+     "year": "1917",
+     "url": "https://www.marxists.org/archive/lenin/works/1916/imp-hsc/",
+     "note": "Monopoly, finance capital and the division of the world.",
+     "start": true,
+     "wiki": "Imperialism, the Highest Stage of Capitalism"
+    },
+    {
+     "title": "The State and Revolution",
+     "author": "Vladimir Lenin",
+     "year": "1917",
+     "url": "https://www.marxists.org/archive/lenin/works/1917/staterev/",
+     "note": "What to do with the state.",
+     "start": true,
+     "wiki": "The State and Revolution"
+    },
+    {
+     "title": "The ABC of Communism",
+     "author": "Nikolai Bukharin and Evgenii Preobrazhensky",
+     "year": "1920",
+     "url": "https://www.marxists.org/archive/bukharin/works/1920/abc/",
+     "note": "The Bolsheviks’ popular textbook.",
+     "wiki": "The ABC of Communism"
+    },
+    {
+     "title": "The Social Basis of the Woman Question",
+     "author": "Alexandra Kollontai",
+     "year": "1909",
+     "url": "https://www.marxists.org/archive/kollontai/1909/social-basis.htm",
+     "note": "Women’s liberation and the liberation of labor.",
+     "wiki": "The Social Basis of the Woman Question"
+    },
+    {
+     "title": "The History of the Russian Revolution",
+     "author": "Leon Trotsky",
+     "year": "1930",
+     "url": "https://www.marxists.org/archive/trotsky/1930/hrr/",
+     "note": "1917 told by one of its leaders.",
+     "wiki": "The History of the Russian Revolution"
+    },
+    {
+     "title": "The Revolution Betrayed",
+     "author": "Leon Trotsky",
+     "year": "1936",
+     "url": "https://www.marxists.org/archive/trotsky/1936/revbet/",
+     "note": "Trotsky’s analysis of the Stalinist bureaucracy.",
+     "wiki": "The Revolution Betrayed"
+    },
+    {
+     "title": "Workers’ Councils",
+     "author": "Anton Pannekoek",
+     "year": "1947",
+     "url": "https://www.marxists.org/archive/pannekoe/1947/workers-councils.htm",
+     "note": "The council communist alternative to the party.",
+     "wiki": "Workers’ Councils",
+     "aka": [
+      "Workers' Councils"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Western Marxism",
+   "intro": "Philosophy, culture and hegemony after the defeat of revolution in the West.",
+   "texts": [
+    {
+     "title": "History and Class Consciousness",
+     "author": "Georg Lukács",
+     "year": "1923",
+     "url": "https://www.marxists.org/archive/lukacs/works/history/",
+     "note": "Reification and the standpoint of the proletariat.",
+     "start": true,
+     "wiki": "History and Class Consciousness"
+    },
+    {
+     "title": "Marxism and Philosophy",
+     "author": "Karl Korsch",
+     "year": "1923",
+     "url": "https://www.marxists.org/archive/korsch/1923/marxism-philosophy.htm",
+     "note": "Marxism as a living philosophy of revolution.",
+     "wiki": "Marxism and Philosophy"
+    },
+    {
+     "title": "Selections from the Prison Notebooks",
+     "author": "Antonio Gramsci",
+     "year": "1929–35",
+     "url": "https://www.marxists.org/archive/gramsci/prison_notebooks/",
+     "note": "Hegemony and the war of position.",
+     "start": true,
+     "wiki": "Prison Notebooks",
+     "aka": [
+      "Prison Notebooks"
+     ]
+    },
+    {
+     "title": "The General Theory of Law and Marxism",
+     "author": "Evgeny Pashukanis",
+     "year": "1924",
+     "url": "https://www.marxists.org/archive/pashukanis/1924/law/",
+     "note": "Law as the form of commodity exchange.",
+     "wiki": "The General Theory of Law and Marxism"
+    },
+    {
+     "title": "Essays on Marx’s Theory of Value",
+     "author": "Isaak Illich Rubin",
+     "year": "1928",
+     "url": "https://www.marxists.org/archive/rubin/value/index.htm",
+     "note": "Value as a social form.",
+     "wiki": "Essays on Marx’s Theory of Value",
+     "aka": [
+      "Essays on Marx's Theory of Value"
+     ]
+    },
+    {
+     "title": "On the Concept of History",
+     "author": "Walter Benjamin",
+     "year": "1940",
+     "url": "https://www.marxists.org/reference/archive/benjamin/1940/history.htm",
+     "note": "The angel of history.",
+     "wiki": "On the Concept of History"
+    },
+    {
+     "title": "Ideology and Ideological State Apparatuses",
+     "author": "Louis Althusser",
+     "year": "1970",
+     "url": "https://www.marxists.org/reference/archive/althusser/1970/ideology.htm",
+     "note": "How ideology makes subjects.",
+     "wiki": "Ideology and Ideological State Apparatuses"
+    },
+    {
+     "title": "The Society of the Spectacle",
+     "author": "Guy Debord",
+     "year": "1967",
+     "url": "https://www.marxists.org/reference/archive/debord/society.htm",
+     "note": "Social life mediated by images.",
+     "wiki": "The Society of the Spectacle"
+    },
+    {
+     "title": "Dialectic of Enlightenment",
+     "author": "Max Horkheimer and Theodor Adorno",
+     "year": "1944",
+     "note": "Reason turned into domination. Still under copyright.",
+     "wiki": "Dialectic of Enlightenment"
+    }
+   ]
+  },
+  {
+   "name": "Anti-colonial and Third World Marxism",
+   "intro": "Marxism remade by liberation movements in Latin America, Africa and Asia.",
+   "texts": [
+    {
+     "title": "Seven Interpretive Essays on Peruvian Reality",
+     "author": "José Carlos Mariátegui",
+     "year": "1928",
+     "url": "https://www.marxists.org/archive/mariateg/works/7-interpretive-essays/",
+     "note": "Socialism rooted in Indigenous communal traditions.",
+     "start": true,
+     "wiki": "Seven Interpretive Essays on Peruvian Reality"
+    },
+    {
+     "title": "On Contradiction",
+     "author": "Mao Zedong",
+     "year": "1937",
+     "url": "https://www.marxists.org/reference/archive/mao/selected-works/volume-1/mswv1_17.htm",
+     "note": "Mao’s most influential philosophical essay.",
+     "wiki": "On Contradiction"
+    },
+    {
+     "title": "The Wretched of the Earth",
+     "author": "Frantz Fanon",
+     "year": "1961",
+     "note": "Decolonization and its pitfalls. Still under copyright.",
+     "start": true,
+     "wiki": "The Wretched of the Earth"
+    },
+    {
+     "title": "Neo-Colonialism: The Last Stage of Imperialism",
+     "author": "Kwame Nkrumah",
+     "year": "1965",
+     "url": "https://www.marxists.org/reference/archive/nkrumah/neo-colonialism/",
+     "note": "Independence without economic freedom.",
+     "wiki": "Neo-Colonialism: The Last Stage of Imperialism"
+    },
+    {
+     "title": "The Weapon of Theory",
+     "author": "Amílcar Cabral",
+     "year": "1966",
+     "url": "https://www.marxists.org/subject/africa/cabral/1966/weapon-theory.htm",
+     "note": "Theory rooted in a people’s own history.",
+     "wiki": "The Weapon of Theory"
+    },
+    {
+     "title": "How Europe Underdeveloped Africa",
+     "author": "Walter Rodney",
+     "year": "1972",
+     "url": "https://www.marxists.org/subject/africa/rodney-walter/how-europe/",
+     "note": "Development and underdevelopment as one process.",
+     "start": true,
+     "wiki": "How Europe Underdeveloped Africa"
+    }
+   ]
+  },
+  {
+   "name": "The Black radical tradition",
+   "intro": "Race, slavery, empire and the making of the working class.",
+   "texts": [
+    {
+     "title": "The Souls of Black Folk",
+     "author": "W. E. B. Du Bois",
+     "year": "1903",
+     "url": "https://www.gutenberg.org/ebooks/408",
+     "note": "Double consciousness and the color line.",
+     "start": true,
+     "wiki": "The Souls of Black Folk"
+    },
+    {
+     "title": "Black Reconstruction in America",
+     "author": "W. E. B. Du Bois",
+     "year": "1935",
+     "note": "The general strike of the enslaved.",
+     "start": true,
+     "wiki": "Black Reconstruction in America"
+    },
+    {
+     "title": "The Black Jacobins",
+     "author": "C. L. R. James",
+     "year": "1938",
+     "note": "The Haitian Revolution.",
+     "wiki": "The Black Jacobins"
+    },
+    {
+     "title": "An End to the Neglect of the Problems of the Negro Woman!",
+     "author": "Claudia Jones",
+     "year": "1949",
+     "url": "https://www.marxists.org/subject/women/authors/jones-claudia/neglect.htm",
+     "note": "Triple oppression, from a Communist leader later deported.",
+     "wiki": "An End to the Neglect of the Problems of the Negro Woman!"
+    },
+    {
+     "title": "The Combahee River Collective Statement",
+     "author": "Combahee River Collective",
+     "year": "1977",
+     "url": "https://www.blackpast.org/african-american-history/combahee-river-collective-statement-1977/",
+     "note": "Black socialist feminism.",
+     "wiki": "The Combahee River Collective Statement"
+    },
+    {
+     "title": "Black Marxism",
+     "author": "Cedric Robinson",
+     "year": "1983",
+     "note": "Racial capitalism and the Black radical tradition.",
+     "wiki": "Black Marxism"
+    }
+   ]
+  },
+  {
+   "name": "Marxist feminism and social reproduction",
+   "intro": "Who produces the workers, and at what cost.",
+   "texts": [
+    {
+     "title": "Only in Conjunction with the Proletarian Woman Will Socialism Be Victorious",
+     "author": "Clara Zetkin",
+     "year": "1896",
+     "url": "https://www.marxists.org/archive/zetkin/1896/10/women.htm",
+     "note": "Zetkin’s speech to the German Social Democrats.",
+     "wiki": "Only in Conjunction with the Proletarian Woman Will Socialism Be Victorious"
+    },
+    {
+     "title": "Wages Against Housework",
+     "author": "Silvia Federici",
+     "year": "1975",
+     "note": "Exposing unwaged work by demanding wages for it.",
+     "start": true,
+     "wiki": "Wages Against Housework"
+    },
+    {
+     "title": "Women, Race & Class",
+     "author": "Angela Y. Davis",
+     "year": "1981",
+     "note": "Feminism, slavery and labor bound together.",
+     "wiki": "Women, Race & Class"
+    },
+    {
+     "title": "Marxism and the Oppression of Women",
+     "author": "Lise Vogel",
+     "year": "1983",
+     "note": "The founding text of social reproduction theory.",
+     "start": true,
+     "wiki": "Marxism and the Oppression of Women"
+    },
+    {
+     "title": "Caliban and the Witch",
+     "author": "Silvia Federici",
+     "year": "2004",
+     "note": "Witch hunts and primitive accumulation.",
+     "wiki": "Caliban and the Witch"
+    }
+   ]
+  },
+  {
+   "name": "Value, crisis and the critique of political economy",
+   "intro": "The later debates about what Capital means.",
+   "texts": [
+    {
+     "title": "Monopoly Capital",
+     "author": "Paul Baran and Paul Sweezy",
+     "year": "1966",
+     "note": "Stagnation and surplus absorption.",
+     "wiki": "Monopoly Capital"
+    },
+    {
+     "title": "Late Capitalism",
+     "author": "Ernest Mandel",
+     "year": "1972",
+     "note": "Long waves and the postwar boom.",
+     "wiki": "Late Capitalism"
+    },
+    {
+     "title": "The Limits to Capital",
+     "author": "David Harvey",
+     "year": "1982",
+     "note": "Crisis, finance and the spatial fix.",
+     "start": true,
+     "wiki": "The Limits to Capital"
+    },
+    {
+     "title": "Time, Labor, and Social Domination",
+     "author": "Moishe Postone",
+     "year": "1993",
+     "note": "Capitalism as domination by abstract time.",
+     "wiki": "Time, Labor, and Social Domination"
+    },
+    {
+     "title": "An Introduction to the Three Volumes of Karl Marx’s Capital",
+     "author": "Michael Heinrich",
+     "year": "2004",
+     "note": "The best modern guide to Capital.",
+     "start": true,
+     "wiki": "An Introduction to the Three Volumes of Karl Marx’s Capital",
+     "aka": [
+      "An Introduction to the Three Volumes of Karl Marx's Capital"
+     ]
+    },
+    {
+     "title": "Mute Compulsion",
+     "author": "Søren Mau",
+     "year": "2023",
+     "note": "How capital rules through economic power.",
+     "wiki": "Mute Compulsion"
+    }
+   ]
+  },
+  {
+   "name": "Ecological Marxism",
+   "intro": "Capital, nature and the climate crisis.",
+   "texts": [
+    {
+     "title": "Marx’s Ecology",
+     "author": "John Bellamy Foster",
+     "year": "2000",
+     "note": "The metabolic rift.",
+     "start": true,
+     "wiki": "Marx’s Ecology"
+    },
+    {
+     "title": "Capitalism in the Web of Life",
+     "author": "Jason W. Moore",
+     "year": "2015",
+     "note": "Cheap nature and world-ecology.",
+     "wiki": "Capitalism in the Web of Life"
+    },
+    {
+     "title": "Fossil Capital",
+     "author": "Andreas Malm",
+     "year": "2016",
+     "note": "Why steam won: control over labor.",
+     "start": true,
+     "wiki": "Fossil Capital"
+    },
+    {
+     "title": "Marx in the Anthropocene",
+     "author": "Kohei Saito",
+     "year": "2023",
+     "note": "Degrowth communism from Marx’s late notebooks.",
+     "wiki": "Marx in the Anthropocene"
+    }
+   ]
+  }
+ ]
+}
