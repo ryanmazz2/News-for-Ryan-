@@ -48,6 +48,14 @@ Secrets stay private even though the repository is public.
 - **Culture:** artwork of the day, museum archives, posters from MSU's Leftist Political Posters and Radicalism collections, radical art now, song of the day, and listen & watch.
 - **My shelf:** what you're currently reading, reading stats, recommendations from the canon (`site/data/canon.json`), your saved reading list and back issues.
 
+## Tuning what you see
+
+- **Beats** (`beats` in `sources.json`): topics you follow. Each has a list of words; matching stories get a tag and rank higher in "top stories".
+- **Scholars** (`scholars`): names looked up on OpenAlex. Their new books and articles appear under New Research → scholars you follow.
+- **Debates** (`debates`): works whose new citations are tracked, e.g. new papers in conversation with Capital or Black Marxism.
+- **Hide this outlet**: the link under any headline hides that outlet in your browser; the "Hidden outlets" bar brings it back.
+- **The library** (`site/data/library.json`): essential texts by school. Add `aka` titles if your StoryGraph edition has a different name.
+
 ## Posters: one more free key
 
 The MSU posters come through the Digital Public Library of America, which needs a free key.

@@ -1,5 +1,5 @@
 {
-  "_how_to_edit": "Add or remove sources here. Give a feed address or just a site's homepage; the updater finds the feed itself. 'economy' and 'politics' take feeds that are already about one subject. 'mixed' takes outlets that cover everything: each article is filed under Economy or Politics using the outlet's own section labels, or its headline when there are none. 'kind' is 'newsroom' or 'independent', used by the source filter on the page. Sports, entertainment and other non-news are dropped, and no outlet gets more than a few stories per tab. 'journals' take ISSNs looked up on Crossref; 'scholarship' takes OpenAlex search terms. YouTube channels can be given as their @handle page. 'local_place' names the local section; 'local_searches' and 'strike_searches' are Google News searches.",
+  "_how_to_edit": "Add or remove sources here. Give a feed address or just a site's homepage; the updater finds the feed itself. 'economy' and 'politics' take feeds that are already about one subject. 'mixed' takes outlets that cover everything: each article is filed under Economy or Politics using the outlet's own section labels, or its headline when there are none. 'kind' is 'newsroom' or 'independent', used by the source filter on the page. Sports, entertainment and other non-news are dropped, and no outlet gets more than a few stories per tab. 'journals' take ISSNs looked up on Crossref; 'scholarship' takes OpenAlex search terms. YouTube channels can be given as their @handle page. 'local_place' names the local section; 'local_searches' and 'strike_searches' are Google News searches. 'beats' are topics you follow: each has words that tag a story and lift it in the top stories. 'scholars' are names looked up on OpenAlex; their new work appears under New Research. 'debates' are works whose new citations are tracked.",
   "contact_email": "you@example.com",
   "rss": {
     "economy": [
@@ -283,6 +283,31 @@
         "name": "Canadian Dimension",
         "url": "https://canadiandimension.com/",
         "kind": "independent"
+      },
+      {
+        "name": "Left Voice",
+        "url": "https://www.leftvoice.org/",
+        "kind": "independent"
+      },
+      {
+        "name": "Tempest",
+        "url": "https://www.tempestmag.org/",
+        "kind": "independent"
+      },
+      {
+        "name": "Counterfire",
+        "url": "https://www.counterfire.org/",
+        "kind": "independent"
+      },
+      {
+        "name": "Red Flag",
+        "url": "https://redflag.org.au/",
+        "kind": "independent"
+      },
+      {
+        "name": "The Bullet (Socialist Project)",
+        "url": "https://socialistproject.ca/bullet/",
+        "kind": "independent"
       }
     ],
     "essays": [
@@ -315,6 +340,31 @@
         "name": "The Baffler",
         "url": "https://thebaffler.com/feed",
         "kind": "independent"
+      },
+      {
+        "name": "Cosmonaut",
+        "url": "https://cosmonautmag.com/",
+        "kind": "independent"
+      },
+      {
+        "name": "Salvage",
+        "url": "https://salvage.zone/",
+        "kind": "independent"
+      },
+      {
+        "name": "Viewpoint Magazine",
+        "url": "https://viewpointmag.com/",
+        "kind": "independent"
+      },
+      {
+        "name": "Verso Blog",
+        "url": "https://www.versobooks.com/blogs",
+        "kind": "independent"
+      },
+      {
+        "name": "LPE Project",
+        "url": "https://lpeproject.org/blog/",
+        "kind": "independent"
       }
     ],
     "releases": [
@@ -346,19 +396,33 @@
       },
       {
         "name": "Institute for New Economic Thinking",
-        "url": "https://www.ineteconomics.org/",
-        "kind": "independent",
-        "no_google": true
-      },
-      {
-        "name": "Levy Economics Institute",
-        "url": "https://www.levyinstitute.org/",
+        "crossref_prefix": "10.36687",
         "kind": "independent",
         "no_google": true
       },
       {
         "name": "Economic Policy Institute",
         "url": "https://www.epi.org/",
+        "kind": "independent",
+        "no_google": true
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Marx & Philosophy Review of Books",
+        "url": "https://marxandphilosophy.org.uk/",
+        "kind": "independent",
+        "no_google": true
+      },
+      {
+        "name": "LSE Review of Books",
+        "url": "https://blogs.lse.ac.uk/lsereviewofbooks/feed/",
+        "kind": "independent",
+        "no_google": true
+      },
+      {
+        "name": "Historical Materialism",
+        "url": "https://www.historicalmaterialism.org/",
         "kind": "independent",
         "no_google": true
       }
@@ -375,10 +439,6 @@
       {
         "name": "Interference Archive",
         "url": "https://interferencearchive.org/feed/"
-      },
-      {
-        "name": "Center for the Study of Political Graphics",
-        "url": "https://www.politicalgraphics.org/"
       }
     ],
     "podcasts": [
@@ -393,26 +453,6 @@
         "no_google": true
       },
       {
-        "name": "Upstream",
-        "url": "https://www.upstreampodcast.org/",
-        "no_google": true
-      },
-      {
-        "name": "Behind the News (Doug Henwood)",
-        "url": "https://www.leftbusinessobserver.com/",
-        "no_google": true
-      },
-      {
-        "name": "Economic Update (Richard Wolff)",
-        "url": "https://www.democracyatwork.info/",
-        "no_google": true
-      },
-      {
-        "name": "Trillbilly Workers Party",
-        "url": "https://www.trillbillyworkersparty.com/",
-        "no_google": true
-      },
-      {
         "name": "Novara Media",
         "url": "https://novaramedia.com/category/audio/feed/",
         "no_google": true
@@ -421,37 +461,71 @@
         "name": "Jacobin Radio",
         "url": "https://jacobin.com/radio",
         "no_google": true
+      },
+      {
+        "name": "Upstream",
+        "itunes": "Upstream podcast",
+        "match": "upstream",
+        "kind": "independent",
+        "no_google": true
+      },
+      {
+        "name": "Behind the News (Doug Henwood)",
+        "itunes": "Behind the News Doug Henwood",
+        "match": "behind the news",
+        "kind": "independent",
+        "no_google": true
+      },
+      {
+        "name": "Trillbilly Worker's Party",
+        "itunes": "Trillbilly Worker's Party",
+        "match": "trillbilly",
+        "kind": "independent",
+        "no_google": true
+      },
+      {
+        "name": "Economic Update (Richard Wolff)",
+        "itunes": "Economic Update Richard Wolff",
+        "match": "economic update",
+        "kind": "independent",
+        "no_google": true
       }
     ],
     "videos": [
       {
         "name": "Second Thought",
-        "url": "https://www.youtube.com/@SecondThought",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJm2TgUqtK1_NLBrjNQ1P-w",
+        "kind": "independent",
         "no_google": true
       },
       {
         "name": "Andrewism",
-        "url": "https://www.youtube.com/@Andrewism",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCN__G2hSqRKuqedN3M0JCDg",
+        "kind": "independent",
         "no_google": true
       },
       {
         "name": "Democracy at Work",
-        "url": "https://www.youtube.com/@democracyatwork",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCd6Nn5YFGUSFPD8HP620BqQ",
+        "kind": "independent",
         "no_google": true
       },
       {
         "name": "Breakthrough News",
-        "url": "https://www.youtube.com/@BreakThroughNews",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCiinSjWS3E0vtAa3DCvp7iA",
+        "kind": "independent",
         "no_google": true
       },
       {
         "name": "Novara Media",
-        "url": "https://www.youtube.com/@NovaraMedia",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCOzMAa6IhV6uwYQATYG_2kg",
+        "kind": "independent",
         "no_google": true
       },
       {
         "name": "Jacobin",
-        "url": "https://www.youtube.com/@jacobinmag",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCzGUT9PjV3SMBwjWXUYh4HA",
+        "kind": "independent",
         "no_google": true
       }
     ],
@@ -570,7 +644,7 @@
     "union strike vote"
   ],
   "world_economy": {
-    "_note": "IMF World Economic Outlook figures (free, no key). Countries are ISO codes.",
+    "_note": "World Bank World Development Indicators (free, no key). Countries are ISO codes.",
     "countries": [
       "USA",
       "CHN",
@@ -586,10 +660,10 @@
       "IDN"
     ],
     "indicators": {
-      "NGDP_RPCH": "GDP growth, %",
-      "PCPIPCH": "Inflation, %",
-      "LUR": "Unemployment, %",
-      "GGXWDG_NGDP": "Government debt, % of GDP"
+      "NY.GDP.MKTP.KD.ZG": "GDP growth, %",
+      "FP.CPI.TOTL.ZG": "Inflation, %",
+      "SL.UEM.TOTL.ZS": "Unemployment, %",
+      "GC.DOD.TOTL.GD.ZS": "Government debt, % of GDP"
     }
   },
   "bls_calendar": "https://www.bls.gov/schedule/news_release/bls.ics",
@@ -602,5 +676,159 @@
   },
   "reading": {
     "_note": "Upload your StoryGraph export to the books folder as books/storygraph.csv. Only titles, authors, dates and covers are shown on the site."
-  }
+  },
+  "beats": {
+    "labor": [
+      "union",
+      "unions",
+      "unionize",
+      "strike",
+      "strikes",
+      "striking",
+      "workers",
+      "labor",
+      "labour",
+      "wage",
+      "wages",
+      "layoff",
+      "layoffs",
+      "picket",
+      "nlrb"
+    ],
+    "housing": [
+      "housing",
+      "rent",
+      "rents",
+      "renters",
+      "tenant",
+      "tenants",
+      "eviction",
+      "evictions",
+      "mortgage",
+      "homeless",
+      "landlord",
+      "landlords"
+    ],
+    "money & the fed": [
+      "federal reserve",
+      "the fed",
+      "fed chair",
+      "interest rate",
+      "interest rates",
+      "inflation",
+      "central bank",
+      "treasury yields",
+      "bond market"
+    ],
+    "trade": [
+      "tariff",
+      "tariffs",
+      "trade war",
+      "exports",
+      "imports",
+      "supply chain",
+      "sanctions"
+    ],
+    "inequality": [
+      "inequality",
+      "billionaire",
+      "billionaires",
+      "wealth",
+      "poverty",
+      "tax the rich",
+      "minimum wage"
+    ],
+    "the far right": [
+      "far right",
+      "far-right",
+      "fascist",
+      "fascism",
+      "neo-nazi",
+      "white nationalist",
+      "authoritarian"
+    ],
+    "climate": [
+      "climate",
+      "emissions",
+      "fossil fuel",
+      "fossil fuels",
+      "coal",
+      "renewable",
+      "renewables",
+      "heat wave",
+      "wildfire"
+    ]
+  },
+  "scholars": [
+    "Robert Brenner",
+    "Nancy Fraser",
+    "Michael Heinrich",
+    "Kohei Saito",
+    "Andreas Malm",
+    "Søren Mau",
+    "Clara E. Mattei",
+    "David Harvey",
+    "Silvia Federici",
+    "Ruth Wilson Gilmore",
+    "Cédric Durand",
+    "Aaron Benanav",
+    "Jason W. Moore",
+    "Tithi Bhattacharya",
+    "Vivek Chibber",
+    "Utsa Patnaik",
+    "John Bellamy Foster",
+    "Isabella M. Weber"
+  ],
+  "debates": [
+    {
+      "label": "Marx’s Capital",
+      "title": "Capital: A Critique of Political Economy",
+      "author": "Marx"
+    },
+    {
+      "label": "Postone’s Time, Labor, and Social Domination",
+      "title": "Time, Labor, and Social Domination",
+      "author": "Postone"
+    },
+    {
+      "label": "Heinrich on Capital",
+      "title": "An Introduction to the Three Volumes of Karl Marx's Capital",
+      "author": "Heinrich"
+    },
+    {
+      "label": "Robinson’s Black Marxism",
+      "title": "Black Marxism",
+      "author": "Robinson"
+    },
+    {
+      "label": "Brenner on the transition",
+      "title": "Agrarian Class Structure and Economic Development in Pre-Industrial Europe",
+      "author": "Brenner"
+    },
+    {
+      "label": "Federici’s Caliban and the Witch",
+      "title": "Caliban and the Witch",
+      "author": "Federici"
+    },
+    {
+      "label": "Harvey’s Limits to Capital",
+      "title": "The Limits to Capital",
+      "author": "Harvey"
+    },
+    {
+      "label": "Malm’s Fossil Capital",
+      "title": "Fossil Capital",
+      "author": "Malm"
+    },
+    {
+      "label": "Mau’s Mute Compulsion",
+      "title": "Mute Compulsion",
+      "author": "Mau"
+    },
+    {
+      "label": "Mattei’s The Capital Order",
+      "title": "The Capital Order",
+      "author": "Mattei"
+    }
+  ]
 }
