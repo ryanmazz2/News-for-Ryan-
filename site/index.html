@@ -318,6 +318,53 @@ ul.bars .v { text-align: right; font-weight: 700; }
 .tag.read { background: var(--magenta); }
 .tag.free { background: none; color: var(--blue); border: 1.5px solid var(--blue); }
 
+/* ---------- the angel of history ---------- */
+.angel { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(200px, 340px) 1fr; gap: 18px clamp(20px, 4vw, 44px);
+  align-items: center; border: 2px solid var(--white); padding: clamp(14px, 3vw, 28px); }
+.angel-fig { margin: 0; position: relative; aspect-ratio: 3 / 4; border: 2px solid var(--white); background: var(--blue-deep); overflow: hidden; }
+.angel-fig svg { width: 100%; height: 100%; display: block; }
+.angel-q { margin: 0; }
+.angel-q p { margin: 0; font: italic 400 clamp(1.02rem, 1.6vw, 1.22rem)/1.55 var(--text); }
+.angel-q strong { display: block; margin-top: 12px; font: 400 normal clamp(1.4rem, 3vw, 2.1rem)/1.15 var(--slab); color: var(--orange); }
+.angel-q footer { display: block; margin-top: 12px; padding: 0; border: 0; font-size: .82rem; opacity: .85; }
+@media (max-width: 720px) { .angel { grid-template-columns: 1fr; } .angel-fig { max-width: 300px; justify-self: center; width: 100%; } }
+
+/* today page order: banner, headlines, study group, from the left, history and hero, strikes last */
+#angel { order: -20; } #headlines { order: -19; } #research { order: -18; } #text { order: -17; } #song { order: -16; }
+#left { order: -15; } #history { order: -14; } #hero { order: -13; } #strikes { order: 20; grid-column: 1 / -1; }
+#research { grid-row: span 2; }
+#listen { grid-column: 1 / -1; }
+
+/* ---------- notes ---------- */
+.notes-tab { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 40; writing-mode: vertical-rl;
+  font: 400 1.05rem var(--slab); color: #fff; background: var(--orange); border: 2px solid var(--plum); border-right: 0;
+  padding: 14px 8px; cursor: pointer; }
+.notes-tab:hover { background: var(--magenta); }
+@media (max-width: 600px) {
+  .notes-tab { writing-mode: horizontal-tb; top: auto; transform: none; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    border: 2px solid var(--plum); padding: 8px 14px; box-shadow: 3px 3px 0 var(--plum); }
+}
+.notes { position: fixed; top: 0; right: 0; bottom: 0; z-index: 50; width: min(390px, 100vw); overflow-y: auto;
+  background: var(--paper); color: var(--ink); border-left: 3px solid var(--plum);
+  padding: calc(14px + env(safe-area-inset-top, 0px)) 16px calc(20px + env(safe-area-inset-bottom, 0px)); box-shadow: -6px 0 0 color-mix(in srgb, var(--plum) 35%, transparent); }
+.notes-head { display: flex; justify-content: space-between; align-items: center; background: var(--blue-deep); color: var(--white); margin: -14px -16px 12px; padding: 10px 16px; }
+.notes-head h2 { margin: 0; font: 400 1.6rem var(--slab); }
+.notes-x { font: 400 1.8rem/1 var(--slab); color: var(--white); background: none; border: 0; cursor: pointer; padding: 0 4px; }
+.notes-lede { margin: 0 0 10px; font-size: .92rem; color: var(--ink-soft); }
+#notes-form label { display: block; font-weight: 700; font-size: .85rem; margin: 8px 0 3px; }
+#notes-form input, #notes-form textarea { width: 100%; font: 1rem var(--text); color: var(--ink); background: var(--paper); border: 2px solid var(--ink); padding: 6px 8px; }
+#notes-form .btn { color: var(--ink); border-color: var(--ink); }
+#notes-form .btn:hover { background: var(--ink); color: var(--paper); }
+.notes-row { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; font-size: .82rem; color: var(--ink-soft); }
+.notes-status { min-height: 1.2em; margin: 6px 0 0; font-size: .88rem; font-weight: 600; color: var(--magenta); }
+.trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.notes-list { list-style: none; margin: 14px 0 0; padding: 0; }
+.notes-list li { padding: 10px 0; border-top: 2px dotted color-mix(in srgb, var(--ink) 35%, transparent); }
+.notes-list .who { font-weight: 700; color: var(--magenta); }
+.notes-list .when { font-size: .8rem; color: var(--ink-soft); }
+.notes-list p { margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+@media print { .notes-tab, .notes { display: none !important; } }
+
 /* world table */
 .tablewrap { overflow-x: auto; }
 table.world { border-collapse: collapse; width: 100%; font-size: .95rem; min-width: 520px; }
@@ -375,7 +422,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     </div>
     <nav class="pages" aria-label="Pages">
       <a href="#today" data-page="today">today</a>
-      <a href="#economy-research" data-page="economy-research">economy &amp; research</a>
+      <a href="#economy-research" data-page="economy-research">economy</a>
       <a href="#culture" data-page="culture">culture</a>
       <a href="#library" data-page="library">library</a>
       <a href="#shelf" data-page="shelf">my shelf</a>
@@ -384,6 +431,14 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
   </header>
 
   <main class="grid">
+
+    <section class="angel" id="angel" data-page="today" data-nosub="1" aria-label="Walter Benjamin on the angel of history">
+      <figure class="angel-fig" id="angel-fig" aria-hidden="true"></figure>
+      <blockquote class="angel-q">
+        <p>There is a painting by Klee called <i>Angelus Novus</i>. An angel is depicted there who looks as though he were about to distance himself from something which he is staring at. His eyes are opened wide, his mouth stands open and his wings are outstretched. The Angel of History must look just so. His face is turned towards the past. Where we see the appearance of a chain of events, he sees one single catastrophe, which unceasingly piles rubble on top of rubble and hurls it before his feet. He would like to pause for a moment so fair [verweilen], to awaken the dead and to piece together what has been smashed. But a storm is blowing from Paradise, it has caught itself up in his wings and is so strong that the Angel can no longer close them. The storm drives him irresistibly into the future, to which his back is turned, while the rubble-heap before him grows sky-high. <strong>That which we call progress, is this storm.</strong></p>
+        <footer>Walter Benjamin, “On the Concept of History,” Thesis IX (1940), translated by Dennis Redmond. Image: Paul Klee, <i>Angelus Novus</i> (1920), recolored. <a id="angel-credit" target="_blank" rel="noopener" hidden>Image source</a></footer>
+      </blockquote>
+    </section>
 
     <section class="history" id="history" data-page="today" aria-labelledby="hist-h">
       <div class="sun">
@@ -497,13 +552,6 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="local" data-page="today" aria-labelledby="loc-h">
-      <div class="band"><h2 id="loc-h">local news</h2><span class="tally" id="loc-tally" aria-hidden="true"></span></div>
-      <div class="inner">
-        <ul class="items" id="loc-list"></ul>
-        <button class="more" id="loc-more" hidden>show more</button>
-      </div>
-    </section>
 
     <section class="panel" id="left" data-page="today" aria-labelledby="left-h">
       <div class="band"><h2 id="left-h">from the left</h2></div>
@@ -537,7 +585,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="research" data-page="economy-research" aria-labelledby="sch-h">
+    <section class="panel" id="research" data-page="today" aria-labelledby="sch-h">
       <div class="band"><h2 id="sch-h">new research</h2><span class="tally" id="sch-tally" aria-hidden="true"></span></div>
       <div class="inner">
         <div class="tabs" id="sch-tabs" role="tablist" aria-label="Research sections"></div>
@@ -547,7 +595,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="text" data-page="economy-research" aria-labelledby="txt-h">
+    <section class="panel" id="text" data-page="today" aria-labelledby="txt-h">
       <div class="band"><h2 id="txt-h">text of the week</h2></div>
       <div class="inner">
         <p class="big" id="txt-title"></p>
@@ -565,7 +613,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="song" data-page="culture" aria-labelledby="song-h">
+    <section class="panel" id="song" data-page="today" aria-labelledby="song-h">
       <div class="band"><h2 id="song-h">song of the day</h2></div>
       <div class="inner">
         <p class="mark hero-mark" id="song-mark" hidden></p>
@@ -691,9 +739,28 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
   </footer>
 </div>
 
+<button class="notes-tab" id="notes-tab" type="button" aria-expanded="false" aria-controls="notes">notes</button>
+<aside class="notes" id="notes" aria-labelledby="notes-h" hidden>
+  <div class="notes-head">
+    <h2 id="notes-h">notes</h2>
+    <button class="notes-x" id="notes-x" type="button" aria-label="Close notes">×</button>
+  </div>
+  <p class="notes-lede">Leave a note for Ryan and everyone who reads this page. Notes are public.</p>
+  <form id="notes-form" autocomplete="off">
+    <label for="note-name">name (optional)</label>
+    <input id="note-name" maxlength="40" placeholder="anonymous">
+    <label for="note-body">your note</label>
+    <textarea id="note-body" maxlength="500" rows="4" required></textarea>
+    <div class="trap" aria-hidden="true"><label for="note-site">leave this empty</label><input id="note-site" tabindex="-1"></div>
+    <div class="notes-row"><span id="note-count">500 left</span><button class="btn" type="submit" id="note-post">post note</button></div>
+    <p class="notes-status" id="note-status" role="status"></p>
+  </form>
+  <ul class="notes-list" id="notes-list"></ul>
+</aside>
+
 <script>
 (() => {
-  const NEWS = [["economy", "economy"], ["politics", "politics"], ["essays", "essays & ideas"]];
+  const NEWS = [["economy", "economy"], ["politics", "politics"], ["essays", "essays & ideas"], ["local", "local"]];
   const SCH = [["journals", "journals"], ["scholars", "scholars you follow"], ["debates", "debates"], ["papers", "working papers"], ["reviews", "book reviews"], ["scholarship", "recent work"]];
   const PAGE = 15;
   const $ = (id) => document.getElementById(id);
@@ -905,14 +972,90 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       if (a.dataset.page === page) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
     const sub = $("subnav"); sub.replaceChildren();
-    document.querySelectorAll(`main > section[data-page="${page}"]`).forEach((sec) => {
-      if (sec.dataset.empty === "1") return;
+    [...document.querySelectorAll(`main > section[data-page="${page}"]`)].sort((a, b) => (+getComputedStyle(a).order) - (+getComputedStyle(b).order)).forEach((sec) => {
+      if (sec.dataset.empty === "1" || sec.dataset.nosub) return;
       const a = el("a", null, LABELS[sec.id] || sec.id); a.href = "#" + sec.id; sub.append(a);
     });
     if (page === "economy-research") showMap();
     if (target) target.scrollIntoView(); else if (PAGES.includes(h)) window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", route);
+
+  // ---------- the angel of history, recolored ----------
+  function showAngel(img) {
+    const fig = $("angel-fig");
+    if (!img || !img.src) { fig.innerHTML = sunburst({ inner: 0.46 }); return; }
+    // Map the drawing's tones onto the site palette: dark lines to plum, mid tones to magenta and orange, paper to blue.
+    const ch = (i) => [C("--plum"), C("--plum"), C("--magenta"), C("--orange"), C("--orange"), C("--orange"), C("--blue"), C("--blue")].map((h) => (parseInt(h.slice(1 + i * 2, 3 + i * 2), 16) / 255).toFixed(3)).join(" ");
+    fig.innerHTML = `<svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid meet">
+      <defs><filter id="duo" color-interpolation-filters="sRGB">
+        <feColorMatrix type="saturate" values="0"/>
+        <feComponentTransfer><feFuncR type="linear" slope="1.35" intercept="-0.12"/><feFuncG type="linear" slope="1.35" intercept="-0.12"/><feFuncB type="linear" slope="1.35" intercept="-0.12"/></feComponentTransfer>
+        <feComponentTransfer><feFuncR type="table" tableValues="${ch(0)}"/><feFuncG type="table" tableValues="${ch(1)}"/><feFuncB type="table" tableValues="${ch(2)}"/></feComponentTransfer>
+      </filter></defs>
+      <rect width="300" height="400" fill="${C("--blue")}"/>
+      <image href="${img.src}" x="0" y="0" width="300" height="400" preserveAspectRatio="xMidYMid meet" filter="url(#duo)"/></svg>`;
+    if (img.credit) { $("angel-credit").href = img.credit; $("angel-credit").hidden = false; }
+  }
+
+  // ---------- notes (Supabase, live) ----------
+  const notes = { url: "", key: "", timer: null, last: 0 };
+  const noteHeaders = () => {
+    const h = { apikey: notes.key, "Content-Type": "application/json" };
+    if (notes.key.startsWith("eyJ")) h.Authorization = "Bearer " + notes.key;   // older anon keys are JWTs
+    return h;
+  };
+  async function loadNotes() {
+    const ul = $("notes-list");
+    if (!notes.url) { ul.replaceChildren(el("li", "empty", "Notes aren’t switched on yet. See NOTES-SETUP.md in the repo.")); return; }
+    try {
+      const r = await fetch(`${notes.url}/rest/v1/notes?select=name,body,page,created_at&order=created_at.desc&limit=80`, { headers: noteHeaders() });
+      if (!r.ok) throw new Error(r.status);
+      const list = await r.json();
+      ul.replaceChildren();
+      if (!list.length) ul.append(el("li", "empty", "No notes yet. Be the first."));
+      list.forEach((n) => {
+        const li = el("li"), top = el("div");
+        top.append(el("span", "who", n.name && n.name.trim() ? n.name.trim() : "anonymous"), el("span", "when", ` · ${when(n.created_at)}${n.page ? " · from " + n.page : ""}`));
+        li.append(top, el("p", null, n.body));
+        ul.append(li);
+      });
+    } catch (e) { ul.replaceChildren(el("li", "empty", "Couldn’t load notes just now.")); }
+  }
+  function openNotes(open) {
+    const panel = $("notes"), tab = $("notes-tab");
+    panel.hidden = !open; tab.setAttribute("aria-expanded", String(open));
+    clearInterval(notes.timer);
+    if (open) { loadNotes(); notes.timer = setInterval(loadNotes, 30000); $("notes-h").setAttribute("tabindex", "-1"); $("notes-h").focus(); }
+    else tab.focus();
+  }
+  async function setupNotes() {
+    try { const c = await (await fetch("data/notes.json", { cache: "no-cache" })).json(); notes.url = (c.url || "").replace(/\/+$/, ""); notes.key = c.key || ""; } catch (e) {}
+    $("notes-tab").onclick = () => openNotes($("notes").hidden);
+    $("notes-x").onclick = () => openNotes(false);
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("notes").hidden) openNotes(false); });
+    try { $("note-name").value = localStorage.getItem("td-note-name") || ""; } catch (e) {}
+    const body = $("note-body"), count = () => { $("note-count").textContent = `${500 - body.value.length} left`; };
+    body.addEventListener("input", count); count();
+    $("notes-form").onsubmit = async (e) => {
+      e.preventDefault();
+      const status = $("note-status"), text = body.value.trim(), name = $("note-name").value.trim().slice(0, 40);
+      if ($("note-site").value) { status.textContent = "Thanks!"; return; }          // a bot filled the trap
+      if (!notes.url) { status.textContent = "Notes aren’t switched on yet."; return; }
+      if (!text) { status.textContent = "Write something first."; return; }
+      if (Date.now() - notes.last < 30000) { status.textContent = "Give it a few seconds before posting again."; return; }
+      $("note-post").disabled = true; status.textContent = "Posting…";
+      try {
+        const page = (location.hash.slice(1) || "today").slice(0, 30);
+        const r = await fetch(`${notes.url}/rest/v1/notes`, { method: "POST", headers: { ...noteHeaders(), Prefer: "return=minimal" }, body: JSON.stringify({ name: name || null, body: text, page }) });
+        if (!r.ok) { let m = ""; try { m = (await r.json()).message || ""; } catch (x) {} throw new Error(m || r.status); }
+        notes.last = Date.now(); body.value = ""; count(); status.textContent = "Posted. Thank you!";
+        try { localStorage.setItem("td-note-name", name); } catch (x) {}
+        loadNotes();
+      } catch (err) { status.textContent = /Lots of notes/.test(err.message) ? err.message : "That didn’t post. Please try again."; }
+      $("note-post").disabled = false;
+    };
+  }
 
   // ---------- outlets you've hidden (this browser only) ----------
   const MKEY = "td-muted";
@@ -1141,7 +1284,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     };
   }
   function showSections(sec, label) {
-    news.load(sec); sch.load(sec); strikes.load(sec.strikes); local.load(sec.local); showLeft(sec);
+    news.load(sec); sch.load(sec); strikes.load(sec.strikes); showLeft(sec);
     const v = $("viewing");
     if (label) {
       v.replaceChildren(`You’re reading back issue ${label}.`);
@@ -1591,7 +1734,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
   const news = makeStream({ tabs: NEWS, tabsEl: $("news-tabs"), listEl: $("news-list"), moreEl: $("news-more"), filterEl: $("news-q"), tallyEl: $("news-tally"), scholarly: false, filterKind: "search", kindEl: $("news-kind"), sortEl: $("news-sort"), beatEl: $("news-beat") });
   const sch = makeStream({ tabs: SCH, tabsEl: $("sch-tabs"), listEl: $("sch-list"), moreEl: $("sch-more"), filterEl: $("sch-src"), tallyEl: $("sch-tally"), scholarly: true, filterKind: "source" });
   const strikes = makeList($("str-list"), $("str-more"), $("str-tally"), "No strike stories in the past week.");
-  const local = makeList($("loc-list"), $("loc-more"), $("loc-tally"), "Local news fills in at the next edition.");
+
   const releases = makeList($("rel-list"), $("rel-more"), $("rel-tally"), "Releases fill in at the next edition.");
 
   async function load() {
@@ -1609,12 +1752,13 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     if (!feed) {
       $("status").textContent = "no edition yet: run the “Update site” workflow on GitHub";
       showSections({}, null); showMuseums([]); showArtNow([]); showDash([]); showListen({}); setupBackIssues({});
-      showWorld(null); showCalendar([]); releases.load([]); showShelf(null);
+      showWorld(null); showCalendar([]); releases.load([]); showShelf(null); showAngel(null);
       showBoard([]); showShares(null); showDebt(null); showLibrary(null);
       return;
     }
     const s = feed.sections || {};
     window.__broken = feed.broken_texts || [];
+    showAngel((feed.images || {}).angel);
     s.debates = (feed.debates || []).flatMap((d) => (d.items || []).map((x) => ({ ...x, debate: d.label })))
       .sort((a, b) => (b.date || "").localeCompare(a.date || ""));
     showSections(s, null); showMuseums(s.museums); showArtNow(s.artnow); showDash(feed.dashboard); showListen(s);
@@ -1622,8 +1766,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     showBoard(feed.indicators); showShares(feed.shares); showDebt(feed.debt); showLibrary(feed.shelf);
     setupBackIssues(s);
     const place = (feed.local_place || "local").toLowerCase();
-    $("loc-h").textContent = `local news: ${place}`;
-    LABELS.local = place; route();
+    NEWS[3][1] = `local: ${place}`; news.load(s);
     $("str-lede").textContent = `${(s.strikes || []).length} stories about strikes, walkouts, pickets and lockouts in the past week.`;
     const gen = new Date(feed.generated_at);
     // Issue number: one per edition since the first, on November 19, 2026.
@@ -1639,6 +1782,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
 
   onMuteChange = () => { drawMuted(); news.render(); strikes.load && showLeft(); };
   drawMuted();
+  setupNotes();
   route();
   startFacts();
   showPosters();
