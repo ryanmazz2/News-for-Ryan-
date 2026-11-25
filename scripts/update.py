@@ -1372,6 +1372,7 @@ def main():
     print(f"strikes: {len(sections['strikes'])} items")
     sections["museums"] = safe("museums", gather_museums, [])
     images = safe("wikipedia images", gather_wiki_images, {"figures": {}, "art": {}})
+    images["angel"] = safe("Angelus Novus image", lambda: wiki_image("Angelus Novus"))
 
     for items in sections.values():
         for i in items:
