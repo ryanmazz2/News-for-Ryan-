@@ -319,7 +319,7 @@ ul.bars .v { text-align: right; font-weight: 700; }
 .tag.free { background: none; color: var(--blue); border: 1.5px solid var(--blue); }
 
 /* ---------- the angel of history ---------- */
-.angel { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(200px, 340px) 1fr; gap: 18px clamp(20px, 4vw, 44px);
+.angel { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(150px, 230px) 1fr; gap: 18px clamp(20px, 4vw, 44px);
   align-items: center; border: 2px solid var(--white); padding: clamp(14px, 3vw, 28px); }
 .angel-fig { margin: 0; position: relative; aspect-ratio: 560 / 681; background: transparent; box-shadow: 6px 6px 0 var(--plum); overflow: hidden; }
 .angel-fig img, .angel-fig svg { width: 100%; height: 100%; display: block; object-fit: contain; }
@@ -327,7 +327,7 @@ ul.bars .v { text-align: right; font-weight: 700; }
 .angel-q p { margin: 0; font: italic 400 clamp(1.02rem, 1.6vw, 1.22rem)/1.55 var(--text); }
 .angel-q strong { display: block; margin-top: 12px; font: 400 normal clamp(1.4rem, 3vw, 2.1rem)/1.15 var(--slab); color: var(--white); }
 .angel-q footer { display: block; margin-top: 12px; padding: 0; border: 0; font-size: .82rem; opacity: .85; }
-@media (max-width: 720px) { .angel { grid-template-columns: 1fr; } .angel-fig { max-width: 300px; justify-self: center; width: 100%; } }
+@media (max-width: 720px) { .angel { grid-template-columns: 1fr; } .angel-fig { max-width: 200px; justify-self: center; width: 100%; } }
 
 /* today page order: banner, headlines, study group, from the left, history and hero, strikes last */
 #angel { order: -20; } #headlines { order: -19; } #research { order: -18; } #text { order: -17; } #song { order: -16; }
@@ -364,6 +364,48 @@ ul.bars .v { text-align: right; font-weight: 700; }
 .notes-list .when { font-size: .8rem; color: var(--ink-soft); }
 .notes-list p { margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 @media print { .notes-tab, .notes { display: none !important; } }
+
+/* ---------- top bar: page menu beside today's four picks ---------- */
+.topbar { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.75fr); gap: 16px 22px; margin-top: 14px; align-items: start; }
+@media (max-width: 880px) { .topbar { grid-template-columns: 1fr; } }
+.topbar nav.pages { margin-top: 0; }
+.quad { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.quad > .qc { grid-column: auto !important; grid-row: auto !important; }
+#history.qc { order: 1; } #hero.qc { order: 2; } #text.qc { order: 3; } #song.qc { order: 4; }
+.qc { background: var(--paper); color: var(--ink); border: 2px solid var(--plum); padding: 9px 10px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.qc .ql { margin: 0; font: 700 .72rem/1.2 var(--text); color: var(--magenta); text-transform: lowercase; letter-spacing: .02em; }
+.qc .qt { margin: 0; font: 400 1.05rem/1.15 var(--slab); }
+.qc .qs { margin: 0; font-size: .8rem; line-height: 1.3; color: var(--ink-soft); }
+.qc .qtext { margin: 2px 0 0; font-size: .88rem; line-height: 1.38; }
+.qc .clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.qc.open .clamp { display: block; -webkit-line-clamp: unset; overflow: visible; }
+.qc .qacts { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; margin-top: auto; padding-top: 4px; font-size: .8rem; }
+.qc .qb { font: 700 .75rem/1.4 var(--text); color: var(--ink); background: transparent; border: 1.5px solid var(--ink); padding: 0 7px; cursor: pointer; }
+.qc .qb:hover { border-color: var(--orange); color: var(--orange); }
+.qc .qb[aria-pressed="true"], .qc .qb.on { background: var(--magenta); border-color: var(--magenta); color: #fff; }
+.qc .qlink { font-weight: 700; color: var(--ink); }
+.qc .qmore { margin-left: auto; font: 700 .75rem var(--text); color: var(--magenta); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+.qc .qextra { display: none; }
+.qc.open .qextra { display: flex; flex-direction: column; gap: 4px; font-size: .82rem; }
+.qc .qextra .read-list { columns: 1; max-height: 240px; overflow-y: auto; }
+.qc .qrow { display: flex; gap: 8px; align-items: center; }
+.qc .count { font-size: .72rem; color: var(--ink-soft); }
+.qc .anniv { display: inline-block; background: var(--orange); color: #fff; font-weight: 700; font-size: .7rem; padding: 0 5px; margin-right: 5px; }
+.qc .when { font-weight: 700; font-size: .8rem; }
+.qc #fig-mark, .qc #song-mark { color: var(--orange); font-weight: 700; margin-right: 4px; }
+.sun.mini { width: 56px; flex: none; }
+.sun.mini .year { font-size: .78rem; }
+.ring.mini { width: 56px; margin: 0; flex: none; }
+.ring.mini .noimg { font-size: .9rem; }
+@media (max-width: 480px) { .quad { gap: 8px; } .qc { padding: 8px; } .qc .qt { font-size: .98rem; } .sun.mini, .ring.mini { width: 44px; } }
+
+/* banner: opening and closing lines, with the whole passage on request */
+.angel-more { margin-top: 10px; font: 700 .85rem var(--text); color: var(--white); background: none; border: 1.5px solid var(--white); padding: 4px 10px; cursor: pointer; }
+.angel-more:hover { background: var(--white); color: var(--blue); }
+.angel.open .gap { display: none; }
+
+.hognote { margin: 0 0 10px; padding: 8px 10px; border-left: 4px solid var(--orange); background: color-mix(in srgb, var(--orange) 10%, transparent); font-size: .9rem; }
+.tabs button[aria-selected="true"].hog { background: var(--orange); border-color: var(--orange); }
 
 /* world table */
 .tablewrap { overflow-x: auto; }
@@ -420,14 +462,83 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       <p>economics, politics and marxist scholarship for ryan and loved ones</p>
       <p class="ed" id="status">loading the latest edition…</p>
     </div>
-    <nav class="pages" aria-label="Pages">
-      <a href="#today" data-page="today">today</a>
-      <a href="#economy-research" data-page="economy-research">economy</a>
-      <a href="#culture" data-page="culture">culture</a>
-      <a href="#library" data-page="library">library</a>
-      <a href="#shelf" data-page="shelf">my shelf</a>
-    </nav>
-    <nav class="jump" id="subnav" aria-label="On this page"></nav>
+    <div class="topbar">
+      <div class="navcol">
+        <nav class="pages" aria-label="Pages">
+          <a href="#today" data-page="today">today</a>
+          <a href="#economy-research" data-page="economy-research">economy</a>
+          <a href="#culture" data-page="culture">culture</a>
+          <a href="#library" data-page="library">library</a>
+          <a href="#shelf" data-page="shelf">my shelf</a>
+        </nav>
+        <nav class="jump" id="subnav" aria-label="On this page"></nav>
+      </div>
+      <div class="quad" id="quad" aria-label="Today’s picks">
+
+        <section class="qc" id="history" aria-labelledby="hist-h">
+          <div class="qrow">
+            <div class="sun mini"><div id="sun-art" aria-hidden="true"></div><div class="year" id="fact-year" aria-hidden="true"></div></div>
+            <div class="qbody">
+              <h2 class="ql" id="hist-h">history of struggle</h2>
+              <div class="qmeta"><span class="anniv" id="fact-anniv" hidden>on this day</span><span class="when" id="fact-when"></span></div>
+            </div>
+          </div>
+          <p class="qtext clamp" id="fact-text"></p>
+          <div class="qacts">
+            <button class="qb" type="button" id="fact-prev" aria-label="Previous event">‹</button>
+            <button class="qb" type="button" id="fact-next" aria-label="Next event">›</button>
+            <button class="qb" type="button" id="fact-pause" aria-pressed="false">pause</button>
+            <span class="count" id="fact-count"></span>
+            <button class="qmore" type="button" aria-expanded="false">more</button>
+          </div>
+        </section>
+
+        <section class="qc" id="hero" aria-labelledby="hero-h" hidden>
+          <div class="qrow">
+            <div class="ring mini" id="ring"></div>
+            <div class="qbody">
+              <h2 class="ql" id="hero-h">hero from history</h2>
+              <p class="qt" id="fig-name"></p>
+              <p class="qs"><span id="fig-mark" hidden></span><span id="fig-life"></span></p>
+            </div>
+          </div>
+          <p class="qtext clamp" id="fig-bio"></p>
+          <div class="qacts">
+            <a class="qlink" id="fig-wiki" target="_blank" rel="noopener">wikipedia</a>
+            <a class="qlink credit" id="fig-credit" target="_blank" rel="noopener" hidden>photo credit</a>
+            <button class="qmore" type="button" aria-expanded="false">more</button>
+          </div>
+        </section>
+
+        <section class="qc" id="text" aria-labelledby="txt-h">
+          <h2 class="ql" id="txt-h">text of the day</h2>
+          <p class="qt" id="txt-title"></p>
+          <p class="qs" id="txt-by"></p>
+          <p class="qtext clamp" id="txt-intro"></p>
+          <div class="qacts">
+            <a class="qlink" id="txt-read" target="_blank" rel="noopener">read it</a>
+            <button class="qb" type="button" id="txt-done" aria-pressed="false">mark as read</button>
+            <button class="qmore" type="button" aria-expanded="false">more</button>
+          </div>
+          <div class="qextra">
+            <a class="qlink" id="txt-about" target="_blank" rel="noopener">about it</a>
+            <details class="more-list"><summary id="txt-progress">the whole reading list</summary><ul class="read-list" id="txt-all"></ul></details>
+          </div>
+        </section>
+
+        <section class="qc" id="song" aria-labelledby="song-h">
+          <h2 class="ql" id="song-h">song of the day</h2>
+          <p class="qt" id="song-title"></p>
+          <p class="qs"><span id="song-mark" hidden></span><span id="song-by"></span></p>
+          <p class="qtext clamp" id="song-note"></p>
+          <div class="qacts">
+            <a class="qlink" id="song-listen" target="_blank" rel="noopener">listen</a>
+            <a class="qlink" id="song-wiki" target="_blank" rel="noopener">look it up</a>
+            <button class="qmore" type="button" aria-expanded="false">more</button>
+          </div>
+        </section>
+      </div>
+    </div>
   </header>
 
   <main class="grid">
@@ -435,41 +546,13 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     <section class="angel" id="angel" data-page="today" data-nosub="1" aria-label="Walter Benjamin on the angel of history">
       <figure class="angel-fig" id="angel-fig" aria-hidden="true"></figure>
       <blockquote class="angel-q">
-        <p>There is a painting by Klee called <i>Angelus Novus</i>. An angel is depicted there who looks as though he were about to distance himself from something which he is staring at. His eyes are opened wide, his mouth stands open and his wings are outstretched. The Angel of History must look just so. His face is turned towards the past. Where we see the appearance of a chain of events, he sees one single catastrophe, which unceasingly piles rubble on top of rubble and hurls it before his feet. He would like to pause for a moment so fair [verweilen], to awaken the dead and to piece together what has been smashed. But a storm is blowing from Paradise, it has caught itself up in his wings and is so strong that the Angel can no longer close them. The storm drives him irresistibly into the future, to which his back is turned, while the rubble-heap before him grows sky-high. <strong>That which we call progress, is this storm.</strong></p>
+        <p>There is a painting by Klee called <i>Angelus Novus</i>. An angel is depicted there who looks as though he were about to distance himself from something which he is staring at. <span class="gap" aria-hidden="true">… </span><span class="mid" id="angel-mid" hidden>His eyes are opened wide, his mouth stands open and his wings are outstretched. The Angel of History must look just so. His face is turned towards the past. Where we see the appearance of a chain of events, he sees one single catastrophe, which unceasingly piles rubble on top of rubble and hurls it before his feet. He would like to pause for a moment so fair [verweilen], to awaken the dead and to piece together what has been smashed. But a storm is blowing from Paradise, it has caught itself up in his wings and is so strong that the Angel can no longer close them. </span>The storm drives him irresistibly into the future, to which his back is turned, while the rubble-heap before him grows sky-high. <strong>That which we call progress, is this storm.</strong></p>
+        <button class="angel-more" type="button" id="angel-more" aria-expanded="false" aria-controls="angel-mid">read the whole passage</button>
         <footer>Walter Benjamin, “On the Concept of History,” Thesis IX (1940), translated by Dennis Redmond. Image: Paul Klee, <i>Angelus Novus</i> (1920), public domain. <a id="angel-credit" target="_blank" rel="noopener" hidden>Original</a></footer>
       </blockquote>
     </section>
 
-    <section class="history" id="history" data-page="today" aria-labelledby="hist-h">
-      <div class="sun">
-        <div id="sun-art" aria-hidden="true"></div>
-        <div class="year" id="fact-year" aria-hidden="true"></div>
-      </div>
-      <div>
-        <h2 class="label" id="hist-h">from the history of struggle</h2>
-        <div><span class="anniv" id="fact-anniv" hidden>on this day</span><span class="when" id="fact-when"></span></div>
-        <p class="fact" id="fact-text"></p>
-        <div class="btns">
-          <button class="btn" type="button" id="fact-prev">‹ prev</button>
-          <button class="btn" type="button" id="fact-next">next ›</button>
-          <button class="btn" type="button" id="fact-pause" aria-pressed="false">pause</button>
-          <span class="count" id="fact-count"></span>
-        </div>
-      </div>
-    </section>
 
-    <section class="panel hero" id="hero" data-page="today" aria-labelledby="hero-h" hidden>
-      <div class="band"><h2 id="hero-h">today’s hero from history</h2></div>
-      <div class="inner">
-        <div class="ring" id="ring"></div>
-        <p class="mark" id="fig-mark" hidden></p>
-        <p class="name" id="fig-name"></p>
-        <p class="life" id="fig-life"></p>
-        <p class="bio" id="fig-bio"></p>
-        <a class="links" id="fig-wiki" target="_blank" rel="noopener">read more on wikipedia</a>
-        <a class="credit" id="fig-credit" target="_blank" rel="noopener" hidden>photo: wikimedia commons</a>
-      </div>
-    </section>
 
     <section class="panel" id="economy" data-page="economy-research" aria-labelledby="eco-h">
       <div class="band"><h2 id="eco-h">the economy in numbers</h2></div>
@@ -580,6 +663,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
           <label class="vh" for="news-q">Search the headlines</label><input id="news-q" type="search" placeholder="search headlines">
         </div>
         <p class="muted" id="muted" hidden></p>
+        <p class="hognote" id="hog-note" hidden>Hog watch: what the right-wing press is saying, from Fox News, Breitbart, the Daily Wire, National Review, the Federalist, Newsmax and others. Kept in its own tab and never mixed into your other headlines.</p>
         <ul class="items" id="news-list"></ul>
         <button class="more" id="news-more" hidden>show more</button>
       </div>
@@ -595,37 +679,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       </div>
     </section>
 
-    <section class="panel" id="text" data-page="today" aria-labelledby="txt-h">
-      <div class="band"><h2 id="txt-h">text of the week</h2></div>
-      <div class="inner">
-        <p class="big" id="txt-title"></p>
-        <p class="meta2" id="txt-by"></p>
-        <p id="txt-intro"></p>
-        <div class="acts">
-          <a class="act" id="txt-read" target="_blank" rel="noopener">read it</a>
-          <a class="act" id="txt-about" target="_blank" rel="noopener">about it</a>
-          <button class="act" type="button" id="txt-done" aria-pressed="false">mark as read</button>
-        </div>
-        <details class="more-list">
-          <summary id="txt-progress">the whole reading list</summary>
-          <ul class="read-list" id="txt-all"></ul>
-        </details>
-      </div>
-    </section>
 
-    <section class="panel" id="song" data-page="today" aria-labelledby="song-h">
-      <div class="band"><h2 id="song-h">song of the day</h2></div>
-      <div class="inner">
-        <p class="mark hero-mark" id="song-mark" hidden></p>
-        <p class="big" id="song-title"></p>
-        <p class="meta2" id="song-by"></p>
-        <p id="song-note"></p>
-        <div class="acts">
-          <a class="act" id="song-listen" target="_blank" rel="noopener">listen on youtube</a>
-          <a class="act" id="song-wiki" target="_blank" rel="noopener">look it up</a>
-        </div>
-      </div>
-    </section>
 
     <section class="panel" id="listen" data-page="culture" aria-labelledby="lis-h">
       <div class="band"><h2 id="lis-h">listen &amp; watch</h2></div>
@@ -760,7 +814,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
 
 <script>
 (() => {
-  const NEWS = [["economy", "economy"], ["politics", "politics"], ["essays", "essays & ideas"], ["local", "local"]];
+  const NEWS = [["economy", "economy"], ["politics", "politics"], ["essays", "essays & ideas"], ["local", "local"], ["hog", "hog watch"]];
   const SCH = [["journals", "journals"], ["scholars", "scholars you follow"], ["debates", "debates"], ["papers", "working papers"], ["reviews", "book reviews"], ["scholarship", "recent work"]];
   const PAGE = 15;
   const $ = (id) => document.getElementById(id);
@@ -877,9 +931,9 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     $("fig-life").textContent = b.label && d.label ? `${b.label} – ${d.label}` : b.label ? `born ${b.label}` : `died ${d.label}`;
     $("fig-bio").textContent = p.bio;
     $("fig-wiki").href = p.wiki ? wikiURL(p.wiki) : "https://en.wikipedia.org/wiki/Special:Search?go=Go&search=" + encodeURIComponent(p.name);
-    $("fig-wiki").textContent = `read more about ${p.name} on wikipedia`;
+    $("fig-wiki").textContent = "read more";
     $("fig-mark").hidden = !pick.mark;
-    $("fig-mark").textContent = pick.mark || "";
+    $("fig-mark").textContent = pick.mark ? pick.mark + " ·" : "";
     const ring = $("ring");
     ring.innerHTML = sunburst({ n: 18, inner: 0.56, short: 0.84 });
     const img = images && images.figures && images.figures[p.name];
@@ -976,6 +1030,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       if (sec.dataset.empty === "1" || sec.dataset.nosub) return;
       const a = el("a", null, LABELS[sec.id] || sec.id); a.href = "#" + sec.id; sub.append(a);
     });
+    $("quad").hidden = page !== "today";
     if (page === "economy-research") showMap();
     if (target) target.scrollIntoView(); else if (PAGES.includes(h)) window.scrollTo(0, 0);
   }
@@ -1167,20 +1222,19 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     if (!texts.length) { $("text").hidden = true; return; }
     const RKEY = "td-read-texts";
     const getRead = () => { try { return JSON.parse(localStorage.getItem(RKEY)) || []; } catch (e) { return []; } };
-    const week = Math.floor((dayNum + 3) / 7);           // weeks start on Monday
-    const tx = texts[week % texts.length];
+    const tx = texts[(dayNum * 37) % texts.length];      // a different text each day, hopping across the list
     $("txt-title").textContent = tx.title;
-    $("txt-by").textContent = `${tx.author}, ${tx.year} · ${tx.length}`;
+    $("txt-by").textContent = [`${tx.author}, ${tx.year}`, tx.length, tx.region].filter(Boolean).join(" · ");
     $("txt-intro").textContent = tx.intro;
     const bad = (broken || []).includes(tx.title);
     $("txt-read").href = bad ? wikiURL(tx.wiki) : tx.url;
-    $("txt-read").textContent = bad ? "find it via wikipedia" : "read it";
+    $("txt-read").textContent = bad ? "find it via wikipedia" : tx.free ? "read it free" : "find a copy";
     $("txt-about").href = wikiURL(tx.wiki);
     function sync() {
       const read = getRead(), on = read.includes(tx.title);
       $("txt-done").textContent = on ? "read ✓" : "mark as read";
       $("txt-done").classList.toggle("on", on); $("txt-done").setAttribute("aria-pressed", String(on));
-      $("txt-progress").textContent = `the whole reading list (you’ve read ${read.length} of ${texts.length})`;
+      $("txt-progress").textContent = `all ${texts.length} texts (you’ve read ${read.length})`;
       const ul = $("txt-all"); ul.replaceChildren();
       texts.forEach((x) => {
         const li = el("li", read.includes(x.title) ? "done" : ""), a = el("a", null, x.title);
@@ -1694,6 +1748,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     }
     function render() {
       const list = items();
+      if (tabs === NEWS) $("hog-note").hidden = current !== "hog";
       listEl.replaceChildren();
       if (!list.length) listEl.append(el("li", "empty", filterEl.value ? "Nothing matches. Clear the box to see everything." : "Nothing here yet. Check back after the next edition."));
       list.slice(0, shown).forEach((x) => listEl.append(renderItem(x, scholarly)));
@@ -1704,6 +1759,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       tabsEl.replaceChildren();
       tabs.forEach(([key, label]) => {
         const b = el("button"); b.type = "button"; b.setAttribute("role", "tab");
+        if (key === "hog") b.classList.add("hog");
         b.setAttribute("aria-selected", String(key === current));
         b.append(label, el("span", "n", String((data[key] || []).length)));
         b.onclick = () => { current = key; shown = PAGE; filterEl.value = ""; drawTabs(); fillSources(); render(); };
@@ -1774,6 +1830,15 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     markVisit();
   }
 
+  document.querySelectorAll(".qc .qmore").forEach((b) => {
+    b.onclick = () => { const c = b.closest(".qc"), o = c.classList.toggle("open"); b.setAttribute("aria-expanded", String(o)); b.textContent = o ? "less" : "more"; };
+  });
+  $("angel-more").onclick = () => {
+    const open = $("angel-mid").hidden;
+    $("angel-mid").hidden = !open; $("angel").classList.toggle("open", open);
+    $("angel-more").setAttribute("aria-expanded", String(open));
+    $("angel-more").textContent = open ? "show less" : "read the whole passage";
+  };
   onMuteChange = () => { drawMuted(); news.render(); strikes.load && showLeft(); };
   drawMuted();
   setupNotes();
