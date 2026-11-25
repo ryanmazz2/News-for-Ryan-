@@ -40,7 +40,7 @@ SESSION.headers["User-Agent"] = API_UA
 
 # How far back each section looks, and how many items it keeps.
 WINDOWS = {"economy": (4, 60), "politics": (3, 60), "mixed": (5, 400), "essays": (21, 60), "releases": (14, 40), "papers": (180, 40), "reviews": (90, 40), "artnow": (60, 30),
-           "podcasts": (45, 30), "videos": (30, 30), "local": (5, 50)}
+           "podcasts": (45, 30), "videos": (30, 30), "local": (5, 50), "hog": (3, 200)}
 PER_JOURNAL = 5
 SCHOLARSHIP_MAX = 40
 
@@ -704,6 +704,21 @@ def assemble_news(sections):
     print(f"news: {len(sections['economy'])} economy, {len(sections['politics'])} politics, {dropped} non-news dropped")
 
 
+# ---------- Hog watch: right-wing outlets, kept in their own tab ----------
+
+def hog_watch(items):
+    """Same clean-up as the news tabs (no sports or junk, one item per story,
+    at most six per outlet), but never mixed with anything else."""
+    kept = [i for i in items if not (SPORTS.search(i["title"]) or JUNK.search(i["title"])
+                                     or set(i.get("tags") or []) & DROP_LABELS or DROP_PATH.search(i.get("url", "")))]
+    kept.sort(key=lambda i: i["date"] or "", reverse=True)
+    out = cap_per_source(merge_similar(kept), 6)[:90]
+    for i in out:
+        i.pop("tags", None)
+    print(f"hog watch: {len(out)} items")
+    return out
+
+
 # ---------- Strike tracker ----------
 
 STRIKE_WORDS = re.compile(r"\b(strik(e|es|ers|ing)|walk ?outs?|walked out|picket(s|ing|ers)?|lockouts?|locked out|work stoppages?|sick-?outs?)\b", re.I)
@@ -1307,7 +1322,7 @@ def save_back_issue(payload):
     which the workflow commits so the history survives between runs."""
     arch = ROOT / "site" / "archive"
     arch.mkdir(parents=True, exist_ok=True)
-    keep = ("economy", "politics", "essays", "local", "strikes", "journals", "papers", "scholarship")
+    keep = ("economy", "politics", "essays", "local", "hog", "strikes", "journals", "papers", "scholarship")
     slim = {"generated_at": payload["generated_at"], "sections": {
         k: [{f: it[f] for f in ("title", "url", "source", "date", "authors", "kind") if f in it} for it in payload["sections"].get(k, [])[:25]]
         for k in keep}}
@@ -1367,6 +1382,7 @@ def main():
     print(f"scholarship: {len(sections['scholarship'])} items")
 
     sections["local"] = [{k: v for k, v in i.items() if k != "tags"} for i in safe("local news", build_local, [])]
+    sections["hog"] = safe("hog watch", lambda: hog_watch(sections.get("hog", [])), [])
     print(f"local: {len(sections['local'])} items")
     sections["strikes"] = safe("strike tracker", lambda: build_strikes(sections), [])
     print(f"strikes: {len(sections['strikes'])} items")
