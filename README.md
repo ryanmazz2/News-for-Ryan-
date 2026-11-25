@@ -41,9 +41,9 @@ Secrets stay private even though the repository is public.
 
 **Hidden folder note:** On a Mac, press Cmd+Shift+. in Finder to show the `.github` folder. If dragging it doesn't work, create the file by hand on GitHub: **Add file → Create new file**, type `.github/workflows/update.yml` as the name, and paste in the contents of that file.
 
-## Four pages
+## Pages
 
-- **Today:** history of struggle, hero from history, strike tracker, local news, and the Economy / Politics / Essays & Ideas headlines.
+- **Today:** Walter Benjamin's angel of history, the headlines (economy, politics, essays & ideas, local), new research, text of the week and song of the day, from the left, history of struggle, hero from history, and the strike tracker.
 - **Economy & research:** US numbers and global prices (FRED), profits vs. wages since 1947, the debt squeeze in poorer countries, an interactive world map of growth, inflation, unemployment and inequality, the world economy table (World Bank), official releases from the BLS, IMF and World Bank with the BLS release calendar, journals, working papers (PERI, INET, Levy, EPI) and recent research, and the text of the week.
 - **Culture:** artwork of the day, museum archives, posters from MSU's Leftist Political Posters and Radicalism collections, radical art now, song of the day, and listen & watch.
 - **My shelf:** what you're currently reading, reading stats, recommendations from the canon (`site/data/canon.json`), your saved reading list and back issues.
@@ -55,6 +55,10 @@ Secrets stay private even though the repository is public.
 - **Debates** (`debates`): works whose new citations are tracked, e.g. new papers in conversation with Capital or Black Marxism.
 - **Hide this outlet**: the link under any headline hides that outlet in your browser; the "Hidden outlets" bar brings it back.
 - **The library** (`site/data/library.json`): essential texts by school. Add `aka` titles if your StoryGraph edition has a different name.
+
+## Notes from visitors
+
+The notes tab on every page lets anyone leave a public note. It needs a free Supabase database: follow `NOTES-SETUP.md` (about 15 minutes).
 
 ## Posters: one more free key
 
