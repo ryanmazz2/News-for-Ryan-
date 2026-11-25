@@ -321,7 +321,7 @@ ul.bars .v { text-align: right; font-weight: 700; }
 /* ---------- the angel of history ---------- */
 .angel { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(200px, 340px) 1fr; gap: 18px clamp(20px, 4vw, 44px);
   align-items: center; border: 2px solid var(--white); padding: clamp(14px, 3vw, 28px); }
-.angel-fig { margin: 0; position: relative; aspect-ratio: 3 / 4; border: 2px solid var(--white); background: var(--blue-deep); overflow: hidden; }
+.angel-fig { margin: 0; position: relative; aspect-ratio: 760 / 973; border: 2px solid var(--white); background: var(--blue-deep); overflow: hidden; }
 .angel-fig svg { width: 100%; height: 100%; display: block; }
 .angel-q { margin: 0; }
 .angel-q p { margin: 0; font: italic 400 clamp(1.02rem, 1.6vw, 1.22rem)/1.55 var(--text); }
@@ -436,7 +436,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       <figure class="angel-fig" id="angel-fig" aria-hidden="true"></figure>
       <blockquote class="angel-q">
         <p>There is a painting by Klee called <i>Angelus Novus</i>. An angel is depicted there who looks as though he were about to distance himself from something which he is staring at. His eyes are opened wide, his mouth stands open and his wings are outstretched. The Angel of History must look just so. His face is turned towards the past. Where we see the appearance of a chain of events, he sees one single catastrophe, which unceasingly piles rubble on top of rubble and hurls it before his feet. He would like to pause for a moment so fair [verweilen], to awaken the dead and to piece together what has been smashed. But a storm is blowing from Paradise, it has caught itself up in his wings and is so strong that the Angel can no longer close them. The storm drives him irresistibly into the future, to which his back is turned, while the rubble-heap before him grows sky-high. <strong>That which we call progress, is this storm.</strong></p>
-        <footer>Walter Benjamin, “On the Concept of History,” Thesis IX (1940), translated by Dennis Redmond. Image: Paul Klee, <i>Angelus Novus</i> (1920), recolored. <a id="angel-credit" target="_blank" rel="noopener" hidden>Image source</a></footer>
+        <footer>Walter Benjamin, “On the Concept of History,” Thesis IX (1940), translated by Dennis Redmond. Image: Paul Klee, <i>Angelus Novus</i> (1920), public domain, recolored. <a id="angel-credit" target="_blank" rel="noopener" hidden>Original</a></footer>
       </blockquote>
     </section>
 
@@ -982,19 +982,26 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
   window.addEventListener("hashchange", route);
 
   // ---------- the angel of history, recolored ----------
-  function showAngel(img) {
+  // The drawing ships with the site (img/angelus-novus.jpg); Wikipedia's copy is only a backup.
+  function showAngel(backup) {
     const fig = $("angel-fig");
-    if (!img || !img.src) { fig.innerHTML = sunburst({ inner: 0.46 }); return; }
-    // Map the drawing's tones onto the site palette: dark lines to plum, mid tones to magenta and orange, paper to blue.
-    const ch = (i) => [C("--plum"), C("--plum"), C("--magenta"), C("--orange"), C("--orange"), C("--orange"), C("--blue"), C("--blue")].map((h) => (parseInt(h.slice(1 + i * 2, 3 + i * 2), 16) / 255).toFixed(3)).join(" ");
-    fig.innerHTML = `<svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid meet">
+    const img = { src: "img/angelus-novus.jpg", credit: "https://commons.wikimedia.org/wiki/File:Klee-angelus-novus.jpg" };
+    const probe = new Image();
+    probe.onload = () => drawAngel(fig, img);
+    probe.onerror = () => (backup && backup.src ? drawAngel(fig, backup) : (fig.innerHTML = sunburst({ inner: 0.46 })));
+    probe.src = img.src;
+  }
+  function drawAngel(fig, img) {
+    // Map the drawing's tones onto the site palette, like a three-colour print: lines to plum and magenta, washes to orange, paper to off-white.
+    const ch = (i) => ["#3E273A", "#5A2A55", "#AF2770", "#F33322", "#F7926B", "#F0F2E6", "#F0F2E6"].map((h) => (parseInt(h.slice(1 + i * 2, 3 + i * 2), 16) / 255).toFixed(3)).join(" ");
+    fig.innerHTML = `<svg viewBox="0 0 760 973" preserveAspectRatio="xMidYMid slice">
       <defs><filter id="duo" color-interpolation-filters="sRGB">
         <feColorMatrix type="saturate" values="0"/>
-        <feComponentTransfer><feFuncR type="linear" slope="1.35" intercept="-0.12"/><feFuncG type="linear" slope="1.35" intercept="-0.12"/><feFuncB type="linear" slope="1.35" intercept="-0.12"/></feComponentTransfer>
+        <feComponentTransfer><feFuncR type="linear" slope="1.25" intercept="-0.08"/><feFuncG type="linear" slope="1.25" intercept="-0.08"/><feFuncB type="linear" slope="1.25" intercept="-0.08"/></feComponentTransfer>
         <feComponentTransfer><feFuncR type="table" tableValues="${ch(0)}"/><feFuncG type="table" tableValues="${ch(1)}"/><feFuncB type="table" tableValues="${ch(2)}"/></feComponentTransfer>
       </filter></defs>
-      <rect width="300" height="400" fill="${C("--blue")}"/>
-      <image href="${img.src}" x="0" y="0" width="300" height="400" preserveAspectRatio="xMidYMid meet" filter="url(#duo)"/></svg>`;
+      <rect width="760" height="973" fill="${C("--blue")}"/>
+      <image href="${img.src}" x="0" y="0" width="760" height="973" preserveAspectRatio="xMidYMid slice" filter="url(#duo)"/></svg>`;
     if (img.credit) { $("angel-credit").href = img.credit; $("angel-credit").hidden = false; }
   }
 
