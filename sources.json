@@ -1,5 +1,5 @@
 {
-  "_how_to_edit": "Add or remove sources here. Give a feed address or just a site's homepage; the updater finds the feed itself. 'economy' and 'politics' take feeds that are already about one subject. 'mixed' takes outlets that cover everything: each article is filed under Economy or Politics using the outlet's own section labels, or its headline when there are none. 'kind' is 'newsroom' or 'independent', used by the source filter on the page. Sports, entertainment and other non-news are dropped, and no outlet gets more than a few stories per tab. 'journals' take ISSNs looked up on Crossref; 'scholarship' takes OpenAlex search terms. YouTube channels can be given as their @handle page. 'local_place' names the local section; 'local_searches' and 'strike_searches' are Google News searches. 'beats' are topics you follow: each has words that tag a story and lift it in the top stories. 'scholars' are names looked up on OpenAlex; their new work appears under New Research. 'debates' are works whose new citations are tracked.",
+  "_how_to_edit": "Add or remove sources here. Give a feed address or just a site's homepage; the updater finds the feed itself. 'economy' and 'politics' take feeds that are already about one subject. 'mixed' takes outlets that cover everything: each article is filed under Economy or Politics using the outlet's own section labels, or its headline when there are none. 'kind' is 'newsroom' or 'independent', used by the source filter on the page. Sports, entertainment and other non-news are dropped, and no outlet gets more than a few stories per tab. 'journals' take ISSNs looked up on Crossref; 'scholarship' takes OpenAlex search terms. YouTube channels can be given as their @handle page. 'local_place' names the local section; 'local_searches' and 'strike_searches' are Google News searches. 'beats' are topics you follow: each has words that tag a story and lift it in the top stories. 'scholars' are names looked up on OpenAlex; their new work appears under New Research. 'debates' are works whose new citations are tracked. 'hog' is hog watch: right-wing outlets, shown only in their own tab and never mixed into anything else.",
   "contact_email": "you@example.com",
   "rss": {
     "economy": [
@@ -545,6 +545,83 @@
       {
         "name": "Westword",
         "url": "https://www.westword.com/"
+      }
+    ],
+    "hog": [
+      {
+        "name": "Fox News",
+        "url": "https://moxie.foxnews.com/google-publisher/politics.xml",
+        "kind": "right"
+      },
+      {
+        "name": "Breitbart",
+        "url": "https://feeds.feedburner.com/breitbart",
+        "kind": "right"
+      },
+      {
+        "name": "The Daily Wire",
+        "url": "https://www.dailywire.com/feeds/rss.xml",
+        "kind": "right"
+      },
+      {
+        "name": "The Daily Caller",
+        "url": "https://dailycaller.com/feed/",
+        "kind": "right"
+      },
+      {
+        "name": "The Federalist",
+        "url": "https://thefederalist.com/feed/",
+        "kind": "right"
+      },
+      {
+        "name": "National Review",
+        "url": "https://www.nationalreview.com/feed/",
+        "kind": "right"
+      },
+      {
+        "name": "Washington Examiner",
+        "url": "https://www.washingtonexaminer.com/",
+        "kind": "right"
+      },
+      {
+        "name": "The Washington Times",
+        "url": "https://www.washingtontimes.com/rss/headlines/news/politics/",
+        "kind": "right"
+      },
+      {
+        "name": "New York Post",
+        "url": "https://nypost.com/politics/feed/",
+        "kind": "right"
+      },
+      {
+        "name": "Newsmax",
+        "url": "https://www.newsmax.com/",
+        "kind": "right"
+      },
+      {
+        "name": "The American Conservative",
+        "url": "https://www.theamericanconservative.com/feed/",
+        "kind": "right"
+      },
+      {
+        "name": "City Journal",
+        "url": "https://www.city-journal.org/",
+        "kind": "right"
+      },
+      {
+        "name": "American Greatness",
+        "url": "https://amgreatness.com/feed/",
+        "kind": "right"
+      },
+      {
+        "name": "Townhall",
+        "url": "https://townhall.com/",
+        "kind": "right"
+      },
+      {
+        "name": "The Heritage Foundation",
+        "url": "https://www.heritage.org/",
+        "kind": "right"
       }
     ]
   },
