@@ -407,6 +407,42 @@ ul.bars .v { text-align: right; font-weight: 700; }
 .hognote { margin: 0 0 10px; padding: 8px 10px; border-left: 4px solid var(--orange); background: color-mix(in srgb, var(--orange) 10%, transparent); font-size: .9rem; }
 .tabs button[aria-selected="true"].hog { background: var(--orange); border-color: var(--orange); }
 
+/* ---------- political economy ---------- */
+#pe-value, #pe-history { grid-column: 1 / -1; }
+table.vt { border-collapse: collapse; width: 100%; min-width: 720px; font-size: .9rem; margin-bottom: 8px; }
+table.vt th, table.vt td { text-align: left; vertical-align: top; padding: 7px 8px; border-bottom: 2px dotted color-mix(in srgb, var(--ink) 30%, transparent); }
+table.vt th { font-size: .78rem; color: var(--ink-soft); }
+table.vt td:first-child { font-weight: 700; color: var(--magenta); width: 17%; }
+.pe-h { margin-top: 20px !important; font-size: 1.35rem !important; }
+details.pe { border-top: 2px solid var(--plum); padding: 8px 0; }
+details.pe summary { cursor: pointer; font: 400 1.15rem var(--slab); }
+details.pe summary .pq { display: block; font: italic 400 .92rem var(--text); color: var(--ink-soft); margin-top: 2px; }
+details.pe summary .pn { font: 700 .78rem var(--text); color: var(--magenta); margin-left: 8px; }
+details.pe .items { margin-top: 8px; }
+.pe-acts { margin: 6px 0 2px; }
+.tag.lect { background: var(--magenta); }
+.tag.essay { background: none; color: var(--plum); border: 1.5px solid var(--plum); }
+.legend-row { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: .85rem; font-weight: 700; margin: 4px 0; }
+.legend-row span::before { content: "■ "; color: var(--c); }
+
+/* country profiles */
+.mapgrid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 960px) { .mapgrid { grid-template-columns: 1fr; } }
+.cprof { border: 2px solid var(--plum); padding: 12px 14px; max-height: 640px; overflow-y: auto; }
+.cprof h3 { margin: 0; font: 400 1.6rem/1.1 var(--slab); }
+.cprof .sub { margin: 2px 0 6px; font-size: .85rem; color: var(--ink-soft); }
+.cprof h4 { margin: 12px 0 4px; font: 400 1rem var(--slab); color: var(--orange); text-transform: lowercase; }
+.cprof .row { display: grid; grid-template-columns: minmax(0, 1fr) auto 60px; gap: 2px 8px; align-items: center; padding: 4px 0; border-bottom: 1.5px dotted color-mix(in srgb, var(--ink) 28%, transparent); font-size: .88rem; }
+.cprof .row b { font-size: .95rem; text-align: right; white-space: nowrap; }
+.cprof .row svg { width: 60px; height: 18px; }
+.cprof .row .rk { grid-column: 1 / -1; font-size: .74rem; color: var(--ink-soft); }
+.cprof .links { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 10px; font-weight: 700; font-size: .88rem; }
+.cprof .news { list-style: none; margin: 0; padding: 0; }
+.cprof .news li { padding: 5px 0; border-bottom: 1.5px dotted color-mix(in srgb, var(--ink) 28%, transparent); font-size: .9rem; }
+.cprof .news a { font-weight: 600; text-decoration: none; }
+.cprof .news a:hover { text-decoration: underline; text-decoration-color: var(--orange); }
+.cprof .news .m { font-size: .76rem; color: var(--ink-soft); }
+
 /* world table */
 .tablewrap { overflow-x: auto; }
 table.world { border-collapse: collapse; width: 100%; font-size: .95rem; min-width: 520px; }
@@ -468,6 +504,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
           <a href="#today" data-page="today">today</a>
           <a href="#economy-research" data-page="economy-research">economy</a>
           <a href="#culture" data-page="culture">culture</a>
+          <a href="#political-economy" data-page="political-economy">political economy</a>
           <a href="#library" data-page="library">library</a>
           <a href="#shelf" data-page="shelf">my shelf</a>
         </nav>
@@ -596,12 +633,17 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       <div class="band"><h2 id="map-h">the world, mapped</h2></div>
       <div class="inner">
         <div class="tabs" id="map-tabs" role="tablist" aria-label="Map indicator"></div>
-        <div class="mapbox" id="map-box"></div>
-        <div class="mapfoot">
-          <div class="legend" id="map-legend"></div>
-          <p class="mapinfo" id="map-info" aria-live="polite">Tap or hover over a country.</p>
+        <div class="mapgrid">
+          <div>
+            <div class="mapbox" id="map-box"></div>
+            <div class="mapfoot">
+              <div class="legend" id="map-legend"></div>
+              <p class="mapinfo" id="map-info" aria-live="polite">Tap a country to open its profile.</p>
+            </div>
+          </div>
+          <aside class="cprof" id="cprof" aria-live="polite"></aside>
         </div>
-        <p class="src-note">Source: World Bank, World Development Indicators. Each country shows its latest reported year.</p>
+        <p class="src-note">Source: World Bank, World Development Indicators; headlines via Google News. Each figure shows its latest reported year; small lines show the past decade.</p>
       </div>
     </section>
 
@@ -732,6 +774,29 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
           </div>
         </div>
         <div class="cards" id="poster-cards" style="margin-top:18px"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="pe-value" data-page="political-economy" aria-labelledby="pev-h">
+      <div class="band"><h2 id="pev-h">theories of value and economic thought</h2></div>
+      <div class="inner">
+        <p class="lede">What does each school think value is, where does profit come from, and why do crises happen? Then the canonical works of each school and the great debates between them. Links go to free texts where they exist, to Google Scholar for essays, to Open Library for books, and to YouTube for lectures.</p>
+        <div class="tablewrap"><table class="vt" id="vt"></table></div>
+        <h3 class="minor pe-h">the schools</h3>
+        <div id="pe-schools"></div>
+        <h3 class="minor pe-h">the great debates</h3>
+        <div id="pe-debates"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="pe-history" data-page="political-economy" aria-labelledby="peh-h">
+      <div class="band"><h2 id="peh-h">economic history and development</h2></div>
+      <div class="inner">
+        <p class="lede">How did some economies get rich, others stay poor, and others change course? Income per person since 1820, then the canonical works on each path.</p>
+        <div class="tabs" id="mad-presets" role="tablist" aria-label="Compare countries"></div>
+        <div class="chart" id="mad-chart"></div>
+        <p class="src-note">Income per person in 2011 international dollars (adjusted for prices), on a ratio scale, so equal slopes mean equal growth rates. Source: Maddison Project Database 2023 (Bolt and van Zanden), via Our World in Data.</p>
+        <div id="pe-regions"></div>
       </div>
     </section>
 
@@ -1008,11 +1073,11 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
   }
 
   // ---------- pages ----------
-  const PAGES = ["today", "economy-research", "culture", "library", "shelf"];
+  const PAGES = ["today", "economy-research", "political-economy", "culture", "library", "shelf"];
   const LABELS = { history: "history", hero: "hero", strikes: "strikes", local: "local", headlines: "headlines",
     economy: "us numbers", prices: "prices", shares: "profits vs. wages", debt: "debt", map: "map", world: "world table", releases: "releases", research: "research", text: "text of the week",
     art: "art", posters: "posters", song: "song", listen: "listen & watch",
-    reading: "reading", recs: "what next", left: "from the left", library: "library", saved: "saved", backissues: "back issues" };
+    reading: "reading", recs: "what next", "pe-value": "theories of value", "pe-history": "economic history", left: "from the left", library: "library", saved: "saved", backissues: "back issues" };
   function route() {
     const h = decodeURIComponent(location.hash.slice(1));
     let page = PAGES.includes(h) ? h : null, target = null;
@@ -1031,6 +1096,7 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       const a = el("a", null, LABELS[sec.id] || sec.id); a.href = "#" + sec.id; sub.append(a);
     });
     $("quad").hidden = page !== "today";
+    if (page === "political-economy") showPE();
     if (page === "economy-research") showMap();
     if (target) target.scrollIntoView(); else if (PAGES.includes(h)) window.scrollTo(0, 0);
   }
@@ -1502,16 +1568,69 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     });
   }
 
-  // ---------- world map (d3 + Natural Earth, loaded only when needed) ----------
+  // ---------- the world, mapped: clickable country profiles (d3 + Natural Earth, loaded only when needed) ----------
   const loadScript = (src) => new Promise((ok, bad) => { const sc = document.createElement("script"); sc.src = src; sc.onload = ok; sc.onerror = bad; document.head.append(sc); });
   let mapDrawn = false;
   async function showMap() {
     if (mapDrawn) return; mapDrawn = true;
     const box = $("map-box");
-    let data = {};
-    try { data = await (await fetch("data/worldmap.json", { cache: "no-cache" })).json(); } catch (e) {}
-    const codes = Object.keys(data || {});
-    if (!codes.length) { box.replaceChildren(el("p", "empty", "The map fills in at the next edition.")); return; }
+    let P = null;
+    try { P = await (await fetch("data/profiles.json", { cache: "no-cache" })).json(); } catch (e) {}
+    if (!P || !P.data) { box.replaceChildren(el("p", "empty", "The map fills in at the next edition.")); $("cprof").hidden = true; return; }
+    const IND = Object.fromEntries(P.indicators.map((i) => [i.code, i]));
+    const latest = (cc, code) => { const s = (P.data[cc] || {})[code]; return s && s.length ? s[s.length - 1] : null; };
+    // every country's latest value per indicator, for ranking and colouring
+    const pool = {};
+    P.indicators.forEach((i) => { pool[i.code] = Object.keys(P.countries).map((cc) => latest(cc, i.code)).filter(Boolean).map((x) => x[1]).sort((x, y) => x - y); });
+    const rankOf = (code, v) => { const arr = pool[code]; if (!arr || arr.length < 10) return null; let k = 0; while (k < arr.length && arr[k] < v) k++; return Math.round((k / arr.length) * 100); };
+    const fmt = (v, unit) => {
+      if (unit === "%") return v.toFixed(1) + "%";
+      if (unit === "$") return "$" + (v >= 1000 ? (v / 1000).toFixed(1) + "k" : Math.round(v));
+      if (unit === "years") return v.toFixed(1) + " yrs";
+      return Math.abs(v) >= 100 ? Math.round(v).toLocaleString("en") : v.toFixed(Math.abs(v) < 10 ? 2 : 1);
+    };
+    const mini = (pts) => {
+      if (!pts || pts.length < 3) return "";
+      const vals = pts.map((p) => p[1]), lo = Math.min(...vals), hi = Math.max(...vals), sp = hi - lo || 1;
+      const d = vals.map((v, i) => `${i ? "L" : "M"}${(i / (vals.length - 1) * 60).toFixed(1)} ${(16 - (v - lo) / sp * 14).toFixed(1)}`).join(" ");
+      return `<svg viewBox="0 0 60 18" aria-hidden="true"><path d="${d}" fill="none" stroke="${C("--magenta")}" stroke-width="1.5"/></svg>`;
+    };
+    function profile(cc) {
+      const c = P.countries[cc], box2 = $("cprof"); box2.replaceChildren();
+      if (!c) { box2.append(el("p", "empty", "No World Bank profile for this place.")); return; }
+      box2.append(el("h3", null, c.name), el("p", "sub", [c.region, c.income].filter(Boolean).join(" · ")));
+      [...new Set(P.indicators.map((i) => i.group))].forEach((g) => {
+        const rows = P.indicators.filter((i) => i.group === g && latest(cc, i.code));
+        if (!rows.length) return;
+        box2.append(el("h4", null, g));
+        rows.forEach((i) => {
+          const [yr, v] = latest(cc, i.code), r = el("div", "row");
+          const sp = el("span"); sp.innerHTML = mini(P.data[cc][i.code]);
+          r.append(el("span", null, i.label), el("b", null, `${fmt(v, i.unit)}`), sp);
+          const rk = rankOf(i.code, v);
+          r.append(el("span", "rk", `${yr}${rk == null ? "" : ` · higher than ${rk}% of countries`}`));
+          box2.append(r);
+        });
+      });
+      box2.append(el("h4", null, "this week’s economic news"));
+      const nm = c.name.replace(/, .*$/, "");
+      const news = (P.news || {})[cc];
+      if (news && news.length) {
+        const ul = el("ul", "news");
+        news.forEach((n) => { const li = el("li"), a = el("a", null, n.title); a.href = n.url; a.target = "_blank"; a.rel = "noopener"; li.append(a, el("div", "m", [n.source, when(n.date)].filter(Boolean).join(", "))); ul.append(li); });
+        box2.append(ul);
+      } else {
+        const a = el("a", null, `Search the news for ${nm}’s economy`); a.target = "_blank"; a.rel = "noopener";
+        a.href = "https://news.google.com/search?q=" + encodeURIComponent(`"${nm}" economy when:7d`); box2.append(a);
+      }
+      const links = el("div", "links");
+      [["World Bank data", `https://data.worldbank.org/country/${c.iso2}`], ["IMF country page", `https://www.imf.org/en/Countries/${cc}`],
+       ["Our World in Data", `https://ourworldindata.org/country/${nm.toLowerCase().replace(/[^a-z]+/g, "-")}`]].forEach(([t, u]) => {
+        const a = el("a", null, t); a.href = u; a.target = "_blank"; a.rel = "noopener"; links.append(a);
+      });
+      box2.append(links);
+    }
+    profile(P.countries.USA ? "USA" : Object.keys(P.countries)[0]);
     let geo;
     try {
       if (!window.d3) await loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js");
@@ -1520,39 +1639,128 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
       }
     } catch (e) {}
     if (!window.d3 || !geo) { box.replaceChildren(el("p", "empty", "The map couldn’t load its outlines. Try refreshing.")); return; }
-    geo.features = geo.features.filter((f) => f.properties.ADM0_A3 !== "ATA");   // leave out Antarctica
+    geo.features = geo.features.filter((f) => f.properties.ADM0_A3 !== "ATA");
     const W = 960, H = 480;
     const proj = d3.geoNaturalEarth1().fitSize([W, H], geo), path = d3.geoPath(proj);
-    const svg = d3.select(box).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img").attr("aria-label", "World map");
+    const svg = d3.select(box).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img").attr("aria-label", "World map; select a country to see its profile");
     const iso = (f) => { const a = f.properties.ADM0_A3, b = f.properties.ISO_A3; return a === "SDS" ? "SSD" : a === "KOS" ? "XKX" : (b && b !== "-99" ? b : a); };
-    const shapes = svg.selectAll("path").data(geo.features).join("path").attr("class", "c").attr("d", path);
-    let cur = codes[0];
+    const shapes = svg.selectAll("path").data(geo.features).join("path").attr("class", "c").attr("d", path)
+      .attr("tabindex", 0).attr("role", "button").attr("aria-label", (f) => (P.countries[iso(f)] || {}).name || f.properties.NAME);
+    const tabs = (P.map || []).filter((c) => IND[c]);
+    let cur = tabs[0], selected = null;
+    const infoFor = (cc, fallback) => { const v = latest(cc, cur), i = IND[cur]; return v ? `${(P.countries[cc] || {}).name || fallback}: ${i.label.toLowerCase()} ${fmt(v[1], i.unit)} (${v[0]})` : `${fallback}: no recent data`; };
+    function select(f, node) {
+      selected = f;
+      shapes.classed("on", false); d3.select(node).classed("on", true).raise();
+      const cc = iso(f);
+      $("map-info").textContent = infoFor(cc, f.properties.NAME);
+      profile(cc);
+      if (matchMedia("(max-width: 960px)").matches) $("cprof").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     function paint() {
-      const ind = data[cur], vals = Object.values(ind.values).map((v) => v[0]).sort((a, b) => a - b);
+      const i = IND[cur], vals = pool[cur] || [];
       const q = (p) => vals[Math.floor(p * (vals.length - 1))];
       const lo = q(0.05), hi = q(0.95);
-      const diverging = cur.includes("GDP.MKTP");
+      const diverging = cur === "NY.GDP.MKTP.KD.ZG";
       const scale = diverging
         ? d3.scaleDiverging([Math.min(lo, -hi * 0.5), 0, hi], d3.interpolateRgbBasis([C("--magenta"), "#F3EEDC", C("--blue")])).clamp(true)
         : d3.scaleSequential([lo, hi], d3.interpolateRgbBasis(["#F3EEDC", C("--orange"), C("--magenta"), C("--plum")])).clamp(true);
-      shapes.attr("fill", (f) => { const v = ind.values[iso(f)]; return v ? scale(v[0]) : "#cfcac0"; })
-        .on("mouseenter click", function (ev, f) {
-          shapes.classed("on", false); d3.select(this).classed("on", true).raise();
-          const v = ind.values[iso(f)];
-          $("map-info").textContent = v ? `${v[2]}: ${v[0]}${ind.label.includes("%") ? "%" : ""} (${v[1]})` : `${f.properties.NAME}: no recent data`;
-        });
+      shapes.attr("fill", (f) => { const v = latest(iso(f), cur); return v ? scale(v[1]) : "#cfcac0"; })
+        .on("click", function (ev, f) { select(f, this); })
+        .on("keydown", function (ev, f) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select(f, this); } })
+        .on("mouseenter", function (ev, f) { $("map-info").textContent = infoFor(iso(f), f.properties.NAME); })
+        .on("mouseleave", () => { if (selected) $("map-info").textContent = infoFor(iso(selected), selected.properties.NAME); });
       shapes.selectAll("title").remove();
-      shapes.append("title").text((f) => { const v = ind.values[iso(f)]; return v ? `${v[2]}: ${v[0]} (${v[1]})` : f.properties.NAME; });
-      const stops = d3.range(0, 1.01, 0.1).map((t) => scale(diverging ? (t < 0.5 ? Math.min(lo, -hi * 0.5) * (1 - t * 2) : hi * (t * 2 - 1)) : lo + t * (hi - lo)));
-      $("map-legend").innerHTML = `<span>${(diverging ? Math.min(lo, -hi * 0.5) : lo).toFixed(1)}</span><span class="ramp" style="background:linear-gradient(90deg,${stops.join(",")})"></span><span>${hi.toFixed(1)}+</span>`;
+      shapes.append("title").text((f) => { const v = latest(iso(f), cur); return v ? `${(P.countries[iso(f)] || {}).name || f.properties.NAME}: ${fmt(v[1], i.unit)}` : f.properties.NAME; });
+      if (selected) $("map-info").textContent = infoFor(iso(selected), selected.properties.NAME);
+      const a0 = diverging ? Math.min(lo, -hi * 0.5) : lo;
+      const stops = d3.range(0, 1.01, 0.1).map((t) => scale(diverging ? (t < 0.5 ? a0 * (1 - t * 2) : hi * (t * 2 - 1)) : lo + t * (hi - lo)));
+      $("map-legend").innerHTML = `<span>${fmt(a0, i.unit)}</span><span class="ramp" style="background:linear-gradient(90deg,${stops.join(",")})"></span><span>${fmt(hi, i.unit)}+</span>`;
       $("map-tabs").replaceChildren();
-      codes.forEach((k) => {
-        const b = el("button", null, data[k].label.replace(/, %$/, "").toLowerCase()); b.type = "button"; b.setAttribute("role", "tab");
+      tabs.forEach((k) => {
+        const b = el("button", null, IND[k].label.replace(/ \(.*\)$/, "").toLowerCase()); b.type = "button"; b.setAttribute("role", "tab");
         b.setAttribute("aria-selected", String(k === cur)); b.onclick = () => { cur = k; paint(); };
         $("map-tabs").append(b);
       });
     }
     paint();
+  }
+
+  // ---------- political economy page ----------
+  let peDrawn = false, feedReady;
+  const feedLoaded = new Promise((ok) => { feedReady = ok; });
+  async function showPE() {
+    if (peDrawn) return; peDrawn = true;
+    await feedLoaded;
+    let pe = null, mad = {};
+    try { pe = await (await fetch("data/pe.json", { cache: "no-cache" })).json(); } catch (e) {}
+    try { mad = await (await fetch("data/maddison.json", { cache: "no-cache" })).json(); } catch (e) {}
+    if (!pe) return;
+    const read = new Set((window.__shelf && window.__shelf.pe_read) || []), broken = new Set(window.__broken || []);
+    // value table
+    const t = $("vt"), hr = el("tr");
+    ["school", "what value is", "where profit comes from", "why crises happen"].forEach((h) => hr.append(el("th", null, h)));
+    const th = el("thead"); th.append(hr); t.append(th);
+    const tb = el("tbody");
+    pe.schools.forEach((x) => { const tr = el("tr"); [x.name, x.value, x.profit, x.crisis].forEach((v) => tr.append(el("td", null, v))); tb.append(tr); });
+    t.append(tb);
+    const work = (w) => {
+      const li = el("li"), tt = el("div", "t"), a = el("a", null, w.title);
+      a.href = w.free && broken.has(w.title) ? "https://en.wikipedia.org/wiki/Special:Search?go=Go&search=" + encodeURIComponent(w.title) : w.url;
+      a.target = "_blank"; a.rel = "noopener"; tt.append(a);
+      if (w.type === "lecture") tt.append(el("span", "tag lect", "lectures on youtube"));
+      else if (w.free) tt.append(el("span", "tag free", "free text"));
+      else if (w.type === "essay") tt.append(el("span", "tag essay", "essay"));
+      if (read.has(w.title)) tt.append(el("span", "tag read", "read ✓"));
+      li.append(tt);
+      if (w.author) li.append(el("div", "m", [w.author, w.venue, w.year].filter(Boolean).join(", ")));
+      if (w.note) li.append(el("div", "s", w.note));
+      return li;
+    };
+    const group = (boxId, list, extra) => {
+      const box = $(boxId); box.replaceChildren();
+      list.forEach((x) => {
+        const d = el("details", "pe"), sm = el("summary");
+        const n = x.works.filter((w) => read.has(w.title)).length;
+        sm.append(x.name);
+        if (n) sm.append(el("span", "pn", `${n} read`));
+        if (x.q) sm.append(el("span", "pq", x.q));
+        d.append(sm);
+        if (extra) extra(d, x);
+        const ul = el("ul", "items"); x.works.forEach((w) => ul.append(work(w))); d.append(ul);
+        box.append(d);
+      });
+    };
+    group("pe-schools", pe.schools);
+    group("pe-debates", pe.debates);
+    // long-run chart
+    const COLORS = ["#F33322", "#AF2770", "#22668F", "#3E273A", "#D98E04", "#2F8F5B"];
+    const presets = pe.regions.filter((r) => (r.countries || []).some((c) => mad[c]));
+    function draw(codes, label) {
+      const box = $("mad-chart");
+      const series = codes.filter((c) => mad[c]).map((c, i) => ({ name: mad[c].name, color: COLORS[i % COLORS.length], points: mad[c].points.map(([y, v]) => [y + "-01-01", Math.log10(v)]) }));
+      if (mad.OWID_WRL && !codes.includes("OWID_WRL")) series.push({ name: "World", color: "#9A8F98", points: mad.OWID_WRL.points.map(([y, v]) => [y + "-01-01", Math.log10(v)]) });
+      if (!series.length) { box.replaceChildren(el("p", "empty", "The long-run data fills in at the next edition.")); return; }
+      const legend = `<div class="legend-row">${series.map((s) => `<span style="--c:${s.color}">${s.name}</span>`).join("")}</div>`;
+      box.innerHTML = `<p class="ttl">${label}</p>` + legend + lineChart(series, { h: 280, fmt: (v) => { const n = Math.pow(10, v); return "$" + (n >= 1000 ? Math.round(n / 1000) + "k" : Math.round(n)); } });
+    }
+    function drawTabs(cur) {
+      $("mad-presets").replaceChildren();
+      presets.forEach((r) => {
+        const b = el("button", null, r.name.toLowerCase()); b.type = "button"; b.setAttribute("role", "tab");
+        b.setAttribute("aria-selected", String(r === cur));
+        b.onclick = () => { drawTabs(r); draw(r.countries, r.q); };
+        $("mad-presets").append(b);
+      });
+    }
+    if (presets.length) { drawTabs(presets[0]); draw(presets[0].countries, presets[0].q); }
+    else $("mad-chart").replaceChildren(el("p", "empty", "The long-run data fills in at the next edition."));
+    group("pe-regions", pe.regions, (d, r) => {
+      if (!(r.countries || []).some((c) => mad[c])) return;
+      const b = el("button", "more pe-acts", "show on the chart"); b.type = "button";
+      b.onclick = () => { drawTabs(presets.find((x) => x.name === r.name)); draw(r.countries, r.q); $("mad-chart").scrollIntoView({ behavior: "smooth", block: "center" }); };
+      d.append(b);
+    });
   }
 
   // ---------- world economy ----------
@@ -1802,12 +2010,13 @@ footer ul { margin: 6px 0 0; padding-left: 20px; font-size: .88rem; }
     if (!feed) {
       $("status").textContent = "no edition yet: run the “Update site” workflow on GitHub";
       showSections({}, null); showMuseums([]); showArtNow([]); showDash([]); showListen({}); setupBackIssues({});
-      showWorld(null); showCalendar([]); releases.load([]); showShelf(null); showAngel();
+      showWorld(null); showCalendar([]); releases.load([]); showShelf(null); showAngel(); feedReady();
       showBoard([]); showShares(null); showDebt(null); showLibrary(null);
       return;
     }
     const s = feed.sections || {};
     window.__broken = feed.broken_texts || [];
+    window.__shelf = feed.shelf || null; feedReady();
     showAngel();
     s.debates = (feed.debates || []).flatMap((d) => (d.items || []).map((x) => ({ ...x, debate: d.label })))
       .sort((a, b) => (b.date || "").localeCompare(a.date || ""));
