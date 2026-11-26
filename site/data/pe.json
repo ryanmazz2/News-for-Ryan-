@@ -1,0 +1,1384 @@
+{
+ "schools": [
+  {
+   "name": "Classical political economy",
+   "value": "Labor, or the cost of production",
+   "profit": "What is left after wages and rent",
+   "crisis": "General gluts are impossible (Say’s law), though Malthus disagreed",
+   "works": [
+    {
+     "title": "The Wealth of Nations",
+     "author": "Adam Smith",
+     "year": "1776",
+     "type": "book",
+     "url": "https://www.gutenberg.org/ebooks/search/?query=Wealth+of+Nations+Smith",
+     "free": true
+    },
+    {
+     "title": "On the Principles of Political Economy and Taxation",
+     "author": "David Ricardo",
+     "year": "1817",
+     "type": "book",
+     "url": "https://www.gutenberg.org/ebooks/search/?query=Principles+of+Political+Economy+Ricardo",
+     "free": true
+    },
+    {
+     "title": "An Essay on the Principle of Population",
+     "author": "Thomas Malthus",
+     "year": "1798",
+     "type": "book",
+     "url": "https://www.gutenberg.org/ebooks/search/?query=Essay+on+the+Principle+of+Population",
+     "free": true
+    },
+    {
+     "title": "A Treatise on Political Economy",
+     "author": "Jean-Baptiste Say",
+     "year": "1803",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=A+Treatise+on+Political+Economy+Jean-Baptiste+Say"
+    },
+    {
+     "title": "Lectures on Smith and Ricardo",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=history+of+economic+thought+lecture+Smith+Ricardo"
+    }
+   ]
+  },
+  {
+   "name": "Marxian political economy",
+   "value": "Socially necessary abstract labor",
+   "profit": "Surplus value: the unpaid part of the working day",
+   "crisis": "Falling rate of profit, overaccumulation, problems of realizing value in sales",
+   "works": [
+    {
+     "title": "Capital, Volume I",
+     "author": "Karl Marx",
+     "year": "1867",
+     "type": "book",
+     "url": "https://www.marxists.org/archive/marx/works/1867-c1/",
+     "free": true
+    },
+    {
+     "title": "Value, Price and Profit",
+     "author": "Karl Marx",
+     "year": "1865",
+     "type": "essay",
+     "url": "https://www.marxists.org/archive/marx/works/1865/value-price-profit/",
+     "free": true
+    },
+    {
+     "title": "Capitalism: Competition, Conflict, Crises",
+     "author": "Anwar Shaikh",
+     "year": "2016",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Capitalism%3A+Competition%2C+Conflict%2C+Crises+Anwar+Shaikh"
+    },
+    {
+     "title": "Introduction to Marxist Economic Theory",
+     "author": "Ernest Mandel",
+     "year": "1967",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Introduction+to+Marxist+Economic+Theory+Ernest+Mandel"
+    },
+    {
+     "title": "David Harvey, Reading Marx’s Capital (course)",
+     "type": "lecture",
+     "url": "https://davidharvey.org/reading-capital/"
+    },
+    {
+     "title": "Anwar Shaikh’s lectures",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Anwar+Shaikh+lecture+capitalism"
+    }
+   ]
+  },
+  {
+   "name": "Value-form Marxism",
+   "value": "A social form of labor that appears only through exchange and money",
+   "profit": "Surplus value, but read through money and the commodity form",
+   "crisis": "Rooted in the separation of production and circulation, and in credit",
+   "works": [
+    {
+     "title": "Essays on Marx’s Theory of Value",
+     "author": "Isaak Illich Rubin",
+     "year": "1928",
+     "type": "book",
+     "url": "https://www.marxists.org/archive/rubin/value/index.htm",
+     "free": true
+    },
+    {
+     "title": "The Value Theory of Labour",
+     "author": "Diane Elson",
+     "year": "1979",
+     "type": "essay",
+     "venue": "in Value: The Representation of Labour in Capitalism",
+     "url": "https://scholar.google.com/scholar?q=%22The+Value+Theory+of+Labour%22+Elson"
+    },
+    {
+     "title": "An Introduction to the Three Volumes of Karl Marx’s Capital",
+     "author": "Michael Heinrich",
+     "year": "2004",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=An+Introduction+to+the+Three+Volumes+of+Karl+Marx%E2%80%99s+Capital+Michael+Heinrich"
+    },
+    {
+     "title": "The New Dialectic and Marx’s Capital",
+     "author": "Christopher J. Arthur",
+     "year": "2002",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+New+Dialectic+and+Marx%E2%80%99s+Capital+Christopher+J.+Arthur"
+    },
+    {
+     "title": "Time, Labor, and Social Domination",
+     "author": "Moishe Postone",
+     "year": "1993",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Time%2C+Labor%2C+and+Social+Domination+Moishe+Postone"
+    },
+    {
+     "title": "Michael Heinrich lectures",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Michael+Heinrich+lecture+value+Capital"
+    }
+   ]
+  },
+  {
+   "name": "Sraffian (neo-Ricardian)",
+   "value": "Prices follow from the technical conditions of production and how income is divided; labor values aren’t needed",
+   "profit": "Set by the struggle over distribution between wages and profits",
+   "crisis": "Not a central concern of the theory",
+   "works": [
+    {
+     "title": "Production of Commodities by Means of Commodities",
+     "author": "Piero Sraffa",
+     "year": "1960",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Production+of+Commodities+by+Means+of+Commodities+Piero+Sraffa"
+    },
+    {
+     "title": "Marx After Sraffa",
+     "author": "Ian Steedman",
+     "year": "1977",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Marx+After+Sraffa+Ian+Steedman"
+    },
+    {
+     "title": "Some Cambridge Controversies in the Theory of Capital",
+     "author": "G. C. Harcourt",
+     "year": "1972",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Some+Cambridge+Controversies+in+the+Theory+of+Capital+G.+C.+Harcourt"
+    },
+    {
+     "title": "Lectures on Sraffa",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Sraffa+Production+of+Commodities+lecture"
+    }
+   ]
+  },
+  {
+   "name": "Neoclassical (marginalist)",
+   "value": "Subjective utility at the margin, under scarcity",
+   "profit": "The marginal product of capital, plus a return to enterprise and risk",
+   "crisis": "Outside shocks and frictions that disturb equilibrium",
+   "works": [
+    {
+     "title": "The Theory of Political Economy",
+     "author": "William Stanley Jevons",
+     "year": "1871",
+     "type": "book",
+     "url": "https://www.gutenberg.org/ebooks/search/?query=Theory+of+Political+Economy+Jevons",
+     "free": true
+    },
+    {
+     "title": "Principles of Economics",
+     "author": "Carl Menger",
+     "year": "1871",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Principles+of+Economics+Carl+Menger"
+    },
+    {
+     "title": "Elements of Pure Economics",
+     "author": "Léon Walras",
+     "year": "1874",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Elements+of+Pure+Economics+L%C3%A9on+Walras"
+    },
+    {
+     "title": "Principles of Economics",
+     "author": "Alfred Marshall",
+     "year": "1890",
+     "type": "book",
+     "url": "https://www.gutenberg.org/ebooks/search/?query=Principles+of+Economics+Marshall",
+     "free": true
+    },
+    {
+     "title": "The Distribution of Wealth",
+     "author": "John Bates Clark",
+     "year": "1899",
+     "type": "book",
+     "url": "https://www.gutenberg.org/ebooks/search/?query=Distribution+of+Wealth+Clark",
+     "free": true
+    }
+   ]
+  },
+  {
+   "name": "Austrian school",
+   "value": "Subjective valuation by individuals",
+   "profit": "Entrepreneurial discovery, and interest from time preference",
+   "crisis": "Cheap credit distorts investment until the boom has to bust",
+   "works": [
+    {
+     "title": "Karl Marx and the Close of His System",
+     "author": "Eugen von Böhm-Bawerk",
+     "year": "1896",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Karl+Marx+and+the+Close+of+His+System+Eugen+von+B%C3%B6hm-Bawerk"
+    },
+    {
+     "title": "Economic Calculation in the Socialist Commonwealth",
+     "author": "Ludwig von Mises",
+     "year": "1920",
+     "type": "essay",
+     "url": "https://scholar.google.com/scholar?q=%22Economic+Calculation+in+the+Socialist+Commonwealth%22+Mises"
+    },
+    {
+     "title": "The Use of Knowledge in Society",
+     "author": "Friedrich Hayek",
+     "year": "1945",
+     "type": "essay",
+     "url": "https://www.econlib.org/library/Essays/hykKnw.html",
+     "free": true
+    },
+    {
+     "title": "Prices and Production",
+     "author": "Friedrich Hayek",
+     "year": "1931",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Prices+and+Production+Friedrich+Hayek"
+    }
+   ]
+  },
+  {
+   "name": "Keynesian",
+   "value": "Not the central question; prices and output are set by demand",
+   "profit": "Depends on effective demand and investment",
+   "crisis": "Too little demand, uncertainty and the flight to cash",
+   "works": [
+    {
+     "title": "The General Theory of Employment, Interest and Money",
+     "author": "John Maynard Keynes",
+     "year": "1936",
+     "type": "book",
+     "url": "https://www.marxists.org/reference/subject/economics/keynes/general-theory/",
+     "free": true
+    },
+    {
+     "title": "Economic Possibilities for Our Grandchildren",
+     "author": "John Maynard Keynes",
+     "year": "1930",
+     "type": "essay",
+     "url": "https://scholar.google.com/scholar?q=%22Economic+Possibilities+for+Our+Grandchildren%22+Keynes"
+    },
+    {
+     "title": "Mr. Keynes and the “Classics”",
+     "author": "John Hicks",
+     "year": "1937",
+     "type": "essay",
+     "venue": "Econometrica",
+     "url": "https://scholar.google.com/scholar?q=%22Mr.+Keynes+and+the+%E2%80%9CClassics%E2%80%9D%22+Hicks"
+    },
+    {
+     "title": "Lectures on Keynes",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Keynes+General+Theory+lecture"
+    }
+   ]
+  },
+  {
+   "name": "Post-Keynesian and Kaleckian",
+   "value": "Prices are markups over costs, set by firms with market power",
+   "profit": "Capitalists earn what they spend: profits follow from investment",
+   "crisis": "Weak demand and financial fragility: stability breeds instability",
+   "works": [
+    {
+     "title": "Political Aspects of Full Employment",
+     "author": "Michał Kalecki",
+     "year": "1943",
+     "type": "essay",
+     "venue": "Political Quarterly",
+     "url": "https://scholar.google.com/scholar?q=%22Political+Aspects+of+Full+Employment%22+Kalecki"
+    },
+    {
+     "title": "The Accumulation of Capital",
+     "author": "Joan Robinson",
+     "year": "1956",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Accumulation+of+Capital+Joan+Robinson"
+    },
+    {
+     "title": "The Financial Instability Hypothesis",
+     "author": "Hyman Minsky",
+     "year": "1992",
+     "type": "essay",
+     "venue": "Levy Institute Working Paper 74",
+     "url": "https://scholar.google.com/scholar?q=%22The+Financial+Instability+Hypothesis%22+Minsky"
+    },
+    {
+     "title": "Post-Keynesian Economics: New Foundations",
+     "author": "Marc Lavoie",
+     "year": "2014",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Post-Keynesian+Economics%3A+New+Foundations+Marc+Lavoie"
+    },
+    {
+     "title": "Steve Keen and others on Minsky",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Minsky+financial+instability+hypothesis+lecture"
+    }
+   ]
+  },
+  {
+   "name": "Modern monetary theory (chartalism)",
+   "value": "Money’s value comes from the state that issues it and demands it in taxes",
+   "profit": "Supported by government deficits that add to private savings",
+   "crisis": "Too little public spending, and private debt",
+   "works": [
+    {
+     "title": "The State Theory of Money",
+     "author": "Georg Friedrich Knapp",
+     "year": "1905",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+State+Theory+of+Money+Georg+Friedrich+Knapp"
+    },
+    {
+     "title": "What Is Money?",
+     "author": "A. Mitchell Innes",
+     "year": "1913",
+     "type": "essay",
+     "venue": "Banking Law Journal",
+     "url": "https://scholar.google.com/scholar?q=%22What+Is+Money%3F%22+Innes"
+    },
+    {
+     "title": "Modern Money Theory",
+     "author": "L. Randall Wray",
+     "year": "2012",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Modern+Money+Theory+L.+Randall+Wray"
+    },
+    {
+     "title": "The Deficit Myth",
+     "author": "Stephanie Kelton",
+     "year": "2020",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Deficit+Myth+Stephanie+Kelton"
+    },
+    {
+     "title": "Stephanie Kelton talks",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Stephanie+Kelton+Deficit+Myth+talk"
+    }
+   ]
+  },
+  {
+   "name": "Institutionalist",
+   "value": "Shaped by habits, power and institutions rather than fixed laws",
+   "profit": "Business control over industry, including holding back output",
+   "crisis": "Credit, speculation and the clash between business and industry",
+   "works": [
+    {
+     "title": "The Theory of the Leisure Class",
+     "author": "Thorstein Veblen",
+     "year": "1899",
+     "type": "book",
+     "url": "https://www.gutenberg.org/ebooks/search/?query=Theory+of+the+Leisure+Class",
+     "free": true
+    },
+    {
+     "title": "The Theory of Business Enterprise",
+     "author": "Thorstein Veblen",
+     "year": "1904",
+     "type": "book",
+     "url": "https://www.gutenberg.org/ebooks/search/?query=Theory+of+Business+Enterprise",
+     "free": true
+    },
+    {
+     "title": "The Great Transformation",
+     "author": "Karl Polanyi",
+     "year": "1944",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Great+Transformation+Karl+Polanyi"
+    },
+    {
+     "title": "The New Industrial State",
+     "author": "John Kenneth Galbraith",
+     "year": "1967",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+New+Industrial+State+John+Kenneth+Galbraith"
+    }
+   ]
+  },
+  {
+   "name": "Structuralist and dependency",
+   "value": "Shaped by unequal exchange between core and periphery",
+   "profit": "Drained from the periphery through trade and investment",
+   "crisis": "Falling terms of trade and balance-of-payments limits in the periphery",
+   "works": [
+    {
+     "title": "The Economic Development of Latin America and Its Principal Problems",
+     "author": "Raúl Prebisch",
+     "year": "1950",
+     "type": "essay",
+     "venue": "ECLA",
+     "url": "https://scholar.google.com/scholar?q=%22The+Economic+Development+of+Latin+America+and+Its+Principal+Problems%22+Prebisch"
+    },
+    {
+     "title": "The Distribution of Gains between Investing and Borrowing Countries",
+     "author": "Hans Singer",
+     "year": "1950",
+     "type": "essay",
+     "venue": "American Economic Review",
+     "url": "https://scholar.google.com/scholar?q=%22The+Distribution+of+Gains+between+Investing+and+Borrowing+Countries%22+Singer"
+    },
+    {
+     "title": "The Development of Underdevelopment",
+     "author": "Andre Gunder Frank",
+     "year": "1966",
+     "type": "essay",
+     "venue": "Monthly Review",
+     "url": "https://scholar.google.com/scholar?q=%22The+Development+of+Underdevelopment%22+Frank"
+    },
+    {
+     "title": "Unequal Exchange",
+     "author": "Arghiri Emmanuel",
+     "year": "1969",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Unequal+Exchange+Arghiri+Emmanuel"
+    },
+    {
+     "title": "Accumulation on a World Scale",
+     "author": "Samir Amin",
+     "year": "1970",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Accumulation+on+a+World+Scale+Samir+Amin"
+    }
+   ]
+  },
+  {
+   "name": "Feminist and social reproduction",
+   "value": "Depends on unwaged work at home that produces and sustains workers",
+   "profit": "Relies on unpaid care and domestic labor",
+   "crisis": "Crises of care, as capital squeezes the work of social reproduction",
+   "works": [
+    {
+     "title": "Wages Against Housework",
+     "author": "Silvia Federici",
+     "year": "1975",
+     "type": "essay",
+     "url": "https://scholar.google.com/scholar?q=%22Wages+Against+Housework%22+Federici"
+    },
+    {
+     "title": "Marxism and the Oppression of Women",
+     "author": "Lise Vogel",
+     "year": "1983",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Marxism+and+the+Oppression+of+Women+Lise+Vogel"
+    },
+    {
+     "title": "If Women Counted",
+     "author": "Marilyn Waring",
+     "year": "1988",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=If+Women+Counted+Marilyn+Waring"
+    },
+    {
+     "title": "The Invisible Heart",
+     "author": "Nancy Folbre",
+     "year": "2001",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Invisible+Heart+Nancy+Folbre"
+    },
+    {
+     "title": "Talks on social reproduction",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=social+reproduction+theory+lecture+Bhattacharya"
+    }
+   ]
+  },
+  {
+   "name": "Ecological economics",
+   "value": "Rooted in energy, low-entropy matter and nature’s work",
+   "profit": "Appropriating cheap nature and dumping costs on the environment",
+   "crisis": "Hitting ecological limits",
+   "works": [
+    {
+     "title": "The Entropy Law and the Economic Process",
+     "author": "Nicholas Georgescu-Roegen",
+     "year": "1971",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Entropy+Law+and+the+Economic+Process+Nicholas+Georgescu-Roegen"
+    },
+    {
+     "title": "Steady-State Economics",
+     "author": "Herman Daly",
+     "year": "1977",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Steady-State+Economics+Herman+Daly"
+    },
+    {
+     "title": "Marx’s Ecology",
+     "author": "John Bellamy Foster",
+     "year": "2000",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Marx%E2%80%99s+Ecology+John+Bellamy+Foster"
+    },
+    {
+     "title": "Doughnut Economics",
+     "author": "Kate Raworth",
+     "year": "2017",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Doughnut+Economics+Kate+Raworth"
+    },
+    {
+     "title": "Marx in the Anthropocene",
+     "author": "Kohei Saito",
+     "year": "2023",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Marx+in+the+Anthropocene+Kohei+Saito"
+    }
+   ]
+  },
+  {
+   "name": "Monetarist and new classical",
+   "value": "Neoclassical: subjective utility under scarcity",
+   "profit": "Neoclassical: returns to capital",
+   "crisis": "Monetary mistakes (Friedman), or shocks that rational agents adjust to (Lucas)",
+   "works": [
+    {
+     "title": "A Monetary History of the United States",
+     "author": "Milton Friedman and Anna Schwartz",
+     "year": "1963",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=A+Monetary+History+of+the+United+States+Milton+Friedman"
+    },
+    {
+     "title": "The Role of Monetary Policy",
+     "author": "Milton Friedman",
+     "year": "1968",
+     "type": "essay",
+     "venue": "American Economic Review",
+     "url": "https://scholar.google.com/scholar?q=%22The+Role+of+Monetary+Policy%22+Friedman"
+    },
+    {
+     "title": "Econometric Policy Evaluation: A Critique",
+     "author": "Robert Lucas",
+     "year": "1976",
+     "type": "essay",
+     "url": "https://scholar.google.com/scholar?q=%22Econometric+Policy+Evaluation%3A+A+Critique%22+Lucas"
+    },
+    {
+     "title": "Friedman’s Free to Choose",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Milton+Friedman+Free+to+Choose"
+    }
+   ]
+  }
+ ],
+ "debates": [
+  {
+   "name": "The transformation problem",
+   "q": "Can Marx’s labor values be turned into the prices we actually see?",
+   "works": [
+    {
+     "title": "Karl Marx and the Close of His System",
+     "author": "Eugen von Böhm-Bawerk",
+     "year": "1896",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Karl+Marx+and+the+Close+of+His+System+Eugen+von+B%C3%B6hm-Bawerk"
+    },
+    {
+     "title": "Böhm-Bawerk’s Criticism of Marx",
+     "author": "Rudolf Hilferding",
+     "year": "1904",
+     "type": "essay",
+     "url": "https://www.marxists.org/archive/hilferding/1904/bohm/",
+     "free": true
+    },
+    {
+     "title": "On the Correction of Marx’s Fundamental Theoretical Construction",
+     "author": "Ladislaus von Bortkiewicz",
+     "year": "1907",
+     "type": "essay",
+     "url": "https://scholar.google.com/scholar?q=%22On+the+Correction+of+Marx%E2%80%99s+Fundamental+Theoretical+Construction%22+Bortkiewicz"
+    },
+    {
+     "title": "Understanding the Marxian Notion of Exploitation",
+     "author": "Paul Samuelson",
+     "year": "1971",
+     "type": "essay",
+     "venue": "Journal of Economic Literature",
+     "url": "https://scholar.google.com/scholar?q=%22Understanding+the+Marxian+Notion+of+Exploitation%22+Samuelson"
+    },
+    {
+     "title": "Understanding Capital",
+     "author": "Duncan Foley",
+     "year": "1986",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Understanding+Capital+Duncan+Foley"
+    },
+    {
+     "title": "Reclaiming Marx’s Capital",
+     "author": "Andrew Kliman",
+     "year": "2007",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Reclaiming+Marx%E2%80%99s+Capital+Andrew+Kliman"
+    }
+   ]
+  },
+  {
+   "name": "The socialist calculation debate",
+   "q": "Can an economy be planned rationally without market prices?",
+   "works": [
+    {
+     "title": "Economic Calculation in the Socialist Commonwealth",
+     "author": "Ludwig von Mises",
+     "year": "1920",
+     "type": "essay",
+     "url": "https://scholar.google.com/scholar?q=%22Economic+Calculation+in+the+Socialist+Commonwealth%22+Mises"
+    },
+    {
+     "title": "On the Economic Theory of Socialism",
+     "author": "Oskar Lange",
+     "year": "1936",
+     "type": "essay",
+     "venue": "Review of Economic Studies",
+     "url": "https://scholar.google.com/scholar?q=%22On+the+Economic+Theory+of+Socialism%22+Lange"
+    },
+    {
+     "title": "The Use of Knowledge in Society",
+     "author": "Friedrich Hayek",
+     "year": "1945",
+     "type": "essay",
+     "url": "https://www.econlib.org/library/Essays/hykKnw.html",
+     "free": true
+    },
+    {
+     "title": "Towards a New Socialism",
+     "author": "W. Paul Cockshott and Allin Cottrell",
+     "year": "1993",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Towards+a+New+Socialism+W.+Paul+Cockshott"
+    },
+    {
+     "title": "The People’s Republic of Walmart",
+     "author": "Leigh Phillips and Michal Rozworski",
+     "year": "2019",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+People%E2%80%99s+Republic+of+Walmart+Leigh+Phillips"
+    }
+   ]
+  },
+  {
+   "name": "The Cambridge capital controversy",
+   "q": "Can “capital” be measured as one quantity that earns its marginal product?",
+   "works": [
+    {
+     "title": "The Production Function and the Theory of Capital",
+     "author": "Joan Robinson",
+     "year": "1953",
+     "type": "essay",
+     "venue": "Review of Economic Studies",
+     "url": "https://scholar.google.com/scholar?q=%22The+Production+Function+and+the+Theory+of+Capital%22+Robinson"
+    },
+    {
+     "title": "A Summing Up",
+     "author": "Paul Samuelson",
+     "year": "1966",
+     "type": "essay",
+     "venue": "Quarterly Journal of Economics",
+     "url": "https://scholar.google.com/scholar?q=%22A+Summing+Up%22+Samuelson"
+    },
+    {
+     "title": "Some Cambridge Controversies in the Theory of Capital",
+     "author": "G. C. Harcourt",
+     "year": "1972",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Some+Cambridge+Controversies+in+the+Theory+of+Capital+G.+C.+Harcourt"
+    },
+    {
+     "title": "Whatever Happened to the Cambridge Capital Theory Controversies?",
+     "author": "Avi Cohen and G. C. Harcourt",
+     "year": "2003",
+     "type": "essay",
+     "venue": "Journal of Economic Perspectives",
+     "url": "https://scholar.google.com/scholar?q=%22Whatever+Happened+to+the+Cambridge+Capital+Theory+Controversies%3F%22+Cohen"
+    }
+   ]
+  },
+  {
+   "name": "The falling rate of profit",
+   "q": "Does capitalism’s own drive to mechanize push profitability down?",
+   "works": [
+    {
+     "title": "Technical Changes and the Rate of Profit",
+     "author": "Nobuo Okishio",
+     "year": "1961",
+     "type": "essay",
+     "venue": "Kobe University Economic Review",
+     "url": "https://scholar.google.com/scholar?q=%22Technical+Changes+and+the+Rate+of+Profit%22+Okishio"
+    },
+    {
+     "title": "The Failure of Capitalist Production",
+     "author": "Andrew Kliman",
+     "year": "2012",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Failure+of+Capitalist+Production+Andrew+Kliman"
+    },
+    {
+     "title": "Crisis Theory, the Law of the Tendency of the Profit Rate to Fall, and Marx’s Studies in the 1870s",
+     "author": "Michael Heinrich",
+     "year": "2013",
+     "type": "essay",
+     "venue": "Monthly Review",
+     "url": "https://scholar.google.com/scholar?q=%22Crisis+Theory%2C+the+Law+of+the+Tendency+of+the+Profit+Rate+to+Fall%2C+and+Marx%E2%80%99s+Studies+in+the+1870s%22+Heinrich"
+    },
+    {
+     "title": "The Long Depression",
+     "author": "Michael Roberts",
+     "year": "2016",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Long+Depression+Michael+Roberts"
+    }
+   ]
+  },
+  {
+   "name": "Modernization vs. dependency",
+   "q": "Do poor countries just need to follow the rich, or does the world system hold them back?",
+   "works": [
+    {
+     "title": "The Stages of Economic Growth",
+     "author": "W. W. Rostow",
+     "year": "1960",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Stages+of+Economic+Growth+W.+W.+Rostow"
+    },
+    {
+     "title": "The Development of Underdevelopment",
+     "author": "Andre Gunder Frank",
+     "year": "1966",
+     "type": "essay",
+     "venue": "Monthly Review",
+     "url": "https://scholar.google.com/scholar?q=%22The+Development+of+Underdevelopment%22+Frank"
+    },
+    {
+     "title": "Dependency and Development in Latin America",
+     "author": "Fernando Henrique Cardoso and Enzo Faletto",
+     "year": "1969",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Dependency+and+Development+in+Latin+America+Fernando+Henrique+Cardoso"
+    },
+    {
+     "title": "Imperialism: Pioneer of Capitalism",
+     "author": "Bill Warren",
+     "year": "1980",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Imperialism%3A+Pioneer+of+Capitalism+Bill+Warren"
+    }
+   ]
+  },
+  {
+   "name": "The Great Divergence",
+   "q": "Why did northwestern Europe pull ahead of China and India after 1800?",
+   "works": [
+    {
+     "title": "The Great Divergence",
+     "author": "Kenneth Pomeranz",
+     "year": "2000",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Great+Divergence+Kenneth+Pomeranz"
+    },
+    {
+     "title": "England’s Divergence from China’s Yangzi Delta",
+     "author": "Robert Brenner and Christopher Isett",
+     "year": "2002",
+     "type": "essay",
+     "venue": "Journal of Asian Studies",
+     "url": "https://scholar.google.com/scholar?q=%22England%E2%80%99s+Divergence+from+China%E2%80%99s+Yangzi+Delta%22+Brenner"
+    },
+    {
+     "title": "The British Industrial Revolution in Global Perspective",
+     "author": "Robert C. Allen",
+     "year": "2009",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+British+Industrial+Revolution+in+Global+Perspective+Robert+C.+Allen"
+    },
+    {
+     "title": "Why Europe Grew Rich and Asia Did Not",
+     "author": "Prasannan Parthasarathi",
+     "year": "2011",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Why+Europe+Grew+Rich+and+Asia+Did+Not+Prasannan+Parthasarathi"
+    }
+   ]
+  }
+ ],
+ "regions": [
+  {
+   "name": "England and the birth of capitalism",
+   "countries": [
+    "GBR"
+   ],
+   "q": "Why did capitalism first take hold in the English countryside?",
+   "works": [
+    {
+     "title": "Agrarian Class Structure and Economic Development in Pre-Industrial Europe",
+     "author": "Robert Brenner",
+     "year": "1976",
+     "type": "essay",
+     "venue": "Past & Present",
+     "url": "https://scholar.google.com/scholar?q=%22Agrarian+Class+Structure+and+Economic+Development+in+Pre-Industrial+Europe%22+Brenner"
+    },
+    {
+     "title": "The Origin of Capitalism",
+     "author": "Ellen Meiksins Wood",
+     "year": "1999",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Origin+of+Capitalism+Ellen+Meiksins+Wood"
+    },
+    {
+     "title": "Industry and Empire",
+     "author": "Eric Hobsbawm",
+     "year": "1968",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Industry+and+Empire+Eric+Hobsbawm"
+    },
+    {
+     "title": "The British Industrial Revolution in Global Perspective",
+     "author": "Robert C. Allen",
+     "year": "2009",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+British+Industrial+Revolution+in+Global+Perspective+Robert+C.+Allen"
+    },
+    {
+     "title": "Ellen Meiksins Wood lecture",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Ellen+Meiksins+Wood+origin+of+capitalism+lecture"
+    }
+   ]
+  },
+  {
+   "name": "Slavery, cotton and the Atlantic",
+   "countries": [
+    "USA",
+    "GBR",
+    "BRA"
+   ],
+   "q": "How much did slavery build industrial capitalism?",
+   "works": [
+    {
+     "title": "Capitalism and Slavery",
+     "author": "Eric Williams",
+     "year": "1944",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Capitalism+and+Slavery+Eric+Williams"
+    },
+    {
+     "title": "Africans and the Industrial Revolution in England",
+     "author": "Joseph E. Inikori",
+     "year": "2002",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Africans+and+the+Industrial+Revolution+in+England+Joseph+E.+Inikori"
+    },
+    {
+     "title": "Empire of Cotton",
+     "author": "Sven Beckert",
+     "year": "2014",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Empire+of+Cotton+Sven+Beckert"
+    },
+    {
+     "title": "The Half Has Never Been Told",
+     "author": "Edward E. Baptist",
+     "year": "2014",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Half+Has+Never+Been+Told+Edward+E.+Baptist"
+    },
+    {
+     "title": "Sven Beckert lecture",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Sven+Beckert+Empire+of+Cotton+lecture"
+    }
+   ]
+  },
+  {
+   "name": "The United States",
+   "countries": [
+    "USA"
+   ],
+   "q": "How did a settler colony become the center of world capitalism?",
+   "works": [
+    {
+     "title": "The American Road to Capitalism",
+     "author": "Charles Post",
+     "year": "2011",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+American+Road+to+Capitalism+Charles+Post"
+    },
+    {
+     "title": "Black Reconstruction in America",
+     "author": "W. E. B. Du Bois",
+     "year": "1935",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Black+Reconstruction+in+America+W.+E.+B.+Du+Bois"
+    },
+    {
+     "title": "The Visible Hand",
+     "author": "Alfred D. Chandler Jr.",
+     "year": "1977",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Visible+Hand+Alfred+D.+Chandler+Jr."
+    },
+    {
+     "title": "The Rise and Fall of American Growth",
+     "author": "Robert J. Gordon",
+     "year": "2016",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Rise+and+Fall+of+American+Growth+Robert+J.+Gordon"
+    }
+   ]
+  },
+  {
+   "name": "Germany and late development",
+   "countries": [
+    "DEU",
+    "GBR"
+   ],
+   "q": "How do latecomers catch up with the first industrializers?",
+   "works": [
+    {
+     "title": "The National System of Political Economy",
+     "author": "Friedrich List",
+     "year": "1841",
+     "type": "book",
+     "url": "https://www.gutenberg.org/ebooks/search/?query=National+System+of+Political+Economy+List",
+     "free": true
+    },
+    {
+     "title": "Economic Backwardness in Historical Perspective",
+     "author": "Alexander Gerschenkron",
+     "year": "1962",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Economic+Backwardness+in+Historical+Perspective+Alexander+Gerschenkron"
+    },
+    {
+     "title": "Finance Capital",
+     "author": "Rudolf Hilferding",
+     "year": "1910",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Finance+Capital+Rudolf+Hilferding"
+    },
+    {
+     "title": "The Wages of Destruction",
+     "author": "Adam Tooze",
+     "year": "2006",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Wages+of+Destruction+Adam+Tooze"
+    }
+   ]
+  },
+  {
+   "name": "Russia and the Soviet experiment",
+   "countries": [
+    "RUS",
+    "USA"
+   ],
+   "q": "What did central planning achieve, and at what cost?",
+   "works": [
+    {
+     "title": "The New Economics",
+     "author": "Evgeny Preobrazhensky",
+     "year": "1926",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+New+Economics+Evgeny+Preobrazhensky"
+    },
+    {
+     "title": "An Economic History of the USSR",
+     "author": "Alec Nove",
+     "year": "1969",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=An+Economic+History+of+the+USSR+Alec+Nove"
+    },
+    {
+     "title": "Farm to Factory",
+     "author": "Robert C. Allen",
+     "year": "2003",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Farm+to+Factory+Robert+C.+Allen"
+    },
+    {
+     "title": "The Socialist System",
+     "author": "János Kornai",
+     "year": "1992",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Socialist+System+J%C3%A1nos+Kornai"
+    },
+    {
+     "title": "Lectures on the Soviet economy",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Soviet+economy+history+lecture+planning"
+    }
+   ]
+  },
+  {
+   "name": "Japan",
+   "countries": [
+    "JPN",
+    "USA"
+   ],
+   "q": "How did a state-guided economy become the world’s second largest?",
+   "works": [
+    {
+     "title": "MITI and the Japanese Miracle",
+     "author": "Chalmers Johnson",
+     "year": "1982",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=MITI+and+the+Japanese+Miracle+Chalmers+Johnson"
+    },
+    {
+     "title": "A Modern History of Japan",
+     "author": "Andrew Gordon",
+     "year": "2003",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=A+Modern+History+of+Japan+Andrew+Gordon"
+    }
+   ]
+  },
+  {
+   "name": "South Korea and Taiwan",
+   "countries": [
+    "KOR",
+    "TWN",
+    "PRK",
+    "GHA"
+   ],
+   "q": "Markets or the state: what made the East Asian “miracles”?",
+   "works": [
+    {
+     "title": "Asia’s Next Giant",
+     "author": "Alice Amsden",
+     "year": "1989",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Asia%E2%80%99s+Next+Giant+Alice+Amsden"
+    },
+    {
+     "title": "Governing the Market",
+     "author": "Robert Wade",
+     "year": "1990",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Governing+the+Market+Robert+Wade"
+    },
+    {
+     "title": "Kicking Away the Ladder",
+     "author": "Ha-Joon Chang",
+     "year": "2002",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Kicking+Away+the+Ladder+Ha-Joon+Chang"
+    },
+    {
+     "title": "How Asia Works",
+     "author": "Joe Studwell",
+     "year": "2013",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=How+Asia+Works+Joe+Studwell"
+    },
+    {
+     "title": "Ha-Joon Chang talks",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Ha-Joon+Chang+Kicking+Away+the+Ladder+lecture"
+    }
+   ]
+  },
+  {
+   "name": "China",
+   "countries": [
+    "CHN",
+    "IND"
+   ],
+   "q": "How did China grow so fast without shock therapy?",
+   "works": [
+    {
+     "title": "Fanshen",
+     "author": "William Hinton",
+     "year": "1966",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Fanshen+William+Hinton"
+    },
+    {
+     "title": "The Chinese Economy",
+     "author": "Barry Naughton",
+     "year": "2007",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Chinese+Economy+Barry+Naughton"
+    },
+    {
+     "title": "Adam Smith in Beijing",
+     "author": "Giovanni Arrighi",
+     "year": "2007",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Adam+Smith+in+Beijing+Giovanni+Arrighi"
+    },
+    {
+     "title": "How China Escaped Shock Therapy",
+     "author": "Isabella M. Weber",
+     "year": "2021",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=How+China+Escaped+Shock+Therapy+Isabella+M.+Weber"
+    },
+    {
+     "title": "Isabella Weber talks",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Isabella+Weber+How+China+Escaped+Shock+Therapy+talk"
+    }
+   ]
+  },
+  {
+   "name": "India and South Asia",
+   "countries": [
+    "IND",
+    "PAK",
+    "BGD"
+   ],
+   "q": "What did colonial rule drain, and what did planning and liberalization build?",
+   "works": [
+    {
+     "title": "Poverty and Un-British Rule in India",
+     "author": "Dadabhai Naoroji",
+     "year": "1901",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Poverty+and+Un-British+Rule+in+India+Dadabhai+Naoroji"
+    },
+    {
+     "title": "Locked in Place",
+     "author": "Vivek Chibber",
+     "year": "2003",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Locked+in+Place+Vivek+Chibber"
+    },
+    {
+     "title": "A Theory of Imperialism",
+     "author": "Utsa Patnaik and Prabhat Patnaik",
+     "year": "2016",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=A+Theory+of+Imperialism+Utsa+Patnaik"
+    },
+    {
+     "title": "Utsa Patnaik on the colonial drain",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Utsa+Patnaik+colonial+drain+lecture"
+    }
+   ]
+  },
+  {
+   "name": "Latin America",
+   "countries": [
+    "BRA",
+    "ARG",
+    "MEX",
+    "CHL"
+   ],
+   "q": "Why did import substitution rise, and why did the debt crisis end it?",
+   "works": [
+    {
+     "title": "The Economic Development of Latin America and Its Principal Problems",
+     "author": "Raúl Prebisch",
+     "year": "1950",
+     "type": "essay",
+     "venue": "ECLA",
+     "url": "https://scholar.google.com/scholar?q=%22The+Economic+Development+of+Latin+America+and+Its+Principal+Problems%22+Prebisch"
+    },
+    {
+     "title": "Dependency and Development in Latin America",
+     "author": "Fernando Henrique Cardoso and Enzo Faletto",
+     "year": "1969",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Dependency+and+Development+in+Latin+America+Fernando+Henrique+Cardoso"
+    },
+    {
+     "title": "The Economic History of Latin America since Independence",
+     "author": "Victor Bulmer-Thomas",
+     "year": "1994",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Economic+History+of+Latin+America+since+Independence+Victor+Bulmer-Thomas"
+    },
+    {
+     "title": "Pinochet’s Economists",
+     "author": "Juan Gabriel Valdés",
+     "year": "1995",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Pinochet%E2%80%99s+Economists+Juan+Gabriel+Vald%C3%A9s"
+    }
+   ]
+  },
+  {
+   "name": "Africa after independence",
+   "countries": [
+    "GHA",
+    "NGA",
+    "KEN",
+    "ZAF",
+    "ETH",
+    "BWA"
+   ],
+   "q": "Why did most African economies stall after the 1970s, and what explains the exceptions?",
+   "works": [
+    {
+     "title": "How Europe Underdeveloped Africa",
+     "author": "Walter Rodney",
+     "year": "1972",
+     "type": "book",
+     "url": "https://www.marxists.org/subject/africa/rodney-walter/how-europe/",
+     "free": true
+    },
+    {
+     "title": "A Political Economy of Africa",
+     "author": "Claude Ake",
+     "year": "1981",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=A+Political+Economy+of+Africa+Claude+Ake"
+    },
+    {
+     "title": "Thinking about Developmental States in Africa",
+     "author": "Thandika Mkandawire",
+     "year": "2001",
+     "type": "essay",
+     "venue": "Cambridge Journal of Economics",
+     "url": "https://scholar.google.com/scholar?q=%22Thinking+about+Developmental+States+in+Africa%22+Mkandawire"
+    },
+    {
+     "title": "Poor Numbers",
+     "author": "Morten Jerven",
+     "year": "2013",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Poor+Numbers+Morten+Jerven"
+    },
+    {
+     "title": "Thandika Mkandawire lectures",
+     "type": "lecture",
+     "url": "https://www.youtube.com/results?search_query=Thandika+Mkandawire+lecture+development+Africa"
+    }
+   ]
+  },
+  {
+   "name": "Oil and the Gulf",
+   "countries": [
+    "SAU",
+    "ARE",
+    "IRN"
+   ],
+   "q": "How did oil shape states, democracy and the world economy?",
+   "works": [
+    {
+     "title": "America’s Kingdom",
+     "author": "Robert Vitalis",
+     "year": "2007",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=America%E2%80%99s+Kingdom+Robert+Vitalis"
+    },
+    {
+     "title": "Carbon Democracy",
+     "author": "Timothy Mitchell",
+     "year": "2011",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Carbon+Democracy+Timothy+Mitchell"
+    },
+    {
+     "title": "Capitalism and Class in the Gulf Arab States",
+     "author": "Adam Hanieh",
+     "year": "2011",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Capitalism+and+Class+in+the+Gulf+Arab+States+Adam+Hanieh"
+    }
+   ]
+  },
+  {
+   "name": "Nordic social democracy",
+   "countries": [
+    "SWE",
+    "NOR",
+    "DNK",
+    "GBR"
+   ],
+   "q": "How did strong unions and welfare states coexist with capitalism?",
+   "works": [
+    {
+     "title": "The Democratic Class Struggle",
+     "author": "Walter Korpi",
+     "year": "1983",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Democratic+Class+Struggle+Walter+Korpi"
+    },
+    {
+     "title": "Employee Investment Funds",
+     "author": "Rudolf Meidner",
+     "year": "1978",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Employee+Investment+Funds+Rudolf+Meidner"
+    },
+    {
+     "title": "The Three Worlds of Welfare Capitalism",
+     "author": "Gøsta Esping-Andersen",
+     "year": "1990",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Three+Worlds+of+Welfare+Capitalism+G%C3%B8sta+Esping-Andersen"
+    }
+   ]
+  },
+  {
+   "name": "The neoliberal turn and globalization",
+   "countries": [
+    "CHL",
+    "GBR",
+    "USA",
+    "CHN"
+   ],
+   "q": "Who built the global market order after the 1970s, and for whom?",
+   "works": [
+    {
+     "title": "A Brief History of Neoliberalism",
+     "author": "David Harvey",
+     "year": "2005",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=A+Brief+History+of+Neoliberalism+David+Harvey"
+    },
+    {
+     "title": "Globalization and Its Discontents",
+     "author": "Joseph Stiglitz",
+     "year": "2002",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Globalization+and+Its+Discontents+Joseph+Stiglitz"
+    },
+    {
+     "title": "The Making of Global Capitalism",
+     "author": "Leo Panitch and Sam Gindin",
+     "year": "2012",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=The+Making+of+Global+Capitalism+Leo+Panitch"
+    },
+    {
+     "title": "Globalists",
+     "author": "Quinn Slobodian",
+     "year": "2018",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Globalists+Quinn+Slobodian"
+    },
+    {
+     "title": "Crashed",
+     "author": "Adam Tooze",
+     "year": "2018",
+     "type": "book",
+     "url": "https://openlibrary.org/search?q=Crashed+Adam+Tooze"
+    }
+   ]
+  }
+ ]
+}
