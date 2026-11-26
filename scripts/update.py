@@ -874,6 +874,91 @@ def build_world_map():
     return out or None
 
 
+# ---------- Country profiles for the clickable map (World Bank, no key) ----------
+
+PROFILE_INDICATORS = [
+    # (group, code, label, unit)
+    ("the economy", "NY.GDP.MKTP.KD.ZG", "GDP growth", "%"),
+    ("the economy", "FP.CPI.TOTL.ZG", "Inflation", "%"),
+    ("the economy", "NY.GDP.PCAP.PP.CD", "Income per person (adjusted for prices)", "$"),
+    ("the economy", "NV.IND.MANF.ZS", "Manufacturing, share of output", "%"),
+    ("the economy", "NV.AGR.TOTL.ZS", "Farming, forestry and fishing, share of output", "%"),
+    ("work and wages", "SL.UEM.TOTL.ZS", "Unemployment", "%"),
+    ("work and wages", "SL.UEM.1524.ZS", "Youth unemployment (ages 15–24)", "%"),
+    ("work and wages", "SL.EMP.VULN.ZS", "Self-employed or unpaid family work", "%"),
+    ("work and wages", "SL.AGR.EMPL.ZS", "Working in agriculture", "%"),
+    ("work and wages", "SL.TLF.CACT.FE.ZS", "Women in the labor force", "%"),
+    ("living standards", "SI.POV.DDAY", "Living in extreme poverty", "%"),
+    ("living standards", "SI.POV.GINI", "Inequality (Gini index)", ""),
+    ("living standards", "SI.DST.10TH.10", "Top 10%’s share of income", "%"),
+    ("living standards", "SP.DYN.LE00.IN", "Life expectancy", "years"),
+    ("living standards", "SH.XPD.OOPC.CH.ZS", "Health costs paid out of pocket", "%"),
+    ("living standards", "EG.ELC.ACCS.ZS", "Access to electricity", "%"),
+    ("living standards", "IT.NET.USER.ZS", "Using the internet", "%"),
+    ("money, debt and trade", "FR.INR.RINR", "Real interest rate", "%"),
+    ("money, debt and trade", "PA.NUS.FCRF", "Exchange rate (local currency per US dollar)", ""),
+    ("money, debt and trade", "GC.DOD.TOTL.GD.ZS", "Government debt, share of GDP", "%"),
+    ("money, debt and trade", "DT.TDS.DECT.EX.ZS", "Foreign debt service, share of exports", "%"),
+    ("money, debt and trade", "NE.TRD.GNFS.ZS", "Trade, share of GDP", "%"),
+    ("money, debt and trade", "BX.TRF.PWKR.DT.GD.ZS", "Remittances from abroad, share of GDP", "%"),
+    ("money, debt and trade", "BN.CAB.XOKA.GD.ZS", "Current account balance, share of GDP", "%"),
+]
+MAP_TABS = ["NY.GDP.MKTP.KD.ZG", "FP.CPI.TOTL.ZG", "SL.UEM.TOTL.ZS", "SL.UEM.1524.ZS", "SI.POV.DDAY", "SI.POV.GINI", "DT.TDS.DECT.EX.ZS", "BX.TRF.PWKR.DT.GD.ZS"]
+HEADLINE_COUNTRIES = ["USA", "CHN", "JPN", "DEU", "IND", "GBR", "FRA", "ITA", "BRA", "CAN", "RUS", "KOR", "AUS", "MEX", "ESP",
+                      "IDN", "TUR", "SAU", "ARG", "ZAF", "NGA", "EGY", "PAK", "BGD", "VNM", "PHL", "THA", "MYS", "IRN", "ISR",
+                      "UKR", "POL", "NLD", "SWE", "NOR", "CHL", "COL", "PER", "VEN", "CUB", "KEN", "ETH", "GHA", "DZA", "MAR",
+                      "LKA", "NPL", "IRQ", "GRC", "PRT"]
+
+
+def build_profiles():
+    meta = get_patiently("https://api.worldbank.org/v2/country", tries=3, format="json", per_page=400).json()[1]
+    countries = {c["id"]: {"name": c["name"], "iso2": c["iso2Code"], "region": (c.get("region") or {}).get("value", "").strip(),
+                           "income": (c.get("incomeLevel") or {}).get("value", "").strip()}
+                 for c in meta if (c.get("region") or {}).get("value", "").strip() not in ("", "Aggregates")}
+    data, first = {}, NOW.year - 12
+    for group, code, label, unit in PROFILE_INDICATORS:
+        try:
+            rows = wb_all(code, "all", first)
+        except Exception as e:  # noqa: BLE001
+            failed.append({"source": f"World Bank {code}", "section": "country profiles", "error": str(e).split(" for url")[0][:90]})
+            continue
+        for o in rows:
+            cc, v = o.get("countryiso3code"), o.get("value")
+            if v is None or (cc not in countries and cc != "WLD"):
+                continue
+            data.setdefault(cc, {}).setdefault(code, []).append([int(o["date"]), round(v, 2)])
+        time.sleep(0.25)
+    for cc in data:
+        for code in data[cc]:
+            data[cc][code] = sorted(data[cc][code])[-10:]
+    if not data:
+        raise ValueError("no World Bank data")
+    # the past week's economic headlines for the larger economies
+    news = {}
+    for cc in HEADLINE_COUNTRIES:
+        c = countries.get(cc)
+        if not c:
+            continue
+        name = {"Russian Federation": "Russia", "Korea, Rep.": "South Korea", "Egypt, Arab Rep.": "Egypt", "Iran, Islamic Rep.": "Iran",
+                "Venezuela, RB": "Venezuela", "Viet Nam": "Vietnam", "Turkiye": "Turkey"}.get(c["name"], c["name"])
+        feed, _ = try_feed(gnews_url(f'"{name}" economy when:7d'))
+        if feed:
+            feed = tidy_google(feed)
+            items = []
+            for e in feed.entries[:12]:
+                t = e.get("published_parsed")
+                items.append({"title": clean(e.get("title"), 200), "url": e.get("link"), "source": (e.get("source") or {}).get("title", ""),
+                              "date": iso(datetime.fromtimestamp(time.mktime(t), timezone.utc)) if t else None})
+            items = [i for i in items if i["title"] and not (SPORTS.search(i["title"]) or JUNK.search(i["title"]))]
+            news[cc] = merge_similar(items)[:5]
+        time.sleep(0.3)
+    out = {"indicators": [{"group": g, "code": c, "label": l, "unit": u} for g, c, l, u in PROFILE_INDICATORS],
+           "map": MAP_TABS, "countries": countries, "data": data, "news": news}
+    (ROOT / "site" / "data" / "profiles.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")))
+    print(f"country profiles: {len(data)} countries, headlines for {len(news)}")
+    return True
+
+
 DEBT_GROUPS = {"LIC": "Low-income countries", "LMC": "Lower-middle-income countries"}
 DEBT_COUNTRIES = ["PAK", "EGY", "KEN", "GHA", "ZMB", "LKA", "ARG", "NGA", "ETH", "TUN", "BGD", "COL"]
 
@@ -913,6 +998,10 @@ def check_texts():
         if (data / name).exists():
             d = json.loads((data / name).read_text())
             texts += d if isinstance(d, list) else [t for sch in d.get("schools", []) for t in sch["texts"] if t.get("url")]
+    texts = [t for t in texts if t.get("free", True)]
+    if (data / "pe.json").exists():
+        pe = json.loads((data / "pe.json").read_text())
+        texts += [w for grp in ("schools", "debates", "regions") for x in pe.get(grp, []) for w in x["works"] if w.get("free")]
     broken = []
     seen = set()
     for t in texts:
@@ -1155,6 +1244,11 @@ def build_shelf():
                 return is_read(t) or any(is_read({**t, "title": a}) for a in t.get("aka", []))
             shelf["library_read"] = [t["title"] for sch in lib.get("schools", []) for t in sch["texts"] if lib_read(t)]
             to_full = {norm_full(b["title"]) for b in toread}
+            pe_path = ROOT / "site" / "data" / "pe.json"
+            if pe_path.exists():
+                pe = json.loads(pe_path.read_text())
+                pe_works = {w["title"]: w for grp in ("schools", "debates", "regions") for x in pe.get(grp, []) for w in x["works"] if w.get("author")}
+                shelf["pe_read"] = [t for t, w in pe_works.items() if lib_read(w)]
             shelf["library_toread"] = [t["title"] for sch in lib.get("schools", []) for t in sch["texts"]
                                        if t["title"] not in shelf["library_read"]
                                        and any(norm_full(x) in to_full or norm_title(x) in to_t for x in [t["title"], *t.get("aka", [])])]
@@ -1315,6 +1409,40 @@ def build_indicators():
     return out
 
 
+# ---------- Long-run income per person (Maddison Project, via Our World in Data) ----------
+
+MADDISON_URL = ("https://ourworldindata.org/grapher/gdp-per-capita-maddison-project-database.csv"
+                "?v=1&csvType=full&useColumnShortNames=true")
+
+
+def build_maddison():
+    import csv, io
+    pe_path = ROOT / "site" / "data" / "pe.json"
+    want = {"OWID_WRL"}
+    if pe_path.exists():
+        for r in json.loads(pe_path.read_text()).get("regions", []):
+            want.update(r.get("countries", []))
+    text = SESSION.get(MADDISON_URL, timeout=60, headers={"User-Agent": "Our World In Data data fetch/1.0"}).text
+    rows = list(csv.reader(io.StringIO(text)))
+    head, out = rows[0], {}
+    for r in rows[1:]:
+        if len(r) < 4 or r[1] not in want:
+            continue
+        try:
+            year, val = int(r[2]), float(r[-1])
+        except ValueError:
+            continue
+        if year >= 1820:
+            out.setdefault(r[1], {"name": r[0], "points": []})["points"].append([year, round(val)])
+    for v in out.values():
+        v["points"].sort()
+    if not out:
+        raise ValueError("no rows in the Maddison data")
+    (ROOT / "site" / "data" / "maddison.json").write_text(json.dumps(out, separators=(",", ":")))
+    print(f"maddison: {len(out)} countries")
+    return len(out)
+
+
 # ---------- Back issues ----------
 
 def save_back_issue(payload):
@@ -1403,8 +1531,9 @@ def main():
     debates = safe("debates", build_debates, [])
     prices = safe("global prices", lambda: build_dashboard(GLOBAL_PRICES, "global prices"), [])
     shares = safe("profits vs. wages", build_shares)
-    world_map = safe("world map", build_world_map)
+    safe("country profiles", build_profiles)
     debt = safe("debt squeeze", build_debt)
+    safe("long-run incomes", build_maddison)
     broken_texts = safe("text links", check_texts, [])
 
     payload = {"generated_at": iso(NOW), "sections": sections, "images": images,
@@ -1422,7 +1551,7 @@ def main():
     # posters go in their own file: the page picks a poster of the day from the whole set
     (OUT.parent / "posters.json").write_text(json.dumps(posters, ensure_ascii=False))
     # the map data is large-ish and only needed on one page
-    (OUT.parent / "worldmap.json").write_text(json.dumps(world_map or {}, ensure_ascii=False, separators=(",", ":")))
+
     safe("back issues", lambda: save_back_issue(payload))
     if failed:
         print(f"{len(failed)} sources failed:", *[f"  {f['source']}: {f['error']}" for f in failed], sep="\n")
